@@ -19,6 +19,7 @@ namespace BusinessPortal.IoC
             services.AddScoped<IEmailSender , EmailSender >();
             services.AddScoped<IPermissionService , PermissionService >();
             services.AddScoped<ICategoriesService , CategoriesService >();
+            services.AddScoped<IStateService , StateService >();
         }
     }
 }

@@ -75,6 +75,27 @@
             </ul>
         </li>
 
+           <li>
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon glyphicon glyphicon-map-marker"></i>
+                <span class="menu-text"> مدیریت مکان ها </span>
+                <i class="menu-expand"></i>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a asp-action="FilterState" asp-controller="State" asp-area="Admin">
+                        <span class="menu-text"> لیست مکان ها </span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-action="CreateState" asp-controller="State" asp-area="Admin">
+                        <span class="menu-text"> ایجاد مکان جدید </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
         <!--UI Elements-->
 
     </ul>

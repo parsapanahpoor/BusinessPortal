@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BusinessPortal.Domain.Entities.BrowseCategory;
+using BusinessPortal.Domain.Entities.Location;
 
 namespace BusinessPortal.Data.DbContext
 {
@@ -40,6 +41,12 @@ namespace BusinessPortal.Data.DbContext
         #region Email Setting
 
         public DbSet<EmailSetting> EmailSettings { get; set; }
+
+        #endregion
+
+        #region Location
+
+        public DbSet<State> States { get; set; }
 
         #endregion
 
