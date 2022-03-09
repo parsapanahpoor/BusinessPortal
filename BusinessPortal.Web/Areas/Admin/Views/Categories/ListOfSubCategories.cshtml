@@ -1,0 +1,171 @@
+﻿@using BusinessPortal.Application.Extensions
+@using BusinessPortal.Application.Convertors
+@model BusinessPortal.Domain.ViewModels.Admin.Categories.ListOfCategoriesViewModel
+@using BusinessPortal.Domain.ViewModels.Admin
+@using BusinessPortal.Domain.ViewModels.Admin.Categories
+
+@{
+    ViewData["Title"] = "لیست دسته بندی ها ";
+}
+
+@section Styles
+{
+
+}
+
+@section Scripts
+{
+<partial name="_JqueryValidation" />
+}
+
+@section Breadcrumbs
+{
+<li>
+    <a href="javascript:void(0)"> @ViewData["Title"] </a>
+</li>
+}
+
+<div class="row">
+    <div class="col-lg-3 col-sm-12">
+
+        <a class="btn btn-sky w-100 margin-bottom-10" asp-action="CreateSubCategory" asp-route-ParentId="@Model.ParentId" asp-controller="Categories" asp-area="Admin">ایجاد دسته بندی جدید</a>
+
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-green">
+                <span class="widget-caption"> لیست دسته بندی ها </span>
+            </div>
+            <div class="widget-body">
+                <div>
+
+                    <form asp-action="ListOfSubCategories" asp-controller="Categories" asp-area="Admin" id="filter-search" method="get">
+                        <input type="hidden" asp-for="ParentId" />
+                        <input type="hidden" asp-for="Page" />
+
+                        <div class="form-group">
+                            <label asp-for="Title"> عنوان نمایشی دسته بندی      </label>
+                            <input type="text" class="form-control" asp-for="Title" placeholder="عنوان نمایشی دسته بندی را وارد کنید ">
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="UniqueName"> عنوان URL دسته بندی      </label>
+                            <input type="text" class="form-control" asp-for="UniqueName" placeholder="عنوان URL دسته بندی را وارد کنید ">
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="filterCategoryAdminSideState"> وضعیت </label>
+                            <select asp-for="filterCategoryAdminSideState" class="form-control" asp-items="Html.GetEnumSelectList(typeof(FilterCategoryAdminSideState))"></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="FilterCategoryAdminSidePriority"> مرتب سازی براساس الویت  </label>
+                            <select asp-for="FilterCategoryAdminSidePriority" class="form-control" asp-items="Html.GetEnumSelectList(typeof(FilterCategoryAdminSidePriority))"></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="filterCatgeoryAdminSideOrder"> مرتب سازی براساس تاریخ </label>
+                            <select asp-for="filterCatgeoryAdminSideOrder" class="form-control" asp-items="Html.GetEnumSelectList(typeof(FilterCatgeoryAdminSideOrder))"></select>
+                        </div>
+
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-md-12 flex-style">
+                                <button type="submit" class="btn btn-labeled w-100 btn-palegreen">
+                                    <i class="btn-label glyphicon glyphicon-filter"></i>اعمال فیلتر
+                                </button>
+
+                                @if (Context.Request.QueryString.HasValue)
+                                {
+                                    <a asp-action="ListOfSubCategories" asp-controller="Categories" asp-area="Admin" asp-route-ParentId="@Model.ParentId" class="btn btn-labeled w-100 btn-darkorange mr-10px">
+                                        <i class="btn-label glyphicon glyphicon-remove"></i>حذف فیلتر
+                                    </a>
+                                }
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-9 col-sm-12">
+        <div class="well with-header with-footer table-responsive">
+            <div class="header bordered-azure">
+                <div class="flex-style">
+                    <span>لیست زیر دسته های گروه @ViewBag.ParentTitle </span>
+                    <span>@Model.GetShownEntitiesPagesTitle()</span>
+                </div>
+            </div>
+
+            @if (Model.Entities != null && Model.Entities.Any())
+            {
+                <table class="table table-hover table-bordered tc vm">
+                    <thead class="tc vm">
+                        <tr class="tc vm">
+
+                            <th class="tc vm">
+                                عنوان نمایشی
+                            </th>
+                            <th class="tc vm">
+                                عنوان URL
+                            </th>
+                            <th class="tc vm">
+                                الویت
+                            </th>
+                            <th class="tc vm">
+                                وضعیت
+                            </th>
+                            <th class="tc vm">
+                                امکانات
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="tc vm">
+                        @foreach (var cat in Model.Entities.Where(p => p.ParentId != null))
+                        {
+                            <tr class="tc vm" remove-ajax-item="@cat.Id">
+                                <td class="tc vm">
+                                    <div>
+                                        <p>@cat.DisplayName</p>
+                                    </div>
+                                </td>
+                                <td class="tc vm">
+                                    <div class="tc vm">
+                                        <p>@cat.UrlName</p>
+                                    </div>
+                                </td>
+                                <td class="tc vm">
+                                    <div class="tc vm">
+                                        <p>@cat.Priority</p>
+                                    </div>
+                                </td>
+                                <td class="tc vm">
+
+                                    <p class="flex-style-center">
+                                        <span class="mr-8px label @((cat.IsActive) ? "label-success" : "label-orange")">@((cat.IsActive) ? "فعال  " : " غیر فعال")</span>
+                                    </p>
+                                </td>
+                                <td class="tc vm">
+                                    <a title="ویرایش " asp-action="EditSubCategory" asp-area="Admin" asp-controller="Categories" asp-route-Id="@cat.Id" class="btn btn-warning btn-circle btn-xs"><i class="glyphicon glyphicon-pencil"></i></a>
+                                    <button title="حذف " onclick="DeleteAjax(@cat.Id, '@Url.Action("DeleteCategory", "Categories", new { area = "Admin", Id = cat.Id })')" class="btn btn-danger btn-circle btn-xs"><i class="glyphicon glyphicon-trash"></i></button>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <div class="footer tc">
+                    <partial name="_AdminPaging" model="@Model.GetCurrentPaging()" />
+
+                </div>
+            }
+            else
+            {
+                <partial name="_AdminNotFoundPartial" />
+            }
+        </div>
+    </div>
+</div>
+

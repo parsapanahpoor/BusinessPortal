@@ -1,0 +1,83 @@
+﻿<!-- Page Sidebar -->
+<div class="page-sidebar" id="sidebar">
+    <!-- Sidebar Menu -->
+    <ul class="nav sidebar-menu">
+        <li>
+            <a href="/">
+                <i class="menu-icon fa fa-globe"></i>
+                <span class="menu-text"> مشاهده سایت </span>
+            </a>
+        </li>
+        <!--Dashboard-->
+        <li>
+            <a asp-action="Index" asp-controller="Home" asp-area="Admin">
+                <i class="menu-icon glyphicon glyphicon-home"></i>
+                <span class="menu-text"> داشبورد </span>
+            </a>
+        </li>
+        <!--Dashboard-->
+        <!--UI Elements-->
+
+        <li>
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon fa fa-user-secret"></i>
+                <span class="menu-text"> مدیریت نقش ها </span>
+                <i class="menu-expand"></i>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a asp-action="FilterRoles" asp-controller="Access" asp-area="Admin">
+                        <span class="menu-text"> لیست نقش ها </span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-action="CreateRole" asp-controller="Access" asp-area="Admin">
+                        <span class="menu-text"> ایجاد نقش جدید </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon glyphicon glyphicon-user"></i>
+                <span class="menu-text"> مدیریت کاربران </span>
+                <i class="menu-expand"></i>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a asp-action="FilterUsers" asp-area="Admin" asp-controller="Account">
+                        <span class="menu-text"> لیست کاربران </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon glyphicon glyphicon-th-large"></i>
+                <span class="menu-text">  دسته بندی ها </span>
+                <i class="menu-expand"></i>
+            </a>
+            <ul class="submenu">
+                <li>
+                    <a asp-action="Index" asp-area="Admin" asp-controller="Categories">
+                        <span class="menu-text"> لیست دسته بندی ها </span>
+                    </a>
+                </li>
+                    <li>
+                    <a asp-action="CreateMainCategory" asp-area="Admin" asp-controller="Categories">
+                        <span class="menu-text"> افزودن دسته بندی  </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <!--UI Elements-->
+
+    </ul>
+    <!-- /Sidebar Menu -->
+</div>
+<!-- /Page Sidebar -->

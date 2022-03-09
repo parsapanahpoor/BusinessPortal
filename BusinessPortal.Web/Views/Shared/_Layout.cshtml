@@ -1,0 +1,266 @@
+﻿
+<!DOCTYPE html>
+<html class="no-js" dir="rtl" lang="fa-IR">
+<head>
+    <title> BusinessPortal-@ViewData["Title"] </title>
+
+    <partial name="_MetaTags" />
+
+    @await RenderSectionAsync("MetaTags", false)
+
+    <partial name="_HeaderReferences" />
+
+    @await RenderSectionAsync("Styles", false)
+</head>
+<body>
+
+    <!--====== PRELOADER PART START ======-->
+
+
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--====== PRELOADER PART ENDS ======-->
+    <!--====== HEADER PART START ======-->
+
+    <header class="header-area">
+        <div class="header-top pb-15 d-none d-lg-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="header-info header-info-v2 mt-10 text-center text-lg-right">
+                            <ul>
+                                <li>
+                                    <p><i class="fa fa-phone"></i> 547 53 266 21+ </p>
+                                </li>
+                                <li>
+                                    <p><i class="fa fa-envelope-o"></i> info@BusinessPortal.com </p>
+                                </li>
+                                <li>
+                                    <p> <i class="fa fa-map-marker"></i>تهران - پاسداران - نبش گلستان دوم</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="header-social mt-10 text-lg-left text-center">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="../LTR/index.html">EN</a></li>
+                                <li style="color:red !important;">|</li>
+                                <li><a href="/Home" style="color: #ffd700 !important;">FA</a></li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- header top -->
+
+        <div class="header-menu navigation">
+            <div class="container">
+                <div class="row no-gutters">
+                    <div class="col-lg-3">
+                        <div class="logo">
+                            <a href="/Home"><img src="/Site/images/logo-2.png" style="height:145%;" alt="logo"></a>
+                        </div> <!-- logo -->
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="main-menu text-left">
+                            <nav id="mobile-menu">
+                                <ul class="nav-menubar">
+                                    <li><a class="active" href="/Home">خانه</a></li>
+                           
+                                    <li>
+                                        <a href="shop.html">فروشگاه</a>
+                                        <ul class="sub-menu text-left">
+                                            <li><a href="shop.html">فروشگاه</a></li>
+                                            <li><a href="shop-details.html">جزئیات خرید</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">تماس با ما</a></li>
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <li><a href="/">@User.Identity.Name </a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a asp-action="Login" asp-controller="Account">ورود </a></li>
+                                    }
+                                </ul>
+                            </nav>
+                        </div> <!-- main menu -->
+                        <div class="mobile-menu"></div>
+                    </div>
+                    <div class="col-lg-1 order-first order-lg-last">
+                        <div class="search-cart text-left">
+                            <ul>
+                                <li><a href="#search"><i class="fa fa-search"></i></a></li>
+                                <li><a class="cart" href="#"><i class="fa fa-shopping-cart"></i><span>0</span></a></li>
+                            </ul>
+                        </div> <!-- search cart -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- header menu -->
+    </header>
+
+    <!--====== HEADER PART ENDS ======-->
+    <!--====== search BOX PART START ======-->
+
+    <div id="search" class="search-box">
+        <div class="search-form">
+            <div class="closebtn">
+                <span></span>
+                <span></span>
+            </div>
+            <form action="#">
+                <input type="text" placeholder="جست و جو...">
+                <button><i class="fa fa-search"></i></button>
+            </form>
+        </div> <!-- search form -->
+    </div>
+
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+
+    <footer class="footer-area">
+        <div class="footer-widgets pt-40 pb-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-about pt-40 text-right">
+                            <div class="footer-logo mb-20 text-center justify-content-center">
+                                <a href="#"><img src="/Site/images/logo-2.png" alt="Logo"></a>
+                            </div> <!-- footer logo -->
+                            <p>
+                                لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی
+                                استفاده می شود
+                            </p>
+                            <ul class="social mt-25 text-center justify-content-center">
+                                <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="../LTR/index.html" title="زبان انگلیسی">EN</a></li>
+                                <li><a href="/Home" title="زبان فارسی">FA</a></li>
+                            </ul>
+                        </div> <!-- footer about -->
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-6">
+                        <div class="footer-link pt-40 text-right">
+                            <div class="footer-title">
+                                <h5>لینک های مفید</h5>
+                            </div>
+                            <ul class="mt-20">
+                                <li><a href="#"><i class="fa fa-angle-left"></i>خانه</a></li>
+                                <li><a href="#"><i class="fa fa-angle-left"></i>درباره ی ما</a></li>
+                                <li><a href="#"><i class="fa fa-angle-left"></i>خدمات</a></li>
+                                <li><a href="#"><i class="fa fa-angle-left"></i>قالب ها</a></li>
+                                <li><a href="#"><i class="fa fa-angle-left"></i>تیم</a></li>
+                            </ul>
+                        </div> <!-- footer link -->
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-6">
+                        <div class="footer-link pt-40 text-right">
+                            <div class="footer-title">
+                                <h5>خدمات</h5>
+                            </div>
+                            <ul class="mt-20">
+                                <li><a href="#"><i class="fa fa-angle-left"></i>تحلیل بازار</a></li>
+                                <li><a href="#"><i class="fa fa-angle-left"></i>بیزینس</a></li>
+                                <li><a href="#"><i class="fa fa-angle-left"></i>برنامه ریزی مالی</a></li>
+                                <li><a href="#"><i class="fa fa-angle-left"></i>حساب رسی و مالیات</a></li>
+                                <li><a href="#"><i class="fa fa-angle-left"></i>استراتژی</a></li>
+                            </ul>
+                        </div> <!-- footer link -->
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-info pt-40 text-right">
+                            <div class="footer-title">
+                                <h5>تماس با ما</h5>
+                            </div>
+                            <ul class="mt-25">
+                                <li>
+                                    <div class="single-info">
+                                        <div class="icon">
+                                            <i class="fa fa-home"></i>
+                                        </div>
+                                        <div class="content pr-35">
+                                            <p>تهران - پاسداران - نبش گلستان دوم</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="single-info">
+                                        <div class="icon">
+                                            <i class="fa fa-phone"></i>
+                                        </div>
+                                        <div class="content pr-35">
+                                            <p>547 53 266 21+</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="single-info">
+                                        <div class="icon">
+                                            <i class="fa fa-envelope-o"></i>
+                                        </div>
+                                        <div class="content pr-35">
+                                            <p>info@BusinessPortal.com</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- footer widgets -->
+        <div class="footer-copyright pt-15 pb-25">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="copyright pt-10 text-center text-md-right">
+                            <p>&copy; حق کپی رایت محفوظ است. ۱۴۰۰ </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="copyright pt-10 text-center text-md-left">
+                            <p>طراحی توسط<a href="http://www.metawaveco.ir">فراموج</a></p>
+                        </div>
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- footer-copyright -->
+    </footer>
+
+    <!--====== FOOTER PART ENDS ======-->
+    <!--====== BACK TO TOP PART START ======-->
+
+    <a href="#" class="back-to-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
+
+    <partial name="_FooterReferences" />
+
+    <partial name="_Notification" />
+
+    @await RenderSectionAsync("Scripts", false)
+
+</body>
+</html>

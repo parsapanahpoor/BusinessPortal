@@ -1,0 +1,803 @@
+﻿@{
+    ViewData["Title"] = "صفحه نخست";
+}
+
+<!--====== BANNER PART START ======-->
+<style>
+    .test {
+        overflow: hidden;
+        border-radius: 15px;
+    }
+
+        .test img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: 0.4s all;
+            border-radius: 15px;
+        }
+
+        .test:hover img {
+            -ms-transform: scale(1.3);
+            -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+            transition: 0.4s all;
+        }
+
+    .in-test {
+        height: 100%;
+    }
+</style>
+
+<section class="slider-area bg_cover" style="        background-image: url(/Site/images/Banner2/8.jpg)">
+    <div class="container text-right">
+        <div class="row justify-content-center justify-content-lg-end">
+            <div class="col-xl-5 col-lg-6 col-md-8">
+                <div class="slider-form-box">
+                    <h3 class="form-title text-center text-white">عضو شوید</h3>
+                    <p class="mt-15 text-white">برای عضویت در سایت ثبت نام کنید <span class="text-white"> 547 53 266 21+</span></p>
+                    <form action="#">
+                        <div class="single-form-input">
+                            <input type="text" placeholder="نام" style="opacity:.85 !important;">
+                        </div>
+                        <div class="single-form-input">
+                            <input type="email" placeholder="ایمیل" style="opacity:.85 !important;">
+                        </div>
+                        <div class="single-form-input">
+                            <input type="text" placeholder="تلفن همراه" style="opacity:.85 !important;">
+                        </div>
+                        <div class="single-form-input">
+                            <textarea placeholder="توضیحات شما" style="opacity:.85 !important;"></textarea>
+                        </div>
+                        <div class="single-form-input">
+                            <select name="select">
+                                <option>در چه زمینه‌ای فعالیت می‌کنید </option>
+                                <option>محصولات نفتی </option>
+                                <option> محصولات پتروشیمی</option>
+                                <option> صنایع سنگین </option>
+                                <option> صنایع هوا فضا</option>
+                                <option> سایر </option>
+                            </select>
+                        </div>
+                        <div class="single-form-input">
+                            <button class="main-btn" type="submit">ارسال</button>
+                        </div>
+                    </form>
+                </div> <!-- slider form box -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</section>
+
+<!--====== BANNER PART ENDS ======-->
+<!--====== FEATURES PART START ======-->
+
+
+
+
+
+<section class="features-area">
+    <div class="features">
+        <div class="row no-gutters justify-content-center">
+
+            <div class="row d-flex justify-content-center text-center">
+                <div class="col-md-6">
+                    <div class="test">
+                        <a href="/Employe/EmployeRegister">
+                            <img src="~/Site/images/banner/s-2.jpg" />
+
+                            <div class="in-test text-center justify-content-center" style="border-radius: 15px; padding: 70px 0 20px 0; margin: 0; position: absolute;top: 0;left: 15px; right: 15px;color: #ffd700; font-size: 36px;font-weight: bold;background: rgba(216,114,0,0.79)">
+                                فروشنده
+                                <p class="text-white" style="font-weight: normal;font-size: 18px;"> در اینجا می‌توانید محصولات خود را به فروش برسانید  </p>
+                                <p p class="text-center"><i style="color:#ffd700 !important;" class=" mt-2 fa fa-2x fa-arrow-circle-down"></i></p>
+
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="test">
+                        <a href="/Teacher/TeacherRegister">
+                            <img src="~/Site/images/banner/slider.jpg" />
+                            <div class="in-test text-center justify-content-center" style="border-radius: 15px; padding: 70px 0 20px 0;margin: 0; position: absolute; top: 0;left: 15px;right: 15px;color:#ffd700;font-size: 36px;font-weight: bold; background:rgba(5,60,106,0.64)  ">
+                                خریدار
+                                <p class="text-white" style="font-weight: normal;font-size: 18px; padding-left:55px; padding-right:55px;">آنچه نیاز دارید از اینجا می‌توانید خریداری کنید</p>
+                                <p class="text-center"><i style="color:#ffd700 !important;" class=" mt-2 fa fa-2x fa-arrow-circle-down"></i></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div> <!-- row -->
+    </div> <!-- features -->
+</section>
+
+<!--====== FEATURES PART ENDS ======-->
+<!--*****************************************************************************-->
+<!--*****************************************************************************-->
+
+<section class="project-area pt-65 pb-65">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="container text-right">
+                <div class="row align-items-end">
+                    <div class="col-lg-6">
+                        <div class="section-title mb-20">
+
+                            <h4>جدیدترین محصولات</h4>
+                        </div> <!-- section title -->
+                    </div>
+                </div> <!-- row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="project-menu pb-20">
+                            <ul>
+                                <li data-filter="*" class="Pactive">همه</li>
+                                <li data-filter=".Pfinance">نفتی</li>
+                                <li data-filter=".Paudit">پتروشیمی</li>
+                                <li data-filter=".Pinsurance">صنایع</li>
+                                <li data-filter=".Ptransport">هوا فضا</li>
+                             
+                            </ul>
+                        </div>
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+            <div class="container text-right">
+                <div class="row no-gutters grid">
+                    <div class="col-lg-3 col-sm-6 Pfinance Pinsurance Paudit ">
+                        <div class="single-project">
+                            <div class="project-image">
+                                <img src="/Site/images/project/p-1.jpg" alt="Project">
+                            </div>
+                            <div class="project-content">
+                                <h4 class="project-title "><a href="#">نفتی</a></h4>
+                                <span>فروش</span>
+                                <a href="#"><i class="fa fa-angle-left"></i></a>
+                            </div>
+                        </div> <!-- single project -->
+                    </div>
+                    <div class="col-lg-3 col-sm-6 Ptransport">
+                        <div class="single-project">
+                            <div class="project-image">
+                                <img src="/Site/images/project/p-2.jpg" alt="Project">
+                            </div>
+                            <div class="project-content">
+                                <h4 class="project-title "><a href="#">پتروشیمی</a></h4>
+                                <span>فروش</span>
+                                <a href="#"><i class="fa fa-angle-left"></i></a>
+                            </div>
+                        </div> <!-- single project -->
+                    </div>
+                    <div class="col-lg-3 col-sm-6 Pinsurance">
+                        <div class="single-project">
+                            <div class="project-image">
+                                <img src="/Site/images/project/p-3.jpg" alt="Project">
+                            </div>
+                            <div class="project-content">
+                                <h4 class="project-title "><a href="#">صنایع</a></h4>
+                                <span>فروش</span>
+                                <a href="#"><i class="fa fa-angle-left"></i></a>
+                            </div>
+                        </div> <!-- single project -->
+                    </div>
+                    <div class="col-lg-3 col-sm-6 Paudit">
+                        <div class="single-project">
+                            <div class="project-image">
+                                <img src="/Site/images/project/p-4.jpg" alt="Project">
+                            </div>
+                            <div class="project-content">
+                                <h4 class="project-title "><a href="#">هوا فضا</a></h4>
+                                <span>فروش</span>
+                                <a href="#"><i class="fa fa-angle-left"></i></a>
+                            </div>
+                        </div> <!-- single project -->
+                    </div>
+                    <div class="col-lg-3 col-sm-6 Pfinance Pinsurance Paudit">
+                        <div class="single-project">
+                            <div class="project-image">
+                                <img src="/Site/images/project/p-5.jpg" alt="Project">
+                            </div>
+                            <div class="project-content">
+                                <h4 class="project-title "><a href="#">نفتی</a></h4>
+                                <span>فروش</span>
+                                <a href="#"><i class="fa fa-angle-left"></i></a>
+                            </div>
+                        </div> <!-- single project -->
+                    </div>
+                    <div class="col-lg-3 col-sm-6 Paudit">
+                        <div class="single-project">
+                            <div class="project-image">
+                                <img src="/Site/images/project/p-6.jpg" alt="Project">
+                            </div>
+                            <div class="project-content">
+                                <h4 class="project-title "><a href="#">پتروشیمی</a></h4>
+                                <span>فروش</span>
+                                <a href="#"><i class="fa fa-angle-left"></i></a>
+                            </div>
+                        </div> <!-- single project -->
+                    </div>
+                    <div class="col-lg-3 col-sm-6 Ptransport Pinsurance">
+                        <div class="single-project">
+                            <div class="project-image">
+                                <img src="/Site/images/project/p-7.jpg" alt="Project">
+                            </div>
+                            <div class="project-content">
+                                <h4 class="project-title "><a href="#">صنایع</a></h4>
+                                <span>فروش</span>
+                                <a href="#"><i class="fa fa-angle-left"></i></a>
+                            </div>
+                        </div> <!-- single project -->
+                    </div>
+                    <div class="col-lg-3 col-sm-6 Pfinance Ptransport Paudit">
+                        <div class="single-project">
+                            <div class="project-image">
+                                <img src="/Site/images/project/p-8.jpg" alt="Project">
+                            </div>
+                            <div class="project-content">
+                                <h4 class="project-title "><a href="#">هوا فضا</a></h4>
+                                <span>فروش</span>
+                                <a href="#"><i class="fa fa-angle-left"></i></a>
+                            </div>
+                        </div> <!-- single project -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container fluid -->
+        </div>
+        <div class="col-md-6">
+            <div class="container text-right">
+                <div class="row align-items-end">
+                    <div class="col-lg-6">
+                        <div class="section-title mb-20">
+
+                            <h4>جدیدترین پیشنهادات خرید</h4>
+                        </div> <!-- section title -->
+                    </div>
+                </div> <!-- row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="project-menu pb-20">
+                            <ul>
+                                <li data-filter="*" class="Oactive">همه</li>
+                                <li data-filter=".Ofinance">نفتی</li>
+                                <li data-filter=".Oaudit">پتروشیمی</li>
+                                <li data-filter=".Oinsurance">صنایع</li>
+                                <li data-filter=".Otransport">هوا فضا</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+            <div class="container text-right">
+                <div class="row no-gutters grid">
+                    <div class="col-lg-3 col-sm-6 Ofinance Oinsurance Oaudit">
+                        <div class="single-project">
+                            <div class="project-image">
+                                <img src="/Site/images/project/p-1.jpg" alt="Project">
+                            </div>
+                            <div class="project-content">
+                                <h4 class="project-title "><a href="#">نفتی</a></h4>
+                                <span>خرید</span>
+                                <a href="#"><i class="fa fa-angle-left"></i></a>
+                            </div>
+                        </div> <!-- single project -->
+                    </div>
+                    <div class="col-lg-3 col-sm-6 Otransport">
+                        <div class="single-project">
+                            <div class="project-image">
+                                <img src="/Site/images/project/p-2.jpg" alt="Project">
+                            </div>
+                            <div class="project-content">
+                                <h4 class="project-title "><a href="#">پتروشیمی</a></h4>
+                                <span>خرید</span>
+                                <a href="#"><i class="fa fa-angle-left"></i></a>
+                            </div>
+                        </div> <!-- single project -->
+                    </div>
+                    <div class="col-lg-3 col-sm-6 Oinsurance">
+                        <div class="single-project">
+                            <div class="project-image">
+                                <img src="/Site/images/project/p-3.jpg" alt="Project">
+                            </div>
+                            <div class="project-content">
+                                <h4 class="project-title "><a href="#">صنایع</a></h4>
+                                <span>خرید</span>
+                                <a href="#"><i class="fa fa-angle-left"></i></a>
+                            </div>
+                        </div> <!-- single project -->
+                    </div>
+                    <div class="col-lg-3 col-sm-6 Oaudit">
+                        <div class="single-project">
+                            <div class="project-image">
+                                <img src="/Site/images/project/p-4.jpg" alt="Project">
+                            </div>
+                            <div class="project-content">
+                                <h4 class="project-title "><a href="#">هوا فضا</a></h4>
+                                <span>خرید</span>
+                                <a href="#"><i class="fa fa-angle-left"></i></a>
+                            </div>
+                        </div> <!-- single project -->
+                    </div>
+                    <div class="col-lg-3 col-sm-6 Ofinance Oinsurance Oaudit">
+                        <div class="single-project">
+                            <div class="project-image">
+                                <img src="/Site/images/project/p-5.jpg" alt="Project">
+                            </div>
+                            <div class="project-content">
+                                <h4 class="project-title "><a href="#">نفتی</a></h4>
+                                <span>خرید</span>
+                                <a href="#"><i class="fa fa-angle-left"></i></a>
+                            </div>
+                        </div> <!-- single project -->
+                    </div>
+                    <div class="col-lg-3 col-sm-6 Oaudit">
+                        <div class="single-project">
+                            <div class="project-image">
+                                <img src="/Site/images/project/p-6.jpg" alt="Project">
+                            </div>
+                            <div class="project-content">
+                                <h4 class="project-title "><a href="#">پتروشیمی</a></h4>
+                                <span>خرید</span>
+                                <a href="#"><i class="fa fa-angle-left"></i></a>
+                            </div>
+                        </div> <!-- single project -->
+                    </div>
+                    <div class="col-lg-3 col-sm-6 Otransport Oinsurance">
+                        <div class="single-project">
+                            <div class="project-image">
+                                <img src="/Site/images/project/p-7.jpg" alt="Project">
+                            </div>
+                            <div class="project-content">
+                                <h4 class="project-title "><a href="#">صنایع</a></h4>
+                                <span>خرید</span>
+                                <a href="#"><i class="fa fa-angle-left"></i></a>
+                            </div>
+                        </div> <!-- single project -->
+                    </div>
+                    <div class="col-lg-3 col-sm-6 Ofinance Otransport Oaudit">
+                        <div class="single-project">
+                            <div class="project-image">
+                                <img src="/Site/images/project/p-8.jpg" alt="Project">
+                            </div>
+                            <div class="project-content">
+                                <h4 class="project-title "><a href="#">هوا فضا</a></h4>
+                                <span>خرید</span>
+                                <a href="#"><i class="fa fa-angle-left"></i></a>
+                            </div>
+                        </div> <!-- single project -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container fluid -->
+        </div>
+    </div>
+
+
+
+
+</section>
+
+<!--*****************************************************************************-->
+<!--*****************************************************************************-->
+<!--====== ABOUT PART START ======-->
+
+<section class="about-area pt-70 pb-120">
+    <div class="container text-right">
+        <div class="row">
+            <div class="col-lg-6 order-lg-last">
+                <div class="about-content mt-45">
+                    <div class="section-title">
+                        <h6>درباره ی ما</h6>
+                        <h2 class="about-title">با سابقه‌ای طولانی در تجارت</h2>
+                    </div> <!-- section title -->
+                    <p class="mt-25">لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود <br> <br> لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود.لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود.</p>
+                    <div class="about-contact mt-25 d-flex align-items-center">
+                        <a class="main-btn mt-10" href="#">بیشتر</a>
+                        <a class="about-phone mt-10" href="#" dir="ltr"> +21 266 53 547 <i class="fa fa-phone"></i></a>
+                    </div>
+                </div> <!-- about content -->
+            </div>
+            <div class="col-lg-6 order-lg-first">
+                <div class="about-image text-center mt-50">
+                    <img src="/Site/images/about/about.jpg" alt="About">
+                </div>
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</section>
+
+<!--====== ABOUT PART ENDS ======-->
+<!--====== OUR SERVICES PART START ======-->
+
+<section class="services-area gray-bg pt-110 pb-120">
+    <div class="container text-right">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-title mb-45">
+                    <h6>خدمات ما</h6>
+                    <h2>کارهایی که ما انجام می‌دهیم</h2>
+                </div> <!-- section title -->
+            </div>
+        </div> <!-- row -->
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="single-services mt-30">
+                    <div class="services-icon">
+                        <img src="/Site/images/services/icon-1.png" alt="services">
+                    </div>
+                    <div class="services-content mt-25 pr-0">
+                        <h5 class="services-title"><a href="#">پشتیبانی</a></h5>
+                        <p class="mt-20">لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p> <a class="mt-20" href="#">بیشتر <i class="fa fa-angle-left"></i></a>
+                    </div>
+                    <div class="services-icon-bg">
+                        <img src="/Site/images/services/icon-bg/icon-bg-1.png" alt="Icon">
+                    </div>
+                </div> <!-- single services -->
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-services mt-30">
+                    <div class="services-icon">
+                        <img src="/Site/images/services/icon-5.png" alt="services">
+                    </div>
+                    <div class="services-content mt-25 pr-0">
+                        <h5 class="services-title"><a href="#">پشتیبانی</a></h5>
+                        <p class="mt-20">لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p> <a class="mt-20" href="#">بیشتر <i class="fa fa-angle-left"></i></a>
+                    </div>
+                    <div class="services-icon-bg">
+                        <img src="/Site/images/services/icon-bg/icon-bg-5.png" alt="Icon">
+                    </div>
+                </div> <!-- single services -->
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-services mt-30">
+                    <div class="services-icon">
+                        <img src="/Site/images/services/icon-3.png" alt="services">
+                    </div>
+                    <div class="services-content mt-25 pr-0">
+                        <h5 class="services-title"><a href="#">پشتیبانی</a></h5>
+                        <p class="mt-20">لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p> <a class="mt-20" href="#">بیشتر <i class="fa fa-angle-left"></i></a>
+                    </div>
+                    <div class="services-icon-bg">
+                        <img src="/Site/images/services/icon-bg/icon-bg-3.png" alt="Icon">
+                    </div>
+                </div> <!-- single services -->
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-services mt-30">
+                    <div class="services-icon">
+                        <img src="/Site/images/services/icon-4.png" alt="services">
+                    </div>
+                    <div class="services-content mt-25 pr-0">
+                        <h5 class="services-title"><a href="#">پشتیبانی</a></h5>
+                        <p class="mt-20">لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p> <a class="mt-20" href="#">بیشتر <i class="fa fa-angle-left"></i></a>
+                    </div>
+                    <div class="services-icon-bg">
+                        <img src="/Site/images/services/icon-bg/icon-bg-4.png" alt="Icon">
+                    </div>
+                </div> <!-- single services -->
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-services mt-30">
+                    <div class="services-icon">
+                        <img src="/Site/images/services/icon-2.png" alt="services">
+                    </div>
+                    <div class="services-content mt-25 pr-0">
+                        <h5 class="services-title"><a href="#">پشتیبانی</a></h5>
+                        <p class="mt-20">لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p> <a class="mt-20" href="#">بیشتر <i class="fa fa-angle-left"></i></a>
+                    </div>
+                    <div class="services-icon-bg">
+                        <img src="/Site/images/services/icon-bg/icon-bg-2.png" alt="Icon">
+                    </div>
+                </div> <!-- single services -->
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-services mt-30">
+                    <div class="services-icon">
+                        <img src="/Site/images/services/icon-6.png" alt="services">
+                    </div>
+                    <div class="services-content mt-25 pr-0">
+                        <h5 class="services-title"><a href="#">پشتیبانی</a></h5>
+                        <p class="mt-20">لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p> <a class="mt-20" href="#">بیشتر <i class="fa fa-angle-left"></i></a>
+                    </div>
+                    <div class="services-icon-bg">
+                        <img src="/Site/images/services/icon-bg/icon-bg-6.png" alt="Icon">
+                    </div>
+                </div> <!-- single services -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</section>
+
+<!--====== OUR SERVICES PART ENDS ======-->
+<!--====== CALL TO ACTION PART START ======-->
+
+<section class="call-action pt-20 pb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="action-content mt-30 text-center text-lg-right">
+                    <h2>آیا می خواهید سریع و مطمئن تحویل بگیرید؟</h2>
+                </div> <!-- action content -->
+            </div>
+            <div class="col-lg-3">
+                <div class="action-btn mt-30 text-center text-lg-left">
+                    <a class="main-btn main-btn-2" href="#">با ما تماس بگیرید</a>
+                </div> <!-- action btn -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</section>
+
+<!--====== CALL TO ACTION PART ENDS ======-->
+
+<!--====== TESTIMONIAL PART START ======-->
+
+<section class="testimonial-area gray-bg pt-110 pb-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 text-right">
+                <div class="section-title mb-75">
+                    <h6>رضایت</h6>
+                    <h2>نظر مشتریان</h2>
+                </div> <!-- section title -->
+            </div>
+        </div> <!-- row -->
+        <div class="row testimonial-active-2">
+            <div class="col-lg-4">
+                <div class="single-testimonial white-bg mr-35">
+                    <div class="quote">
+                        <img src="/Site/images/testimonials/quote.png" alt="Icon">
+                    </div>
+                    <div class="content mb-30 text-right">
+                        <p>لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p>
+                    </div>
+                    <div class="author-name d-flex align-items-center">
+                        <div class="name pr-20 text-right">
+                            <h6>دیوید فالکر</h6>
+                            <span>کارشناس سئو</span>
+                        </div><div class="image">
+                            <img src="/Site/images/testimonials/ts-1.jpg" alt="Testimonials">
+                        </div>
+                    </div>
+                </div> <!-- single testimonial -->
+            </div>
+            <div class="col-lg-4">
+                <div class="single-testimonial white-bg mr-35">
+                    <div class="quote">
+                        <img src="/Site/images/testimonials/quote.png" alt="Icon">
+                    </div>
+                    <div class="content mb-30 text-right">
+                        <p>لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p>
+                    </div>
+                    <div class="author-name d-flex align-items-center">
+
+                        <div class="name pr-20 text-right">
+                            <h6>روگر میلان</h6>
+                            <span>کارشناس سئو</span>
+                        </div><div class="image">
+                            <img src="/Site/images/testimonials/ts-2.jpg" alt="Testimonials">
+                        </div>
+                    </div>
+                </div> <!-- single testimonial -->
+            </div>
+            <div class="col-lg-4">
+                <div class="single-testimonial white-bg mr-35">
+                    <div class="quote">
+                        <img src="/Site/images/testimonials/quote.png" alt="Icon">
+                    </div>
+                    <div class="content mb-30 text-right">
+                        <p>لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p>
+                    </div>
+                    <div class="author-name d-flex align-items-center">
+
+                        <div class="name pr-20 text-right">
+                            <h6>آلم میلر</h6>
+                            <span>کارشناس سئو</span>
+                        </div><div class="image">
+                            <img src="/Site/images/testimonials/ts-3.jpg" alt="Testimonials">
+                        </div>
+                    </div>
+                </div> <!-- single testimonial -->
+            </div>
+            <div class="col-lg-4">
+                <div class="single-testimonial white-bg mr-35">
+                    <div class="quote">
+                        <img src="/Site/images/testimonials/quote.png" alt="Icon">
+                    </div>
+                    <div class="content mb-30 text-right">
+                        <p>لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p>
+                    </div>
+                    <div class="author-name d-flex align-items-center">
+
+                        <div class="name pr-20 text-right">
+                            <h6>دیوید فالکر</h6>
+                            <span>کارشناس سئو</span>
+                        </div> <div class="image">
+                            <img src="/Site/images/testimonials/ts-2.jpg" alt="Testimonials">
+                        </div>
+                    </div>
+                </div> <!-- single testimonial -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</section>
+
+<!--====== TESTIMONIAL PART ENDS ======-->
+<!--====== COUNTER PART START ======-->
+
+<div class="counter-area bg_cover pt-40 pb-80" style="background-image: url(/Site/images/counter.jpg)" data-overlay="7">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-md-3 col-sm-6">
+                <div class="single-counter none d-flex justify-content-center mt-30">
+                    <div class="counter-content ">
+                        <span><span class="counter">19</span> +</span>
+                        <p>سال سابقه کار </p>
+                    </div>
+                </div> <!-- single counter -->
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="single-counter d-flex justify-content-center mt-30">
+                    <div class="counter-content">
+                        <span class="counter">2943</span>
+                        <p>مشتریان</p>
+                    </div>
+                </div> <!-- single counter -->
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="single-counter none-2 d-flex justify-content-center mt-30">
+                    <div class="counter-content">
+                        <span class="counter">943</span>
+                        <p>پروژه</p>
+                    </div>
+                </div> <!-- single counter -->
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="single-counter d-flex justify-content-center mt-30">
+                    <div class="counter-content">
+                        <span class="counter">120</span>
+                        <p>شریک</p>
+                    </div>
+                </div> <!-- single counter -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</div>
+
+<!--====== COUNTER PART ENDS ======-->
+<!--====== NEWS PART START ======-->
+
+<section class="news-area gray-bg pt-110 pb-115">
+    <div class="container text-right">
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                <div class="section-title mb-40">
+                    <h6>اخبار ما</h6>
+                    <h2>آخرین اخبار را ببینید</h2>
+                </div> <!-- section title -->
+            </div>
+        </div> <!-- row -->
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="single-news mt-30">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6 col-md-5 col-lg-6">
+                            <div class="news-image">
+                                <a href="blog-details.html"><img src="/Site/images/news/news-1.jpg" alt="News"></a>
+                            </div> <!-- news image -->
+                        </div>
+                        <div class="col-sm-6 col-md-7 col-lg-6">
+                            <div class="news-content">
+                                <h4 class="news-title mb-20"><a href="blog-details.html">تجارت خود را از قبل ایمن کنید</a></h4>
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-calendar"></i> 5 اسفند 398</a></li>
+                                    <li><a href="#"><i class="fa fa-comment-o"></i> 2 نظر</a></li>
+                                </ul>
+                                <p class="mt-20">لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p>
+                            </div> <!-- news content -->
+                        </div>
+                    </div>  <!-- row -->
+                </div> <!-- single news -->
+            </div>
+            <div class="col-lg-6">
+                <div class="single-news mt-30">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6 col-md-5 col-lg-6">
+                            <div class="news-image">
+                                <a href="blog-details.html"><img src="/Site/images/news/news-2.jpg" alt="News"></a>
+                            </div> <!-- news image -->
+                        </div>
+                        <div class="col-sm-6 col-md-7 col-lg-6">
+                            <div class="news-content">
+                                <h4 class="news-title mb-20"><a href="blog-details.html">وقتی تجارت خود را شروع کردید دوبار فکر نکنید.</a></h4>
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-calendar"></i> 5 اسفند 398</a></li>
+                                    <li><a href="#"><i class="fa fa-comment-o"></i> 2 نظر</a></li>
+                                </ul>
+                                <p class="mt-20">لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p>
+                            </div> <!-- news content -->
+                        </div>
+                    </div>  <!-- row -->
+                </div> <!-- single news -->
+            </div>
+            <div class="col-lg-6">
+                <div class="single-news mt-30">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6 col-md-5 col-lg-6">
+                            <div class="news-image">
+                                <a href="blog-details.html"><img src="/Site/images/news/news-3.jpg" alt="News"></a>
+                            </div> <!-- news image -->
+                        </div>
+                        <div class="col-sm-6 col-md-7 col-lg-6">
+                            <div class="news-content">
+                                <h4 class="news-title mb-20"><a href="blog-details.html">محاسبه را متوقف کنید وقتی هیچ چیزی نمی دانید</a></h4>
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-calendar"></i> 5 اسفند 398</a></li>
+                                    <li><a href="#"><i class="fa fa-comment-o"></i> 2 نظر</a></li>
+                                </ul>
+                                <p class="mt-20">لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p>
+                            </div> <!-- news content -->
+                        </div>
+                    </div>  <!-- row -->
+                </div> <!-- single news -->
+            </div>
+            <div class="col-lg-6">
+                <div class="single-news mt-30">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6 col-md-5 col-lg-6">
+                            <div class="news-image">
+                                <a href="blog-details.html"><img src="/Site/images/news/news-4.jpg" alt="News"></a>
+                            </div> <!-- news image -->
+                        </div>
+                        <div class="col-sm-6 col-md-7 col-lg-6">
+                            <div class="news-content">
+                                <h4 class="news-title mb-15"><a href="blog-details.html">بزرگتر فکر می کند می تواند بزرگتر شود ...</a></h4>
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-calendar"></i> 5 اسفند 398</a></li>
+                                    <li><a href="#"><i class="fa fa-comment-o"></i> 2 نظر</a></li>
+                                </ul>
+                                <p class="mt-15">لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p>
+                            </div> <!-- news content -->
+                        </div>
+                    </div>  <!-- row -->
+                </div> <!-- single news -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</section>
+
+<!--====== NEWS PART ENDS ======-->
+<!--====== PATNEAR PART START ======-->
+
+<div class="partner-area pt-80 pb-80">
+    <div class="container">
+        <div class="partner-active">
+            <div class="single-partner">
+                <img src="/Site/images/partner/pt-1.png" alt="Patnear">
+            </div> <!-- single partner -->
+            <div class="single-partner">
+                <img src="/Site/images/partner/pt-2.png" alt="Patnear">
+            </div> <!-- single partner -->
+            <div class="single-partner">
+                <img src="/Site/images/partner/pt-3.png" alt="Patnear">
+            </div> <!-- single partner -->
+            <div class="single-partner">
+                <img src="/Site/images/partner/pt-4.png" alt="Patnear">
+            </div> <!-- single partner -->
+            <div class="single-partner">
+                <img src="/Site/images/partner/pt-5.png" alt="Patnear">
+            </div> <!-- single partner -->
+            <div class="single-partner">
+                <img src="/Site/images/partner/pt-1.png" alt="Patnear">
+            </div> <!-- single partner -->
+            <div class="single-partner">
+                <img src="/Site/images/partner/pt-2.png" alt="Patnear">
+            </div> <!-- single partner -->
+        </div> <!-- single active -->
+    </div> <!-- container -->
+</div>
+
+<!--====== PATNEAR PART ENDS ======-->

@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Head -->
+<head>
+    <title>پنل ادمین | @ViewData["Title"]</title>
+
+    <partial name="_AdminMetaTags" />
+
+    @await RenderSectionAsync("MetaTags", false)
+
+    <partial name="_AdminHeaderReferences" />
+
+    @await RenderSectionAsync("Styles", false)
+</head>
+<!-- /Head -->
+<!-- Body -->
+<body>
+    <!-- Loading Container -->
+    <div class="loading-container">
+        <div class="loader"></div>
+    </div>
+    <!--  /Loading Container -->
+    @await Component.InvokeAsync("AdminHeader")
+
+    <!-- Main Container -->
+    <div class="main-container container-fluid">
+        <!-- Page Container -->
+        <div class="page-container">
+
+            @await Component.InvokeAsync("AdminSideBar")
+
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <a asp-action="Index" asp-controller="Home" asp-area="Admin">خانه</a>
+                        </li>
+                        @await RenderSectionAsync("Breadcrumbs", true)
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+                <!-- Page Body -->
+                <div class="page-body">
+
+                    @RenderBody()
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+        </div>
+        <!-- /Page Container -->
+        <!-- Main Container -->
+    </div>
+
+    <partial name="_Modals" />
+
+    <partial name="_AdminFooterReferences" />
+
+    <partial name="_Notification" />
+
+    @await RenderSectionAsync("Scripts", false)
+</body>
+<!--  /Body -->
+
+</html>
