@@ -414,5 +414,62 @@ namespace BusinessPortal.Application.Services.Implementation
 
         #endregion
 
+        #region User Panel
+
+        public async Task<bool> SendRequestToBeSeller(ulong userId)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(p => p.Id == userId && !p.IsDelete);
+            if (user == null) return false;
+
+            var anyRequest = await _context.requestForSellers.AnyAsync(p => !p.IsDelete && p.UserId == userId);
+            if (anyRequest == true) return false;
+
+            #region Request For Seller
+
+            RequestForSeller request = new RequestForSeller()
+            {
+                UserId = userId,
+                CreateDate = DateTime.Now,
+                RequestForSellerStatus = Domain.Enums.RequestForSellerStatus.Accept
+            };
+
+            await _context.requestForSellers.AddAsync(request);
+            await _context.SaveChangesAsync();
+
+            #endregion
+
+            #region Add Seller To This Id
+
+            Seller seller = new Seller()
+            {
+                UserId = userId,
+                CreateDate = DateTime.Now
+            };
+
+            await _context.Seller.AddAsync(seller);
+            await _context.SaveChangesAsync();
+
+            #endregion
+
+            return true;
+        }
+
+        public async Task<bool> HasUserPermissionForSeller(ulong userId)
+        {
+            return await _context.Seller.AnyAsync(p=>p.UserId == userId);
+        }
+
+        public async Task<bool> IsExistRequestForSellerByUserId(ulong userId)
+        {
+            var request = await _context.requestForSellers.AnyAsync(p => p.UserId == userId);
+
+            var seller = await _context.Seller.AnyAsync(p => p.UserId == userId);
+
+            if (request == false && seller == false) return true;
+
+            return false;
+        }
+
+        #endregion
     }
 }

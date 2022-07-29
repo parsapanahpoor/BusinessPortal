@@ -1,4 +1,4 @@
-﻿
+﻿@model BusinessPortal.Domain.ViewModels.Admin.Dashboard.AdminDashboardViewModel
 @{
     ViewData["Title"] = "داشبورد";
 }
@@ -29,6 +29,12 @@
         right: auto;
     }
 
+    .AdvertisementImage {
+        height: 80px;
+        width: 80px;
+        border-radius: 100%;
+    }
+
 </style>
 }
 
@@ -43,3 +49,17 @@
     <a href="javascript:void(0)">داشبورد</a>
 </li>
 }
+
+<div class="page-body">
+
+    <div class="row">
+
+        @*Box Of Lastest Waiting Requested Advertisement*@
+        <partial name="_LastestWaitingRequestedAdvertisementPartial" model="@Model.ListOfWaitingRequestedAdvertisements" />
+
+        @*Box Of Lastest Waiting On Sale Advertisement*@
+                <partial name="_LastestWaitingOnSaleAdvertisementPartial" model="@Model.ListOfWaitingOnSaleAdvertisements" />
+        
+    </div>
+
+</div>

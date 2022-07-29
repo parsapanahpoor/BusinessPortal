@@ -1,8 +1,10 @@
 ﻿using BusinessPortal.Domain.Entities.Account;
 using BusinessPortal.Domain.Entities.Common;
+using BusinessPortal.Domain.Entities.Location;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +13,7 @@ namespace BusinessPortal.Domain.Entities.Account
 {
     public class User : BaseEntity
     {
-
-        #region MyRegion
+        #region Properties
 
         [Display(Name = "نام کاربری")]
         [Required(ErrorMessage = "این فیلد الزامی است .")]
@@ -60,13 +61,25 @@ namespace BusinessPortal.Domain.Entities.Account
 
         public bool BanForComment { get; set; }
 
+        public int WalletBalance { get; set; }
+
         #endregion
 
         #region Relations
 
         public ICollection<UserRole> UserRoles { get; set; }
 
-        #endregion
+        public ICollection<Address.Address> Addresses { get; set; }
 
+        public ICollection<Advertisement.Advertisement> Advertisements { get; set; }
+
+        public RequestForSeller RequestForSeller { get; set; }
+
+        public Seller Seller { get; set; }
+
+        public List<Wallet.Wallet> Wallets { get; set; }
+
+
+        #endregion
     }
 }

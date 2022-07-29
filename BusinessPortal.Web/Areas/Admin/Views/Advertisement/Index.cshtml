@@ -1,0 +1,261 @@
+﻿@using BusinessPortal.Application.Extensions
+@using BusinessPortal.Application.Convertors
+@model BusinessPortal.Domain.ViewModels.Admin.Advertisement.FilterAdvertisementAdminSidedViewModel
+@using BusinessPortal.Domain.ViewModels.Admin.Advertisement
+@using BusinessPortal.Application.StaticTools
+
+@{
+    ViewData["Title"] = "لیست آگهی ها ";
+}
+
+@section Styles
+{
+
+}
+
+@section Scripts
+{
+    <script>
+
+        function ShowAdvertisementLanguage(adsId) {
+
+    console.log(adsId);
+
+    $.ajax({
+        url: "/Admin/Advertisement/ShowAdvertisementLanguage",
+        type: "Get",
+        data: {
+            adsId: adsId
+        },
+        beforeSend: function () {
+            open_waiting();
+        },
+        success: function (response) {
+            close_waiting();
+            var modalTitle = " نمایش ریز اطلاعات آگهی";
+            $("#NormalModalTitle").html(modalTitle);
+            $("#NormalModalBody").html(response);
+            $("#NormalModal").modal("show");
+        },
+        error: function () {
+            close_waiting();
+            ShowMessage("خطا", "عملیات با خطا مواجه شد لطفا مجدد تلاش کنید .", "error");
+        }
+    });
+}
+
+
+    </script>
+}
+
+@section Breadcrumbs
+{
+<li>
+    <a href="javascript:void(0)"> @ViewData["Title"] </a>
+</li>
+}
+
+<div class="row">
+    <div class="col-lg-3 col-sm-12">
+
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-green">
+                <span class="widget-caption"> فیلتر آگهی ها  </span>
+            </div>
+            <div class="widget-body">
+                <div>
+                    <form asp-action="Index" asp-controller="Advertisement" asp-area="Admin" id="filter-search" method="get">
+
+                        <input type="hidden" asp-for="Page" />
+
+                        <div class="form-group">
+                            <label asp-for="Title"> عنوان آگهی     </label>
+                            <input type="text" class="form-control" asp-for="Title" placeholder="عنوان آگهی را وارد کنید ">
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Username"> نام کاربر      </label>
+                            <input type="text" class="form-control" asp-for="Username" placeholder="نام کاربر را وارد کنید ">
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="FilterAdvertisementActiveState"> وضعیت ثبت  </label>
+                            <select asp-for="FilterAdvertisementActiveState" class="form-control" asp-items="Html.GetEnumSelectList(typeof(FilterAdvertisementActiveState))"></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="FilterAdvertisementGender"> وضعیت  </label>
+                            <select asp-for="FilterAdvertisementGender" class="form-control" asp-items="Html.GetEnumSelectList(typeof(FilterAdvertisementGender))"></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="FilterAdvertisementState"> حذف شده / حذف تشده  </label>
+                            <select asp-for="FilterAdvertisementState" class="form-control" asp-items="Html.GetEnumSelectList(typeof(FilterAdvertisementState))"></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="FilterAdvertisementOrder"> مرتب سازی براساس تاریخ </label>
+                            <select asp-for="FilterAdvertisementOrder" class="form-control" asp-items="Html.GetEnumSelectList(typeof(FilterAdvertisementOrder))"></select>
+                        </div>
+
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-md-12 flex-style">
+                                <button type="submit" class="btn btn-labeled w-100 btn-palegreen">
+                                    <i class="btn-label glyphicon glyphicon-filter"></i>اعمال فیلتر
+                                </button>
+
+                                @if (Context.Request.QueryString.HasValue)
+                                {
+                                    <a asp-action="Index" asp-controller="Advertisement" asp-area="Admin" class="btn btn-labeled w-100 btn-darkorange mr-10px">
+                                        <i class="btn-label glyphicon glyphicon-remove"></i>حذف فیلتر
+                                    </a>
+                                }
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-9 col-sm-12">
+        <div class="well with-header with-footer table-responsive">
+            <div class="header bordered-azure">
+                <div class="flex-style">
+                    <span>لیست آگهی </span>
+                    <span>@Model.GetShownEntitiesPagesTitle()</span>
+                </div>
+            </div>
+
+            @if (Model.Entities != null && Model.Entities.Any())
+            {
+                <table class="table table-hover table-bordered tc vm">
+                    <thead class="tc vm">
+                        <tr class="tc vm">
+                            <th class="tc vm">
+                                تصویر
+                            </th>
+                            <th class="tc vm">
+                                زبان ها
+                            </th>
+                            <th class="tc vm">
+                                وضعیت
+                            </th>
+                            <th class="tc vm">
+                                نوع
+                            </th>
+                            <th class="tc vm">
+                                تاریخ
+                            </th>
+                            <th class="tc vm">
+                                امکانات
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="tc vm">
+                        @foreach (var ads in Model.Entities)
+                        {
+                            <tr class="tc vm" remove-ajax-item="@ads.Id">
+                                <td class="vm">
+                                    <div class="flex-style-center">
+                                        <img src="@PathTools.AdvertisementThumbimage@ads.ImageName" class="avatar-style" />
+                                        <div class="mr-10px">
+                                            <span> نویسنده : @ads.User.Username</span>
+                                            <hr class="margin-7" />
+                                            <span>تاریخ انتشار : @ads.CreateDate.ToShortDateString()</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="tc vm">
+                                    @if (ads.AdvertisementInfo != null && ads.AdvertisementInfo.Any())
+                                    {
+                                        foreach (var langs in ads.AdvertisementInfo)
+                                        {
+                                            <a onclick="ShowAdvertisementLanguage(@langs.Id)" class="badge light badge-primary cursor-pointer">@langs.Language.LanguageTitle</a>
+                                            <hr class="margin-7" />
+                                        }
+                                    }
+                                </td>
+                                <td class="tc vm">
+                                    <p class="flex-style-center">
+                                        <span> وضعیت   </span>
+                                        @if (ads.AdvertisementStatus == BusinessPortal.Domain.Entities.Advertisement.AdvertisementStatus.Active)
+                                        {
+                                            <span class="mr-8px label label-success">   تایید شده   </span>
+                                        }
+                                        @if (ads.AdvertisementStatus == BusinessPortal.Domain.Entities.Advertisement.AdvertisementStatus.NotApproved)
+                                        {
+                                            <span class="mr-8px label label-danger">   تایید نشده    </span>
+                                        }
+                                        @if (ads.AdvertisementStatus == BusinessPortal.Domain.Entities.Advertisement.AdvertisementStatus.WaitigForConfirm)
+                                        {
+                                            <span class="mr-8px label label-warning">   در انتظار بررسی    </span>
+                                        }
+                                    </p>
+                                </td>
+
+                                <td class="tc vm">
+                                    <p class="flex-style-center">
+                                        @if (!ads.FromEmployee && ads.FromCustomer)
+                                        {
+                                            <span class="mr-8px label label-primary">   درخواستی    </span>
+                                        }
+                                        @if (ads.FromEmployee && !ads.FromCustomer)
+                                        {
+                                            <span class="mr-8px label label-warning">   فروشی    </span>
+                                        }
+                                    </p>
+                                </td>
+                                <td class="tc vm">
+                                    <p class="flex-style-center">
+                                        @if (ads.StartDate.HasValue && ads.EndDate.HasValue)
+                                        {
+                                            <span> شروع   </span>
+                                            <span class="mr-8px label label-success">   @ads.StartDate.Value.ToShamsi()    </span>
+
+                                            <hr />
+
+                                            <span> پایان   </span>
+                                            <span class="mr-8px label label-primary">   @ads.EndDate.Value.ToShamsi()    </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="mr-8px label label-warning">   تایید نشده     </span>
+                                        }
+                                    </p>
+                                </td>
+                                <td class="tc vm">
+                                    <a asp-action="EditAdvertisement" asp-area="Admin" asp-controller="Advertisement" asp-route-Id="@ads.Id" class="btn btn-warning btn-circle btn-xs"><i class="glyphicon glyphicon-pencil"></i></a>
+                                    @*                                    <a asp-area="" asp-action="ArticleDetail" asp-controller="Article" asp-route-ArticleId="@Article.Id" asp-route-ArticleTitle="@Article.Title.FixTextForUrl()" class="btn btn-azure btn-circle btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                    *@
+                                    @if (ads.IsDelete)
+                                    {
+                                        <span class="mr-8px label label-orange">   حذف شده   </span>
+
+                                    }
+                                    else
+                                    {
+                                        <button onclick="DeleteAjax(@ads.Id, '@Url.Action("DeleteAdvertisementFromAdmin", "Advertisement", new { area = "Admin", id = ads.Id })')" class="btn btn-danger btn-circle btn-xs"><i class="glyphicon glyphicon-trash"></i></button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <div class="footer tc">
+                    <partial name="_AdminPaging" model="@Model.GetCurrentPaging()" />
+
+                </div>
+            }
+            else
+            {
+                <partial name="_AdminNotFoundPartial" />
+            }
+        </div>
+    </div>
+</div>
+

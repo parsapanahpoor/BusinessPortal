@@ -20,7 +20,7 @@ namespace BusinessPortal.Application.Services.Implementation
         public IUserService _userService { get; set; }
         public BusinessPortalDbContext _context { get; set; }
 
-        public PermissionService(BusinessPortalDbContext context , IUserService userServie)
+        public PermissionService(BusinessPortalDbContext context, IUserService userServie)
         {
             _context = context;
             _userService = userServie;

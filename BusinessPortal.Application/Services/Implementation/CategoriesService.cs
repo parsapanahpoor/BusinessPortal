@@ -3,6 +3,8 @@ using BusinessPortal.Application.Services.Interfaces;
 using BusinessPortal.Data.DbContext;
 using BusinessPortal.Domain.Entities.BrowseCategory;
 using BusinessPortal.Domain.ViewModels.Admin.Categories;
+using BusinessPortal.Domain.ViewModels.UserPanel.Advertisement;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -26,6 +28,12 @@ namespace BusinessPortal.Application.Services.Implementation
         #endregion
 
         #region Main Category
+
+        public async Task<List<Category>> GetMainCategoriesForShowInHomePage()
+        {
+            return await _context.Categories.Where(p=> p.IsActive && !p.IsDelete && p.ParentId == null)
+                                                                      .Take(10).OrderBy(p=> p.Priority).ToListAsync();
+        }
 
         public async Task<ListOfCategoriesViewModel> FilterCategoryViewModel(ListOfCategoriesViewModel filter)
         {
@@ -206,6 +214,27 @@ namespace BusinessPortal.Application.Services.Implementation
             await _context.SaveChangesAsync();
         }
 
+        public List<SelectListItem> GetAdvertisementMainCategoryDrowpDown()
+        {
+            return _context.Categories.Where(p => p.ParentId == null && p.IsDelete == false)
+                             .Select(p => new SelectListItem
+                             {
+                                 Text = p.DisplayName,
+                                 Value = p.Id.ToString(),
+                             }).ToList();
+        }
+
+        public async Task<List<AdvertisementCategoryViewModel>> GetAllCorrectCategoryForShowInUserPanel()
+        {
+            return await _context.Categories.Where(p => !p.IsDelete)
+                .Select(p => new AdvertisementCategoryViewModel()
+                {
+                    GroupName = p.DisplayName,
+                    UrlName = p.UrlName,
+                    ParentId = p.ParentId,
+                    CatgeoryId = p.Id
+                }).ToListAsync();
+        }
 
         #endregion
 

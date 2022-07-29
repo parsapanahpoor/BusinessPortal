@@ -1,6 +1,5 @@
 ﻿using BusinessPortal.Domain.Entities.Account;
 using BusinessPortal.Domain.Entities.SiteSetting;
-using BusinessPortal.Domain.Entities.Account;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using BusinessPortal.Domain.Entities.BrowseCategory;
 using BusinessPortal.Domain.Entities.Location;
+using BusinessPortal.Domain.Entities.Advertisement;
+using BusinessPortal.Domain.Entities.Address;
+using BusinessPortal.Domain.Entities.Language;
+using BusinessPortal.Domain.Entities.Wallet;
 
 namespace BusinessPortal.Data.DbContext
 {
@@ -24,17 +27,38 @@ namespace BusinessPortal.Data.DbContext
 
         #region DbSets
 
+        #region Language
+
+        public DbSet<Language> Language { get; set; }
+
+        #endregion
+
         #region Account 
 
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<RolePermission> RolePermissions { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<RequestForSeller> requestForSellers { get; set; }
+        public DbSet<Seller> Seller { get; set; }
+
         #endregion
 
         #region Brows Categories
 
         public DbSet<Category> Categories { get; set; }
+
+        #endregion
+
+        #region Advertisement
+
+        public DbSet<Advertisement> Advertisement { get; set; }
+
+        public DbSet<AdvertisementInfo> advertisementInfo { get; set; }
+
+        public DbSet<AdvertisementTag> AdvertisementTags { get; set; }
+
+        public DbSet<AdvertisementSelectedCategory> AdvertisementSelectedCategories { get; set; }
 
         #endregion
 
@@ -44,9 +68,19 @@ namespace BusinessPortal.Data.DbContext
 
         #endregion
 
-        #region Location
+        #region Location && Address
 
         public DbSet<State> States { get; set; }
+
+        public DbSet<Address> Addresses { get; set; }
+
+        #endregion
+
+        #region Wallet
+
+        public DbSet<Wallet> Wallets { get; set; }
+
+        public DbSet<WalletData> WalletData { get; set; }
 
         #endregion
 
@@ -62,6 +96,40 @@ namespace BusinessPortal.Data.DbContext
             }
 
             #region Seed Data
+
+            #region Languages
+
+            modelBuilder.Entity<Language>().HasData(new Language
+            {
+                  LanguageTitle = "fa-IR"
+            });
+
+            modelBuilder.Entity<Language>().HasData(new Language
+            {
+                LanguageTitle = "en-US"
+            });
+
+            modelBuilder.Entity<Language>().HasData(new Language
+            {
+                LanguageTitle = "ar-SA"
+            });
+
+            modelBuilder.Entity<Language>().HasData(new Language
+            {
+                LanguageTitle = "tr-TR"
+            });
+
+            modelBuilder.Entity<Language>().HasData(new Language
+            {
+                LanguageTitle = "ru-RU"
+            });
+
+            modelBuilder.Entity<Language>().HasData(new Language
+            {
+                LanguageTitle = "pt-PT"
+            });
+
+            #endregion
 
             #region Email Setting Seed Data
 

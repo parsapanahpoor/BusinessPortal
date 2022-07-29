@@ -1,0 +1,42 @@
+﻿@if (
+TempData["ErrorMessage"] != null ||
+TempData["SuccessMessage"] != null ||
+TempData["InfoMessage"] != null ||
+TempData["WarningMessage"] != null
+)
+{
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <script>
+            $(document).ready(function () {
+                ShowMessage('', '@TempData["ErrorMessage"]' , 'error');
+            });
+        </script>
+    }
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <script>
+            $(document).ready(function () {
+                ShowMessage('', '@TempData["SuccessMessage"]' , 'success');
+            });
+        </script>
+    }
+    @if (TempData["InfoMessage"] != null)
+    {
+        <script>
+            $(document).ready(function () {
+                ShowMessage('', '@TempData["InfoMessage"]' , 'info');
+            });
+        </script>
+    }
+    @if (TempData["WarningMessage"] != null)
+    {
+        <script>
+            $(document).ready(function () {
+                ShowMessage('', '@TempData["WarningMessage"]' , 'warning');
+            });
+        </script>
+    }
+}
+
+

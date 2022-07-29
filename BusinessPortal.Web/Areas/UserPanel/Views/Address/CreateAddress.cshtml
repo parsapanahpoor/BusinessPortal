@@ -1,0 +1,185 @@
+﻿@model BusinessPortal.Domain.ViewModels.UserPanel.Location.CreateAddressFromUserPanel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _Localizer
+@using System.Globalization
+
+@{
+    ViewData["Title"] = _Localizer["PageTitle"];
+}
+
+@section scripts{
+    <partial name="_JqueryValidators" />
+    <script src="/MainContent/js/index.umd.js"></script>
+    <script src="/MainContent/js/MainCustom.js"></script>
+    <script>
+        $.getJSON("/UserPanel/Address/GetSubGroups/" + $("#CountryId :selected").val(),
+            function (data) {
+                $.each(data,
+                    function () {
+                        $("#StateId").append('<option value=' + this.value + '>' + this.text + '</option>');
+                        $("#StateId").selectpicker("refresh");
+                    });
+            });
+        $("#CountryId").change(function () {
+            $("#StateId").empty();
+            $("#StateId").selectpicker("refresh");
+            $("#CityId").empty();
+            $("#CityId").selectpicker("refresh");
+            $.getJSON("/UserPanel/Address/GetSubGroups/" + $("#CountryId :selected").val(),
+                function (data) {
+                    $.each(data,
+                        function () {
+                            $("#StateId").append('<option value=' + this.value + '>' + this.text + '</option>');
+                            $("#StateId").selectpicker("refresh");
+                        });
+                });
+        });
+        $.getJSON("/UserPanel/Address/GetSubGroups/" + $("#StateId :selected").val(),
+            function (data) {
+                $.each(data,
+                    function () {
+                        $("#CityId").append('<option value=' + this.value + '>' + this.text + '</option>');
+                        $("#CityId").selectpicker("refresh");
+                    });
+            });
+        $("#StateId").change(function () {
+            $("#CityId").empty();
+            $.getJSON("/UserPanel/Address/GetSubGroups/" + $("#StateId :selected").val(),
+                function (data) {
+                    $.each(data,
+                        function () {
+                            $("#CityId").append('<option value=' + this.value + '>' + this.text + '</option>');
+                            $("#CityId").selectpicker("refresh");
+                        });
+                });
+        });
+    </script>
+}
+
+<div class="content-body" style="min-height: 1070px; margin-right: 0px; padding-top: 0px;">
+    <div class="container-fluid">
+        <div class="row page-titles mx-0">
+            <div class="col-sm-12 p-md-0">
+                <div class="welcome-text">
+                    <h4>@_Localizer["CreateAddress"] </h4>
+                </div>
+            </div>
+            <div class="col-sm-12 p-md-0 justify-content-sm-end  mt-sm-0 d-flex">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/UserPanel">@_Localizer["Dashboard"]   </a></li>
+                    <li class="breadcrumb-item active"><a>@ViewData["Title"]</a></li>
+                </ol>
+            </div>
+        </div>
+
+        <form method="post" asp-area="UserPanel" asp-controller="Address" asp-action="CreateAddress">
+
+            <div class="row">
+
+                <div class="col-xl-12 col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title"> @_Localizer["AddressInfo"] </h4>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="contantUs-page-form-items-line1">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="UserId" />
+                                <div class="row">
+                                    <div class="col-xxl-4 col-xl-4 col-lg-12 col-md-12 col-sm-12">
+                                        <div class="contantUs-page-form-input-media my-3">
+                                            <label for="exampleFormControlInput1" class="form-label Label_Input_form_Personal">
+                                               @_Localizer["CountryName"]<span class="text-danger">*</span>
+                                            </label>
+                                            <select asp-for="CountryId" id="CountryId" asp-items="@ViewData["Countries"] as SelectList" class="form-control contantUs-page-form-input-select"></select>
+                                        </div>
+                                        <span asp-validation-for="CountryId" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-xxl-4 col-xl-4 col-lg-12 col-md-12 col-sm-12">
+                                        <div class="my-3">
+                                            <label for="exampleFormControlInput1" class="form-label Label_Input_form_Personal">
+                                                @_Localizer["StateName"]<span class="text-danger">*</span>
+                                            </label>
+                                            <select asp-for="StateId" id="StateId" asp-items="@ViewData["States"] as SelectList" class="form-control contantUs-page-form-input-select"></select>
+                                        </div>
+                                        <span asp-validation-for="StateId" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-xxl-4 col-xl-4 col-lg-12 col-md-12 col-sm-12">
+                                        <div class="my-3">
+                                            <label for="exampleFormControlInput1" class="form-label Label_Input_form_Personal">
+                                                @_Localizer["CityName"]<span class="text-danger"></span>
+                                            </label>
+                                            <select asp-for="CityId" id="CityId" asp-items="@ViewData["Cities"] as SelectList" class="form-control contantUs-page-form-input-select"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contantUs-page-form-items-line2">
+                                <div class="row">
+                                    <div class="col-xxl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12">
+                                        <div class="contantUs-page-form-input-media">
+                                            <label for="exampleFormControlInput1" class="form-label Label_Input_form_Personal">
+                                                @_Localizer["MobileNumber"] <span class="text-danger"></span>
+                                            </label>
+                                            <input type="text" asp-for="Mobile" class="form-control contantUs-page-form-input-select" id="exampleFormControlInput1" placeholder="@_Localizer["MobileNumberPlaceHolder"]">
+                                        </div>
+                                    </div>
+                              
+                                    <div class="col-xxl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12">
+                                        <div class="contantUs-page-form-input-media">
+                                            <label for="exampleFormControlInput1" class="form-label Label_Input_form_Personal">
+                                                @_Localizer["Email"] <span class="text-danger"></span>
+                                            </label>
+                                            <input type="text" asp-for="Email" class="form-control contantUs-page-form-input-select" id="exampleFormControlInput1" placeholder="@_Localizer["EmailPlaceHolder"]">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contantUs-page-form-items-line2 mt-2">
+                                <div class="row">
+                                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                        <div class="contantUs-page-form-input-media">
+                                            <label for="exampleFormControlInput1" class="form-label Label_Input_form_Personal">
+                                              @_Localizer["AddressTitle"] <span class="text-danger">*</span>
+                                            </label>
+                                            <input type="text" asp-for="AddressTitle" class="form-control contantUs-page-form-input-select" id="exampleFormControlInput1" placeholder="@_Localizer["AddressTitlePlaceHolder"]">
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="AddressTitle" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="contantUs-page-form-items-line2">
+                                <div class="row">
+                                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                        <div class="contantUs-page-form-input-media">
+                                            <label for="exampleFormControlInput1" class="form-label Label_Input_form_Personal">
+                                                @_Localizer["Address"] <span class="text-danger">*</span>
+                                            </label>
+                                            <textarea asp-for="UserAddress" rows="10" class="form-control " placeholder="@_Localizer["AddressPlaceHolder"]"></textarea>
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="UserAddress" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="contantUs-page-form-items-submit">
+                                <div class="row">
+                                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                        <button type="submit" class="btn btn-outline-success mt-1">@_Localizer["AddAddress"]</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+

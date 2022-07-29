@@ -53,5 +53,10 @@ namespace BusinessPortal.Web.HttpManager
         {
             return new JsonResult(new { status = "NotAuth", data = returnData, message = message });
         }
+
+        internal static IActionResult SendStatus(object success, string v, object p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

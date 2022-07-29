@@ -9,7 +9,75 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="ViewComponents\" />
+    <Folder Include="Areas\UserPanel\Data\" />
+    <Folder Include="Areas\UserPanel\Models\" />
+    <Folder Include="wwwroot\UploadedImages\AdvertisementImages\Thumb\" />
+    <Folder Include="wwwroot\UploadedImages\AdvertisementImages\Origin\" />
+    <Folder Include="wwwroot\UploadedImages\StateImage\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\css\main.css.map" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\.gitignore" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\.npmignore" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\css\font-awesome.css.map" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\less\animated.less" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\less\bordered-pulled.less" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\less\core.less" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\less\fixed-width.less" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\less\font-awesome.less" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\less\icons.less" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\less\larger.less" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\less\list.less" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\less\mixins.less" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\less\path.less" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\less\rotated-flipped.less" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\less\stacked.less" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\less\variables.less" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\scss\font-awesome.scss" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\scss\_animated.scss" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\scss\_bordered-pulled.scss" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\scss\_core.scss" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\scss\_fixed-width.scss" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\scss\_icons.scss" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\scss\_larger.scss" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\scss\_list.scss" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\scss\_mixins.scss" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\scss\_path.scss" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\scss\_rotated-flipped.scss" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\scss\_stacked.scss" />
+    <None Include="wwwroot\assets\datepicker-jalali\css\fontawesome\scss\_variables.scss" />
+    <None Include="wwwroot\assets\datepicker-jalali\js\ajaxmin.bat" />
+    <None Include="wwwroot\assets\datepicker-jalali\js\angular.min.js" />
+    <None Include="wwwroot\assets\datepicker-jalali\js\jquery-1.10.1.min.js" />
+    <None Include="wwwroot\assets\datepicker-jalali\js\persianDatepicker.js" />
+    <None Include="wwwroot\assets\datepicker-jalali\js\persianDatepicker.min.js" />
+    <None Include="wwwroot\assets\datepicker-jalali\js\prism.js" />
+    <None Include="wwwroot\assets\datepicker-jalali\js\prism.min.js" />
+    <None Include="wwwroot\assets\datepicker-jalali\js\vertical-responsive-menu.min.js" />
+    <None Include="wwwroot\assets\datepicker-jalali\LICENSE" />
+    <None Include="wwwroot\assets\datepicker-jalali\picker-style.js" />
+    <None Include="wwwroot\assets\datepicker-jalali\README.md" />
+    <None Include="wwwroot\assets\js\aos.js" />
+    <None Include="wwwroot\assets\js\app.js" />
+    <None Include="wwwroot\assets\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\assets\js\contact-form-script.js" />
+    <None Include="wwwroot\assets\js\fancybox.min.js" />
+    <None Include="wwwroot\assets\js\form-validator.min.js" />
+    <None Include="wwwroot\assets\js\jquery-ui.js" />
+    <None Include="wwwroot\assets\js\jquery.ajaxchimp.min.js" />
+    <None Include="wwwroot\assets\js\jquery.appear.js" />
+    <None Include="wwwroot\assets\js\jquery.magnific-popup.min.js" />
+    <None Include="wwwroot\assets\js\jquery.meanmenu.js" />
+    <None Include="wwwroot\assets\js\jquery.min.js" />
+    <None Include="wwwroot\assets\js\main.js" />
+    <None Include="wwwroot\assets\js\odometer.min.js" />
+    <None Include="wwwroot\assets\js\owl.carousel.min.js" />
+    <None Include="wwwroot\assets\js\selectize.min.js" />
+    <None Include="wwwroot\assets\js\wow.min.js" />
+    <None Include="wwwroot\assets\php\form-process.php" />
   </ItemGroup>
 
 	<ItemGroup>

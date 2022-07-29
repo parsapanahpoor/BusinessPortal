@@ -1,5 +1,7 @@
 ﻿using BusinessPortal.Domain.Entities.BrowseCategory;
 using BusinessPortal.Domain.ViewModels.Admin.Categories;
+using BusinessPortal.Domain.ViewModels.UserPanel.Advertisement;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +21,9 @@ namespace BusinessPortal.Application.Services.Interfaces
         Task<EditCategoryResult> EditCategoryResult(EditCategoryViewModel category, Category BrowsCategory);
         Task<Category> GetCategoryById(ulong Id);
         Task DeleteCategory(Category cat);
+        List<SelectListItem> GetAdvertisementMainCategoryDrowpDown();
+        Task<List<AdvertisementCategoryViewModel>> GetAllCorrectCategoryForShowInUserPanel();
+        Task<List<Category>> GetMainCategoriesForShowInHomePage();
 
         #endregion
 

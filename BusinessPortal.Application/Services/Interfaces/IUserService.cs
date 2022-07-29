@@ -40,5 +40,13 @@ namespace BusinessPortal.Application.Services.Interfaces
 
         #endregion
 
+        #region User Panel 
+
+        Task<bool> HasUserPermissionForSeller(ulong userId);
+        Task<bool> IsExistRequestForSellerByUserId(ulong userId);
+        Task<bool> SendRequestToBeSeller(ulong userId);
+
+        #endregion
+
     }
 }

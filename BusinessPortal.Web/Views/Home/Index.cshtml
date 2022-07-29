@@ -1,803 +1,1038 @@
-﻿@{
-    ViewData["Title"] = "صفحه نخست";
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _Localizer
+@using System.Globalization
+
+@{
+    ViewData["Title"] = @_Localizer["PageTitle"];
 }
 
-<!--====== BANNER PART START ======-->
-<style>
-    .test {
-        overflow: hidden;
-        border-radius: 15px;
-    }
 
-        .test img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: 0.4s all;
-            border-radius: 15px;
-        }
-
-        .test:hover img {
-            -ms-transform: scale(1.3);
-            -webkit-transform: scale(1.3);
-            transform: scale(1.3);
-            transition: 0.4s all;
-        }
-
-    .in-test {
-        height: 100%;
-    }
-</style>
-
-<section class="slider-area bg_cover" style="        background-image: url(/Site/images/Banner2/8.jpg)">
-    <div class="container text-right">
-        <div class="row justify-content-center justify-content-lg-end">
-            <div class="col-xl-5 col-lg-6 col-md-8">
-                <div class="slider-form-box">
-                    <h3 class="form-title text-center text-white">عضو شوید</h3>
-                    <p class="mt-15 text-white">برای عضویت در سایت ثبت نام کنید <span class="text-white"> 547 53 266 21+</span></p>
-                    <form action="#">
-                        <div class="single-form-input">
-                            <input type="text" placeholder="نام" style="opacity:.85 !important;">
-                        </div>
-                        <div class="single-form-input">
-                            <input type="email" placeholder="ایمیل" style="opacity:.85 !important;">
-                        </div>
-                        <div class="single-form-input">
-                            <input type="text" placeholder="تلفن همراه" style="opacity:.85 !important;">
-                        </div>
-                        <div class="single-form-input">
-                            <textarea placeholder="توضیحات شما" style="opacity:.85 !important;"></textarea>
-                        </div>
-                        <div class="single-form-input">
-                            <select name="select">
-                                <option>در چه زمینه‌ای فعالیت می‌کنید </option>
-                                <option>محصولات نفتی </option>
-                                <option> محصولات پتروشیمی</option>
-                                <option> صنایع سنگین </option>
-                                <option> صنایع هوا فضا</option>
-                                <option> سایر </option>
-                            </select>
-                        </div>
-                        <div class="single-form-input">
-                            <button class="main-btn" type="submit">ارسال</button>
-                        </div>
-                    </form>
-                </div> <!-- slider form box -->
-            </div>
-        </div> <!-- row -->
-    </div> <!-- container -->
-</section>
-
-<!--====== BANNER PART ENDS ======-->
-<!--====== FEATURES PART START ======-->
-
-
-
-
-
-<section class="features-area">
-    <div class="features">
-        <div class="row no-gutters justify-content-center">
-
-            <div class="row d-flex justify-content-center text-center">
-                <div class="col-md-6">
-                    <div class="test">
-                        <a href="/Employe/EmployeRegister">
-                            <img src="~/Site/images/banner/s-2.jpg" />
-
-                            <div class="in-test text-center justify-content-center" style="border-radius: 15px; padding: 70px 0 20px 0; margin: 0; position: absolute;top: 0;left: 15px; right: 15px;color: #ffd700; font-size: 36px;font-weight: bold;background: rgba(216,114,0,0.79)">
-                                فروشنده
-                                <p class="text-white" style="font-weight: normal;font-size: 18px;"> در اینجا می‌توانید محصولات خود را به فروش برسانید  </p>
-                                <p p class="text-center"><i style="color:#ffd700 !important;" class=" mt-2 fa fa-2x fa-arrow-circle-down"></i></p>
-
+<div class="row  m-5 mt-1 ">   
+    <div class="col-md-7 col-sm-12">
+        <div class="main-slides-area">
+            <div class="home-slides owl-carousel owl-theme">
+                <div class="main-slides-item">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="main-slides-image p-3" data-aos="fade-left" data-aos-delay="20" data-aos-duration="200">
+                                <img  src="assets/images/main-slides/slides-1.jpeg" alt="image">
                             </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <div class="test">
-                        <a href="/Teacher/TeacherRegister">
-                            <img src="~/Site/images/banner/slider.jpg" />
-                            <div class="in-test text-center justify-content-center" style="border-radius: 15px; padding: 70px 0 20px 0;margin: 0; position: absolute; top: 0;left: 15px;right: 15px;color:#ffd700;font-size: 36px;font-weight: bold; background:rgba(5,60,106,0.64)  ">
-                                خریدار
-                                <p class="text-white" style="font-weight: normal;font-size: 18px; padding-left:55px; padding-right:55px;">آنچه نیاز دارید از اینجا می‌توانید خریداری کنید</p>
-                                <p class="text-center"><i style="color:#ffd700 !important;" class=" mt-2 fa fa-2x fa-arrow-circle-down"></i></p>
-                            </div>
-                        </a>
+                        </div>
                     </div>
                 </div>
 
-            </div>
-
-
-        </div> <!-- row -->
-    </div> <!-- features -->
-</section>
-
-<!--====== FEATURES PART ENDS ======-->
-<!--*****************************************************************************-->
-<!--*****************************************************************************-->
-
-<section class="project-area pt-65 pb-65">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="container text-right">
-                <div class="row align-items-end">
-                    <div class="col-lg-6">
-                        <div class="section-title mb-20">
-
-                            <h4>جدیدترین محصولات</h4>
-                        </div> <!-- section title -->
-                    </div>
-                </div> <!-- row -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="project-menu pb-20">
-                            <ul>
-                                <li data-filter="*" class="Pactive">همه</li>
-                                <li data-filter=".Pfinance">نفتی</li>
-                                <li data-filter=".Paudit">پتروشیمی</li>
-                                <li data-filter=".Pinsurance">صنایع</li>
-                                <li data-filter=".Ptransport">هوا فضا</li>
-                             
-                            </ul>
+                <div class="main-slides-item">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="main-slides-image p-3" data-aos="fade-left" data-aos-delay="20" data-aos-duration="200">
+                                <img  src="assets/images/main-slides/slides-2.jpeg" alt="image">
+                            </div>
                         </div>
                     </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-            <div class="container text-right">
-                <div class="row no-gutters grid">
-                    <div class="col-lg-3 col-sm-6 Pfinance Pinsurance Paudit ">
-                        <div class="single-project">
-                            <div class="project-image">
-                                <img src="/Site/images/project/p-1.jpg" alt="Project">
+                </div>
+
+                <div class="main-slides-item">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="main-slides-image p-3" data-aos="fade-left" data-aos-delay="20" data-aos-duration="200">
+                                <img  src="assets/images/main-slides/slides-3.jpeg" alt="image">
                             </div>
-                            <div class="project-content">
-                                <h4 class="project-title "><a href="#">نفتی</a></h4>
-                                <span>فروش</span>
-                                <a href="#"><i class="fa fa-angle-left"></i></a>
-                            </div>
-                        </div> <!-- single project -->
+                        </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6 Ptransport">
-                        <div class="single-project">
-                            <div class="project-image">
-                                <img src="/Site/images/project/p-2.jpg" alt="Project">
+                </div>
+
+                <div class="main-slides-item">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="main-slides-image p-3" data-aos="fade-left" data-aos-delay="20" data-aos-duration="200">
+                                <img  src="assets/images/main-slides/slides-4.jpeg" alt="image">
                             </div>
-                            <div class="project-content">
-                                <h4 class="project-title "><a href="#">پتروشیمی</a></h4>
-                                <span>فروش</span>
-                                <a href="#"><i class="fa fa-angle-left"></i></a>
-                            </div>
-                        </div> <!-- single project -->
+                        </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6 Pinsurance">
-                        <div class="single-project">
-                            <div class="project-image">
-                                <img src="/Site/images/project/p-3.jpg" alt="Project">
+                </div>
+
+                <div class="main-slides-item">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="main-slides-image p-3" data-aos="fade-left" data-aos-delay="20" data-aos-duration="200">
+                                <img src="assets/images/main-slides/slides-5.jpeg" alt="image">
                             </div>
-                            <div class="project-content">
-                                <h4 class="project-title "><a href="#">صنایع</a></h4>
-                                <span>فروش</span>
-                                <a href="#"><i class="fa fa-angle-left"></i></a>
-                            </div>
-                        </div> <!-- single project -->
+                        </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6 Paudit">
-                        <div class="single-project">
-                            <div class="project-image">
-                                <img src="/Site/images/project/p-4.jpg" alt="Project">
-                            </div>
-                            <div class="project-content">
-                                <h4 class="project-title "><a href="#">هوا فضا</a></h4>
-                                <span>فروش</span>
-                                <a href="#"><i class="fa fa-angle-left"></i></a>
-                            </div>
-                        </div> <!-- single project -->
-                    </div>
-                    <div class="col-lg-3 col-sm-6 Pfinance Pinsurance Paudit">
-                        <div class="single-project">
-                            <div class="project-image">
-                                <img src="/Site/images/project/p-5.jpg" alt="Project">
-                            </div>
-                            <div class="project-content">
-                                <h4 class="project-title "><a href="#">نفتی</a></h4>
-                                <span>فروش</span>
-                                <a href="#"><i class="fa fa-angle-left"></i></a>
-                            </div>
-                        </div> <!-- single project -->
-                    </div>
-                    <div class="col-lg-3 col-sm-6 Paudit">
-                        <div class="single-project">
-                            <div class="project-image">
-                                <img src="/Site/images/project/p-6.jpg" alt="Project">
-                            </div>
-                            <div class="project-content">
-                                <h4 class="project-title "><a href="#">پتروشیمی</a></h4>
-                                <span>فروش</span>
-                                <a href="#"><i class="fa fa-angle-left"></i></a>
-                            </div>
-                        </div> <!-- single project -->
-                    </div>
-                    <div class="col-lg-3 col-sm-6 Ptransport Pinsurance">
-                        <div class="single-project">
-                            <div class="project-image">
-                                <img src="/Site/images/project/p-7.jpg" alt="Project">
-                            </div>
-                            <div class="project-content">
-                                <h4 class="project-title "><a href="#">صنایع</a></h4>
-                                <span>فروش</span>
-                                <a href="#"><i class="fa fa-angle-left"></i></a>
-                            </div>
-                        </div> <!-- single project -->
-                    </div>
-                    <div class="col-lg-3 col-sm-6 Pfinance Ptransport Paudit">
-                        <div class="single-project">
-                            <div class="project-image">
-                                <img src="/Site/images/project/p-8.jpg" alt="Project">
-                            </div>
-                            <div class="project-content">
-                                <h4 class="project-title "><a href="#">هوا فضا</a></h4>
-                                <span>فروش</span>
-                                <a href="#"><i class="fa fa-angle-left"></i></a>
-                            </div>
-                        </div> <!-- single project -->
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container fluid -->
+                </div>
+            </div>
         </div>
-        <div class="col-md-6">
-            <div class="container text-right">
-                <div class="row align-items-end">
-                    <div class="col-lg-6">
-                        <div class="section-title mb-20">
+    </div>
+     <div class="col-md-5">
+        <div class="about-image-wrap  mt-2">
+            <img class="Bannersb" src="assets/images/page-banner/seller1.png"  alt="image">
+            <img class="Bannersb" src="assets/images/page-banner/Buyer1.png"   alt="image">
+           
+        </div>
+    </div>
+</div>
 
-                            <h4>جدیدترین پیشنهادات خرید</h4>
-                        </div> <!-- section title -->
-                    </div>
-                </div> <!-- row -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="project-menu pb-20">
-                            <ul>
-                                <li data-filter="*" class="Oactive">همه</li>
-                                <li data-filter=".Ofinance">نفتی</li>
-                                <li data-filter=".Oaudit">پتروشیمی</li>
-                                <li data-filter=".Oinsurance">صنایع</li>
-                                <li data-filter=".Otransport">هوا فضا</li>
-                            </ul>
+<div class="row">
+    <div class="col-md-12">
+        <div class="container-fluid slider">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <div class="row align-items-center">
+                        <div class="col-lg-12">
+                            <h4 class="textcol">@_Localizer["Products"]</h4>
                         </div>
                     </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-            <div class="container text-right">
-                <div class="row no-gutters grid">
-                    <div class="col-lg-3 col-sm-6 Ofinance Oinsurance Oaudit">
-                        <div class="single-project">
-                            <div class="project-image">
-                                <img src="/Site/images/project/p-1.jpg" alt="Project">
-                            </div>
-                            <div class="project-content">
-                                <h4 class="project-title "><a href="#">نفتی</a></h4>
-                                <span>خرید</span>
-                                <a href="#"><i class="fa fa-angle-left"></i></a>
-                            </div>
-                        </div> <!-- single project -->
+                </div>
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img class="img-fluid" src="assets/images/services/Product1.jpeg" alt="">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img class="img-fluid" src="assets/images/services/Product2.jpeg" alt="">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img class="img-fluid" src="assets/images/services/Product3.jpeg" alt="">
+                            </a>
+                        </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6 Otransport">
-                        <div class="single-project">
-                            <div class="project-image">
-                                <img src="/Site/images/project/p-2.jpg" alt="Project">
-                            </div>
-                            <div class="project-content">
-                                <h4 class="project-title "><a href="#">پتروشیمی</a></h4>
-                                <span>خرید</span>
-                                <a href="#"><i class="fa fa-angle-left"></i></a>
-                            </div>
-                        </div> <!-- single project -->
-                    </div>
-                    <div class="col-lg-3 col-sm-6 Oinsurance">
-                        <div class="single-project">
-                            <div class="project-image">
-                                <img src="/Site/images/project/p-3.jpg" alt="Project">
-                            </div>
-                            <div class="project-content">
-                                <h4 class="project-title "><a href="#">صنایع</a></h4>
-                                <span>خرید</span>
-                                <a href="#"><i class="fa fa-angle-left"></i></a>
-                            </div>
-                        </div> <!-- single project -->
-                    </div>
-                    <div class="col-lg-3 col-sm-6 Oaudit">
-                        <div class="single-project">
-                            <div class="project-image">
-                                <img src="/Site/images/project/p-4.jpg" alt="Project">
-                            </div>
-                            <div class="project-content">
-                                <h4 class="project-title "><a href="#">هوا فضا</a></h4>
-                                <span>خرید</span>
-                                <a href="#"><i class="fa fa-angle-left"></i></a>
-                            </div>
-                        </div> <!-- single project -->
-                    </div>
-                    <div class="col-lg-3 col-sm-6 Ofinance Oinsurance Oaudit">
-                        <div class="single-project">
-                            <div class="project-image">
-                                <img src="/Site/images/project/p-5.jpg" alt="Project">
-                            </div>
-                            <div class="project-content">
-                                <h4 class="project-title "><a href="#">نفتی</a></h4>
-                                <span>خرید</span>
-                                <a href="#"><i class="fa fa-angle-left"></i></a>
-                            </div>
-                        </div> <!-- single project -->
-                    </div>
-                    <div class="col-lg-3 col-sm-6 Oaudit">
-                        <div class="single-project">
-                            <div class="project-image">
-                                <img src="/Site/images/project/p-6.jpg" alt="Project">
-                            </div>
-                            <div class="project-content">
-                                <h4 class="project-title "><a href="#">پتروشیمی</a></h4>
-                                <span>خرید</span>
-                                <a href="#"><i class="fa fa-angle-left"></i></a>
-                            </div>
-                        </div> <!-- single project -->
-                    </div>
-                    <div class="col-lg-3 col-sm-6 Otransport Oinsurance">
-                        <div class="single-project">
-                            <div class="project-image">
-                                <img src="/Site/images/project/p-7.jpg" alt="Project">
-                            </div>
-                            <div class="project-content">
-                                <h4 class="project-title "><a href="#">صنایع</a></h4>
-                                <span>خرید</span>
-                                <a href="#"><i class="fa fa-angle-left"></i></a>
-                            </div>
-                        </div> <!-- single project -->
-                    </div>
-                    <div class="col-lg-3 col-sm-6 Ofinance Otransport Oaudit">
-                        <div class="single-project">
-                            <div class="project-image">
-                                <img src="/Site/images/project/p-8.jpg" alt="Project">
-                            </div>
-                            <div class="project-content">
-                                <h4 class="project-title "><a href="#">هوا فضا</a></h4>
-                                <span>خرید</span>
-                                <a href="#"><i class="fa fa-angle-left"></i></a>
-                            </div>
-                        </div> <!-- single project -->
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container fluid -->
+                    <div class="swiper-pagination "></div>
+                </div>
+            </div>
         </div>
     </div>
 
-
-
-
-</section>
-
-<!--*****************************************************************************-->
-<!--*****************************************************************************-->
-<!--====== ABOUT PART START ======-->
-
-<section class="about-area pt-70 pb-120">
-    <div class="container text-right">
-        <div class="row">
-            <div class="col-lg-6 order-lg-last">
-                <div class="about-content mt-45">
-                    <div class="section-title">
-                        <h6>درباره ی ما</h6>
-                        <h2 class="about-title">با سابقه‌ای طولانی در تجارت</h2>
-                    </div> <!-- section title -->
-                    <p class="mt-25">لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود <br> <br> لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود.لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود.</p>
-                    <div class="about-contact mt-25 d-flex align-items-center">
-                        <a class="main-btn mt-10" href="#">بیشتر</a>
-                        <a class="about-phone mt-10" href="#" dir="ltr"> +21 266 53 547 <i class="fa fa-phone"></i></a>
+    <div class="col-md-12 ">
+        <div class="container-fluid slider" style="margin-top: 50px;">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <div class="row align-items-center">
+                        <div class="col-lg-12">
+                            <h4 class="textcol">@_Localizer["Services"]</h4>
+                        </div>
                     </div>
-                </div> <!-- about content -->
-            </div>
-            <div class="col-lg-6 order-lg-first">
-                <div class="about-image text-center mt-50">
-                    <img src="/Site/images/about/about.jpg" alt="About">
+                </div>
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img class="img-fluid" src="assets/images/services/Service1.jpeg" alt="">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img class="img-fluid" src="assets/images/services/Service2.jpeg" alt="">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img class="img-fluid" src="assets/images/services/Service3.jpeg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination "></div>
                 </div>
             </div>
-        </div> <!-- row -->
-    </div> <!-- container -->
-</section>
+        </div>
+    </div>
 
-<!--====== ABOUT PART ENDS ======-->
-<!--====== OUR SERVICES PART START ======-->
-
-<section class="services-area gray-bg pt-110 pb-120">
-    <div class="container text-right">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="section-title mb-45">
-                    <h6>خدمات ما</h6>
-                    <h2>کارهایی که ما انجام می‌دهیم</h2>
-                </div> <!-- section title -->
-            </div>
-        </div> <!-- row -->
-
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="single-services mt-30">
-                    <div class="services-icon">
-                        <img src="/Site/images/services/icon-1.png" alt="services">
-                    </div>
-                    <div class="services-content mt-25 pr-0">
-                        <h5 class="services-title"><a href="#">پشتیبانی</a></h5>
-                        <p class="mt-20">لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p> <a class="mt-20" href="#">بیشتر <i class="fa fa-angle-left"></i></a>
-                    </div>
-                    <div class="services-icon-bg">
-                        <img src="/Site/images/services/icon-bg/icon-bg-1.png" alt="Icon">
-                    </div>
-                </div> <!-- single services -->
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-services mt-30">
-                    <div class="services-icon">
-                        <img src="/Site/images/services/icon-5.png" alt="services">
-                    </div>
-                    <div class="services-content mt-25 pr-0">
-                        <h5 class="services-title"><a href="#">پشتیبانی</a></h5>
-                        <p class="mt-20">لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p> <a class="mt-20" href="#">بیشتر <i class="fa fa-angle-left"></i></a>
-                    </div>
-                    <div class="services-icon-bg">
-                        <img src="/Site/images/services/icon-bg/icon-bg-5.png" alt="Icon">
-                    </div>
-                </div> <!-- single services -->
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-services mt-30">
-                    <div class="services-icon">
-                        <img src="/Site/images/services/icon-3.png" alt="services">
-                    </div>
-                    <div class="services-content mt-25 pr-0">
-                        <h5 class="services-title"><a href="#">پشتیبانی</a></h5>
-                        <p class="mt-20">لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p> <a class="mt-20" href="#">بیشتر <i class="fa fa-angle-left"></i></a>
-                    </div>
-                    <div class="services-icon-bg">
-                        <img src="/Site/images/services/icon-bg/icon-bg-3.png" alt="Icon">
-                    </div>
-                </div> <!-- single services -->
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-services mt-30">
-                    <div class="services-icon">
-                        <img src="/Site/images/services/icon-4.png" alt="services">
-                    </div>
-                    <div class="services-content mt-25 pr-0">
-                        <h5 class="services-title"><a href="#">پشتیبانی</a></h5>
-                        <p class="mt-20">لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p> <a class="mt-20" href="#">بیشتر <i class="fa fa-angle-left"></i></a>
-                    </div>
-                    <div class="services-icon-bg">
-                        <img src="/Site/images/services/icon-bg/icon-bg-4.png" alt="Icon">
-                    </div>
-                </div> <!-- single services -->
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-services mt-30">
-                    <div class="services-icon">
-                        <img src="/Site/images/services/icon-2.png" alt="services">
-                    </div>
-                    <div class="services-content mt-25 pr-0">
-                        <h5 class="services-title"><a href="#">پشتیبانی</a></h5>
-                        <p class="mt-20">لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p> <a class="mt-20" href="#">بیشتر <i class="fa fa-angle-left"></i></a>
-                    </div>
-                    <div class="services-icon-bg">
-                        <img src="/Site/images/services/icon-bg/icon-bg-2.png" alt="Icon">
-                    </div>
-                </div> <!-- single services -->
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-services mt-30">
-                    <div class="services-icon">
-                        <img src="/Site/images/services/icon-6.png" alt="services">
-                    </div>
-                    <div class="services-content mt-25 pr-0">
-                        <h5 class="services-title"><a href="#">پشتیبانی</a></h5>
-                        <p class="mt-20">لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p> <a class="mt-20" href="#">بیشتر <i class="fa fa-angle-left"></i></a>
-                    </div>
-                    <div class="services-icon-bg">
-                        <img src="/Site/images/services/icon-bg/icon-bg-6.png" alt="Icon">
-                    </div>
-                </div> <!-- single services -->
-            </div>
-        </div> <!-- row -->
-    </div> <!-- container -->
-</section>
-
-<!--====== OUR SERVICES PART ENDS ======-->
-<!--====== CALL TO ACTION PART START ======-->
-
-<section class="call-action pt-20 pb-50">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-9">
-                <div class="action-content mt-30 text-center text-lg-right">
-                    <h2>آیا می خواهید سریع و مطمئن تحویل بگیرید؟</h2>
-                </div> <!-- action content -->
-            </div>
-            <div class="col-lg-3">
-                <div class="action-btn mt-30 text-center text-lg-left">
-                    <a class="main-btn main-btn-2" href="#">با ما تماس بگیرید</a>
-                </div> <!-- action btn -->
-            </div>
-        </div> <!-- row -->
-    </div> <!-- container -->
-</section>
-
-<!--====== CALL TO ACTION PART ENDS ======-->
-
-<!--====== TESTIMONIAL PART START ======-->
-
-<section class="testimonial-area gray-bg pt-110 pb-120">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 text-right">
-                <div class="section-title mb-75">
-                    <h6>رضایت</h6>
-                    <h2>نظر مشتریان</h2>
-                </div> <!-- section title -->
-            </div>
-        </div> <!-- row -->
-        <div class="row testimonial-active-2">
-            <div class="col-lg-4">
-                <div class="single-testimonial white-bg mr-35">
-                    <div class="quote">
-                        <img src="/Site/images/testimonials/quote.png" alt="Icon">
-                    </div>
-                    <div class="content mb-30 text-right">
-                        <p>لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p>
-                    </div>
-                    <div class="author-name d-flex align-items-center">
-                        <div class="name pr-20 text-right">
-                            <h6>دیوید فالکر</h6>
-                            <span>کارشناس سئو</span>
-                        </div><div class="image">
-                            <img src="/Site/images/testimonials/ts-1.jpg" alt="Testimonials">
-                        </div>
-                    </div>
-                </div> <!-- single testimonial -->
-            </div>
-            <div class="col-lg-4">
-                <div class="single-testimonial white-bg mr-35">
-                    <div class="quote">
-                        <img src="/Site/images/testimonials/quote.png" alt="Icon">
-                    </div>
-                    <div class="content mb-30 text-right">
-                        <p>لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p>
-                    </div>
-                    <div class="author-name d-flex align-items-center">
-
-                        <div class="name pr-20 text-right">
-                            <h6>روگر میلان</h6>
-                            <span>کارشناس سئو</span>
-                        </div><div class="image">
-                            <img src="/Site/images/testimonials/ts-2.jpg" alt="Testimonials">
-                        </div>
-                    </div>
-                </div> <!-- single testimonial -->
-            </div>
-            <div class="col-lg-4">
-                <div class="single-testimonial white-bg mr-35">
-                    <div class="quote">
-                        <img src="/Site/images/testimonials/quote.png" alt="Icon">
-                    </div>
-                    <div class="content mb-30 text-right">
-                        <p>لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p>
-                    </div>
-                    <div class="author-name d-flex align-items-center">
-
-                        <div class="name pr-20 text-right">
-                            <h6>آلم میلر</h6>
-                            <span>کارشناس سئو</span>
-                        </div><div class="image">
-                            <img src="/Site/images/testimonials/ts-3.jpg" alt="Testimonials">
-                        </div>
-                    </div>
-                </div> <!-- single testimonial -->
-            </div>
-            <div class="col-lg-4">
-                <div class="single-testimonial white-bg mr-35">
-                    <div class="quote">
-                        <img src="/Site/images/testimonials/quote.png" alt="Icon">
-                    </div>
-                    <div class="content mb-30 text-right">
-                        <p>لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p>
-                    </div>
-                    <div class="author-name d-flex align-items-center">
-
-                        <div class="name pr-20 text-right">
-                            <h6>دیوید فالکر</h6>
-                            <span>کارشناس سئو</span>
-                        </div> <div class="image">
-                            <img src="/Site/images/testimonials/ts-2.jpg" alt="Testimonials">
-                        </div>
-                    </div>
-                </div> <!-- single testimonial -->
-            </div>
-        </div> <!-- row -->
-    </div> <!-- container -->
-</section>
-
-<!--====== TESTIMONIAL PART ENDS ======-->
-<!--====== COUNTER PART START ======-->
-
-<div class="counter-area bg_cover pt-40 pb-80" style="background-image: url(/Site/images/counter.jpg)" data-overlay="7">
-    <div class="container">
-        <div class="row no-gutters">
-            <div class="col-md-3 col-sm-6">
-                <div class="single-counter none d-flex justify-content-center mt-30">
-                    <div class="counter-content ">
-                        <span><span class="counter">19</span> +</span>
-                        <p>سال سابقه کار </p>
-                    </div>
-                </div> <!-- single counter -->
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="single-counter d-flex justify-content-center mt-30">
-                    <div class="counter-content">
-                        <span class="counter">2943</span>
-                        <p>مشتریان</p>
-                    </div>
-                </div> <!-- single counter -->
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="single-counter none-2 d-flex justify-content-center mt-30">
-                    <div class="counter-content">
-                        <span class="counter">943</span>
-                        <p>پروژه</p>
-                    </div>
-                </div> <!-- single counter -->
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="single-counter d-flex justify-content-center mt-30">
-                    <div class="counter-content">
-                        <span class="counter">120</span>
-                        <p>شریک</p>
-                    </div>
-                </div> <!-- single counter -->
-            </div>
-        </div> <!-- row -->
-    </div> <!-- container -->
 </div>
 
-<!--====== COUNTER PART ENDS ======-->
-<!--====== NEWS PART START ======-->
+<div class="team-area Std bg-image p-3 ">
+    <div class="row  justify-content-center ">
+        <div class="col-lg-4 col-md-6 mt-2">
+            <div class="single-features-card">
+                <div class="icon">
+                    <i class="flaticon-user-experience"></i>
+                </div>
+                <h3 style="color:white;">@_Localizer["International perspective"]</h3>
+            </div>
+        </div>
 
-<section class="news-area gray-bg pt-110 pb-115">
-    <div class="container text-right">
-        <div class="row">
-            <div class="col-lg-12 text-right">
-                <div class="section-title mb-40">
-                    <h6>اخبار ما</h6>
-                    <h2>آخرین اخبار را ببینید</h2>
-                </div> <!-- section title -->
-            </div>
-        </div> <!-- row -->
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="single-news mt-30">
-                    <div class="row align-items-center">
-                        <div class="col-sm-6 col-md-5 col-lg-6">
-                            <div class="news-image">
-                                <a href="blog-details.html"><img src="/Site/images/news/news-1.jpg" alt="News"></a>
-                            </div> <!-- news image -->
-                        </div>
-                        <div class="col-sm-6 col-md-7 col-lg-6">
-                            <div class="news-content">
-                                <h4 class="news-title mb-20"><a href="blog-details.html">تجارت خود را از قبل ایمن کنید</a></h4>
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-calendar"></i> 5 اسفند 398</a></li>
-                                    <li><a href="#"><i class="fa fa-comment-o"></i> 2 نظر</a></li>
-                                </ul>
-                                <p class="mt-20">لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p>
-                            </div> <!-- news content -->
-                        </div>
-                    </div>  <!-- row -->
-                </div> <!-- single news -->
-            </div>
-            <div class="col-lg-6">
-                <div class="single-news mt-30">
-                    <div class="row align-items-center">
-                        <div class="col-sm-6 col-md-5 col-lg-6">
-                            <div class="news-image">
-                                <a href="blog-details.html"><img src="/Site/images/news/news-2.jpg" alt="News"></a>
-                            </div> <!-- news image -->
-                        </div>
-                        <div class="col-sm-6 col-md-7 col-lg-6">
-                            <div class="news-content">
-                                <h4 class="news-title mb-20"><a href="blog-details.html">وقتی تجارت خود را شروع کردید دوبار فکر نکنید.</a></h4>
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-calendar"></i> 5 اسفند 398</a></li>
-                                    <li><a href="#"><i class="fa fa-comment-o"></i> 2 نظر</a></li>
-                                </ul>
-                                <p class="mt-20">لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p>
-                            </div> <!-- news content -->
-                        </div>
-                    </div>  <!-- row -->
-                </div> <!-- single news -->
-            </div>
-            <div class="col-lg-6">
-                <div class="single-news mt-30">
-                    <div class="row align-items-center">
-                        <div class="col-sm-6 col-md-5 col-lg-6">
-                            <div class="news-image">
-                                <a href="blog-details.html"><img src="/Site/images/news/news-3.jpg" alt="News"></a>
-                            </div> <!-- news image -->
-                        </div>
-                        <div class="col-sm-6 col-md-7 col-lg-6">
-                            <div class="news-content">
-                                <h4 class="news-title mb-20"><a href="blog-details.html">محاسبه را متوقف کنید وقتی هیچ چیزی نمی دانید</a></h4>
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-calendar"></i> 5 اسفند 398</a></li>
-                                    <li><a href="#"><i class="fa fa-comment-o"></i> 2 نظر</a></li>
-                                </ul>
-                                <p class="mt-20">لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p>
-                            </div> <!-- news content -->
-                        </div>
-                    </div>  <!-- row -->
-                </div> <!-- single news -->
-            </div>
-            <div class="col-lg-6">
-                <div class="single-news mt-30">
-                    <div class="row align-items-center">
-                        <div class="col-sm-6 col-md-5 col-lg-6">
-                            <div class="news-image">
-                                <a href="blog-details.html"><img src="/Site/images/news/news-4.jpg" alt="News"></a>
-                            </div> <!-- news image -->
-                        </div>
-                        <div class="col-sm-6 col-md-7 col-lg-6">
-                            <div class="news-content">
-                                <h4 class="news-title mb-15"><a href="blog-details.html">بزرگتر فکر می کند می تواند بزرگتر شود ...</a></h4>
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-calendar"></i> 5 اسفند 398</a></li>
-                                    <li><a href="#"><i class="fa fa-comment-o"></i> 2 نظر</a></li>
-                                </ul>
-                                <p class="mt-15">لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی استفاده می شود</p>
-                            </div> <!-- news content -->
-                        </div>
-                    </div>  <!-- row -->
-                </div> <!-- single news -->
-            </div>
-        </div> <!-- row -->
-    </div> <!-- container -->
-</section>
+        <div class="col-lg-4 col-md-6 mt-2">
+            <div class="single-features-card">
+                <div class="icon">
+                    <i class="flaticon-reliability"></i>
+                </div>
+                <h3 style="color:white;">@_Localizer["Guaranteed sales"]</h3>
 
-<!--====== NEWS PART ENDS ======-->
-<!--====== PATNEAR PART START ======-->
+            </div>
+        </div>
 
-<div class="partner-area pt-80 pb-80">
-    <div class="container">
-        <div class="partner-active">
-            <div class="single-partner">
-                <img src="/Site/images/partner/pt-1.png" alt="Patnear">
-            </div> <!-- single partner -->
-            <div class="single-partner">
-                <img src="/Site/images/partner/pt-2.png" alt="Patnear">
-            </div> <!-- single partner -->
-            <div class="single-partner">
-                <img src="/Site/images/partner/pt-3.png" alt="Patnear">
-            </div> <!-- single partner -->
-            <div class="single-partner">
-                <img src="/Site/images/partner/pt-4.png" alt="Patnear">
-            </div> <!-- single partner -->
-            <div class="single-partner">
-                <img src="/Site/images/partner/pt-5.png" alt="Patnear">
-            </div> <!-- single partner -->
-            <div class="single-partner">
-                <img src="/Site/images/partner/pt-1.png" alt="Patnear">
-            </div> <!-- single partner -->
-            <div class="single-partner">
-                <img src="/Site/images/partner/pt-2.png" alt="Patnear">
-            </div> <!-- single partner -->
-        </div> <!-- single active -->
-    </div> <!-- container -->
+        <div class="col-lg-4 col-md-6 mt-2">
+            <div class="single-features-card">
+                <div class="icon">
+                    <i class="flaticon-consumer-behavior"></i>
+                </div>
+                <h3 style="color:white;">@_Localizer["Account management"]</h3>
+            </div>
+        </div>
+    </div>
 </div>
 
-<!--====== PATNEAR PART ENDS ======-->
+<div class="container">
+
+
+    <div id="content" class=" mt-5 mb-5  " style="border:1px solid #b0b0b0; background-color:rgba(237 , 237, 237 ,0.4)">
+        <div class="row">
+            <div class="col-sm-12 col-lg-6">
+                <div class="latset-buy">
+                    <div class="latset-buy-title p-3">
+                        <span style="color:#035f95">
+                            @_Localizer["LatestProducts"]
+                        </span>
+                    </div>
+                    <div class="latset-buy-list">
+                        <ul>
+                            <li>
+                                <div class="latset-buy-link">
+
+                                    <a href="#">
+                                        <i class="flag-icon flag-icon-ir"> </i>ایران
+                                    </a>
+                                </div>
+                                <div class="latset-buy-text">
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                </div>
+                                <div class="latset-buy-date">
+                                    <a href="#">3 فروردین</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="latset-buy-link">
+
+                                    <a href="#">
+                                        <i class="flag-icon flag-icon-ru"> </i>روسیه
+                                    </a>
+                                </div>
+                                <div class="latset-buy-text">
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                </div>
+                                <div class="latset-buy-date">
+                                    <a href="#">3 فروردین</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="latset-buy-link">
+                                    <a href="#">
+                                        <i class="flag-icon flag-icon-fr"> </i>
+                                        فرانسه
+                                    </a>
+                                </div>
+                                <div class="latset-buy-text">
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                </div>
+                                <div class="latset-buy-date">
+                                    <a href="#">3 فروردین</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="latset-buy-link">
+
+                                    <a href="#">
+                                        <i class="flag-icon flag-icon-gb"> </i>انگلستان
+                                    </a>
+                                </div>
+                                <div class="latset-buy-text">
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                </div>
+                                <div class="latset-buy-date">
+                                    <a href="#">3 فروردین</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="latset-buy-link">
+
+                                    <a href="#">
+                                        <i class="flag-icon flag-icon-us"> </i>آمریکا
+                                    </a>
+                                </div>
+                                <div class="latset-buy-text">
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                </div>
+                                <div class="latset-buy-date">
+                                    <a href="#">3 فروردین</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="latset-buy-link">
+
+                                    <a href="#">
+                                        <i class="flag-icon flag-icon-ae"> </i>امارات
+                                    </a>
+                                </div>
+                                <div class="latset-buy-text">
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                </div>
+                                <div class="latset-buy-date">
+                                    <a href="#">3 فروردین</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="latset-buy-link">
+
+                                    <a href="#">
+                                        <i class="flag-icon flag-icon-de"> </i>آلمان
+                                    </a>
+                                </div>
+                                <div class="latset-buy-text">
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                </div>
+                                <div class="latset-buy-date">
+                                    <a href="#">3 فروردین</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="latset-buy-link">
+
+                                    <a href="#">
+                                        <i class="flag-icon flag-icon-cn"> </i>چین
+                                    </a>
+                                </div>
+                                <div class="latset-buy-text">
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                </div>
+                                <div class="latset-buy-date">
+                                    <a href="#">3 فروردین</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="latset-buy-link">
+
+                                    <a href="#">
+                                        <i class="flag-icon flag-icon-ae"> </i>امارات
+                                    </a>
+                                </div>
+                                <div class="latset-buy-text">
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                </div>
+                                <div class="latset-buy-date">
+                                    <a href="#">3 فروردین</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-6 mt-4 mt-lg-0">
+                <div class="latset-products">
+                    <div class="latset-products-title p-3">
+                        <span style="color:#035f95">@_Localizer["The latest purchase requests"]</span>
+                    </div>
+                    <div class="latset-products-list">
+                        <ul>
+                            <li>
+                                <div class="latset-products-link">
+
+                                    <a href="#">
+                                        <i class="flag-icon flag-icon-gb"> </i>انگلیس
+                                    </a>
+                                </div>
+                                <div class="latset-products-text">
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                </div>
+                                <div class="latset-products-date">
+                                    <a href="#">3 فروردین</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="latset-products-link">
+
+                                    <a href="#">
+                                        <i class="flag-icon flag-icon-ca"> </i>کانادا
+                                    </a>
+                                </div>
+                                <div class="latset-products-text">
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                </div>
+                                <div class="latset-products-date">
+                                    <a href="#">3 فروردین</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="latset-products-link">
+
+                                    <a href="#">
+                                        <i class="flag-icon flag-icon-ir"> </i>ایران
+                                    </a>
+                                </div>
+                                <div class="latset-products-text">
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                </div>
+                                <div class="latset-products-date">
+                                    <a href="#">3 فروردین</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="latset-products-link">
+
+                                    <a href="#">
+                                        <i class="flag-icon flag-icon-de"> </i>آلمان
+                                    </a>
+                                </div>
+                                <div class="latset-products-text">
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                </div>
+                                <div class="latset-products-date">
+                                    <a href="#">3 فروردین</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="latset-products-link">
+
+                                    <a href="#">
+                                        <i class="flag-icon flag-icon-cn"> </i>چین
+                                    </a>
+                                </div>
+                                <div class="latset-products-text">
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                </div>
+                                <div class="latset-products-date">
+                                    <a href="#">3 فروردین</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="latset-products-link">
+
+                                    <a href="#">
+                                        <i class="flag-icon flag-icon-ir"> </i>ایران
+                                    </a>
+                                </div>
+                                <div class="latset-products-text">
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                </div>
+                                <div class="latset-products-date">
+                                    <a href="#">3 فروردین</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="latset-products-link">
+
+                                    <a href="#">
+                                        <i class="flag-icon flag-icon-ru"> </i>روسیه
+                                    </a>
+                                </div>
+                                <div class="latset-products-text">
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                </div>
+                                <div class="latset-products-date">
+                                    <a href="#">3 فروردین</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="latset-products-link">
+
+                                    <a href="#">
+                                        <i class="flag-icon flag-icon-de"> </i>آلمان
+                                    </a>
+                                </div>
+                                <div class="latset-products-text">
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                </div>
+                                <div class="latset-products-date">
+                                    <a href="#">3 فروردین</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="latset-products-link">
+
+                                    <a href="#">
+                                        <i class="flag-icon flag-icon-ru"> </i>روسیه
+                                    </a>
+                                </div>
+                                <div class="latset-products-text">
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                </div>
+                                <div class="latset-products-date">
+                                    <a href="#">3 فروردین</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Start Services Area -->
+<div class="services-area bg-transparent bg-f9fafb   align-items-center justify-content-center text-center pt-100 pb-50">
+    <div class="container">
+        <div class="section-title-wrap">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <span style="font-size:18px; color:#035f95">@_Localizer["The highest number of sales offers"]</span>
+                </div>
+
+                <div class="col-lg-5 text-end">
+                    <a href="services.html" class="default-btn">@_Localizer["See More"]</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-12">
+            <div class="container-fluid slider">
+                <div class="container">
+
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a href="services-details.html">
+                                    <div class="icon">
+                                        <i class="iconExp flaticon-tools"></i>
+                                    </div>
+                                    <div class="services-content">
+                                        <h5>
+                                            <span class="odometer" data-count="1872">00</span>
+                                            <span class="small-text">+</span>
+                                        </h5>
+                                        <p>@_Localizer["tar"]</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="services-details.html">
+                                    <div class="icon">
+                                        <i class="iconExp flaticon-commercial-structures"></i>
+                                    </div>
+                                    <div class="services-content">
+                                        <h5>
+                                            <span class="odometer" data-count="563">00</span>
+                                            <span class="small-text">+</span>
+                                        </h5>
+                                        <p>@_Localizer["Corn"]</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="services-details.html">
+                                    <div class="icon">
+                                        <i class="iconExp flaticon-repair"></i>
+                                    </div>
+                                    <div class="services-content">
+                                        <h5>
+                                            <span class="odometer" data-count="2365">00</span>
+                                            <span class="small-text">+</span>
+                                        </h5>
+                                        <p>@_Localizer["Sugar"]</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination "></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<!-- End Services Area -->
+<div class="container ">
+    <div class="row align-items-center justify-content-center pt-100 pb-50">
+        <div class="col-md-1 "></div>
+        <div class="col-md-5 ">
+            <a>
+                <img src="img/popular-banner1.jpg" alt="image">
+            </a>
+        </div>
+        <div class="col-md-5 ">
+            <a>
+                <img src="img/3aa84309e607e860207c82c13f67b194.jpg" alt="image">
+            </a>
+        </div>
+        <div class="col-md-1 "></div>
+    </div>
+</div>
+
+
+<div class="services-area bg-transparent bg-f9fafb   align-items-center justify-content-center text-center pt-100 pb-50">
+    <div class="container">
+        <div class="section-title-wrap">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <span style="font-size:18px; color:#035f95">@_Localizer["Maximum number of purchase requests"]</span>
+                </div>
+
+                <div class="col-lg-5 text-end">
+                    <a href="services.html" class="default-btn">@_Localizer["See More"]</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="container-fluid slider">
+                <div class="container">
+
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a href="services-details.html">
+                                    <div class="icon">
+                                        <i class="iconExp flaticon-tools"></i>
+                                    </div>
+                                    <div class="services-content">
+                                        <h5>
+                                            <span class="odometer" data-count="1872">00</span>
+                                            <span class="small-text">+</span>
+                                        </h5>
+                                        <p>@_Localizer["tar"]</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="services-details.html">
+                                    <div class="icon">
+                                        <i class="iconExp flaticon-commercial-structures"></i>
+                                    </div>
+                                    <div class="services-content">
+                                        <h5>
+                                            <span class="odometer" data-count="563">00</span>
+                                            <span class="small-text">+</span>
+                                        </h5>
+                                        <p>@_Localizer["Corn"]</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="services-details.html">
+                                    <div class="icon">
+                                        <i class="iconExp flaticon-repair"></i>
+                                    </div>
+                                    <div class="services-content">
+                                        <h5>
+                                            <span class="odometer" data-count="2365">00</span>
+                                            <span class="small-text">+</span>
+                                        </h5>
+                                        <p>@_Localizer["Sugar"]</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination "></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="pricing-area bg-f9fafb pt-100 pb-75">
+    <div class="container">
+        <div class="section-title-wrap">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <h4 class="textcol">@_Localizer["Membership plan"]</h4>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-3 col-md-4">
+                <div class="single-pricing-box bg-image">
+                    <div class="pricing-header">
+                        <h5 class="hColorFon">@_Localizer["Normal"]</h5>
+                        <div class="price ">@_Localizer["Free"]</div>
+                    </div>
+
+                    <ul class="pricing-features">
+                        <li><i class="ri-check-line"></i> @_Localizer["Landline phone number"]</li>
+
+                        <li><i class="ri-check-line"></i> @_Localizer["Mobile"]</li>
+
+                        <li><i class="ri-check-line"></i> @_Localizer["Email"]</li>
+
+                        <li><i class="ri-check-line"></i> @_Localizer["Social Medias Links"]</li>
+
+                        <li><i class="ri-check-line"></i> @_Localizer["Site Link"]</li>
+
+                        <li><i class="ri-check-line"></i> @_Localizer["Address"]</li>
+                    </ul>
+
+                    <div class="pricing-btn  text-center">
+                        <a href="contact.html" class="default-btn">@_Localizer["Buy a subscription"]</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4">
+                <div class="single-pricing-box bg-image">
+                    <div class="pricing-header">
+                        <h5 class="hColorFon">@_Localizer["Bronze"]</h5>
+                        <div class="price">3100 $ </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="ri-check-line"></i> @_Localizer["Landline phone number"]</li>
+
+                        <li><i class="ri-check-line"></i> @_Localizer["Mobile"]</li>
+
+                        <li><i class="ri-check-line"></i> @_Localizer["Email"]</li>
+
+                        <li><i class="ri-check-line"></i> @_Localizer["Social Medias Links"]</li>
+
+                        <li><i class="ri-check-line"></i> @_Localizer["Site Link"]</li>
+
+                        <li><i class="ri-check-line"></i> @_Localizer["Address"]</li>
+                    </ul>
+
+                    <div class="pricing-btn text-center">
+                        <a href="contact.html" class="default-btn">@_Localizer["Buy a subscription"]</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4">
+                <div class="single-pricing-box bg-image">
+                    <div class="pricing-header">
+                        <h5 class="hColorFon">@_Localizer["silver"]</h5>
+                        <div class="price">5100 $ </div>
+                    </div>
+
+                    <ul class="pricing-features">
+                        <li><i class="ri-check-line"></i> @_Localizer["Landline phone number"]</li>
+
+                        <li><i class="ri-check-line"></i> @_Localizer["Mobile"]</li>
+
+                        <li><i class="ri-check-line"></i> @_Localizer["Email"]</li>
+
+                        <li><i class="ri-check-line"></i> @_Localizer["Social Medias Links"]</li>
+
+                        <li><i class="ri-check-line"></i> @_Localizer["Site Link"]</li>
+
+                        <li><i class="ri-check-line"></i> @_Localizer["Address"]</li>
+                    </ul>
+
+                    <div class="pricing-btn text-center">
+                        <a href="contact.html" class="default-btn">@_Localizer["Buy a subscription"]</a>
+                    </div>
+                </div>
+            </div><div class="col-lg-3 col-md-4">
+                <div class="single-pricing-box bg-image">
+                    <div class="pricing-header">
+                        <h5 class="hColorFon">@_Localizer["Golden"]</h5>
+                        <div class="price">7100 $ </div>
+                    </div>
+
+                    <ul class="pricing-features">
+                        <li><i class="ri-check-line"></i> @_Localizer["Landline phone number"]</li>
+
+                        <li><i class="ri-check-line"></i> @_Localizer["Mobile"]</li>
+
+                        <li><i class="ri-check-line"></i> @_Localizer["Email"]</li>
+
+                        <li><i class="ri-check-line"></i> @_Localizer["Social Medias Links"]</li>
+
+                        <li><i class="ri-check-line"></i> @_Localizer["Site Link"]</li>
+
+                        <li><i class="ri-check-line"></i> @_Localizer["Address"]</li>
+                    </ul>
+
+                    <div class="pricing-btn text-center">
+                        <a href="contact.html" class="default-btn">@_Localizer["Buy a subscription"]</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="shop-area  align-items-center justify-content-center text-center pt-75 pb-50">
+    <div class="container">
+        <div class="section-title-wrap">
+            <div class="row align-items-center">
+                <div class="col-lg-12 ">
+                    <h4 class="textcol">@_Localizer["Our suggestions"]</h4>
+
+                </div>
+
+                <div class="col-lg-5 text-end">
+                    <div class="shop-list-tabs">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="new-products-tab" data-bs-toggle="tab" href="#popular-products" role="tab" aria-controls="new-products">@_Localizer["Sales offers"]</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="popular-products-tab" data-bs-toggle="tab" href="#new-products" role="tab" aria-controls="popular-products">@_Localizer["Purchase requests"]</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="new-products" role="tabpanel">
+                <div class="container-fluid slider" style="margin-top: 50px;">
+                    <div class="container">
+                        <div class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="single-shop-card2">
+                                        <div class="shop-image2">
+                                            <a href="shop-details.html"><img class="img-fluid" src="assets/images/services/Product1.jpeg" alt="image"></a>
+                                        </div>
+                                        <div class="shop-content justify-content-center text-center ">
+                                            <h5>
+                                                <a class="hfona" href="shop-details.html">زعفران قائنات</a>
+                                            </h5>
+                                            <span>1900 تومان</span>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="single-shop-card2">
+                                        <div class="shop-image2">
+                                            <a href="shop-details.html"><img class="img-fluid" src="assets/images/services/Product2.jpeg" alt="image"></a>
+                                        </div>
+                                        <div class="shop-content justify-content-center text-center ">
+                                            <h5 class="hfona">
+                                                <a class="hfona" href="shop-details.html">دستگاه تصفیه هوا</a>
+                                            </h5>
+                                            <span>1900 تومان</span>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="single-shop-card2">
+                                        <div class="shop-image2">
+                                            <a href="shop-details.html"><img class="img-fluid" src="assets/images/services/Product3.jpeg" alt="image"></a>
+                                        </div>
+                                        <div class="shop-content justify-content-center text-center ">
+                                            <h5 class="hfona">
+                                                <a class="hfona" href="shop-details.html">دستگاه تصفیه هوا</a>
+                                            </h5>
+                                            <span>1900 تومان</span>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="single-shop-card2">
+                                        <div class="shop-image2">
+                                            <a href="shop-details.html"><img class="img-fluid" src="assets/images/services/Product1.jpeg" alt="image"></a>
+                                        </div>
+                                        <div class="shop-content justify-content-center text-center ">
+                                            <h5 class="hfona">
+                                                <a class="hfona" href="shop-details.html">دستگاه تصفیه هوا</a>
+                                            </h5>
+                                            <span>1900 تومان</span>
+
+                                            5
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="single-shop-card2">
+                                        <div class="shop-image2">
+                                            <a href="shop-details.html"><img class="img-fluid" src="assets/images/services/Product2.jpeg" alt="image"></a>
+                                        </div>
+                                        <div class="shop-content justify-content-center text-center  ">
+                                            <h5 class="hfona">
+                                                <a class="hfona" href="shop-details.html">دستگاه تصفیه هوا</a>
+                                            </h5>
+                                            <span>1900 تومان</span>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="popular-products" role="tabpanel">
+                <div class="container-fluid slider" style="margin-top: 50px;">
+                    <div class="container">
+                        <div class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="single-shop-card2">
+                                        <div class="shop-image2">
+                                            <a href="shop-details.html"><img class="img-fluid" src="assets/images/services/Service1.jpeg" alt="image"></a>
+                                        </div>
+                                        <div class="shop-content justify-content-center text-center ">
+                                            <h5>
+                                                <a class="hfona" href="shop-details.html">زعفران قائنات</a>
+                                            </h5>
+                                            <span>1900 تومان</span>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="single-shop-card2">
+                                        <div class="shop-image2">
+                                            <a href="shop-details.html"><img class="img-fluid" src="assets/images/services/Service2.jpeg" alt="image"></a>
+                                        </div>
+                                        <div class="shop-content justify-content-center text-center ">
+                                            <h5 class="hfona">
+                                                <a class="hfona" href="shop-details.html">دستگاه تصفیه هوا</a>
+                                            </h5>
+                                            <span>1900 تومان</span>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="single-shop-card2">
+                                        <div class="shop-image2">
+                                            <a href="shop-details.html"><img class="img-fluid" src="assets/images/services/Service3.jpeg" alt="image"></a>
+                                        </div>
+                                        <div class="shop-content justify-content-center text-center ">
+                                            <h5 class="hfona">
+                                                <a class="hfona" href="shop-details.html">دستگاه تصفیه هوا</a>
+                                            </h5>
+                                            <span>1900 تومان</span>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="single-shop-card2">
+                                        <div class="shop-image2">
+                                            <a href="shop-details.html"><img class="img-fluid" src="assets/images/services/Service1.jpeg" alt="image"></a>
+                                        </div>
+                                        <div class="shop-content justify-content-center text-center ">
+                                            <h5 class="hfona">
+                                                <a class="hfona" href="shop-details.html">دستگاه تصفیه هوا</a>
+                                            </h5>
+                                            <span>1900 تومان</span>
+
+                                            5
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="single-shop-card2">
+                                        <div class="shop-image2">
+                                            <a href="shop-details.html"><img class="img-fluid" src="assets/images/services/Service2.jpeg" alt="image"></a>
+                                        </div>
+                                        <div class="shop-content justify-content-center text-center  ">
+                                            <h5 class="hfona">
+                                                <a class="hfona" href="shop-details.html">دستگاه تصفیه هوا</a>
+                                            </h5>
+                                            <span>1900 تومان</span>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row mt-1 p-3 text-center  ">
+    <div class="col-md-12 p-4">
+        <h4 class="widget-title textcol">  @_Localizer["ourcountryportals"] </h4>
+    </div>
+    <div class="col-md-1 col-sm-4 text-center p-2 ">
+        <a href="/Home">
+            <i class="flag-icon flag-icon-ir  " title="@_Localizer["Iran"]" style="font-size:48px ;"> </i>
+        </a>
+    </div>
+
+
+    <div class="col-md-1 col-sm-4 text-center p-2">
+        <a href="/Home">
+            <i class="flag-icon flag-icon-ca  " title="@_Localizer["Canada"]" style="font-size:48px ;"> </i>
+        </a>
+    </div>
+
+    <div class="col-md-1 col-sm-4 text-center p-2">
+        <a href="/Home">
+            <i class="flag-icon flag-icon-cn" title="@_Localizer["China"]" style="font-size:48px ;"> </i>
+        </a>
+    </div>
+
+    <div class="col-md-1 col-sm-4  text-center p-2">
+        <a href="/Home">
+            <i class="flag-icon flag-icon-gb" title="@_Localizer["United Kingdom"]" style="font-size:48px ;"> </i>
+        </a>
+    </div>
+
+    <div class="col-md-1 col-sm-4  text-center p-2">
+        <a href="/Home">
+            <i class="flag-icon flag-icon-ru" title="@_Localizer["Russia"]" style="font-size:48px ;"> </i>
+        </a>
+    </div>
+
+    <div class="col-md-1 col-sm-4  text-center p-2">
+        <a href="/Home">
+            <i class="flag-icon flag-icon-fr" title="@_Localizer["France"]" style="font-size:48px ;"> </i>
+        </a>
+    </div>
+
+    <div class="col-md-1 col-sm-4  text-center p-2">
+        <a href="/Home">
+            <i class="flag-icon flag-icon-de" title="@_Localizer["Germany"]" style="font-size:48px ;"> </i>
+        </a>
+    </div>
+
+    <div class="col-md-1 col-sm-4  text-center p-2">
+        <a href="/Home">
+            <i class="flag-icon flag-icon-fi" title="@_Localizer["Finland"]" style="font-size:48px ;"> </i>
+        </a>
+    </div>
+
+    <div class="col-md-1 col-sm-4  text-center p-2">
+        <a href="/Home">
+            <i class="flag-icon flag-icon-kw" title="@_Localizer["Kuwait"]" style="font-size:48px ;"> </i>
+        </a>
+    </div>
+
+    <div class="col-md-1 col-sm-4  text-center p-2">
+        <a href="/Home">
+            <i class="flag-icon flag-icon-kr" title="@_Localizer["South Korea"]" style="font-size:48px ;"> </i>
+        </a>
+    </div>
+
+    <div class="col-md-1 col-sm-4  text-center p-2">
+        <a href="/Home">
+            <i class="flag-icon flag-icon-in" title="@_Localizer["India"]" style="font-size:48px ;"> </i>
+        </a>
+    </div>
+
+    <div class="col-md-1 col-sm-4  text-center p-2">
+        <a href="/Home">
+            <i class="flag-icon flag-icon-us" title="@_Localizer["America"]" style="font-size:48px ;"> </i>
+        </a>
+    </div>
+</div>
+
+<script src="assets\js\app.js"></script>

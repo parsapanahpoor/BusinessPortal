@@ -22,12 +22,15 @@ namespace BusinessPortal.Domain.ViewModels.Admin.State
         public ulong StateId { get; set; }
 
         public ulong? ParentId { get; set; }
+
+        public string? IconeName { get; set; }
     }
 
     public enum EditStateResult
     {
         Success,
         Fail,
-        UniqNameIsExist
+        UniqNameIsExist,
+        ImageNotfound
     }
 }

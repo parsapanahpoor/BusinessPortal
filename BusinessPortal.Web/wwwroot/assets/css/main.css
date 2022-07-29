@@ -1,0 +1,146 @@
+
+
+#content .latset-buy .latset-buy-title span {
+    font-weight: bold;
+    color: #ff6600;
+    font-size: 20px;
+}
+
+#content .latset-buy .latset-buy-list {
+    border: 1px solid #ececec;
+    height: 220px;
+    overflow-y: scroll;
+    scrollbar-width: none
+}
+
+    #content .latset-buy .latset-buy-list::-webkit-scrollbar {
+        display: none
+    }
+
+    #content .latset-buy .latset-buy-list ul li {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        padding: 7px
+    }
+
+        #content .latset-buy .latset-buy-list ul li:nth-child(odd) {
+            background-color: #eeeff1
+        }
+
+        #content .latset-buy .latset-buy-list ul li .latset-buy-link a {
+            color: #3043ee;
+            -webkit-transition: all 0.4s ease;
+            transition: all 0.4s ease
+        }
+
+            #content .latset-buy .latset-buy-list ul li .latset-buy-link a:hover {
+                color: #fd5b03
+            }
+
+        #content .latset-buy .latset-buy-list ul li .latset-buy-text {
+            border-right: 1px solid #dfe0e2;
+            padding: 0 10px
+        }
+
+            #content .latset-buy .latset-buy-list ul li .latset-buy-text p {
+                color: #8286a1
+            }
+
+        #content .latset-buy .latset-buy-list ul li .latset-buy-date {
+            border-right: 1px solid #dfe0e2;
+            padding: 0 10px
+        }
+
+            #content .latset-buy .latset-buy-list ul li .latset-buy-date a {
+                color: #555;
+                -webkit-transition: all 0.4s ease;
+                transition: all 0.4s ease
+            }
+
+                #content .latset-buy .latset-buy-list ul li .latset-buy-date a:hover {
+                    color: #fe636a
+                }
+
+#content .latset-products .latset-products-title span {
+    font-weight: bold;
+    color: #ff6600;
+    font-size: 20px;
+}
+
+#content .latset-products .latset-products-list {
+    border: 1px solid #ececec;
+    height: 220px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+    #content .latset-products .latset-products-list::-webkit-scrollbar {
+        display: none
+    }
+
+    #content .latset-products .latset-products-list ul li {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        padding: 7px
+    }
+
+        #content .latset-products .latset-products-list ul li:nth-child(odd) {
+            background-color: #eeeff1
+        }
+
+        #content .latset-products .latset-products-list ul li .latset-products-link a {
+            color: #3043ee;
+            -webkit-transition: all 0.4s ease;
+            transition: all 0.4s ease
+        }
+
+            #content .latset-products .latset-products-list ul li .latset-products-link a:hover {
+                color: #fd5b03
+            }
+
+        #content .latset-products .latset-products-list ul li .latset-products-text {
+            border-right: 1px solid #dfe0e2;
+            padding: 0 10px
+        }
+
+            #content .latset-products .latset-products-list ul li .latset-products-text p {
+                color: #8286a1
+            }
+
+        #content .latset-products .latset-products-list ul li .latset-products-date {
+            border-right: 1px solid #dfe0e2;
+            padding: 0 10px
+        }
+
+            #content .latset-products .latset-products-list ul li .latset-products-date a {
+                color: #555;
+                -webkit-transition: all 0.4s ease;
+                transition: all 0.4s ease
+            }
+
+                #content .latset-products .latset-products-list ul li .latset-products-date a:hover {
+                    color: #fe636a
+                }
+/*# sourceMappingURL=main.css.map */

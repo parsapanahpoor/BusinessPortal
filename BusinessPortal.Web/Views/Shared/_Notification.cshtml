@@ -1,27 +1,27 @@
 ﻿@if (TempData["SuccessMessage"] != null)
 {
     <script>
-        ShowMessage("اعلان", "@TempData["SuccessMessage"]", "success");
+        ShowMessage("", "@TempData["SuccessMessage"]", "success");
     </script>
 }
 
 @if (TempData["ErrorMessage"] != null)
 {
     <script>
-        ShowMessage("خطا", "@TempData["ErrorMessage"]", "error");
+        ShowMessage("", "@TempData["ErrorMessage"]", "error");
     </script>
 }
 
 @if (TempData["InfoMessage"] != null)
 {
     <script>
-        ShowMessage("اعلان", "@TempData["InfoMessage"]", "info");
+        ShowMessage("", "@TempData["InfoMessage"]", "info");
     </script>
 }
 
 @if (TempData["WarningMessage"] != null)
 {
     <script>
-        ShowMessage("هشدار", "@TempData["WarningMessage"]", "warning");
+        ShowMessage("", "@TempData["WarningMessage"]", "warning");
     </script>
 }

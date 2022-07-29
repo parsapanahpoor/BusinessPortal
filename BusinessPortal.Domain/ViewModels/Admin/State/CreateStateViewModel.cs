@@ -26,6 +26,7 @@ namespace BusinessPortal.Domain.ViewModels.Admin.State
     {
         Success,
         Fail,
-        UniqNameIsExist
+        UniqNameIsExist,
+        ImageNotFound
     }
 }

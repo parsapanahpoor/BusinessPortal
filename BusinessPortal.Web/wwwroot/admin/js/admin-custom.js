@@ -346,3 +346,34 @@ function ChangeRequestCertificateFinalState(id) {
 }
 
 //#endregion
+
+//#region ShowAdvertisementLanguages
+
+function ShowAdvertisementLanguage(adsId) {
+
+    console.log(adsId);
+
+    $.ajax({
+        url: "/Admin/Advertisement/ShowAdvertisementLanguage",
+        type: "Get",
+        data: {
+            adsId: adsId
+        },
+        beforeSend: function () {
+            open_waiting();
+        },
+        success: function (response) {
+            close_waiting();
+            var modalTitle = " نمایش ریز اطلاعات آگهی";
+            $("#NormalModalTitle").html(modalTitle);
+            $("#NormalModalBody").html(response);
+            $("#NormalModal").modal("show");
+        },
+        error: function () {
+            close_waiting();
+            ShowMessage("خطا", "عملیات با خطا مواجه شد لطفا مجدد تلاش کنید .", "error");
+        }
+    });
+}
+
+//#endregion

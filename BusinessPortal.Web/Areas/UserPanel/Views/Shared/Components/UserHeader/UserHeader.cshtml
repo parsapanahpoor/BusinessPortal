@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _Localizer
+@using System.Globalization
+
+<div class="header">
+    <div class="header-content">
+        <nav class="navbar navbar-expand">
+            <div class="collapse navbar-collapse justify-content-between">
+          
+                                            @await Component.InvokeAsync("LanguagesComponent")
+
+                <ul class="navbar-nav header-right">
+                  
+                    <li class="nav-item dropdown header-profile">
+                        <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                            <img src="/UserPanel/images/profile/pic1.png" width="20" alt="" />
+                            <div class="header-info">
+                                <span>@_Localizer["Hello"] <strong> @User.Identity.Name  </strong></span>
+                                <small>@_Localizer["User"]  </small>
+                            </div>
+                        </a>
+
+                    </li>
+                  
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>

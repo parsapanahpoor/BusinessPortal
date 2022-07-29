@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Academy.Application.Security
+namespace BusinessPortal.Application.Security
 {
     public class PermissionChecker : AuthorizeAttribute, IAuthorizationFilter
     {

@@ -1,0 +1,212 @@
+﻿@model BusinessPortal.Domain.ViewModels.UserPanel.Advertisement.FilterRequestAdvertisementViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _Localizer
+@using System.Globalization
+
+@{
+    ViewData["Title"] = @_Localizer["PageTitle"];
+}
+
+@using BusinessPortal.Application.Utils
+@using BusinessPortal.Domain.ViewModels.UserPanel.Advertisement
+@using BusinessPortal.Domain.Entities.Advertisement
+@using BusinessPortal.Domain.ViewModels.Common
+@using BusinessPortal.Application.Extensions
+@using BusinessPortal.Application.StaticTools
+@using BusinessPortal.Application.Convertors
+
+@section scripts{
+
+}
+
+<div class="content-body" style="min-height: 908px; margin-right:0px ; padding-top:0px;">
+    <div class="container-fluid">
+
+        <form method="get" asp-area="UserPanel" asp-controller="Advertisement" asp-action="Index" id="filter-form">
+            <div class="row">
+
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">@_Localizer["Filters"]</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="basic-form">
+                                <form method="get" asp-area="Admin" asp-controller="Advertisement" asp-action="Index" id="filter-form">
+                                    <input type="hidden" asp-for="Page" id="PageId" />
+
+                                    <div class="form-group col-md-12">
+                                        <label asp-for="Title">@_Localizer["Title"] </label>
+                                        <input type="text" asp-for="Title" class="form-control" placeholder="@_Localizer["AdvertisementTitlePlaceHolder"]">
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <label asp-for="Description"> @_Localizer["Description"]  </label>
+                                        <input type="text" asp-for="Description" class="form-control" placeholder="@_Localizer["AdvertisementDescriptionPlaceHolder"] ">
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <label asp-for="AdsUrl">@_Localizer["URL"]  </label>
+                                        <input type="text" asp-for="AdsUrl" class="form-control" placeholder="@_Localizer["AdvertisementURLPlaceHolder"]">
+                                    </div>
+@*
+                                    <div class="form-group col-md-12">
+                                        <label asp-for="FilterRequestAdvertisementOrder">@_Localizer["CreateDate"] </label>
+                                        <select asp-for="FilterRequestAdvertisementOrder" class="form-control">
+                                            @foreach (var advertisementAdminDateOrder in Enum.GetValues<FilterRequestAdvertisementOrder>().ToList())
+                                            {
+                                                if (Model.FilterRequestAdvertisementOrder == advertisementAdminDateOrder)
+                                                {
+                                                    <option selected="" value="@advertisementAdminDateOrder">@advertisementAdminDateOrder.GetEnumName()</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@advertisementAdminDateOrder">@advertisementAdminDateOrder.GetEnumName()</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>*@
+
+                                    <div class="d-flex justify-content-start mt-4">
+                                        <button class="btn btn-success mr-3" type="submit">@_Localizer["SubmitFilter"]</button>
+                                        @if (Context.Request.QueryString.HasValue)
+                                        {
+                                            <a class="btn btn-danger" asp-area="UserPanel" asp-controller="Advertisement" asp-action="Index">@_Localizer["DeleteFilter"] </a>
+                                        }
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between">
+                            <div class="d-flex">
+                                <h4 class="card-title mr-3">
+                                    @ViewData["Title"]
+                                </h4>
+                                <span>@Model.GetShownEntitiesPagesTitle()</span>
+
+                            </div>
+
+                            <a asp-area="UserPanel" asp-controller="Advertisement" asp-action="CreateAdvertisement" title="@_Localizer["Create"]" class="btn btn-rounded btn-primary"><span class="btn-icon-left text-primary"><i class="fa fa-plus color-primary"></i></span>@_Localizer["Create"]</a>
+
+                        </div>
+                        <div class="card-body">
+                            @if (Model.Entities != null && Model.Entities.Any())
+                            {
+                                <div class="table-responsive">
+                                    <table class="table table-responsive-md">
+                                        <thead>
+                                            <tr>
+                                                <th class="tc"><strong>  @_Localizer["Image"]</strong></th>
+                                                <th class="tc"><strong>@_Localizer["Languages"]   </strong></th>
+                                                <th class="tc"><strong>@_Localizer["State"] </strong></th>
+                                                <th class="tc"><strong> @_Localizer["StartDate"] </strong></th>
+                                                <th class="tc"><strong>@_Localizer["EndDate"] </strong></th>
+                                                <th class="tc"><strong></strong></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.Entities)
+                                            {
+                                                <tr id="ajax-url-item-@item.Id">
+                                                    <td class="tc">
+                                                        <img style="border-radius:50%;height:70px;width:70px" src="@((string.IsNullOrEmpty(item.ImageName))? PathTools.DefaultAdvertisementimage : PathTools.AdvertisementOriginimage + item.ImageName )" />
+                                                    </td>
+                                                    <td class="tc">
+                                                        @if (item.AdvertisementInfo != null && item.AdvertisementInfo.Any())
+                                                        {
+                                                            foreach (var langs in item.AdvertisementInfo)
+                                                            {
+                                                                <div class="badge light badge-dark cursor-pointer">@langs.Language.LanguageTitle</div>
+                                                            }
+                                                        }
+                                                    </td>
+                                                    <td class="tc">
+                                                        @if (item.EndDate.HasValue && item.EndDate.Value < DateTime.Now)
+                                                        {
+                                                            <a class="badge light badge-dark cursor-pointer">@_Localizer["Expire"]  </a>
+                                                        }
+                                                        else
+                                                        {
+                                                            @if (item.AdvertisementStatus == AdvertisementStatus.Active)
+                                                            {
+                                                                <a class="badge light badge-success cursor-pointer">@_Localizer["Accept"]</a>
+                                                            }
+                                                            @if (item.AdvertisementStatus == AdvertisementStatus.NotApproved)
+                                                            {
+                                                                <a class="badge light badge-danger cursor-pointer">@_Localizer["Reject"]</a>
+                                                            }
+                                                            @if (item.AdvertisementStatus == AdvertisementStatus.WaitigForConfirm)
+                                                            {
+                                                                <a class="badge light badge-warning cursor-pointer">@_Localizer["WaitingForConfirm"]</a>
+                                                            }
+                                                        }
+
+                                                    </td>
+
+                                                    <td class="tc">
+                                                        @if (item.StartDate != null)
+                                                        {
+                                                            <div class="badge light badge-warning cursor-pointer">@item.StartDate.Value.ToShortDateString()</div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="badge light badge-dark cursor-pointer">@_Localizer["NotSpecified"]</div>
+                                                        }
+                                                    </td>
+                                                    <td class="tc">
+                                                        @if (item.EndDate != null)
+                                                        {
+                                                            <div class="badge light badge-warning cursor-pointer">@item.EndDate.Value.ToShortDateString()</div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="badge light badge-dark cursor-pointer">@_Localizer["NotSpecified"]</div>
+                                                        }
+                                                    </td>
+
+
+                                                    <td class="tc">
+                                                        @if (item.AdvertisementStatus != AdvertisementStatus.Active)
+                                                        {
+                                                            @if (item.AdvertisementInfo.Any(p => p.Lang_Id == CultureInfo.CurrentCulture.Name))
+                                                            {
+                                                                <a title="@_Localizer["Edit"]" asp-area="UserPanel" asp-controller="Advertisement" asp-action="EditAdvertisement" asp-route-Id="@item.Id" class="btn btn-warning shadow btn-xs sharp m-1"><i class="fa fa-edit"></i></a>
+                                                            }
+                                                            else
+                                                            {
+                                                                <a title="@_Localizer["EditLanguage"]" asp-area="UserPanel" asp-controller="Advertisement" asp-action="EditAdvertisement" asp-route-Id="@item.Id" class="btn btn-success shadow btn-xs sharp m-1"><i class="fa fa-edit"></i></a>
+                                                            }
+                                                        }
+                                                        @if (!item.IsDelete)
+                                                        {
+                                                            <a ajax-url-button="@item.Id" title="@_Localizer["Delete"]" asp-area="UserPanel" asp-controller="Advertisement" asp-action="DeleteRequestAdvertisement" asp-route-id="@item.Id" class="btn btn-danger shadow btn-xs sharp m-1"><i class="fa fa-trash"></i></a>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <partial name="_UserPagingPartial" model="Model.GetCurrentPaging()" />
+                            }
+                            else
+                            {
+                                <partial name="_NoItemFoundPartial" />
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+</div>
+
+

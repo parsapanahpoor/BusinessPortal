@@ -1,0 +1,111 @@
+﻿@model List<BusinessPortal.Domain.ViewModels.Admin.Dashboard.LastestWaitingCustomersAdvertisements>
+
+@using BusinessPortal.Domain.ViewModels.Common
+@using BusinessPortal.Application.StaticTools
+@using BusinessPortal.Application.Extensions
+@using BusinessPortal.Application.Convertors
+
+
+<div class="col-lg-12 col-md-12 col-xl-12 col-sm-12 col-xs-12">
+
+    <div class="widget">
+        <div class="widget-header">
+            <i class="widget-icon  glyphicon glyphicon-home"></i>
+            <span class="widget-caption"> آخرین آگهی های درخواستی در حال برسی    </span>
+            <div class="widget-buttons">
+                <div class="row">
+
+                    @if (Model != null && Model.Any())
+
+                    {
+                        <a id="ShowUserCommentInAdminPanel" asp-area="Admin" asp-controller="Advertisement" asp-action="index" class="badge badge-info">نمایش همه</a>
+                    }
+
+                    <a id="ShowUserCommentInAdminPanelMinus" href="#" data-toggle="collapse">
+                        <i class="fa fa-minus"></i>
+                    </a>
+
+                </div>
+            </div><!--Widget Buttons-->
+        </div><!--Widget Header-->
+        <div class="widget-body">
+            @if (Model != null && Model.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered tc vm">
+                        <thead class="tc vm">
+                            <tr class="tc vm">
+                                <th class="tc vm">
+                                    تصویر 
+                                </th> 
+                                <th class="tc vm">
+                                    اطلاعات کاربر
+                                </th>
+                                <th class="tc vm">
+                                    اطلاعات مکانی
+                                </th>
+                                <th class="tc vm">
+                                    وضعیت
+                                </th>
+                                <th class="tc vm">
+                                    تاریخ
+                                </th>
+                                <th class="tc vm">
+                                    امکانات
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="tc vm">
+                            @foreach (var ads in Model)
+                            {
+                                <tr class="tc vm" remove-ajax-item="@ads.AdvertisementId">
+                                      <td class="tc vm">
+                                        <img class="AdvertisementImage" src="@PathTools.AdvertisementThumbimage@ads.AdvertisementImage" />
+                                    </td>
+                                    <td class="vm">
+                                        <div class="flex-style-center">
+                                            <div class="mr-10px">
+                                                <span>نام کاربری : @ads.Customer.Username</span>
+                                                <hr class="margin-7" />
+                                                <span>موبایل : @ads.Customer.Mobile</span>
+                                                <hr class="margin-7" />
+                                                <span> ایمیل کاربری: @ads.Customer.Email</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="tc vm">
+                                        <img style="height: 25px;width: 25px;" src="@PathTools.Stateimage@ads.AdvertisementAddress.LocationCountry.IconeName" />
+                                        <p>نام کشور : @ads.AdvertisementAddress.LocationCountry.Title   </p>
+
+                                    </td>
+                                    <td class="tc vm">
+                                        <p class="flex-style-center">
+                                            <span> وضعیت </span>
+                                            <span class="mr-8px label label-orange">در انتظار برسی </span>
+                                        </p>
+                                    </td>
+                                    <td class="tc vm">
+                                        <p class="flex-style-center">
+                                            @ads.CreateDate.ToStringShamsiDate()
+                                        </p>
+                                    </td>
+                                    <td class="tc vm">
+                                    <a asp-action="EditAdvertisement" asp-area="Admin" asp-controller="Advertisement" asp-route-Id="@ads.AdvertisementId" class="btn btn-warning btn-circle btn-xs"><i class="glyphicon glyphicon-pencil"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <!--Widget Body-->
+            }
+            else
+            {
+                <partial name="_AdminNotFoundPartial" />
+            }
+
+
+        </div>
+    </div>
+</div>

@@ -1,14 +1,17 @@
 ﻿@using BusinessPortal.Domain.Entities.Location
 @model BusinessPortal.Domain.ViewModels.Admin.State.CreateStateViewModel
+@using BusinessPortal.Application.StaticTools
+
 @{
     ViewData["Title"] = "ثبت مکان";
-    var parentId = ViewBag.parentId != null ? (ulong) ViewBag.parentId : (ulong?) null;
+    var parentId = ViewBag.parentId != null ? (ulong)ViewBag.parentId : (ulong?)null;
     var parentState = ViewBag.parentState != null ? ViewBag.parentState as State : null;
 }
 
 @section Scripts
 {
 <partial name="_JqueryValidation" />
+<script src="/common/custom/custom.js"></script>
 }
 
 @section Breadcrumbs
@@ -19,54 +22,140 @@
 </li>
 }
 
-<form method="post" asp-action="CreateState" asp-controller="State" asp-area="Admin">
+<form method="post" asp-action="CreateState" asp-controller="State" asp-area="Admin" enctype="multipart/form-data">
     <input type="hidden" asp-for="ParentId" />
-    <div class="row">
-        <div class="col-lg-12 col-sm-12">
-            <div class="widget">
-                <div class="widget-header bordered-bottom bordered-green">
-                    @if (parentState != null)
-                    {
-                        <span class="widget-caption"> ثبت مکان برای @parentState.Title </span>
-                    }
-                    else
-                    {
-                        <span class="widget-caption"> ثبت مکان  </span>
-                    }
-                    
-                </div>
-                <div class="widget-body">
-                    <div>
 
-                        <div class="row">
-                            <div class="form-group col-md-6 col-sm-12">
-                                <label asp-for="Title"></label>
-                                <input type="text" class="form-control" asp-for="Title">
-                                <span class="text-danger" asp-validation-for="Title"></span>
+    @if (ViewBag.parentId != null && ViewBag.parentId  != 0)
+    {
+        <div class="row">
+            <div class="col-lg-12 col-sm-12">
+                <div class="widget">
+                    <div class="widget-header bordered-bottom bordered-green">
+                        @if (parentState != null)
+                        {
+                            <span class="widget-caption"> ثبت مکان برای @parentState.Title </span>
+                        }
+                        else
+                        {
+                            <span class="widget-caption"> ثبت مکان  </span>
+                        }
+
+                    </div>
+                    <div class="widget-body">
+                        <div>
+
+                            <div class="row">
+                                <div class="form-group col-md-6 col-sm-12">
+                                    <label asp-for="Title"></label>
+                                    <input type="text" class="form-control" asp-for="Title">
+                                    <span class="text-danger" asp-validation-for="Title"></span>
+                                </div>
+
+                                <div class="form-group col-md-6 col-sm-12">
+                                    <label asp-for="UniqueName"></label>
+                                    <input type="text" class="form-control" asp-for="UniqueName">
+                                    <span class="text-danger" asp-validation-for="UniqueName"></span>
+                                </div>
                             </div>
 
-                            <div class="form-group col-md-6 col-sm-12">
-                                <label asp-for="UniqueName"></label>
-                                <input type="text" class="form-control" asp-for="UniqueName">
-                                <span class="text-danger" asp-validation-for="UniqueName"></span>
+                            <hr class="margin-bottom-10 margin-top-10" />
+
+                            <div class="row">
+                                <div class="col-md-12 flex-style">
+                                    <button type="submit" class="btn btn-labeled btn-palegreen">
+                                        <i class="btn-label glyphicon glyphicon-ok"></i>ثبت
+                                    </button>
+                                </div>
                             </div>
+
                         </div>
-
-                        <hr class="margin-bottom-10 margin-top-10" />
-
-                        <div class="row">
-                            <div class="col-md-12 flex-style">
-                                <button type="submit" class="btn btn-labeled btn-palegreen">
-                                    <i class="btn-label glyphicon glyphicon-ok"></i>ثبت
-                                </button>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-lg-9 col-sm-12">
+                <div class="widget">
+                    <div class="widget-header bordered-bottom bordered-green">
+                        @if (parentState != null)
+                        {
+                            <span class="widget-caption"> ثبت مکان برای @parentState.Title </span>
+                        }
+                        else
+                        {
+                            <span class="widget-caption"> ثبت مکان  </span>
+                        }
+
+                    </div>
+                    <div class="widget-body">
+                        <div>
+
+                            <div class="row">
+                                <div class="form-group col-md-6 col-sm-12">
+                                    <label asp-for="Title"></label>
+                                    <input type="text" class="form-control" asp-for="Title">
+                                    <span class="text-danger" asp-validation-for="Title"></span>
+                                </div>
+
+                                <div class="form-group col-md-6 col-sm-12">
+                                    <label asp-for="UniqueName"></label>
+                                    <input type="text" class="form-control" asp-for="UniqueName">
+                                    <span class="text-danger" asp-validation-for="UniqueName"></span>
+                                </div>
+                            </div>
+
+                            <hr class="margin-bottom-10 margin-top-10" />
+
+                            <div class="row">
+                                <div class="col-md-12 flex-style">
+                                    <button type="submit" class="btn btn-labeled btn-palegreen">
+                                        <i class="btn-label glyphicon glyphicon-ok"></i>ثبت
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-12">
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="widget">
+                            <div class="widget-header bordered-bottom bordered-green">
+                                <span class="widget-caption"> تصویر کشور   </span>
+                            </div>
+                            <div class="widget-body">
+                                <div class="row">
+
+                                    <input type="file" class="display-none" name="StateImage" id="StateImage" ImageInput="1" accept=".jpg,.jpeg,.png" />
+
+                                    <div class="col-md-12">
+                                        <label for="StateImage" class="file-input-style">
+                                            <i class="glyphicon glyphicon-upload"></i>
+                                            <span class="mr-8px">لطفا  تصویر کشور را انتخاب کنید .</span>
+                                        </label>
+                                    </div>
+
+                                    <div class="col-md-12 tc mt-10px">
+                                        <img src="@PathTools.DefaultStateLogo" class="Article-Priew" ImageFile="1" />
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+
 </form>
 
 

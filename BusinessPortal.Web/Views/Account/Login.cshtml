@@ -9,22 +9,19 @@
 <partial name="_JqueryValidation" />
 }
 
-<div class="p-3" style="background-image: url('/Site/images/banner/banner-bg-112.jpg');  background-position: center; background-size: cover;">
+<div class="login-area ">
     <div class="container">
-        <div class="form-horizontal">
-            <div class="row mt-5">
-                <div class="col-md-3"></div>
-
-                <div class="col-md-6 text-right " style="background-color:#faf6f6; border: 2px double #dbd6d6; border-radius:12px ;">
-
+        <div class="login-form">
+            <div class="form-horizontal">
+                <div class="row ">
                     <form asp-action="Login" asp-controller="Account" method="post">
 
-                        <h4 class="text-center mt-3">ورود در سایت Business Portal</h4>
-                        <br />
+                        <h4 class="text-center ">ورود به حساب کاربری</h4>
+
 
                         <div class="form-group">
-                            <lable class="control-label col-md-2">ایمیل</lable>
-                            <div class="col-md-10">
+                          
+                            <div class="col-md-12">
                                 <input asp-for="Email" class="form-control" placeholder="ایمیل" />
                                 <span class="text-danger" asp-validation-for="Email"></span>
                             </div>
@@ -33,39 +30,45 @@
 
 
                         <div class="form-group">
-                            <lable class="control-label col-md-2"> کلمه عبور</lable>
-                            <div class="col-md-10">
+                           
+                            <div class="col-md-12">
                                 <input asp-for="Password" type="password" class="form-control" placeholder="کلمه عبور" />
                                 <span class="text-danger" asp-validation-for="Password"></span>
                             </div>
                         </div>
 
 
-                        <div class="form-group">
-                            <lable class="control-label col-md-2"> مرا به خاطر بسپار </lable>
-                            <div class="col-md-10">
-                                <input type="checkbox" asp-for="RememberMe">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 col-md-6 col-sm-6 remember-me-wrap">
+                                <p>
+                                    <input type="checkbox" id="test1" asp-for="RememberMe">
+                                    <label for="test1">مرا بخاطر بسپار</label>
+                                </p>
+                               
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 mt-2 lost-your-password-wrap">
+                                <div class="form-group">
+                                    <a asp-action="ForgotPassword" asp-controller="Account">فراموشی رمز عبور  </a>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <a style="margin-top:20px;margin-bottom:20px" asp-action="ForgotPassword" asp-controller="Account">فراموشی رمز عبور  </a>
+                        <div class="row p-3 m-3 ">
+                            <button type="submit" class="default-btn">ورود</button>
                         </div>
-
-
-                        <div class="form-group">
-                            <button class="main-btn" style="margin-right:150px ; margin-bottom:20px" type="submit">ارسال</button>
-                            <a class="main-btn" style="margin-bottom:20px ; color:white; " asp-action="Register" asp-controller="Account">Register</a>
+                        <div class="account-text">
+                            <p>حساب کاربری ندارید؟ <a asp-action="Register" asp-controller="Account">ثبت نام</a></p>
                         </div>
 
                     </form>
-
                 </div>
-
-                <div class="col-md-3"></div>
             </div>
-            <br />
         </div>
     </div>
 </div>
+
+
+
+
 

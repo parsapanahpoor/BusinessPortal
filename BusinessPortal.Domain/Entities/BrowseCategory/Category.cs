@@ -1,4 +1,5 @@
-﻿using BusinessPortal.Domain.Entities.Common;
+﻿using BusinessPortal.Domain.Entities.Advertisement;
+using BusinessPortal.Domain.Entities.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -36,6 +37,9 @@ namespace BusinessPortal.Domain.Entities.BrowseCategory
 
         [ForeignKey("ParentId")]
         public ICollection<Category> Categories { get; set; }
+
+        public ICollection<AdvertisementSelectedCategory> AdvertisementSelectedCategory { get; set; }
+
 
         #endregion
     }

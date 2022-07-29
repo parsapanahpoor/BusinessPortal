@@ -1,0 +1,36 @@
+﻿@model List<BusinessPortal.Domain.ViewModels.Advertisement.LastestCustomersAdvertisements>
+@using BusinessPortal.Application.Convertors
+@using BusinessPortal.Application.StaticTools
+
+@if (Model != null && Model.Any())
+{
+    <div class="col-sm-12 col-lg-6 mt-4 mt-lg-0">
+        <div class="latset-products">
+            <div class="latset-products-title">
+                <span>جدیدترین آگهی های درخواستی </span>
+            </div>
+            <div class="latset-products-list">
+                <ul>
+
+                    @foreach (var item in Model)
+                    {
+                        <li>
+                            <div class="latset-buy-link">
+                                <a href="#">
+                                    <img style="height: 25px;width: 25px;" src="@PathTools.Stateimage@item.AdvertisementAddress.LocationCountry.IconeName" />@item.AdvertisementAddress.LocationCountry.Title
+                                </a>
+                            </div>
+                            <div class="latset-buy-text">
+                                <p>@item.AdvertisementTitle</p>
+                            </div>
+                            <div class="latset-buy-date">
+                                <a href="#">@item.CreateDate.ToStringShamsiDate()</a>
+                            </div>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+}

@@ -1,4 +1,5 @@
-﻿using BusinessPortal.Domain.Entities.Common;
+﻿using BusinessPortal.Domain.Entities.Account;
+using BusinessPortal.Domain.Entities.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -25,6 +26,9 @@ namespace BusinessPortal.Domain.Entities.Location
 
         public ulong? ParentId { get; set; }
 
+        [Display(Name = "آیکون کشور")]
+        public string? IconeName { get; set; }
+
         #endregion
 
         #region Relations
@@ -32,6 +36,15 @@ namespace BusinessPortal.Domain.Entities.Location
         public State? Parent { get; set; }
 
         public ICollection<State> Children { get; set; }
+
+        [InverseProperty("LocationCountry")]
+        public ICollection<Address.Address> AddressesCountry { get; set; }
+
+        [InverseProperty("LocationState")]
+        public ICollection<Address.Address> AddressesState { get; set; }
+
+        [InverseProperty("LocationCity")]
+        public ICollection<Address.Address> AddressesCity { get; set; }
 
         #endregion
     }

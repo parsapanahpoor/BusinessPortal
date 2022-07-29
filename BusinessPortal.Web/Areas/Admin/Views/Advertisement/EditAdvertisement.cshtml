@@ -1,0 +1,220 @@
+﻿@model BusinessPortal.Domain.ViewModels.Admin.Advertisement.EditAdvertisementFromAdminPanel
+@using BusinessPortal.Application.StaticTools
+@using BusinessPortal.Domain.ViewModels.Admin.Advertisement
+
+@{
+    ViewData["Title"] = "ویرایش";
+
+    List<BusinessPortal.Domain.ViewModels.UserPanel.Advertisement.AdvertisementCategoryViewModel> Category = ViewBag.Categories as List<BusinessPortal.Domain.ViewModels.UserPanel.Advertisement.AdvertisementCategoryViewModel>;
+
+    List<ulong> Selecetd = ViewBag.SelectedCategories as List<ulong>;
+
+    var advertisementAddress = ViewBag.AdveritsementAddress;
+}
+
+@section Styles
+{
+<style>
+    .d-none {
+        display: none;
+    }
+</style>
+}
+
+@section Scripts
+{
+<partial name="_JqueryValidation" />
+<script src="/admin/js/admin-custom.js"></script>
+<script src="/admin/js/EditArticle.js"></script>
+
+<script>
+    $("#AdvertisementStatus").on("change",
+      function() {
+
+          var selectedAdvertisementStatusValue = $("#AdvertisementStatus :selected").val();
+          if (selectedAdvertisementStatusValue == 2) {
+              $("#RejectDescription-div").removeClass("d-none");
+          } else {
+              $("#RejectDescription-div").addClass("d-none");
+          }
+      });
+</script>
+
+}
+
+@section Breadcrumbs
+{
+<li>
+    <a href="javascript:void(0)"> @ViewData["Title"] </a>
+</li>
+}
+
+<form method="post" asp-action="EditAdvertisement" asp-controller="Advertisement" asp-area="Admin" enctype="multipart/form-data">
+    <input type="hidden" asp-for="AdvertisementID" />
+    <input type="hidden" asp-for="AdsImage" />
+    <input type="hidden" asp-for="UserId" />
+    <input type="hidden" asp-for="Description" />
+
+    <div class="row">
+        <div class="col-lg-9 col-sm-12">
+            <div class="widget">
+                <div class="widget-header bordered-bottom bordered-yellow">
+                    <span class="widget-caption"> @ViewData["Title"] </span>
+                </div>
+                <div class="widget-body">
+                    <div>
+
+                        <div class="row">
+                           
+
+                            <div class="clearfix"></div>
+
+                            <div class="form-group col-md-12 col-sm-12">
+                                <label>وضعیت</label>
+                                <select asp-for="AdvertisementStatus" class="form-control" asp-items="Html.GetEnumSelectList(typeof(BusinessPortal.Domain.Entities.Advertisement.AdvertisementStatus))"></select>
+                                <span class="text-danger" asp-validation-for="AdvertisementStatus"></span>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                            <div class="form-group col-md-12 @(Model.AdvertisementStatus==BusinessPortal.Domain.Entities.Advertisement.AdvertisementStatus.NotApproved?"":"d-none")" id="RejectDescription-div">
+                                <label>علت عدم تایید</label>
+                                <textarea asp-for="RejectDescription" rows="10" class="form-control" placeholder="علت عدم تایید اگهی رو وارد کنید"></textarea>
+                                <span asp-validation-for="RejectDescription" class="text-danger"></span>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                            <div class="form-group col-md-12 col-sm-12">
+                                <label asp-for="AdvertisementTags"></label>
+                                <input type="text" class="form-control" class="form-control" tagify="1" asp-for="AdvertisementTags">
+                                <span class="text-danger" asp-validation-for="AdvertisementTags"></span>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                        </div>
+
+                        <hr class="margin-bottom-10 margin-top-10" />
+
+                        <div class="row">
+                            <div class="col-md-12 flex-style">
+                                <button type="submit" class="btn btn-labeled btn-warning">
+                                    <i class="btn-label glyphicon glyphicon-ok"></i>ویرایش
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-sm-12">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="widget">
+                        <div class="widget-header bordered-bottom bordered-yellow">
+                            <span class="widget-caption"> تصویر    </span>
+                        </div>
+                        <div class="widget-body">
+                            <div class="row">
+
+                                <input type="file" class="display-none" name="ImageNames" id="ArticleImage" ImageInput="1" accept=".jpg,.jpeg,.png" />
+
+                                <div class="col-md-12">
+                                    <label for="ArticleImage" class="file-input-style">
+                                        <i class="glyphicon glyphicon-upload"></i>
+                                        <span class="mr-8px">لطفا  تصویر  را انتخاب کنید .</span>
+                                    </label>
+                                </div>
+
+                                <div class="col-md-12 tc mt-10px">
+                                    <img src="@((string.IsNullOrEmpty(Model.AdsImage))? PathTools.DefaultAdvertisementimage : PathTools.AdvertisementOriginimage + Model.AdsImage )" class="Article-Priew" ImageFile="1" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="widget">
+                        <div class="widget-header bordered-bottom bordered-yellow">
+                            <span class="widget-caption"> دسته بندی ها  </span>
+                        </div>
+                        <div class="widget-body">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="form-group">
+                                        <div class="checkbox">
+
+                                            @foreach (var category in Category.Where(p => p.ParentId == null))
+                                            {
+                                                <label style="">
+                                                    <input class="form-check-input" @((Selecetd.Contains(category.CatgeoryId.Value) ? "checked" : "")) type="checkbox" name="SelectedCategory" value="@category.CatgeoryId">
+                                                    <span class="text"> @category.GroupName</span>
+                                                </label>
+
+                                                @if (Category.Any(p => p.ParentId == category.ParentId))
+                                                {
+                                                    @foreach (var sub in Category.Where(p => p.ParentId == category.CatgeoryId))
+                                                    {
+                                                        <label style="">
+
+                                                            <input class="form-check-input" @((Selecetd.Contains(sub.CatgeoryId.Value) ? "checked" : "")) type="checkbox" name="SelectedCategory" value="@sub.CatgeoryId">
+                                                            <span class="text">  @sub.GroupName</span>
+                                                        </label>
+
+                                                    }
+                                                    <hr />
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-12">
+                    <div class="widget">
+                        <div class="widget-header bordered-bottom bordered-yellow">
+                            <span class="widget-caption"> ادرس ثبت شده اگهی </span>
+                        </div>
+                        <div class="widget-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="form-group col-md-12">
+                                            <label> عنوان آدرس </label>
+                                            <input type="text" readonly="" class="form-control" value="@advertisementAddress.AddressTitle">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label> ایمیل </label>
+                                            <input type="text" readonly="" class="form-control" value="@advertisementAddress.Email">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label> شماره تماس </label>
+                                            <input type="text" readonly="" class="form-control" value="@advertisementAddress.Mobile">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label> آدرس </label>
+                                            <textarea readonly="" class="form-control" id="Advertisement-Address">@advertisementAddress.UserAddress</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+

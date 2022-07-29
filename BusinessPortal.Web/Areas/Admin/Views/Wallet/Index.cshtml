@@ -1,0 +1,220 @@
+﻿@using BusinessPortal.Domain.ViewModels.Admin.Wallet
+@using BusinessPortal.Application.Extensions
+@using BusinessPortal.Application.Convertors
+@model BusinessPortal.Domain.ViewModels.Admin.Wallet.FilterWalletViewModel
+@{
+    ViewData["Title"] = "لیست کیف پول ";
+}
+
+@section Breadcrumbs
+{
+<li class="active">لیست کیف پول</li>
+}
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-12 col-xl-3 col-lg-3">
+            @if (Model.UserId.HasValue)
+            {
+                <a class="btn btn-sky w-100 margin-bottom-10" asp-action="CreateWallet" asp-route-id="@Model.UserId">افزودن تراکنش جدید</a>
+            }
+            <div class="widget">
+                <div class="widget-header">
+                    <span class="widget-caption">فیلتر</span>
+                </div>
+                <div class="widget-body">
+                    <div class="row">
+                        <div class="basic-form">
+                            <form method="get" id="filter-search">
+                                <input type="hidden" asp-for="Page" />
+                                @if (Model.UserId.HasValue)
+                                {
+                                    <input type="hidden" asp-for="UserId" />
+                                    <input type="hidden" asp-for="UserFilter" />
+                                }
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label asp-for="UserFilter">کاربر</label>
+                                        @if (!Model.UserId.HasValue)
+                                        {
+                                            <input asp-for="UserFilter" class="form-control">
+                                        }
+                                        else
+                                        {
+                                            <input asp-for="UserFilter" class="form-control" disabled="">
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label asp-for="MinPrice">حداقل قیمت</label>
+                                        <input asp-for="MinPrice" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label asp-for="MaxPrice">حداکثر قیمت</label>
+                                        <input asp-for="MaxPrice" class="form-control">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label asp-for="OrderType" style="width: 90%;margin-right: 20px;"> مرتب سازی بر اساس </label>
+                                    <select asp-for="OrderType" style="width: 90%;margin: auto;" class="form-control"  asp-items="@(Html.GetEnumSelectList<FilterWalletViewModel.FilterWalletOrderType>())">
+                                       
+                                    </select>
+                                </div>
+
+                                <hr />
+
+                                <div class="submitFilterInAdmin" style="width: 90%;margin: auto;">
+                                    <button type="submit" class="btn btn-labeled w-100 btn-success " style="margin-bottom: 20px;">
+                                        فیلتر <span class="btn-icon-right"><i class="fa fa-search"></i></span>
+                                    </button>
+
+                                    @if (Context.Request.Query.Any())
+                                    {
+                                        @if (Model.UserId.HasValue)
+                                        {
+                                            @if (Context.Request.Query.Any(q => q.Key != "UserId" && q.Key != "UserFilter"))
+                                            {
+                                                <a class="btn btn-labeled w-100 btn-darkorange " asp-action="Index" asp-route-UserId="@Model.UserId" asp-route-UserFilter="@Model.UserFilter" class="margin-top-10">
+                                                    <i class="btn-label glyphicon glyphicon-remove"></i>حذف فیلتر
+                                                </a>
+                                            }
+
+                                            <a class="btn btn-labeled w-100 btn-darkorange " asp-action="Index" class="margin-top-10">
+                                                <i class="btn-label glyphicon glyphicon-remove"></i>حذف فیلتر
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a class="btn btn-labeled w-100 btn-darkorange" asp-action="Index" class="margin-top-10">
+                                                <i class="btn-label glyphicon glyphicon-remove"></i>حذف فیلتر
+                                            </a>
+                                        }
+                                    }
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-md-12 col-lg-9">
+            <div class="widget">
+                <div class="widget-header  with-footer">
+                    <span class="widget-caption">لیست کیف پول کاربران</span>
+                </div>
+                <div class="widget-body">
+
+                    <div class="flip-scroll">
+                        @if (Model != null)
+                        {
+                            <table class="table table-bordered table-striped table-condensed flip-content tableShowListInAdmin" id="showUsersListInAdmin">
+                                <thead class="flip-content bordered-palegreen">
+                                    <tr>
+                                        <th>
+                                            #
+                                        </th>
+                                        <th>
+                                            کاربر
+                                        </th>
+                                        <th>
+                                            ایمیل
+                                        </th>
+                                        <th>
+                                            مبلغ
+                                        </th>
+                                        <th>
+                                            تاریخ ایجاد
+                                        </th>
+                                        <th>
+                                            نوع تراکنش
+                                        </th>
+                                        <th>
+                                            روش واریز
+                                        </th>
+                                        <th>
+                                            علت تراکنش
+                                        </th>
+                                        <th>
+                                            امکانات
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Entities)
+                                    {
+                                        <tr id="wallet_@item.Id" remove-ajax-item="@item.Id">
+                                            <td>
+                                                @item.Id
+                                            </td>
+                                            <td>
+                                                <a asp-action="Index" asp-route-UserId="@item.UserId" asp-route-UserFilter="@item.User.Username">
+                                                    @item.User.Username @(item.IsDelete ? " - " + "حذف شده": "")
+                                                </a>
+                                            </td>
+                                            <td>
+                                                @item.User.Email
+                                            </td>
+                                            <td>
+                                                @item.Price ریال
+                                            </td>
+                                            <td>
+                                                @item.CreateDate.ToShamsiDate()
+                                            </td>
+
+                                            <td>
+                                                @item.TransactionType.GetEnumName()
+                                            </td>
+                                            <td>
+                                                @item.GatewayType.GetEnumName()
+                                            </td>
+                                            <td>
+                                                @item.PaymentType.GetEnumName()
+                                            </td>
+
+                                            <td>
+                                                <div class="d-flex justify-content-center ">
+                                                    @if (!item.IsDelete)
+                                                    {
+                                                        <a title="ویرایش تراکنش" asp-action="EditWallet" asp-route-id="@item.Id" class="btn btn-warning shadow btn-xs sharp mr-1">
+                                                            <i class="fa fa-pencil"></i>
+                                                        </a>
+                                                        <button title="حذف تراکنش" onclick="DeleteAjax(@item.Id, '@Url.Action("RemoveWallet", new {area = "Admin", id = @item.Id})')" class="btn btn-danger shadow btn-xs sharp mr-1"><i class="fa fa-trash"></i></button>
+                                                    }
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+
+                            <partial name="_AdminPaging" model="@Model.GetCurrentPaging()" />
+                        }
+                        else
+                        {
+                            <partial name="_AdminNotFoundPartial" />
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts
+{
+}

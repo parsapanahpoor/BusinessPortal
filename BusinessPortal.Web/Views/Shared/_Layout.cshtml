@@ -1,8 +1,11 @@
-﻿
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _Localizer
+@using System.Globalization
+
 <!DOCTYPE html>
 <html class="no-js" dir="rtl" lang="fa-IR">
 <head>
-    <title> BusinessPortal-@ViewData["Title"] </title>
+    <title> @_Localizer["SiteName"]-@ViewData["Title"] </title>
 
     <partial name="_MetaTags" />
 
@@ -11,251 +14,628 @@
     <partial name="_HeaderReferences" />
 
     @await RenderSectionAsync("Styles", false)
+
+
 </head>
 <body>
 
-    <!--====== PRELOADER PART START ======-->
-
-
-    <div id="preloader">
-        <div id="status">
-            <div class="spinner">
-                <div class="rect1"></div>
-                <div class="rect2"></div>
-                <div class="rect3"></div>
-                <div class="rect4"></div>
-                <div class="rect5"></div>
+    <!-- Start Preloader Area -->
+    <div class="preloader">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            </div>
+        </div>
+    </div>
+    <!-- End Preloader Area -->
+    <!-- Start Topbar Area -->
+    <div class="topbar-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-2 col-md-2 align-items-center justify-content-center text-center ">
+                </div>
+                <div class="col-lg-8 col-md-8 align-items-center justify-content-center text-center  ">
+                    <span class="Shoar">@_Localizer["SloganSite"]</span>
+                </div>
+                <div class="col-lg-2 col-md-2 align-items-center justify-content-center text-center  ">
+                </div>
             </div>
         </div>
     </div>
 
-    <!--====== PRELOADER PART ENDS ======-->
-    <!--====== HEADER PART START ======-->
+    <div class="midlebar">
+        <div class="">
+            <div class="row align-items-center">
+                <div class="col-md-3 justify-content-center text-center">
+                    <a class="" href="/Home">
+                        <img src="/Site/images/logo-2.png" alt="logo">
+                    </a>
+                </div>
+                <div class="col-md-5 justify-content-center text-center">
+                </div>
 
-    <header class="header-area">
-        <div class="header-top pb-15 d-none d-lg-block">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-9">
-                        <div class="header-info header-info-v2 mt-10 text-center text-lg-right">
-                            <ul>
-                                <li>
-                                    <p><i class="fa fa-phone"></i> 547 53 266 21+ </p>
-                                </li>
-                                <li>
-                                    <p><i class="fa fa-envelope-o"></i> info@BusinessPortal.com </p>
-                                </li>
-                                <li>
-                                    <p> <i class="fa fa-map-marker"></i>تهران - پاسداران - نبش گلستان دوم</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="header-social mt-10 text-lg-left text-center">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="../LTR/index.html">EN</a></li>
-                                <li style="color:red !important;">|</li>
-                                <li><a href="/Home" style="color: #ffd700 !important;">FA</a></li>
+                <div class="col-md-4 align-items-center justify-content-center text-center">
+                    <ul class="topbar-others-options">
 
-                            </ul>
-                        </div>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                <a asp-action="Logout" asp-controller="Account"><i class="fa fa-sign-out  ablock"></i> </a>
+                                <a asp-action="index" asp-controller="Home" asp-area="UserPanel" class="default-btn Loginbtn ">@User.Identity.Name </a>
+                                @*<a asp-action="index" asp-controller="Home" asp-area="UserPanel"><i class="fbtn-primary" title="@_Localizer["Login"]/@_Localizer["Register"]"></i> </a>*@
+                            </li>
+                        }
+                        else
+                        {
+                            <li><a asp-action="Login" asp-controller="Account" class="default-btn Loginbtn "> @_Localizer["Login"]/@_Localizer["Register"]</a></li>
+                        }
+                        <li>
+                            <a asp-action="Register" asp-controller="Account" class="default-btn Loginbtn  ">@_Localizer["joinUs"]</a>
+                        </li>
 
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- header top -->
 
-        <div class="header-menu navigation">
-            <div class="container">
-                <div class="row no-gutters">
-                    <div class="col-lg-3">
-                        <div class="logo">
-                            <a href="/Home"><img src="/Site/images/logo-2.png" style="height:145%;" alt="logo"></a>
-                        </div> <!-- logo -->
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="main-menu text-left">
-                            <nav id="mobile-menu">
-                                <ul class="nav-menubar">
-                                    <li><a class="active" href="/Home">خانه</a></li>
-                           
-                                    <li>
-                                        <a href="shop.html">فروشگاه</a>
-                                        <ul class="sub-menu text-left">
-                                            <li><a href="shop.html">فروشگاه</a></li>
-                                            <li><a href="shop-details.html">جزئیات خرید</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">تماس با ما</a></li>
-                                    @if (User.Identity.IsAuthenticated)
-                                    {
-                                        <li><a href="/">@User.Identity.Name </a></li>
-                                    }
-                                    else
-                                    {
-                                        <li><a asp-action="Login" asp-controller="Account">ورود </a></li>
-                                    }
-                                </ul>
-                            </nav>
-                        </div> <!-- main menu -->
-                        <div class="mobile-menu"></div>
-                    </div>
-                    <div class="col-lg-1 order-first order-lg-last">
-                        <div class="search-cart text-left">
-                            <ul>
-                                <li><a href="#search"><i class="fa fa-search"></i></a></li>
-                                <li><a class="cart" href="#"><i class="fa fa-shopping-cart"></i><span>0</span></a></li>
-                            </ul>
-                        </div> <!-- search cart -->
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- header menu -->
-    </header>
 
-    <!--====== HEADER PART ENDS ======-->
-    <!--====== search BOX PART START ======-->
+                        @*English Language Selected*@
 
-    <div id="search" class="search-box">
-        <div class="search-form">
-            <div class="closebtn">
-                <span></span>
-                <span></span>
+                        @if (CultureInfo.CurrentCulture.Name == "en-US")
+                        {
+                            <li>
+                                <div class="dropdown language-option">
+                                    <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="lang-name default-btn  Loginbtn"></span>
+                                    </button>
+
+                                    <div class="dropdown-menu language-dropdown-menu">
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="en-US" class="dropdown-item">English</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="ar-SA" class="dropdown-item">Arabic</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="pt-PT" class="dropdown-item">Portuguese</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="ru-RU" class="dropdown-item">Russian</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="tr-TR" class="dropdown-item">Turkish</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="fa-IR" class="dropdown-item">Farsi </a>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+
+                        @*English Language Selected*@
+
+                        @*Persian Language Selected*@
+
+                        @if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        {
+                            <li>
+                                <div class="dropdown language-option ">
+                                    <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="lang-name default-btn  Loginbtn "></span>
+                                    </button>
+
+                                    <div class="dropdown-menu language-dropdown-menu">
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="fa-IR" class="dropdown-item"> Farsi</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="en-US" class="dropdown-item">English</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="ar-SA" class="dropdown-item">Arabic</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="pt-PT" class="dropdown-item">Portuguese</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="ru-RU" class="dropdown-item">Russian</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="tr-TR" class="dropdown-item">Turkish</a>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+
+                        @*Persian Language Selected*@
+
+                        @*Arabic Language Selected*@
+
+                        @if (CultureInfo.CurrentCulture.Name == "ar-SA")
+                        {
+                            <li>
+                                <div class="dropdown language-option">
+                                    <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="lang-name default-btn  Loginbtn "></span>
+                                    </button>
+
+                                    <div class="dropdown-menu language-dropdown-menu">
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="ar-SA" class="dropdown-item">Arabic</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="en-US" class="dropdown-item">English</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="pt-PT" class="dropdown-item">Portuguese</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="ru-RU" class="dropdown-item">Russian</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="tr-TR" class="dropdown-item">Turkish</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="fa-IR" class="dropdown-item"> Farsi</a>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+
+                        @*Arabic Language Selected*@
+
+                        @*Turkish Language Selected*@
+
+                        @if (CultureInfo.CurrentCulture.Name == "tr-TR")
+                        {
+                            <li>
+                                <div class="dropdown language-option">
+                                    <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="lang-name default-btn  Loginbtn"></span>
+                                    </button>
+
+                                    <div class="dropdown-menu language-dropdown-menu">
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="tr-TR" class="dropdown-item">Turkish</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="en-US" class="dropdown-item">English</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="ar-SA" class="dropdown-item">Arabic</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="pt-PT" class="dropdown-item">Portuguese</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="ru-RU" class="dropdown-item">Russian</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="fa-IR" class="dropdown-item"> Farsi</a>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+
+                        @*Turkish Language Selected*@
+
+                        @*Russian Language Selected*@
+
+                        @if (CultureInfo.CurrentCulture.Name == "ru-RU")
+                        {
+                            <li>
+                                <div class="dropdown language-option">
+                                    <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="lang-name default-btn  Loginbtn"></span>
+                                    </button>
+
+                                    <div class="dropdown-menu language-dropdown-menu">
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="ru-RU" class="dropdown-item">Russian</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="en-US" class="dropdown-item">English</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="ar-SA" class="dropdown-item">Arabic</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="pt-PT" class="dropdown-item">Portuguese</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="tr-TR" class="dropdown-item">Turkish</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="fa-IR" class="dropdown-item"> Farsi</a>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+
+                        @*Russian Language Selected*@
+
+                        @*Portuguese Language Selected*@
+
+                        @if (CultureInfo.CurrentCulture.Name == "pt-PT")
+                        {
+                            <li>
+                                <div class="dropdown language-option">
+                                    <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="lang-name default-btn  Loginbtn"></span>
+                                    </button>
+
+                                    <div class="dropdown-menu language-dropdown-menu">
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="pt-PT" class="dropdown-item">Portuguese</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="en-US" class="dropdown-item">English</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="ru-RU" class="dropdown-item">Russian</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="ar-SA" class="dropdown-item">Arabic</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="tr-TR" class="dropdown-item">Turkish</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="fa-IR" class="dropdown-item"> Farsi</a>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+
+                        @*Portuguese Language Selected*@
+                    </ul>
+                </div>
             </div>
-            <form action="#">
-                <input type="text" placeholder="جست و جو...">
-                <button><i class="fa fa-search"></i></button>
-            </form>
-        </div> <!-- search form -->
+        </div>
     </div>
+    <!-- End Topbar Area -->
+    <!-- Start Navbar Area -->
+    <div class="navbar-area navbar-style-two">
+        <div class="main-responsive-nav">
+            <div class="container">
+                <div class="main-responsive-menu">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-3 mt-3">
+                    <div class="mega-menu">
+                        <button class="mega-menu-btn">
+                            <i class="fa fa-bars ml-3 mr-3" aria-hidden="true" style="color: #fcb800;"></i> @_Localizer["ProductsCategories"]
+                        </button>
+                        <ul class="mega-menu-list">
+                            <li class="mega-menu-item">
+                                <a href="#" class="mega-menu-link">
+                                    @_Localizer["Oil,gasandpetrochemicals"]
+                                    <i class="fa fa-angle-left"></i>
 
-    <main role="main" class="pb-3">
+                                </a>
+                                <ul class="mega-menu-categories">
+                                    <li class="mega-menu-item">
+                                        <a href="#" class="mega-menu-categories-title">@_Localizer["Oil"]</a>
+
+                                    </li>
+                                    <li class="mega-menu-item">
+                                        <a href="#" class="mega-menu-categories-title">@_Localizer["gas"]</a>
+
+                                    </li>
+                                    <li class="mega-menu-item">
+                                        <a href="#" class="mega-menu-categories-title">@_Localizer["petrochemicals"]</a>
+
+                                    </li>
+                                    <li class="mega-menu-item">
+                                        <a href="#" class="mega-menu-categories-title">@_Localizer["oil products"]</a>
+
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="mega-menu-item">
+                                <a href="#" class="mega-menu-link">
+                                    @_Localizer["Minesandmetals"]
+                                    <i class="fa fa-angle-left"></i>
+                                </a>
+                                <ul class="mega-menu-categories">
+                                    <li class="mega-menu-item">
+                                        <a href="#" class="mega-menu-categories-title">@_Localizer["Mineral Products"]</a>
+
+                                    </li>
+                                    <li class="mega-menu-item">
+                                        <a href="#" class="mega-menu-categories-title">@_Localizer["Steel and Metals"]</a>
+
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="mega-menu-item">
+                                <a href="#" class="mega-menu-link">
+                                    @_Localizer["Chemical and Pharmaceutical"]
+                                    <i class="fa fa-angle-left"></i>
+                                </a>
+                                <ul class="mega-menu-categories">
+                                    <li class="mega-menu-item">
+                                        <a href="#" class="mega-menu-categories-title">@_Localizer["Chemical"]</a>
+
+                                    </li>
+                                    <li class="mega-menu-item">
+                                        <a href="#" class="mega-menu-categories-title">@_Localizer["Pharmaceutical"]</a>
+
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="mega-menu-item">
+                                <a href="#" class="mega-menu-link">
+                                    @_Localizer["Agriculture and food industry"]
+                                    <i class="fa fa-angle-left"></i>
+                                </a>
+                                <ul class="mega-menu-categories">
+                                    <li class="mega-menu-item">
+                                        <a href="#" class="mega-menu-categories-title">@_Localizer["Agriculture"]</a>
+
+                                    </li>
+                                    <li class="mega-menu-item">
+                                        <a href="#" class="mega-menu-categories-title">@_Localizer["Food industry"]</a>
+
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="mega-menu-item">
+                                <a href="#" class="mega-menu-link">
+                                    @_Localizer["Energy"]
+                                    <i class="fa fa-angle-left"></i>
+                                </a>
+                                <ul class="mega-menu-categories">
+                                    <li class="mega-menu-item">
+                                        <a href="#" class="mega-menu-categories-title">@_Localizer["Water"]</a>
+
+                                    </li>
+                                    <li class="mega-menu-item">
+                                        <a href="#" class="mega-menu-categories-title">@_Localizer["Electricity"]</a>
+
+                                    </li>
+                                    <li class="mega-menu-item">
+                                        <a href="#" class="mega-menu-categories-title">@_Localizer["Clean Energies"]</a>
+
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="mega-menu-item">
+                                <a href="#" class="mega-menu-link">
+                                    @_Localizer["Textiles and clothing"]
+
+                                </a>
+                            </li>
+                            <li class="mega-menu-item">
+                                <a href="#" class="mega-menu-link">
+                                    @_Localizer["Buildings and building materials"]
+
+                                </a>
+                            </li>
+                            <li class="mega-menu-item">
+                                <a href="#" class="mega-menu-link">
+                                    @_Localizer["Carpets and handicrafts"]
+
+                                </a>
+                            </li>
+                            <li class="mega-menu-item">
+                                <a href="#" class="mega-menu-link">
+                                    @_Localizer["Paper and cellulose industries"]
+
+                                </a>
+                            </li>
+                            <li class="mega-menu-item">
+                                <ul class="mt-1">
+                                    <li style="display:inline ">
+                                        <a style="display:inline " href="#">@_Localizer["Home Appliances"] , </a>
+                                    </li>
+                                    <li style="display:inline ">
+                                        <a style="display:inline " href="#"> @_Localizer["Digital"] ,  </a>
+                                    </li>
+                                    <li style="display:inline ">
+                                        <a style="display:inline " href="#"> @_Localizer["Official"]  </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="mega-menu-item">
+                                <ul class="mt-2">
+                                    <li style="display:inline ">
+                                        <a style="display:inline " href="#">@_Localizer["Medical Equipment"] ,  </a>
+                                    </li>
+                                    <li style="display:inline ">
+                                        <a style="display:inline " href="#">@_Localizer["Cosmetics and Beauty"] ,  </a>
+                                    </li>
+                                    <li style="display:inline ">
+                                        <a style="display:inline " href="#">@_Localizer["Jewellery"]  </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="mega-menu-item">
+                                <a href="#" class="mega-menu-link">
+                                    @_Localizer["Vehicles, transport and parts"]
+
+                                </a>
+                            </li>
+                            <li class="mega-menu-item">
+                                <a href="#" class="mega-menu-link">
+                                    @_Localizer["More"]
+
+
+                                </a>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center justify-content-center">
+                    <div class="main-navbar">
+                        <nav class="navbar navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse mean-menu " id="navbarSupportedContent">
+                                <ul class="navbar-nav m-auto">
+                                    <li class="nav-item">
+                                        <a href="/Home/About" class="nav-link">
+                                            @_Localizer["AboutUs"]
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/Home/Products" class="nav-link">
+                                            @_Localizer["SalesOffers"]
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/Home/Services" class="nav-link">
+                                            @_Localizer["PurchaseRequests"]
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/Home/Contact" class="nav-link">
+                                            @_Localizer["Consulting"]
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/Home/Contact" class="nav-link">@_Localizer["ContactUs"]</a>
+                                    </li>
+                                    <li class="nav-item">
+
+                                        <a href="#" class="nav-link" id="nav-item-search-desktop"><i class="ri-search-line SearIc" title="@_Localizer["Search"]"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-md-3 mt-3">
+                    <div class="mega-menu">
+                        <button class="mega-menu-btn-Services">
+                            <i class="fa fa-bars " aria-hidden="true" style="color: #fcb800;"></i> @_Localizer["AdvertisementCategories"]
+                        </button>
+                        <ul class="mega-menu-list-Services">
+                            <li class="mega-menu-item">
+                                <a href="#" class="mega-menu-link">
+                                    @_Localizer["Transport"]
+
+
+                                </a>
+
+                            </li>
+                            <li class="mega-menu-item">
+                                <a href="#" class="mega-menu-link">
+                                    @_Localizer["Standard"]
+
+                                </a>
+
+                            </li>
+                            <li class="mega-menu-item">
+                                <a href="#" class="mega-menu-link">
+                                    @_Localizer["Inspection"]
+
+                                </a>
+
+                            </li>
+                            <li class="mega-menu-item">
+                                <a href="#" class="mega-menu-link">
+                                    @_Localizer["Currency and banking1"]
+
+                                </a>
+
+                            </li>
+                            <li class="mega-menu-item">
+                                <a href="#" class="mega-menu-link">
+                                    @_Localizer["Customs Affairs"]
+
+                                </a>
+
+                            </li>
+                            <li class="mega-menu-item">
+                                <a href="#" class="mega-menu-link">
+                                    @_Localizer["Engineering1"]
+
+                                </a>
+                            </li>
+                            <li class="mega-menu-item">
+                                <a href="#" class="mega-menu-link">
+                                    @_Localizer["Advertising"]
+
+                                </a>
+                            </li>
+                            <li class="mega-menu-item">
+                                <a href="#" class="mega-menu-link">
+                                    @_Localizer["Software1"]
+
+                                </a>
+                            </li>
+
+                            <li class="mega-menu-item">
+                                <a href="#" class="mega-menu-link">
+                                    @_Localizer["More"]
+
+
+                                </a>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="others-option-for-responsive ">
+            <div class="container">
+                <div class="container">
+                    <div class="option-inner">
+                        <div class="others-options d-flex align-items-center">
+                            <div class="option-item">
+                                <a href="#" class="search-box"><i class="ri-search-line"></i></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Navbar Area -->
+
+
+    <main class="">
+        <div class="row align-items-center justify-content-center text-center">
+            <div class="col-md-6 align-items-center justify-content-center text-center  ">
+                <div class="search_container">
+                    <form action="#">
+
+                        <div class="search_box search-box-js">
+                            <input placeholder="@_Localizer["Search"]" type="text" class="search-input">
+                            <button type="submit">@_Localizer["Search"]</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         @RenderBody()
     </main>
 
-    <footer class="footer-area">
-        <div class="footer-widgets pt-40 pb-80">
+    <!-- Start Footer Area -->
+    <footer class="footer-area bg-image pt-100">
+        <div class="container ">
+            <div class="row ">
+                <div class="col-lg-3 col-sm-6 ">
+                    <div class="single-footer-widget">
+                        <div class="footer-widget-logo">
+                            <a href="/Home"><img src="/Site/images/logo-2.png" alt="image"></a>
+                        </div>
+                        <ul class="footer-information">
+                            <li><i class="ri-map-pin-fill"></i> @_Localizer["CompanyAddress"]</li>
+                            <li><i class="ri-phone-fill"></i> <a href="tel:2126653574">@_Localizer["CompanyMobile"] </a></li>
+                            <li><i class="ri-mail-line"></i> <a href="mailto: BusinessPortal@Yahoo.com">@_Localizer["CompanyEmail"]</a></li>
+                            <li><i class="ri-mail-line"></i> <a href="mailto: info@BusinessPortal.com">@_Localizer["CompanySite"]</a></li>
+                        </ul>
+                        <ul class="footer-widget-social">
+                            <li><span>@_Localizer["Follow"]</span></li>
+                            <li><a href="https://www.facebook.com/" target="_blank"><i class="ri-facebook-line"></i></a></li>
+                            <li><a href="https://twitter.com/" target="_blank"><i class="ri-twitter-fill"></i></a></li>
+                            <li><a href="https://www.instagram.com/" target="_blank"><i class="ri-instagram-fill"></i></a></li>
+                            <li><a href="https://www.linkedin.com/" target="_blank"><i class="ri-linkedin-fill"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-footer-widget ps-5">
+                        <h3>@_Localizer["Services"]</h3>
+
+                        <ul class="quick-links">
+                            <li><i class="ri-arrow-left-s-line"></i> <a href="services-details.html">@_Localizer["Transportation"] </a></li>
+                            <li><i class="ri-arrow-left-s-line"></i> <a href="services-details.html">@_Localizer["Standard"]</a></li>
+                            <li><i class="ri-arrow-left-s-line"></i> <a href="services-details.html">@_Localizer["Inspection"]</a></li>
+                            <li><i class="ri-arrow-left-s-line"></i> <a href="services-details.html">@_Localizer["Currency and banking"] </a></li>
+                            <li><i class="ri-arrow-left-s-line"></i> <a href="services-details.html">@_Localizer["Customs"]</a></li>
+                            <li><i class="ri-arrow-left-s-line"></i> <a href="services-details.html">@_Localizer["Engineering"]</a></li>
+                            <li><i class="ri-arrow-left-s-line"></i> <a href="services-details.html">@_Localizer["Advertising"]</a></li>
+                            <li><i class="ri-arrow-left-s-line"></i> <a href="services-details.html">@_Localizer["software"]</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h3>@_Localizer["UsefullLinks"]</h3>
+
+                        <ul class="quick-links">
+                            <li><i class="ri-arrow-left-s-line"></i> <a href="about.html">@_Localizer["AboutUs"]</a></li>
+                            <li><i class="ri-arrow-left-s-line"></i> <a href="error-404.html">@_Localizer["SalesOffers"]</a></li>
+                            <li><i class="ri-arrow-left-s-line"></i> <a href="project-details.html">@_Localizer["PurchaseRequests"]</a></li>
+                            <li><i class="ri-arrow-left-s-line"></i> <a href="project-details.html">@_Localizer["Consulting"]</a></li>
+                            <li><i class="ri-arrow-left-s-line"></i> <a href="project-details.html">@_Localizer["ContactUs"]</a></li>
+                            <li><i class="ri-arrow-left-s-line"></i> <a href="privacy-policy.html">@_Localizer["Privacy"]</a></li>
+                            <li><i class="ri-arrow-left-s-line"></i> <a href="terms-of-service.html">@_Localizer["Terms and Conditions"]</a></li>
+                            <li><i class="ri-arrow-left-s-line"></i> <a href="faq.html">@_Localizer["Frequently Asked Questions"]</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h3>@_Localizer["subscribe to newsletter"]</h3>
+
+                        <div class="widget-newsletter-content">
+                            <p>@_Localizer["NewsLetter"]</p>
+
+                            <form class="newsletter-form" data-bs-toggle="validator">
+                                <input type="email" class="input-newsletter" placeholder="@_Localizer["Enter your email"]" name="EMAIL" required autocomplete="off">
+
+                                <button type="submit" class="default-btn">@_Localizer["Subscribe"]</button>
+                                <div id="validator-newsletter" class="form-result"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-area">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="footer-about pt-40 text-right">
-                            <div class="footer-logo mb-20 text-center justify-content-center">
-                                <a href="#"><img src="/Site/images/logo-2.png" alt="Logo"></a>
-                            </div> <!-- footer logo -->
-                            <p>
-                                لورم ایپسوم، نام متنی است که به عنوان نگهدارنده و نشان دهنده ی مکان متن در طراحی های گرافیکی
-                                استفاده می شود
-                            </p>
-                            <ul class="social mt-25 text-center justify-content-center">
-                                <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="../LTR/index.html" title="زبان انگلیسی">EN</a></li>
-                                <li><a href="/Home" title="زبان فارسی">FA</a></li>
-                            </ul>
-                        </div> <!-- footer about -->
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-6">
-                        <div class="footer-link pt-40 text-right">
-                            <div class="footer-title">
-                                <h5>لینک های مفید</h5>
-                            </div>
-                            <ul class="mt-20">
-                                <li><a href="#"><i class="fa fa-angle-left"></i>خانه</a></li>
-                                <li><a href="#"><i class="fa fa-angle-left"></i>درباره ی ما</a></li>
-                                <li><a href="#"><i class="fa fa-angle-left"></i>خدمات</a></li>
-                                <li><a href="#"><i class="fa fa-angle-left"></i>قالب ها</a></li>
-                                <li><a href="#"><i class="fa fa-angle-left"></i>تیم</a></li>
-                            </ul>
-                        </div> <!-- footer link -->
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-6">
-                        <div class="footer-link pt-40 text-right">
-                            <div class="footer-title">
-                                <h5>خدمات</h5>
-                            </div>
-                            <ul class="mt-20">
-                                <li><a href="#"><i class="fa fa-angle-left"></i>تحلیل بازار</a></li>
-                                <li><a href="#"><i class="fa fa-angle-left"></i>بیزینس</a></li>
-                                <li><a href="#"><i class="fa fa-angle-left"></i>برنامه ریزی مالی</a></li>
-                                <li><a href="#"><i class="fa fa-angle-left"></i>حساب رسی و مالیات</a></li>
-                                <li><a href="#"><i class="fa fa-angle-left"></i>استراتژی</a></li>
-                            </ul>
-                        </div> <!-- footer link -->
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-info pt-40 text-right">
-                            <div class="footer-title">
-                                <h5>تماس با ما</h5>
-                            </div>
-                            <ul class="mt-25">
-                                <li>
-                                    <div class="single-info">
-                                        <div class="icon">
-                                            <i class="fa fa-home"></i>
-                                        </div>
-                                        <div class="content pr-35">
-                                            <p>تهران - پاسداران - نبش گلستان دوم</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="single-info">
-                                        <div class="icon">
-                                            <i class="fa fa-phone"></i>
-                                        </div>
-                                        <div class="content pr-35">
-                                            <p>547 53 266 21+</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="single-info">
-                                        <div class="icon">
-                                            <i class="fa fa-envelope-o"></i>
-                                        </div>
-                                        <div class="content pr-35">
-                                            <p>info@BusinessPortal.com</p>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- footer widgets -->
-        <div class="footer-copyright pt-15 pb-25">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="copyright pt-10 text-center text-md-right">
-                            <p>&copy; حق کپی رایت محفوظ است. ۱۴۰۰ </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="copyright pt-10 text-center text-md-left">
-                            <p>طراحی توسط<a href="http://www.metawaveco.ir">فراموج</a></p>
-                        </div>
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- footer-copyright -->
+                <div class="copyright-area-content">
+                    <p style="color: #fcb800;">@_Localizer["CopyRight"] <a href="https://www.faramojnovin.ir" target="_blank">@_Localizer["New wave"]</a></p>
+                </div>
+            </div>
+        </div>
     </footer>
-
-    <!--====== FOOTER PART ENDS ======-->
-    <!--====== BACK TO TOP PART START ======-->
-
-    <a href="#" class="back-to-top">
-        <i class="fa fa-angle-up"></i>
-    </a>
-
+    <!-- Start Go Top -->
+    <div class="go-top">
+        <i class="ri-arrow-up-s-line"></i>
+    </div>
+    <!-- End Go Top -->
     <partial name="_FooterReferences" />
 
     <partial name="_Notification" />

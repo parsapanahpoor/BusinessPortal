@@ -9,6 +9,19 @@ namespace BusinessPortal.Application.StaticTools
     public static class PathTools
     {
 
+        #region Default Images
+
+        public static readonly string DefaultStateLogo = "/UploadedImages/DefaultImages/Default.png";
+
+        #endregion
+
+        #region State
+
+        public static string Stateimage = "/UploadedImages/StateImage/";
+        public static string StateimageServerOrigin = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/StateImage/");
+
+        #endregion
+
         #region Site
 
         public static string SiteFarsiName = "BussinesPortasl";
@@ -45,6 +58,18 @@ namespace BusinessPortal.Application.StaticTools
 
         public static readonly string UploadCkEditorImagePath = "/content/upload/ckeditor/images/";
         public static readonly string UploadCkEditorImagePathServer = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/content/upload/ckeditor/images/");
+
+        #endregion
+
+        #region Advertisement Image
+
+        public static string DefaultAdvertisementimage = "/UploadedImages/DefaultImages/Default.png";
+
+        public static string AdvertisementOriginimage = "/UploadedImages/AdvertisementImages/Origin/";
+        public static string AdvertisementThumbimage = "/UploadedImages/AdvertisementImages/Thumb/";
+        public static string AdvertisementimageServerOrigin = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/AdvertisementImages/Origin/");
+        public static string AdvertisementImageServerThumb = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/AdvertisementImages/Thumb/");
+        public static string AdvertisementimageServerOriginThumb = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/AdvertisementImages/Thumb/");
 
         #endregion
 

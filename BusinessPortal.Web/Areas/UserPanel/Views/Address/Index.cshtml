@@ -1,0 +1,153 @@
+﻿@model BusinessPortal.Domain.ViewModels.UserPanel.FilterUserAddressViewModel
+@using BusinessPortal.Application.Extensions
+@using BusinessPortal.Application.Convertors
+@using BusinessPortal.Domain.ViewModels.Common
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _Localizer
+@using System.Globalization
+
+@{
+    ViewData["Title"] = _Localizer["PageTitle"];
+
+}
+
+@using BusinessPortal.Application.Utils
+
+@section scripts{
+
+}
+
+<div class="content-body" style="min-height: 908px; margin-right:0px ; padding-top:0px;">
+    <div class="container-fluid">
+
+        <form method="get" asp-area="UserPanel" asp-controller="Address" asp-action="Index" id="filter-form">
+            <div class="row">
+
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">@_Localizer["Filters"]</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="basic-form">
+                                <form asp-area="Admin" asp-controller="User" asp-action="Index" method="get" id="filter-search">
+                                    <input type="hidden" asp-for="Page" />
+                                    <div class="row">
+                                        <div class="form-group col-md-12">
+                                            <label asp-for="AddresssTitle"> @_Localizer["AddressTitle"]</label>
+                                            <input type="text" asp-for="AddresssTitle" placeholder="@_Localizer["AddressTitlePlaceHolder"]" class="form-control">
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label asp-for="Mobile">@_Localizer["Mobile"]</label>
+                                            <input type="text" asp-for="Mobile" placeholder="@_Localizer["MobilePlaceHolder"]" class="form-control">
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label asp-for="Phone">@_Localizer["Phone"]</label>
+                                            <input type="text" asp-for="Phone" placeholder="@_Localizer["PhonePlaceHolder"]" class="form-control">
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label asp-for="Email">@_Localizer["Email"]</label>
+                                            <input type="text" asp-for="Email" placeholder="@_Localizer["EmailPlaceHolder"]" class="form-control">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="d-flex justify-content-start mt-4">
+                                        <button class="btn btn-success mr-3" type="submit">@_Localizer["SubmitFilter"]</button>
+                                        @if (Context.Request.QueryString.HasValue)
+                                        {
+                                            <a class="btn btn-danger" asp-area="UserPanel" asp-controller="Address" asp-action="Index">@_Localizer["DeleteFilter"]</a>
+                                        }
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between">
+                            <div class="d-flex">
+                                <h4 class="card-title mr-3">
+                                    @ViewData["Title"]
+                                </h4>
+                                <span>@Model.GetShownEntitiesPagesTitle()</span>
+
+                            </div>
+                            @if (Model.UserId != null)
+                            {
+                                <a asp-area="UserPanel" asp-controller="Address" asp-action="CreateAddress" title="@_Localizer["Create"]"  class="btn btn-rounded btn-primary"><span class="btn-icon-left text-primary"><i class="fa fa-plus color-primary"></i></span>@_Localizer["Create"]</a>
+                            }
+                        </div>
+                        <div class="card-body">
+                            @if (Model.Entities != null && Model.Entities.Any())
+                            {
+                                <div class="table-responsive">
+                                    <table class="table table-responsive-md">
+                                        <thead>
+                                            <tr>
+                                                <th class="tc"><strong>@_Localizer["AddressTitle"]</strong></th>
+                                                <th class="tc"><strong>@_Localizer["Email"]</strong></th>
+                                                <th class="tc"><strong>@_Localizer["CountryName"]</strong></th>
+                                                <th class="tc"><strong>@_Localizer["State"]</strong></th>
+                                                <th class="tc"><strong>@_Localizer["City"]</strong></th>
+                                                <th class="tc"><strong>@_Localizer["CreateDate"]</strong></th>
+                                                <th class="tc"><strong>@_Localizer["Options"]</strong></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var address in Model.Entities)
+                                            {
+                                                <tr id="ajax-url-item-@address.Id">
+                                                    <td class="tc">
+                                                        @address.AddressTitle
+                                                    </td>
+                                                    <td class="tc">
+                                                        @address.Email
+                                                    </td>
+                                                    <td class="tc">
+                                                        @address.LocationCountry.Title
+                                                    </td>
+                                                    <td class="tc">
+                                                        @address.LocationState.Title
+                                                    </td>
+                                                    <td class="tc">
+                                                        @if (address.LocationCity != null && address.LocationCity.Title.Any())
+                                                        {
+                                                            @(address.LocationCity.Title ?? "")
+                                                        }
+
+                                                    </td>
+                                                  
+                                                    <td class="tc">
+                                                        @address.CreateDate.ToShortDateString()
+                                                    </td>
+                                                    <td class="tc">
+                                                        <a title="@_Localizer["Edit"]" asp-area="UserPanel" asp-controller="Address" asp-action="EditAddress" asp-route-addressId="@address.Id" class="btn btn-warning shadow btn-xs sharp m-1"><i class="fa fa-edit"></i></a>
+                                                            <a ajax-url-button="@address.Id" title="@_Localizer["Delete"]" asp-area="UserPanel" asp-controller="Address" asp-action="DeleteAddress" asp-route-addressId="@address.Id" class="btn btn-danger shadow btn-xs sharp m-1"><i class="fa fa-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <partial name="_UserPagingPartial" model="Model.GetCurrentPaging()" />
+                            }
+                            else
+                            {
+                                <partial name="_NoItemFoundPartial" />
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+</div>

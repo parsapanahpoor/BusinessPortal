@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Account management" xml:space="preserve">
+    <value>Gerenciamento de contas</value>
+  </data>
+  <data name="AdvertisementCategories" xml:space="preserve">
+    <value>Hizmet Kategorileri</value>
+  </data>
+  <data name="Advertising" xml:space="preserve">
+    <value>Anúncio</value>
+  </data>
+  <data name="aerospace Industries" xml:space="preserve">
+    <value>Indústrias aeroespaciais</value>
+  </data>
+  <data name="Agriculture" xml:space="preserve">
+    <value>Tarım</value>
+  </data>
+  <data name="Agriculture and food industry" xml:space="preserve">
+    <value>Agricultura e indústria alimentar</value>
+  </data>
+  <data name="air filter" xml:space="preserve">
+    <value>filtro de ar</value>
+  </data>
+  <data name="America" xml:space="preserve">
+    <value>América</value>
+  </data>
+  <data name="Bitumen and related industries" xml:space="preserve">
+    <value>Betume e indústrias relacionadas</value>
+  </data>
+  <data name="Bronze" xml:space="preserve">
+    <value>Bronze</value>
+  </data>
+  <data name="Buildings and building materials" xml:space="preserve">
+    <value>Binalar ve yapı malzemeleri</value>
+  </data>
+  <data name="Buy a subscription" xml:space="preserve">
+    <value>Compre uma assinatura</value>
+  </data>
+  <data name="Canada" xml:space="preserve">
+    <value>Canadá</value>
+  </data>
+  <data name="Carpet" xml:space="preserve">
+    <value>Tapete</value>
+  </data>
+  <data name="Carpets and handicrafts" xml:space="preserve">
+    <value>Tapetes e artesanato</value>
+  </data>
+  <data name="Chemical" xml:space="preserve">
+    <value>Kimyasal</value>
+  </data>
+  <data name="Chemical and Pharmaceutical" xml:space="preserve">
+    <value>Kimyasal ve farmasötik</value>
+  </data>
+  <data name="China" xml:space="preserve">
+    <value>China</value>
+  </data>
+  <data name="Clean Energies" xml:space="preserve">
+    <value>temiz enerjiler</value>
+  </data>
+  <data name="Corn" xml:space="preserve">
+    <value>Milho</value>
+  </data>
+  <data name="Cosmetics" xml:space="preserve">
+    <value>Cosméticas</value>
+  </data>
+  <data name="Cosmetics and Beauty" xml:space="preserve">
+    <value>Kozmetik ve güzellik</value>
+  </data>
+  <data name="Currency and banking" xml:space="preserve">
+    <value>Moeda e banco</value>
+  </data>
+  <data name="Customs Affairs" xml:space="preserve">
+    <value>Assuntos Aduaneiros</value>
+  </data>
+  <data name="Digital" xml:space="preserve">
+    <value>Dijital</value>
+  </data>
+  <data name="Digital components" xml:space="preserve">
+    <value>Componentes digitais</value>
+  </data>
+  <data name="Digital goods" xml:space="preserve">
+    <value>Bens digitais</value>
+  </data>
+  <data name="Dust filter" xml:space="preserve">
+    <value>Filtro de pó</value>
+  </data>
+  <data name="Electricity" xml:space="preserve">
+    <value>Elektrik</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="Energy" xml:space="preserve">
+    <value>Energia</value>
+  </data>
+  <data name="Engineering" xml:space="preserve">
+    <value>Engenharia</value>
+  </data>
+  <data name="Finland" xml:space="preserve">
+    <value>Finlândia</value>
+  </data>
+  <data name="Food industry" xml:space="preserve">
+    <value>Indústria alimentícia</value>
+  </data>
+  <data name="France" xml:space="preserve">
+    <value>França</value>
+  </data>
+  <data name="Free" xml:space="preserve">
+    <value>Livre</value>
+  </data>
+  <data name="gas" xml:space="preserve">
+    <value>gás</value>
+  </data>
+  <data name="Germany" xml:space="preserve">
+    <value>Alemanha</value>
+  </data>
+  <data name="Golden" xml:space="preserve">
+    <value>Dourada</value>
+  </data>
+  <data name="Guaranteed sales" xml:space="preserve">
+    <value>Vendas garantidas</value>
+  </data>
+  <data name="Home Appliances" xml:space="preserve">
+    <value>Ev Aletleri</value>
+  </data>
+  <data name="India" xml:space="preserve">
+    <value>Índia</value>
+  </data>
+  <data name="Inspection" xml:space="preserve">
+    <value>Inspeção</value>
+  </data>
+  <data name="International perspective" xml:space="preserve">
+    <value>Perspectiva internacional</value>
+  </data>
+  <data name="Iran" xml:space="preserve">
+    <value>Irã</value>
+  </data>
+  <data name="Jewellery" xml:space="preserve">
+    <value>Mücevher</value>
+  </data>
+  <data name="Kuwait" xml:space="preserve">
+    <value>Kuwait</value>
+  </data>
+  <data name="Landline phone number" xml:space="preserve">
+    <value>Número de telefone fixo</value>
+  </data>
+  <data name="LatestProducts" xml:space="preserve">
+    <value>Os últimos produtos</value>
+  </data>
+  <data name="LoremText" xml:space="preserve">
+    <value>LoremText</value>
+  </data>
+  <data name="Maximum number of purchase requests" xml:space="preserve">
+    <value>Número máximo de solicitações de compra</value>
+  </data>
+  <data name="medical" xml:space="preserve">
+    <value>médica</value>
+  </data>
+  <data name="Medical Equipment" xml:space="preserve">
+    <value>Tıbbi malzeme</value>
+  </data>
+  <data name="Medicine and therapy" xml:space="preserve">
+    <value>Medicina e terapia</value>
+  </data>
+  <data name="Membership plan" xml:space="preserve">
+    <value>Plano de associação</value>
+  </data>
+  <data name="Mineral Products" xml:space="preserve">
+    <value>Mineral ürünler</value>
+  </data>
+  <data name="Minesandmetals" xml:space="preserve">
+    <value>Minas e metais</value>
+  </data>
+  <data name="Mobile" xml:space="preserve">
+    <value>Móvel</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>Mais</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="Official" xml:space="preserve">
+    <value>Resmi</value>
+  </data>
+  <data name="Oil" xml:space="preserve">
+    <value>Óleo</value>
+  </data>
+  <data name="Oil,gasandpetrochemicals" xml:space="preserve">
+    <value>Petróleo, gás e petroquímica</value>
+  </data>
+  <data name="Our suggestions" xml:space="preserve">
+    <value>Nossas sugestões</value>
+  </data>
+  <data name="ourcountryportals" xml:space="preserve">
+    <value>ülke portallarımız</value>
+  </data>
+  <data name="Outdoor ventilation fan" xml:space="preserve">
+    <value>Ventilador ao ar livre</value>
+  </data>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Casa</value>
+  </data>
+  <data name="Paper and cellulose industries" xml:space="preserve">
+    <value>Kağıt ve selüloz endüstrileri</value>
+  </data>
+  <data name="petrochemical products" xml:space="preserve">
+    <value>produtos petroquímicos</value>
+  </data>
+  <data name="petrochemicals" xml:space="preserve">
+    <value>petroquímicas</value>
+  </data>
+  <data name="Petroleum products" xml:space="preserve">
+    <value>Produtos petrolíferos</value>
+  </data>
+  <data name="Pharmaceutical" xml:space="preserve">
+    <value>Eczacılığa ait</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Produtos</value>
+  </data>
+  <data name="ProductsCategories" xml:space="preserve">
+    <value>Categorias de produtos</value>
+  </data>
+  <data name="Purchase requests" xml:space="preserve">
+    <value>Solicitações de compra</value>
+  </data>
+  <data name="Russia" xml:space="preserve">
+    <value>Rússia</value>
+  </data>
+  <data name="Sales offers" xml:space="preserve">
+    <value>Ofertas de vendas</value>
+  </data>
+  <data name="See More" xml:space="preserve">
+    <value>Ver mais</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Serviços</value>
+  </data>
+  <data name="silver" xml:space="preserve">
+    <value>prata</value>
+  </data>
+  <data name="Site Link" xml:space="preserve">
+    <value>Link do site</value>
+  </data>
+  <data name="Social Medias Links" xml:space="preserve">
+    <value> Mídias Sociais</value>
+  </data>
+  <data name="Software" xml:space="preserve">
+    <value>yazılım</value>
+  </data>
+  <data name="South Korea" xml:space="preserve">
+    <value>Coreia do Sul</value>
+  </data>
+  <data name="Split air conditioning" xml:space="preserve">
+    <value>Ar condicionado split</value>
+  </data>
+  <data name="Standard" xml:space="preserve">
+    <value>Padrão</value>
+  </data>
+  <data name="Steel" xml:space="preserve">
+    <value>Aço</value>
+  </data>
+  <data name="Steel and Metals" xml:space="preserve">
+    <value>Çelik ve metaller</value>
+  </data>
+  <data name="Sugar" xml:space="preserve">
+    <value>Açúcar</value>
+  </data>
+  <data name="tar" xml:space="preserve">
+    <value>alcatrão</value>
+  </data>
+  <data name="Textiles and clothing" xml:space="preserve">
+    <value>Têxteis e roupas</value>
+  </data>
+  <data name="The highest number of sales offers" xml:space="preserve">
+    <value>O maior número de ofertas de vendas</value>
+  </data>
+  <data name="The latest purchase requests" xml:space="preserve">
+    <value>Os últimos pedidos de compra</value>
+  </data>
+  <data name="Thread" xml:space="preserve">
+    <value>Fio</value>
+  </data>
+  <data name="Transport" xml:space="preserve">
+    <value>ulaşım</value>
+  </data>
+  <data name="United Kingdom" xml:space="preserve">
+    <value>Reino Unido</value>
+  </data>
+  <data name="Vehicles, transport and parts" xml:space="preserve">
+    <value>Araçlar, ulaşım ve parçalar</value>
+  </data>
+  <data name="Water" xml:space="preserve">
+    <value>Su</value>
+  </data>
+</root>

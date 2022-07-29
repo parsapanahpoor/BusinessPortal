@@ -45,7 +45,7 @@ namespace BusinessPortal.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateState(CreateStateViewModel stateViewModel)
+        public async Task<IActionResult> CreateState(CreateStateViewModel stateViewModel, IFormFile? StateImage)
         {
 
             #region Model State Validations
@@ -62,7 +62,7 @@ namespace BusinessPortal.Web.Areas.Admin.Controllers
 
             #endregion
 
-            var result = await _stateService.CreateState(stateViewModel);
+            var result = await _stateService.CreateState(stateViewModel, StateImage);
 
             switch (result)
             {
@@ -76,8 +76,13 @@ namespace BusinessPortal.Web.Areas.Admin.Controllers
                 case CreateStateResult.UniqNameIsExist:
                     TempData[ErrorMessage] = "نام یکتا تکراری است";
                     break;
+
                 case CreateStateResult.Fail:
                     TempData[ErrorMessage] = "عملیات با شکست مواجه شد";
+                    break;
+
+                case CreateStateResult.ImageNotFound:
+                    TempData[ErrorMessage] = "لطفا آیکون مورد نظر را وارد کنید ";
                     break;
             }
 
@@ -109,7 +114,7 @@ namespace BusinessPortal.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditState(EditStateViewModel state)
+        public async Task<IActionResult> EditState(EditStateViewModel state , IFormFile? StateImage)
         {
             if (!ModelState.IsValid)
             {
@@ -117,7 +122,7 @@ namespace BusinessPortal.Web.Areas.Admin.Controllers
                 return View(state);
             }
 
-            var result = await _stateService.EditState(state);
+            var result = await _stateService.EditState(state , StateImage);
 
             switch (result)
             {
@@ -133,6 +138,9 @@ namespace BusinessPortal.Web.Areas.Admin.Controllers
                     break;
                 case EditStateResult.Fail:
                     TempData[ErrorMessage] = "عملیات با شکست مواجه شد";
+                    break;
+                case EditStateResult.ImageNotfound:
+                    TempData[ErrorMessage] = "لطفا آیکون مورد نظر را وارد کنید ";
                     break;
             }
 

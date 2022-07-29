@@ -1,0 +1,27 @@
+﻿@model List<BusinessPortal.Domain.Entities.BrowseCategory.Category>
+
+@if (Model != null && Model.Any())
+{
+    <div class=col-md-3>
+        <div class="services-details-area mr-3">
+            <div class="">
+                <aside class="widget-area">
+                    <div class="widget widget_services p-5">
+                        <i class="fac-navbar-brand"></i>
+                        <h3 class="widget-title" style="color: #fd5b03;">دسته بندی محصولات</h3>
+
+                        <ul class="services-list">
+                            @foreach (var item in Model)
+                            {
+
+                                <li style="list-style:disc; color: #fd5b03;">
+                                    <a href="#">@item.DisplayName </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+}

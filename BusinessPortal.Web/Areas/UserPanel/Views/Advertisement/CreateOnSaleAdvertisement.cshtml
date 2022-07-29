@@ -1,0 +1,233 @@
+﻿@model BusinessPortal.Domain.ViewModels.UserPanel.Advertisement.CreateOnSaleAdvertisementFromUserPanel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _Localizer
+@using System.Globalization
+
+@{
+    ViewData["Title"] = _Localizer["PageTitle"];
+
+    List<BusinessPortal.Domain.ViewModels.UserPanel.Advertisement.AdvertisementCategoryViewModel> Category = ViewBag.Categories as List<BusinessPortal.Domain.ViewModels.UserPanel.Advertisement.AdvertisementCategoryViewModel>;
+}
+
+@using BusinessPortal.Application.Utils
+@using BusinessPortal.Domain.Entities.Advertisement
+
+
+
+
+@section styles{
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <style>
+
+
+        .quote-imgs-thumbs {
+            background: #eee;
+            border: 1px solid #ccc;
+            border-radius: 0.25rem;
+            margin: 1.5rem 0;
+            padding: 0.75rem;
+        }
+
+        .quote-imgs-thumbs--hidden {
+            display: none;
+        }
+
+        .img-preview-thumb {
+            background: #fff;
+            border: 1px solid #777;
+            border-radius: 0.25rem;
+            box-shadow: 0.125rem 0.125rem 0.0625rem rgba(0, 0, 0, 0.12);
+            margin-right: 1rem;
+            max-width: 140px;
+            padding: 0.25rem;
+        }
+
+        tags.tagify {
+            height: auto !important;
+        }
+
+
+        .ck-content {
+            height: 200px;
+        }
+    </style>
+
+}
+
+@section scripts{
+
+    <partial name="_JqueryValidators" />
+
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+
+        $('.UsersDrowpDown').change(function () {
+
+            $('.Address').empty();
+            $.getJSON("/home/GetUserAddress/" + $(".UsersDrowpDown :selected").val(),
+                function (data) {
+
+                    $.each(data,
+                        function () {
+                            $('.Address').append('<option value=' + this.value + '>' + this.text + '</option>');
+
+                        });
+
+                });
+
+
+        });
+
+        var imgUpload = document.getElementById('upload_imgs')
+            , imgPreview = document.getElementById('img_preview')
+            , imgUploadForm = document.getElementById('img-upload-form')
+            , totalFiles
+            , previewTitle
+            , previewTitleText
+            , img;
+
+        imgUpload.addEventListener('change', previewImgs, false);
+        imgUploadForm.addEventListener('submit', function (e) {
+            //e.preventDefault();
+            //alert('Images Uploaded! (not really, but it would if this was on your website)');
+        }, false);
+
+        function previewImgs(event) {
+            $("#img_preview").empty();
+            totalFiles = imgUpload.files.length;
+
+            if (!!totalFiles) {
+                imgPreview.classList.remove('quote-imgs-thumbs--hidden');
+                previewTitle = document.createElement('p');
+                previewTitle.style.fontWeight = 'bold';
+                previewTitleText = document.createTextNode(totalFiles + '  عکس انتخاب شده');
+                previewTitle.appendChild(previewTitleText);
+                imgPreview.appendChild(previewTitle);
+            }
+
+            for (var i = 0; i < totalFiles; i++) {
+                img = document.createElement('img');
+                img.src = URL.createObjectURL(event.target.files[i]);
+                img.classList.add('img-preview-thumb');
+                imgPreview.appendChild(img);
+            }
+        }
+
+    </script>
+}
+
+
+<div class="content-body" style=" margin-right:0px ; padding-top:0px;">
+    <div class="container-fluid">
+        <form asp-controller="Advertisement" asp-area="UserPanel" asp-action="CreateOnSaleAdvertisement" method="post" enctype="multipart/form-data">
+
+
+            <div class="row">
+
+                <div class="col-xl-7 col-lg-7">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>@_Localizer["AdvertisementInfo"]</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="basic-form">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                <div class="form-row">
+
+                                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                        <div class="contantUs-page-form-input-media my-3">
+                                            <label for="exampleFormControlInput1" class="form-label Label_Input_form_Personal">
+                                                @_Localizer["Address"] <span class="text-danger">*</span>
+                                            </label>
+
+
+
+                                            <select asp-for="AddressID" id="Address" asp-items="@ViewData["Address"] as SelectList" class="Address form-control contantUs-page-form-input-select"></select>
+
+                                        </div>
+                                        <span asp-validation-for="AddressID" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <label>  @_Localizer["AdvertisementTitle"]    </label>
+                                        <input asp-for="Title" type="text" class="form-control" placeholder=" @_Localizer["AdvertisementTitlePlaceHolder"] ">
+                                        <span asp-validation-for="Title" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <label>  @_Localizer["AdvertisementURL"]     </label>
+                                        <input asp-for="AdsUrl" type="text" class="form-control" placeholder="@_Localizer["AdvertisementURLPlaceHolder"] ">
+                                        <span asp-validation-for="AdsUrl" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <label>@_Localizer["AdvertisementTags"]</label>
+                                        <input asp-for="AdvertisementTags" tagify="1" type="text" class="form-control">
+                                        <span asp-validation-for="AdvertisementTags" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="grid-x grid-padding-x pt-3">
+                                        <div class="small-10 small-offset-1 medium-8 medium-offset-2 cell">
+                                            <p>
+                                                <label for="upload_imgs" @*class="button hollow"*@ class="btn btn-success"> @_Localizer["AdvertisementImage"]</label>
+                                                <input class="show-for-sr" style="display:none" type="file" id="upload_imgs" name="upload_imgs"   />
+                                            </p>
+                                            <div class="quote-imgs-thumbs quote-imgs-thumbs--hidden" id="img_preview" aria-live="polite"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <label>  @_Localizer["AdvertisementDescription"]      </label>
+                                        <textarea asp-for="Description" rows="10" class="form-control" placeholder=" @_Localizer["AdvertisementDescriptionPlaceHolder"] "></textarea>
+                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                    </div>
+
+                                </div>
+
+                                <button type="submit" class="btn btn-outline-primary">@_Localizer["Submit"]</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row col-xl-5 col-lg-5">
+
+                    <div class="col-xl-12 col-lg-5" style="max-height: 500px;">
+                        <div class="card">
+                            <div class="form-group">
+                                <div class="form-check">
+                                    @foreach (var category in Category.Where(p => p.ParentId == null))
+                                    {
+                                        <div style="padding-right: 40px; margin-right:10px; margin-top:10px;">
+                                            <input class="form-check-input" type="checkbox" name="SelectedCategory" value="@category.CatgeoryId">
+                                            <label class="form-check-label"> @category.GroupName</label>
+                                        </div>
+
+                                        @if (Category.Any(p => p.ParentId == category.ParentId))
+                                        {
+                                            @foreach (var sub in Category.Where(p => p.ParentId == category.CatgeoryId))
+                                            {
+                                                <div style=" padding-right: 60px; margin-right: 20px; margin-top:5px;">
+
+                                                    <input class="form-check-input" type="checkbox" name="SelectedCategory" value="@sub.CatgeoryId">
+                                                    <label class="form-check-label"> @sub.GroupName</label>
+                                                </div>
+                                            }}}
+
+                                </div>
+
+
+                            </div>                            <!-- /.card-footer -->
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+</div>

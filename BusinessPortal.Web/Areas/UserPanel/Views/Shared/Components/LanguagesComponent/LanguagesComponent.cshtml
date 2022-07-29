@@ -1,0 +1,8 @@
+﻿@model List<BusinessPortal.Domain.Entities.Language.Language>
+
+@foreach (var item in Model)
+{
+    <li class="nav-item d-none d-sm-inline-block">
+        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="@item.LanguageTitle" class="nav-link">@item.LanguageTitle</a>
+    </li>
+}

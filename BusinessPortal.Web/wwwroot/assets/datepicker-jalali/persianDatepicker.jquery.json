@@ -1,0 +1,36 @@
+{
+    "name": "persianDatepicker",
+    "title": "jQuery persian datepicker",
+    "description": "A lightweight jQuery plugin for select persian date, work on >IE8, Chrome, Firefox, Safari, Opera ",
+    "keywords": [
+        "persian",
+        "persianDatepicker",
+		"datepicker",
+		"jalali"
+    ],
+    "version": "0.1.0",
+    "author": {
+        "name": "Mohammad hasan Behzadi"        
+    },
+    "maintainers": [
+        {
+            "name": "Mohammad hasan Behzadi",
+            "email": "mohammadhasan.behzadi@gmail.com",
+            "url": "http://behzadi.github.io"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/behzadi/persian-datepicker/blob/master/LICENSE"
+        }
+    ],
+    "bugs": "https://github.com/behzadi/persianDatepicker/issues",
+    "homepage": "http://behzadi.github.io/persianDatepicker/",
+    "docs": "http://behzadi.github.io/persianDatepicker/",
+    "demo": "http://behzadi.github.io/persianDatepicker/",
+    "download": "https://github.com/behzadi/persianDatepicker/archive/master.zip",
+    "dependencies": {
+        "jquery": ">=1.4"
+    }
+}

@@ -1,0 +1,10 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _Localizer
+@using System.Globalization
+
+@{
+    ViewData["Title"] = _Localizer["Title"];
+}
+
+<h2>@_Localizer["UserPanel"]</h2>
+

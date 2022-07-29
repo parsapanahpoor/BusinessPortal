@@ -1,9 +1,13 @@
 using BusinessPortal.Application.SiteServices;
 using BusinessPortal.Data.DbContext;
 using BusinessPortal.IoC;
+using Domain.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 
@@ -65,6 +69,21 @@ DependencyContainer.RegisterServices(builder.Services);
 
 #endregion
 
+#region Localizer
+
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+builder.Services.AddControllersWithViews()
+    .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix,
+        options => { options.ResourcesPath = "Resources"; })
+    .AddDataAnnotationsLocalization(options =>
+    {
+        options.DataAnnotationLocalizerProvider = (type, factory) =>
+            factory.Create(typeof(ShareResource));
+    });
+
+#endregion
+
 #endregion
 
 #region MiddleWares
@@ -85,6 +104,33 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseSession();
+
+#region Localizer
+
+var supportedCultures = new List<CultureInfo>()
+            {
+                new CultureInfo("fa-IR"),
+                new CultureInfo("en-US"),
+                new CultureInfo("ru-RU"),
+                new CultureInfo("ar-SA"),
+                new CultureInfo("tr-TR"),
+                new CultureInfo("pt-PT")
+            };
+var options = new RequestLocalizationOptions()
+{
+    DefaultRequestCulture = new RequestCulture("fa-IR"),
+    SupportedCultures = supportedCultures,
+    SupportedUICultures = supportedCultures,
+    RequestCultureProviders = new List<IRequestCultureProvider>()
+                {
+                    new QueryStringRequestCultureProvider(),
+                    new CookieRequestCultureProvider()
+                }
+};
+app.UseRequestLocalization(options);
+
+#endregion
+
 
 SiteCurrentContext.Configure(app.Services.GetRequiredService<IHttpContextAccessor>());
 

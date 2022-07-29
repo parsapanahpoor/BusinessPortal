@@ -55,6 +55,14 @@
             </ul>
         </li>
 
+           <li>
+            <a asp-controller="Wallet" asp-action="Index">
+                <i class="menu-icon glyphicon glyphicon-usd"></i>
+                <span class="menu-text"> لیست تراکنش ها  </span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
         <li>
             <a href="#" class="menu-dropdown">
                 <i class="menu-icon glyphicon glyphicon-th-large"></i>
@@ -67,7 +75,7 @@
                         <span class="menu-text"> لیست دسته بندی ها </span>
                     </a>
                 </li>
-                    <li>
+                <li>
                     <a asp-action="CreateMainCategory" asp-area="Admin" asp-controller="Categories">
                         <span class="menu-text"> افزودن دسته بندی  </span>
                     </a>
@@ -75,7 +83,22 @@
             </ul>
         </li>
 
-           <li>
+        <li>
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon	glyphicon glyphicon-list-alt"></i>
+                <span class="menu-text">  لیست آگهی ها </span>
+                <i class="menu-expand"></i>
+            </a>
+            <ul class="submenu">
+                <li>
+                    <a asp-action="Index" asp-area="Admin" asp-controller="Advertisement">
+                        <span class="menu-text"> لیست آگهی ها </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
             <a href="#" class="menu-dropdown">
                 <i class="menu-icon glyphicon glyphicon-map-marker"></i>
                 <span class="menu-text"> مدیریت مکان ها </span>
@@ -95,7 +118,7 @@
                 </li>
             </ul>
         </li>
-
+       
         <!--UI Elements-->
 
     </ul>

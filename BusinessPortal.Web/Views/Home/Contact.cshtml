@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewData["Title"] = "ارتباط با ما";
+    
+}
+
+
+ <!-- Start Contact Area -->
+        <div class="contact-area ptb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-6">
+                        <div class="contact-form-wrap">
+                            <h3>پیام بگذارید</h3>
+
+                            <form asp-action="Contact" asp-controller="Home" method="post">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-group">
+                                            <label>نام</label>
+                                            <input type="text" name="name" id="name" class="form-control" required data-error="لطفا نام خود را وارد کنید">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+            
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-group">
+                                            <label>ایمیل</label>
+                                            <input type="email" name="email" id="email" class="form-control" required data-error="لطفا ایمیل خود را وارد کنید">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+            
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-group">
+                                            <label>تلفن</label>
+                                            <input type="text" name="phone_number" id="phone_number" required data-error="لطفا تلفن خود را وارد کنید" class="form-control">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+            
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-group">
+                                            <label>موضوع</label>
+                                            <input type="text" name="msg_subject" id="msg_subject" class="form-control" required data-error="لطفا موضوع خود را وارد کنید">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+            
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group">
+                                            <label>پیام شما</label>
+                                            <textarea name="message" class="form-control" id="message" cols="30" rows="6" required data-error="پیام خود را بنویسید"></textarea>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+            
+                                    <div class="col-lg-12 col-md-12 text-center mt-2">
+                                        <div class="send-btn">
+                                            <button type="submit" class="default-btn">ارسال پیام</button>
+                                        </div>
+                                        <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 col-md-6">
+                        <div class="contact-support">
+                            <h3>پشتیبانی مشتری</h3>
+                            <span>به کمک نیاز دارید؟ با ما در تماس باشید.</span>
+
+                            <ul class="information">
+                                <li><i class="ri-map-pin-fill"></i> ایران، تهران - پاسداران - نبش گلستان دوم</li>
+                                <li><i class="ri-phone-fill"></i> <a href="tel:2126653574">547 53 266 21+ </a></li>
+                                 <li><i class="ri-mail-line"></i> <a href="mailto: BusinessPortal@Yahoo.com">BusinessPortal@Yahoo.com</a></li>
+                                <li><i class="ri-mail-line"></i> <a href="mailto: info@BusinessPortal.com">info@BusinessPortal.com</a></li>
+                            </ul>
+                            <ul class="social">
+                                <li><span>اشتراک گذاری:</span></li>
+                                <li><a href="https://www.facebook.com/" target="_blank"><i class="ri-facebook-line"></i></a></li>
+                                <li><a href="https://twitter.com/" target="_blank"><i class="ri-twitter-fill"></i></a></li>
+                                <li><a href="https://www.instagram.com/" target="_blank"><i class="ri-instagram-fill"></i></a></li>
+                                <li><a href="https://www.linkedin.com/" target="_blank"><i class="ri-linkedin-fill"></i></a></li>
+                            </ul>
+
+                            <div class="working-hours">
+                                <h4>ساعت پاسخگویی</h4>
+
+                                <ul class="list">
+                                    <li>شنبه - پنجشنبه: <span>9:00 صبح - 9:00 شب</span></li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Contact Area -->

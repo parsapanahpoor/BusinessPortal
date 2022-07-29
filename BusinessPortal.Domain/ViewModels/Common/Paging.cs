@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,7 +59,33 @@ namespace BusinessPortal.Domain.ViewModels.Common
                     endItem = Page * TakeEntity > AllEntitiesCount ? AllEntitiesCount : Page * TakeEntity;
                 }
 
+                if (CultureInfo.CurrentCulture.Name == "en-US")
+                {
+                    return $"Show {startItem} Until {endItem} From {AllEntitiesCount}";
+                }
+                if (CultureInfo.CurrentCulture.Name == "ru-RU")
+                {
+                    return $"Шоу {startItem} До того как {endItem} От {AllEntitiesCount}";
+                } 
+                if (CultureInfo.CurrentCulture.Name == "ar-SA")
+                {
+                    return $"يعرض {startItem} حتى{endItem} من عند {AllEntitiesCount}";
+                } 
+                if (CultureInfo.CurrentCulture.Name == "tr-TR")
+                {
+                    return $"Göstermek {startItem} Değin {endItem} İtibaren {AllEntitiesCount}";
+                }
+                if (CultureInfo.CurrentCulture.Name == "pt-PT")
+                {
+                    return $"exposição {startItem} Até {endItem} A partir de {AllEntitiesCount}";
+                }
+
                 return $"نمایش {startItem} تا {endItem} از {AllEntitiesCount}";
+            }
+
+            if (CultureInfo.CurrentCulture.Name == "en-IR")
+            {
+                return $"0 Item";
             }
 
             return $"0 آیتم";
