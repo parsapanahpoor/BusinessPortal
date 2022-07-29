@@ -126,4 +126,7 @@
   <data name="User" xml:space="preserve">
     <value>Пользователь</value>
   </data>
+  <data name="User Wallet Balance" xml:space="preserve">
+    <value>Баланс кошелька пользователя</value>
+  </data>
 </root>

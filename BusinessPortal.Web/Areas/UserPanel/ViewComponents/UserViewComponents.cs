@@ -39,9 +39,23 @@ namespace BusinessPortal.Web.Areas.UserPanel.ViewComponents
 
     public class UserHeaderViewComponent : ViewComponent
     {
+        #region Ctor
+
+        private readonly IWalletService _walletService;
+
+        private readonly IUserService _userService;
+
+        public UserHeaderViewComponent(IWalletService walletService, IUserService userService)
+        {
+            _walletService = walletService;
+            _userService = userService;
+        }
+
+        #endregion
+
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View("UserHeader");
+          return View("UserHeader" , await _userService.GetUserById(User.GetUserId()));
         }
     }
 

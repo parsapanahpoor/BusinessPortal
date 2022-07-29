@@ -1,6 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer _Localizer
 @using System.Globalization
+@model BusinessPortal.Domain.Entities.Account.User
 
 <div class="header">
     <div class="header-content">
@@ -15,8 +16,8 @@
                         <a class="nav-link" href="#" role="button" data-toggle="dropdown">
                             <img src="/UserPanel/images/profile/pic1.png" width="20" alt="" />
                             <div class="header-info">
-                                <span>@_Localizer["Hello"] <strong> @User.Identity.Name  </strong></span>
-                                <small>@_Localizer["User"]  </small>
+                                <span>@_Localizer["User"] <strong> @User.Identity.Name  </strong></span>
+                                <small> @_Localizer["User Wallet Balance"] :  @Model.WalletBalance.ToString("#,000") </small>
                             </div>
                         </a>
 

@@ -12,13 +12,15 @@
     </div><!--Widget Header-->
     <div class="widget-body">
         <p>
-            
+
             <a asp-controller="Account" asp-area="Admin" asp-action="EditUserInfo" asp-route-id="@Model.Id" class="btn btn-warning btn-sm mt-10px ml-10px"> ویرایش </a>
-            
-            <a onclick="ShowAddUserWalletModal(@Model.Id)" class="btn btn-darkorange btn-sm mt-10px ml-10px"> افزودن تراکنش </a>
+
+            <a asp-action="CreateWallet" asp-controller="Wallet" asp-route-id="@Model.Id" class="btn btn-warning btn-sm mt-10px ml-10px"> ایجاد تراکنش </a>
+
+            <a asp-action="Index" asp-controller="Wallet" asp-route-UserId="@Model.Id" class="btn btn-darkorange btn-sm mt-10px ml-10px"> کیف پول کاربر </a>
 
             <a onclick="ShowChangePasswordModal(@Model.Id)" class="btn btn-maroon btn-sm mt-10px ml-10px"> تغییر کلمه عبور </a>
-            
+
             @*<a onclick="ConfigurationAlert('@Url.Action("LoginWithUser","Account", new{area = "Admin", userId = @Model.Id})')" class="btn btn-blue btn-sm mt-10px ml-10px"> ورود با اکانت این کاربر </a>*@
         </p>
     </div><!--Widget Body-->
