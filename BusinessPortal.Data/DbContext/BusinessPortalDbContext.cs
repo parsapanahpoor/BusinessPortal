@@ -12,6 +12,7 @@ using BusinessPortal.Domain.Entities.Advertisement;
 using BusinessPortal.Domain.Entities.Address;
 using BusinessPortal.Domain.Entities.Language;
 using BusinessPortal.Domain.Entities.Wallet;
+using BusinessPortal.Domain.Entities.Tariff;
 
 namespace BusinessPortal.Data.DbContext
 {
@@ -81,6 +82,12 @@ namespace BusinessPortal.Data.DbContext
         public DbSet<Wallet> Wallets { get; set; }
 
         public DbSet<WalletData> WalletData { get; set; }
+
+        #endregion
+
+        #region Tariff 
+
+        public DbSet<Tariff> Tariffs { get; set; }
 
         #endregion
 

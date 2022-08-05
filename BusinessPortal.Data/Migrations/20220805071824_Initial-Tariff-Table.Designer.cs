@@ -4,6 +4,7 @@ using BusinessPortal.Data.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BusinessPortal.Data.Migrations
 {
     [DbContext(typeof(BusinessPortalDbContext))]
-    partial class BusinessPortalDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220805071824_Initial-Tariff-Table")]
+    partial class InitialTariffTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -630,41 +632,6 @@ namespace BusinessPortal.Data.Migrations
                             Smtp = "smtp.gmail.com",
                             UserName = "BusinessPortal"
                         });
-                });
-
-            modelBuilder.Entity("BusinessPortal.Domain.Entities.Tariff.Tariff", b =>
-                {
-                    b.Property<decimal>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(20,0)");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
-
-                    b.Property<int>("CountOfAddAdvertisement")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CountOfSeenAdvertisement")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("TariffName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TariffPrice")
-                        .HasColumnType("int");
-
-                    b.Property<int>("tariffDuration")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tariffs");
                 });
 
             modelBuilder.Entity("BusinessPortal.Domain.Entities.Wallet.Wallet", b =>

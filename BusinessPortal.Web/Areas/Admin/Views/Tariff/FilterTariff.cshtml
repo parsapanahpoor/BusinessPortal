@@ -1,0 +1,125 @@
+﻿@model BusinessPortal.Domain.ViewModels.Admin.Tariff.FilterTariffViewModel
+@{
+    ViewData["Title"] = "فیلتر تعرفه ها";
+}
+
+@section Styles
+{
+
+}
+
+@section Breadcrumbs
+{
+<li>
+    <a href="javascript:void(0)"> @ViewData["Title"] </a>
+</li>
+}
+
+<div class="row">
+    <div class="col-lg-3 col-sm-12">
+    
+            <a class="btn btn-sky w-100 margin-bottom-10" asp-action="CreateTariff" asp-controller="Tariff" asp-area="Admin">ایجاد تعرفه ی جدید </a>
+        
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-green">
+                    <span class="widget-caption"> فیلتر تعرفه ها </span>
+            </div>
+            <div class="widget-body">
+                <div>
+                    <form asp-action="FilterTariff" asp-controller="Tariff" asp-area="Admin" id="filter-search" method="get">
+                        <input type="hidden" asp-for="Page" />
+
+                        <div class="form-group">
+                            <label asp-for="TariffName">عنوان </label>
+                            <input type="text" class="form-control" asp-for="TariffName">
+                        </div>
+
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-md-12 flex-style">
+                                <button type="submit" class="btn btn-labeled w-100 btn-palegreen">
+                                    <i class="btn-label glyphicon glyphicon-filter"></i>اعمال فیلتر
+                                </button>
+
+                                @if (Context.Request.QueryString.HasValue)
+                                {
+                                        <a asp-action="FilterTariff" asp-controller="Tariff" asp-area="Admin" class="btn btn-labeled w-100 btn-darkorange mr-10px">
+                                            <i class="btn-label glyphicon glyphicon-remove"></i>حذف فیلتر
+                                        </a>
+                                }
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-9 col-sm-12">
+        <div class="well with-header with-footer table-responsive">
+            <div class="header bordered-azure">
+                <div class="flex-style">
+                        <span> لیست تعرفه ها </span>
+                    
+                    <span>@Model.GetShownEntitiesPagesTitle()</span>
+                </div>
+            </div>
+
+            @if (Model.Entities != null && Model.Entities.Any())
+            {
+                <table class="table table-hover table-bordered tc vm">
+                    <thead class="tc vm">
+                        <tr class="tc vm">
+                            <th class="tc vm">
+                                عنوان
+                            </th>
+                            <th class="tc vm">
+                                مبلغ تعرفه
+                            </th> 
+                            <th class="tc vm">
+                                طول مدت تعرفه
+                            </th>
+                            <th class="tc vm">
+                                امکانات
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="tc vm">
+                        @foreach (var tariff in Model.Entities)
+                        {
+                            <tr class="tc vm" remove-ajax-item="@tariff.Id">
+                                <td class="tc vm" style="max-width: 200px">
+                                    <p> @tariff.TariffName </p>
+                                </td>
+                                <td class="tc vm">
+                                    <p> @tariff.TariffPrice.ToString("#,000") $ </p>
+                                </td>
+                                 <td class="tc vm">
+                                    <p> @tariff.tariffDuration </p>
+                                </td>
+                                <td class="tc vm">
+                                    <a asp-action="EditTariff" asp-controller="Tariff" asp-area="Admin" asp-route-tariffId="@tariff.Id" class="btn btn-warning btn-circle btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
+                                    <button onclick="DeleteAjax(@tariff.Id, '@Url.Action("DeleteTariff", "Tariff", new {area = "Admin", tariffId = tariff.Id})')" class="btn btn-danger btn-circle btn-xs"><i class="glyphicon glyphicon-trash"></i></button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <div class="footer tc">
+
+                    <partial name="_AdminPaging" model="@Model.GetCurrentPaging()" />
+
+                </div>
+            }
+            else
+            {
+                <partial name="_AdminNotFoundPartial" />
+            }
+        </div>
+    </div>
+</div>
+
+
+
