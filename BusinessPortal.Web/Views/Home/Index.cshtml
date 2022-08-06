@@ -356,8 +356,9 @@
     </div>
 </div>
 
-
-<div class="pricing-area bg-f9fafb pt-20 pb-20">
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="pricing-area bg-f9fafb pt-20 pb-20">
     <div class="container">
         <div class="section-title-wrap">
             <div class="row align-items-center">
@@ -373,8 +374,7 @@
         </div>
     </div>
 </div>
-
-
+}
 
 
 <div class="shop-area  align-items-center justify-content-center text-center pt-75 pb-50">

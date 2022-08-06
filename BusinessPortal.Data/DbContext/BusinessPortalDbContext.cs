@@ -61,6 +61,10 @@ namespace BusinessPortal.Data.DbContext
 
         public DbSet<AdvertisementSelectedCategory> AdvertisementSelectedCategories { get; set; }
 
+        public DbSet<UserCreateAdvertisementLog> UserCreateAdvertisementLogs { get; set; }
+
+        public DbSet<UserSeenAdvertisementLog> UserSeenAdvertisementLogs { get; set; }
+
         #endregion
 
         #region Email Setting
@@ -88,6 +92,8 @@ namespace BusinessPortal.Data.DbContext
         #region Tariff 
 
         public DbSet<Tariff> Tariffs { get; set; }
+
+        public DbSet<UserSelectedTariff> UserSelectedTariff { get; set; }
 
         #endregion
 

@@ -13,7 +13,7 @@
             </div>
 
             <ul class="pricing-features">
-                <li><i class="ri-check-line"></i> @_Localizer["Tariff Price"] : @item.TariffPrice</li>
+                <li><i class="ri-check-line"></i> @_Localizer["Tariff Price"] : @item.TariffPrice $</li>
 
                 <li><i class="ri-check-line"></i> @_Localizer["Seen Ads Per Day"] : @item.CountOfSeenAdvertisement</li>
 
@@ -23,7 +23,7 @@
             </ul>
 
             <div class="pricing-btn  text-center">
-                <a href="contact.html" class="default-btn">@_Localizer["Buy a subscription"]</a>
+                <a asp-action="BuyTariff" asp-area="" asp-controller="Taariff" asp-route-tariffId="@item.Id" class="default-btn">@_Localizer["Buy a subscription"]</a>
             </div>
         </div>
     </div>

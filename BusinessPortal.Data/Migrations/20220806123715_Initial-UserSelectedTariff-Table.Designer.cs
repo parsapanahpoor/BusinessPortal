@@ -4,6 +4,7 @@ using BusinessPortal.Data.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BusinessPortal.Data.Migrations
 {
     [DbContext(typeof(BusinessPortalDbContext))]
-    partial class BusinessPortalDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220806123715_Initial-UserSelectedTariff-Table")]
+    partial class InitialUserSelectedTariffTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -447,60 +449,6 @@ namespace BusinessPortal.Data.Migrations
                     b.HasIndex("AdvertisementId");
 
                     b.ToTable("AdvertisementTags");
-                });
-
-            modelBuilder.Entity("BusinessPortal.Domain.Entities.Advertisement.UserCreateAdvertisementLog", b =>
-                {
-                    b.Property<decimal>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(20,0)");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("FromCustomer")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("FromEmployee")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<decimal>("UserId")
-                        .HasColumnType("decimal(20,0)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserCreateAdvertisementLogs");
-                });
-
-            modelBuilder.Entity("BusinessPortal.Domain.Entities.Advertisement.UserSeenAdvertisementLog", b =>
-                {
-                    b.Property<decimal>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(20,0)");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<decimal>("UserId")
-                        .HasColumnType("decimal(20,0)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserSeenAdvertisementLogs");
                 });
 
             modelBuilder.Entity("BusinessPortal.Domain.Entities.BrowseCategory.Category", b =>
@@ -997,28 +945,6 @@ namespace BusinessPortal.Data.Migrations
                     b.Navigation("Advertisement");
                 });
 
-            modelBuilder.Entity("BusinessPortal.Domain.Entities.Advertisement.UserCreateAdvertisementLog", b =>
-                {
-                    b.HasOne("BusinessPortal.Domain.Entities.Account.User", "User")
-                        .WithMany("UserCreateAdvertisementLog")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("BusinessPortal.Domain.Entities.Advertisement.UserSeenAdvertisementLog", b =>
-                {
-                    b.HasOne("BusinessPortal.Domain.Entities.Account.User", "User")
-                        .WithMany("UserSeenAdvertisementLogs")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("BusinessPortal.Domain.Entities.BrowseCategory.Category", b =>
                 {
                     b.HasOne("BusinessPortal.Domain.Entities.BrowseCategory.Category", null)
@@ -1097,11 +1023,7 @@ namespace BusinessPortal.Data.Migrations
                     b.Navigation("Seller")
                         .IsRequired();
 
-                    b.Navigation("UserCreateAdvertisementLog");
-
                     b.Navigation("UserRoles");
-
-                    b.Navigation("UserSeenAdvertisementLogs");
 
                     b.Navigation("UserSelectedTariff");
 

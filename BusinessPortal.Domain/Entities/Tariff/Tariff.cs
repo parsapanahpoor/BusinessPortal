@@ -22,5 +22,11 @@ namespace BusinessPortal.Domain.Entities.Tariff
         public int tariffDuration { get; set; }
 
         #endregion
+
+        #region relations
+
+        public ICollection<UserSelectedTariff> UserSelectedTariff { get; set; }
+
+        #endregion
     }
 }

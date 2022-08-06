@@ -82,5 +82,24 @@ namespace BusinessPortal.Data.Repository
         }
 
         #endregion
+
+        #region Site Side 
+
+        //Has User Any Tariff Right Now 
+        public async Task<bool> HasUserAnyActiveTariffRightNow(ulong tariffId , ulong userId)
+        {
+            return await _context.UserSelectedTariff.AnyAsync(p => !p.IsDelete && p.UserId == userId && p.TariffId == tariffId &&
+                                                              p.Startdate.Year <= DateTime.Now.Year && p.Startdate.DayOfYear <= DateTime.Now.DayOfYear &&
+                                                              p.EndDate.Year >= DateTime.Now.Year && p.EndDate.DayOfYear >= DateTime.Now.DayOfYear);
+        }
+
+        //Add User Selected Tariff
+        public async Task CreateUserSelectedTariff(UserSelectedTariff user)
+        {
+            await _context.UserSelectedTariff.AddAsync(user);
+            await _context.SaveChangesAsync();
+        }
+
+        #endregion
     }
 }

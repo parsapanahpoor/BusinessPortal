@@ -30,6 +30,12 @@ namespace BusinessPortal.Domain.Interfaces
         //Filter Tariff In Admin Side 
         Task<FilterTariffViewModel> FilterTariff(FilterTariffViewModel filter);
 
+        //Has User Any Tariff Right Now 
+        Task<bool> HasUserAnyActiveTariffRightNow(ulong tariffId, ulong userId);
+
+        //Add User Selected Tariff
+        Task CreateUserSelectedTariff(UserSelectedTariff user);
+
         #endregion
     }
 }

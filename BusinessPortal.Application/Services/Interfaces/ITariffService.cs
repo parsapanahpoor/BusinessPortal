@@ -30,6 +30,9 @@ namespace BusinessPortal.Application.Services.Interfaces
         //Show Tariffs In Home Page 
         Task<List<Tariff>> ShowTariffInHomePage();
 
+        //Buy Tariff By User 
+        Task<int> BuyTariff(ulong tariffId, ulong userId);
+
         #endregion
     }
 }
