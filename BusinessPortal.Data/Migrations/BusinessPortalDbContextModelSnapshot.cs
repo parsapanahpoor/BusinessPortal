@@ -449,6 +449,60 @@ namespace BusinessPortal.Data.Migrations
                     b.ToTable("AdvertisementTags");
                 });
 
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Advertisement.UserCreateAdvertisementLog", b =>
+                {
+                    b.Property<decimal>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(20,0)");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("FromCustomer")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("FromEmployee")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("UserId")
+                        .HasColumnType("decimal(20,0)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserCreateAdvertisementLogs");
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Advertisement.UserSeenAdvertisementLog", b =>
+                {
+                    b.Property<decimal>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(20,0)");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("UserId")
+                        .HasColumnType("decimal(20,0)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserSeenAdvertisementLogs");
+                });
+
             modelBuilder.Entity("BusinessPortal.Domain.Entities.BrowseCategory.Category", b =>
                 {
                     b.Property<decimal>("Id")
@@ -630,6 +684,76 @@ namespace BusinessPortal.Data.Migrations
                             Smtp = "smtp.gmail.com",
                             UserName = "BusinessPortal"
                         });
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Tariff.Tariff", b =>
+                {
+                    b.Property<decimal>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(20,0)");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
+
+                    b.Property<int>("CountOfAddAdvertisement")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CountOfSeenAdvertisement")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("TariffName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TariffPrice")
+                        .HasColumnType("int");
+
+                    b.Property<int>("tariffDuration")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tariffs");
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Tariff.UserSelectedTariff", b =>
+                {
+                    b.Property<decimal>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(20,0)");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("Startdate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("TariffId")
+                        .HasColumnType("decimal(20,0)");
+
+                    b.Property<decimal>("UserId")
+                        .HasColumnType("decimal(20,0)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TariffId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserSelectedTariff");
                 });
 
             modelBuilder.Entity("BusinessPortal.Domain.Entities.Wallet.Wallet", b =>
@@ -873,6 +997,28 @@ namespace BusinessPortal.Data.Migrations
                     b.Navigation("Advertisement");
                 });
 
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Advertisement.UserCreateAdvertisementLog", b =>
+                {
+                    b.HasOne("BusinessPortal.Domain.Entities.Account.User", "User")
+                        .WithMany("UserCreateAdvertisementLog")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Advertisement.UserSeenAdvertisementLog", b =>
+                {
+                    b.HasOne("BusinessPortal.Domain.Entities.Account.User", "User")
+                        .WithMany("UserSeenAdvertisementLogs")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("BusinessPortal.Domain.Entities.BrowseCategory.Category", b =>
                 {
                     b.HasOne("BusinessPortal.Domain.Entities.BrowseCategory.Category", null)
@@ -889,6 +1035,25 @@ namespace BusinessPortal.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Parent");
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Tariff.UserSelectedTariff", b =>
+                {
+                    b.HasOne("BusinessPortal.Domain.Entities.Tariff.Tariff", "Tariff")
+                        .WithMany("UserSelectedTariff")
+                        .HasForeignKey("TariffId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("BusinessPortal.Domain.Entities.Account.User", "User")
+                        .WithMany("UserSelectedTariff")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Tariff");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("BusinessPortal.Domain.Entities.Wallet.Wallet", b =>
@@ -932,7 +1097,13 @@ namespace BusinessPortal.Data.Migrations
                     b.Navigation("Seller")
                         .IsRequired();
 
+                    b.Navigation("UserCreateAdvertisementLog");
+
                     b.Navigation("UserRoles");
+
+                    b.Navigation("UserSeenAdvertisementLogs");
+
+                    b.Navigation("UserSelectedTariff");
 
                     b.Navigation("Wallets");
                 });
@@ -967,6 +1138,11 @@ namespace BusinessPortal.Data.Migrations
                     b.Navigation("AddressesState");
 
                     b.Navigation("Children");
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Tariff.Tariff", b =>
+                {
+                    b.Navigation("UserSelectedTariff");
                 });
 
             modelBuilder.Entity("BusinessPortal.Domain.Entities.Wallet.Wallet", b =>

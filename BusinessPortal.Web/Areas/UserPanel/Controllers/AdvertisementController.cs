@@ -17,15 +17,21 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
         #region ctor
 
         public IAdvertisementService _advertisementService { get; set; }
+
         public IStateService _stateService { get; set; }
+
         public ICategoriesService _categoryServicec { get; set; }
 
+        private readonly ITariffService _tariffService;
 
-        public AdvertisementController(IAdvertisementService advertisementService, IStateService stateService, ICategoriesService categoryService)
+
+        public AdvertisementController(IAdvertisementService advertisementService, IStateService stateService
+            , ICategoriesService categoryService, ITariffService tariffService)
         {
             _advertisementService = advertisementService;
             _stateService = stateService;
             _categoryServicec = categoryService;
+            _tariffService = tariffService;
         }
 
         #endregion
@@ -55,6 +61,15 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateAdvertisement()
         {
+            #region Check User Logs
+
+            if (!await _tariffService.CheckCustomerAdsBaseOnTariff(User.GetUserId()))
+            {
+                return NotFound();
+            }
+
+            #endregion
+
             #region Get User Addresses
 
             var UserAddress = _stateService.GetUserAddressDrwopDown(User.GetUserId());
@@ -788,6 +803,15 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateOnSaleAdvertisement()
         {
+            #region Check Create Sale Ads Log 
+
+            if (!await _tariffService.CheckSaleAdsBaseOnTariff(User.GetUserId()))
+            {
+                return NotFound();
+            }
+
+            #endregion
+
             #region Get User Addresses
 
             var UserAddress = _stateService.GetUserAddressDrwopDown(User.GetUserId());

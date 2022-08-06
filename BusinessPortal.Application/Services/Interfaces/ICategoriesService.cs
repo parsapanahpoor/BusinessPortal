@@ -23,7 +23,7 @@ namespace BusinessPortal.Application.Services.Interfaces
         Task DeleteCategory(Category cat);
         List<SelectListItem> GetAdvertisementMainCategoryDrowpDown();
         Task<List<AdvertisementCategoryViewModel>> GetAllCorrectCategoryForShowInUserPanel();
-        Task<List<Category>> GetMainCategoriesForShowInHomePage();
+        Task<List<Category>> GetCategoriesForShowInHeader();
 
         #endregion
 

@@ -55,7 +55,7 @@
             </ul>
         </li>
 
-           <li>
+        <li>
             <a asp-controller="Wallet" asp-action="Index">
                 <i class="menu-icon glyphicon glyphicon-usd"></i>
                 <span class="menu-text"> لیست تراکنش ها  </span>
@@ -98,6 +98,26 @@
             </ul>
         </li>
 
+            <li>
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon glyphicon glyphicon-th-large"></i>
+                <span class="menu-text">  مدیریت تعرفه ها </span>
+                <i class="menu-expand"></i>
+            </a>
+            <ul class="submenu">
+                <li>
+                    <a asp-action="FilterTariff" asp-area="Admin" asp-controller="Tariff">
+                        <span class="menu-text"> لیست تعرفه ها </span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-action="CreateTariff" asp-area="Admin" asp-controller="Tariff">
+                        <span class="menu-text"> افزودن تعرفه ها   </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
         <li>
             <a href="#" class="menu-dropdown">
                 <i class="menu-icon glyphicon glyphicon-map-marker"></i>
@@ -118,7 +138,7 @@
                 </li>
             </ul>
         </li>
-       
+
         <!--UI Elements-->
 
     </ul>

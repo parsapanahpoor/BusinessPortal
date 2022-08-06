@@ -2,6 +2,7 @@
 using BusinessPortal.Domain.ViewModels.Admin.Advertisement;
 using BusinessPortal.Domain.ViewModels.Admin.Dashboard;
 using BusinessPortal.Domain.ViewModels.Advertisement;
+using BusinessPortal.Domain.ViewModels.Site.Advertisement;
 using BusinessPortal.Domain.ViewModels.UserPanel.Advertisement;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -16,8 +17,18 @@ namespace BusinessPortal.Application.Services.Interfaces
     {
         #region Site Side
 
-        Task<List<LastestCustomersAdvertisements>> GetLastestAdvertisementFromCustomers();
-        Task<List<LastestEmployeesAdvertisements>> GetLastestAdvertisementFromEmployees();
+        //List Of Customer Advertisements
+        Task<List<ListOfCustomerAdvertisementViewModel>> ListOfCustomerAdvertisementViewModel(string culture , ulong? categoryId);
+
+        Task<List<LastestCustomersAdvertisements>> GetLastestAdvertisementFromCustomers(string culture);
+
+        Task<List<LastestEmployeesAdvertisements>> GetLastestAdvertisementFromEmployees(string culture);
+
+        //Filter Sale Advertisement Site Side 
+        Task<FilterSaleAdvertisementViewModel> FilterSaleAdvertisementViewModel(FilterSaleAdvertisementViewModel filter);
+
+        //List Of Employee Advertisements
+        Task<List<ListOfSaleAdvertisementViewModel>> ListOfSaleAdvertisementViewModel(string culture, ulong? categoryId);
 
         #endregion
 

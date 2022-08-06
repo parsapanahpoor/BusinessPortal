@@ -1,6 +1,8 @@
 ﻿using BusinessPortal.Domain.Entities.Account;
+using BusinessPortal.Domain.Entities.Advertisement;
 using BusinessPortal.Domain.Entities.Common;
 using BusinessPortal.Domain.Entities.Location;
+using BusinessPortal.Domain.Entities.Tariff;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -79,6 +81,11 @@ namespace BusinessPortal.Domain.Entities.Account
 
         public List<Wallet.Wallet> Wallets { get; set; }
 
+        public List<UserSelectedTariff> UserSelectedTariff { get; set; }
+
+        public ICollection<UserSeenAdvertisementLog> UserSeenAdvertisementLogs { get; set; }
+
+        public ICollection<UserCreateAdvertisementLog> UserCreateAdvertisementLog { get; set; }
 
         #endregion
     }

@@ -1,5 +1,6 @@
 ﻿using BusinessPortal.Application.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 
 namespace BusinessPortal.Web.ViewComponents
 {
@@ -18,7 +19,8 @@ namespace BusinessPortal.Web.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View("LastestAdvertisementFromEmployees", await _advertisementService.GetLastestAdvertisementFromEmployees());
+            var culture = CultureInfo.CurrentCulture.Name;
+            return View("LastestAdvertisementFromEmployees", await _advertisementService.GetLastestAdvertisementFromEmployees(culture));
         }
     }
 }

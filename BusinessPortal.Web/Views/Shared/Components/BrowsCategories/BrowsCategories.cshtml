@@ -1,27 +1,42 @@
 ﻿@model List<BusinessPortal.Domain.Entities.BrowseCategory.Category>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _Localizer
+@using System.Globalization
 
 @if (Model != null && Model.Any())
 {
-    <div class=col-md-3>
-        <div class="services-details-area mr-3">
-            <div class="">
-                <aside class="widget-area">
-                    <div class="widget widget_services p-5">
-                        <i class="fac-navbar-brand"></i>
-                        <h3 class="widget-title" style="color: #fd5b03;">دسته بندی محصولات</h3>
 
-                        <ul class="services-list">
-                            @foreach (var item in Model)
+    <div class="mega-menu">
+        <button class="mega-menu-btn">
+            <i class="fa fa-bars ml-3 mr-3" aria-hidden="true" style="color: #fcb800;"></i> @_Localizer["Sale Ads Categories"]
+        </button>
+        <ul class="mega-menu-list">
+
+            @foreach (var item in Model.Where(p => p.ParentId == null))
+            {
+                <li class="mega-menu-item">
+                    <a asp-action="FilterSellerAdvertisement" asp-area="" asp-controller="Advertisement" asp-route-categoryId="@item.Id" class="mega-menu-link">
+                        @item.DisplayName
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    @if (Model.Any(p => p.ParentId == item.Id))
+                    {
+                        <ul class="mega-menu-categories">
+                            @foreach (var item2 in Model.Where(p => p.ParentId == item.Id))
                             {
+                                <li class="mega-menu-item">
+                                    <a asp-action="FilterSellerAdvertisement" asp-area="" asp-controller="Advertisement" asp-route-categoryId="@item2.Id" class="mega-menu-categories-title">@item2.DisplayName</a>
 
-                                <li style="list-style:disc; color: #fd5b03;">
-                                    <a href="#">@item.DisplayName </a>
                                 </li>
                             }
                         </ul>
-                    </div>
-                </aside>
-            </div>
-        </div>
+                    }
+
+                </li>
+            }
+
+        </ul>
     </div>
+
 }

@@ -13,15 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra.IoC", "Infra.IoC", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{6834FF2F-8087-4288-A763-B37B5805BBF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessPortal.Application", "BusinessPortal.Application\BusinessPortal.Application.csproj", "{ABE36FEE-0FCF-406B-8466-A6FEF858F3E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessPortal.Application", "BusinessPortal.Application\BusinessPortal.Application.csproj", "{ABE36FEE-0FCF-406B-8466-A6FEF858F3E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessPortal.Domain", "BusinessPortal.Domain\BusinessPortal.Domain.csproj", "{FA81B66E-870B-4A55-AED4-35C85F3EBC30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessPortal.Domain", "BusinessPortal.Domain\BusinessPortal.Domain.csproj", "{FA81B66E-870B-4A55-AED4-35C85F3EBC30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessPortal.Data", "BusinessPortal.Data\BusinessPortal.Data.csproj", "{828A96D2-1465-49E1-B86D-EDBA18D0A148}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessPortal.Data", "BusinessPortal.Data\BusinessPortal.Data.csproj", "{828A96D2-1465-49E1-B86D-EDBA18D0A148}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessPortal.IoC", "BusinessPortal.IoC\BusinessPortal.IoC.csproj", "{529A7B09-1F70-44EF-B6F4-FA1175F38384}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessPortal.IoC", "BusinessPortal.IoC\BusinessPortal.IoC.csproj", "{529A7B09-1F70-44EF-B6F4-FA1175F38384}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessPortal.Web", "BusinessPortal.Web\BusinessPortal.Web.csproj", "{D86A0CF4-AE73-4481-A0FF-1D61A59912D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessPortal.Web", "BusinessPortal.Web\BusinessPortal.Web.csproj", "{D86A0CF4-AE73-4481-A0FF-1D61A59912D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

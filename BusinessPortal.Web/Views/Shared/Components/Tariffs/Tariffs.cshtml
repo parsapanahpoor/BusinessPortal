@@ -1,0 +1,30 @@
+﻿@model List<BusinessPortal.Domain.Entities.Tariff.Tariff>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _Localizer
+@using System.Globalization
+
+    @foreach (var item in Model)
+{
+    <div class="col-lg-3 col-md-4">
+        <div class="single-pricing-box bg-image">
+            <div class="pricing-header">
+                <h5 class="hColorFon">@_Localizer["Tariff Name"]</h5>
+                <div class="price ">@item.TariffName</div>
+            </div>
+
+            <ul class="pricing-features">
+                <li><i class="ri-check-line"></i> @_Localizer["Tariff Price"] : @item.TariffPrice $</li>
+
+                <li><i class="ri-check-line"></i> @_Localizer["Seen Ads Per Day"] : @item.CountOfSeenAdvertisement</li>
+
+                <li><i class="ri-check-line"></i> @_Localizer["Add Ads Per Day"] :  @item.CountOfAddAdvertisement</li>
+
+                <li><i class="ri-check-line"></i> @_Localizer["Tariff Duration"] :  @item.tariffDuration</li>
+            </ul>
+
+            <div class="pricing-btn  text-center">
+                <a asp-action="BuyTariff" asp-area="" asp-controller="Taariff" asp-route-tariffId="@item.Id" class="default-btn">@_Localizer["Buy a subscription"]</a>
+            </div>
+        </div>
+    </div>
+}
