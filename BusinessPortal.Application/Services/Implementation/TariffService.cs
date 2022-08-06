@@ -389,8 +389,8 @@ namespace BusinessPortal.Application.Services.Implementation
                     {
                         CreateDate = DateTime.Now,
                         UserId = userId,
-                        FromCustomer = true,
-                        FromEmployee = false,
+                        FromCustomer = false,
+                        FromEmployee = true,
                     };
 
                     //Add Log To Data Base 
