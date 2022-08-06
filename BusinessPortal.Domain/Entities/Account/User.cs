@@ -1,6 +1,7 @@
 ﻿using BusinessPortal.Domain.Entities.Account;
 using BusinessPortal.Domain.Entities.Advertisement;
 using BusinessPortal.Domain.Entities.Common;
+using BusinessPortal.Domain.Entities.Contact;
 using BusinessPortal.Domain.Entities.Location;
 using BusinessPortal.Domain.Entities.Tariff;
 using System;
@@ -86,6 +87,10 @@ namespace BusinessPortal.Domain.Entities.Account
         public ICollection<UserSeenAdvertisementLog> UserSeenAdvertisementLogs { get; set; }
 
         public ICollection<UserCreateAdvertisementLog> UserCreateAdvertisementLog { get; set; }
+
+        public ICollection<Ticket> Tickets { get; set; }
+
+        public ICollection<TicketMessage> TicketMessages { get; set; }
 
         #endregion
     }

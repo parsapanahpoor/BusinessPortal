@@ -13,6 +13,7 @@ using BusinessPortal.Domain.Entities.Address;
 using BusinessPortal.Domain.Entities.Language;
 using BusinessPortal.Domain.Entities.Wallet;
 using BusinessPortal.Domain.Entities.Tariff;
+using BusinessPortal.Domain.Entities.Contact;
 
 namespace BusinessPortal.Data.DbContext
 {
@@ -94,6 +95,14 @@ namespace BusinessPortal.Data.DbContext
         public DbSet<Tariff> Tariffs { get; set; }
 
         public DbSet<UserSelectedTariff> UserSelectedTariff { get; set; }
+
+        #endregion
+
+        #region Ticket 
+
+        public DbSet<Ticket> Tickets { get; set; }
+
+        public DbSet<TicketMessage> TicketMessages { get; set; }
 
         #endregion
 
