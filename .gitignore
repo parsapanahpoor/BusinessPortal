@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/BusinessPortal.Web/wwwroot/UploadedImages/AdvertisementImages/Origin
+/BusinessPortal.Web/wwwroot/UploadedImages/AdvertisementImages/Thumb
