@@ -28,6 +28,7 @@ namespace BusinessPortal.IoC
             services.AddScoped<ILanguageService, LanguageService>();
             services.AddScoped<IWalletService, WalletService>();
             services.AddScoped<ITariffService, TariffService>();
+            services.AddScoped<ITicketService , TicketService>();
 
             #endregion
 
@@ -36,6 +37,7 @@ namespace BusinessPortal.IoC
             services.AddScoped<IWalletRepository , WalletRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ITariffRepostory , TariffRepostory>();
+            services.AddScoped<ITicketRepository , TicektRepository>();
 
             #endregion
         }

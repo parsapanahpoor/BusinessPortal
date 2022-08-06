@@ -1,4 +1,5 @@
 ﻿using BusinessPortal.Application.Services.Interfaces;
+using BusinessPortal.Domain.ViewModels.Admin;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BusinessPortal.Web.Areas.Admin.Controllers
@@ -9,9 +10,12 @@ namespace BusinessPortal.Web.Areas.Admin.Controllers
 
         public IAdvertisementService _advertisementService { get; set; }
 
-        public HomeController(IAdvertisementService advertisementService)
+        private readonly IUserService _userService;
+
+        public HomeController(IAdvertisementService advertisementService , IUserService userService)
         {
            _advertisementService = advertisementService;
+            _userService = userService;
         }
 
         #endregion
@@ -25,5 +29,19 @@ namespace BusinessPortal.Web.Areas.Admin.Controllers
 
         #endregion
 
+        #region SearchUserModal
+
+        public async Task<IActionResult> SearchUserModal(FilterUserViewModel filter, string baseName)
+        {
+            filter.TakeEntity = 5;
+
+            var result = await _userService.FilterUsers(filter);
+
+            ViewBag.BaseName = baseName;
+
+            return PartialView("_FilterUsersModalPartial", result);
+        }
+
+        #endregion
     }
 }

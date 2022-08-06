@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessPortal.Domain.ViewModels.Admin
 {
-    public class FilterUserViewModel : BasePaging<User>
+    public class FilterUserViewModel : BasePaging<Domain.Entities.Account.User>
     {
     
         public string? username { get; set; }

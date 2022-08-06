@@ -139,6 +139,29 @@
             </ul>
         </li>
 
+             <li>
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon fa fa-ticket"></i>
+                <span class="menu-text"> مدیریت تیکت ها </span>
+                <i class="menu-expand"></i>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a asp-action="FilterTickets" asp-controller="Ticket" asp-area="Admin">
+                        <span class="menu-text"> لیست تیکت ها </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a asp-action="CreateTicket" asp-controller="Ticket" asp-area="Admin">
+                        <span class="menu-text"> افزودن تیکت جدید </span>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+
         <!--UI Elements-->
 
     </ul>

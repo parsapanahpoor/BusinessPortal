@@ -14,7 +14,7 @@ namespace BusinessPortal.Domain.ViewModels.Admin.Dashboard
 
         public string AdvertisementImage { get; set; }
 
-        public User Employee { get; set; }
+        public Domain.Entities.Account.User Employee { get; set; }
 
         public string AdvertisementTitle { get; set; }
 
