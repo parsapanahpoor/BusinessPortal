@@ -12,6 +12,9 @@ namespace BusinessPortal.Domain.Interfaces
     {
         #region Admin Side 
 
+        //Show Tariffs In Home Page 
+        Task<List<Tariff>> ShowTariffInHomePage();
+
         //Add Tariff
         Task CreateTariff(Tariff tariff);
 

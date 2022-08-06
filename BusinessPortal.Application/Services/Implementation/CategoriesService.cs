@@ -29,10 +29,10 @@ namespace BusinessPortal.Application.Services.Implementation
 
         #region Main Category
 
-        public async Task<List<Category>> GetMainCategoriesForShowInHomePage()
+        public async Task<List<Category>> GetCategoriesForShowInHeader()
         {
-            return await _context.Categories.Where(p=> p.IsActive && !p.IsDelete && p.ParentId == null)
-                                                                      .Take(10).OrderBy(p=> p.Priority).ToListAsync();
+            return await _context.Categories.Where(p=> p.IsActive && !p.IsDelete).OrderBy(p=> p.Priority).ToListAsync();
+                                                                      
         }
 
         public async Task<ListOfCategoriesViewModel> FilterCategoryViewModel(ListOfCategoriesViewModel filter)

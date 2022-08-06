@@ -26,6 +26,12 @@ namespace BusinessPortal.Data.Repository
 
         #region Admin Side 
 
+        //Show Tariffs In Home Page 
+        public async Task<List<Tariff>> ShowTariffInHomePage()
+        {
+            return await _context.Tariffs.Where(p => !p.IsDelete).ToListAsync();
+        }
+
         //Add Tariff
         public async Task CreateTariff(Tariff tariff)
         {

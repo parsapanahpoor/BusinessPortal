@@ -116,6 +116,12 @@ namespace BusinessPortal.Application.Services.Implementation
             return await _tariff.FilterTariff(filter);
         }
 
+        //Show Tariffs In Home Page 
+        public async Task<List<Tariff>> ShowTariffInHomePage()
+        {
+            return await _tariff.ShowTariffInHomePage();
+        }
+
         #endregion
     }
 }

@@ -1,0 +1,93 @@
+﻿@using BusinessPortal.Application.Extensions
+@using BusinessPortal.Application.Convertors
+@model Tuple<List<BusinessPortal.Domain.ViewModels.Site.Advertisement.ListOfCustomerAdvertisementViewModel>, int>
+@using BusinessPortal.Application.StaticTools
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _Localizer
+@using System.Globalization
+
+@{
+    ViewData["Title"] = @_Localizer["List of Buy ads"];
+}
+
+@section Styles
+{
+
+}
+
+@section Scripts
+{
+<script>
+
+    function changePage(pageid) {
+        $("#pageid").val(pageid);
+        $("#formFilter").submit();
+    }
+
+</script>
+
+}
+
+
+<form asp-action="FilterCustomerAdvertisement" asp-controller="Advertisement" asp-area="" id="formFilter" method="get">
+    <input type="hidden" id="pageid" name="pageId" value="@ViewBag.pageId.ToString()" />
+    <input type="hidden" name="categoryId" value="@ViewBag.categoryId" />
+
+    <div class="shop-area ">
+        <div class="container">
+            <div class="kadi-grid-sorting row align-items-center">
+                <div class="col-lg-8 col-md-6 result-count">
+                    <p>@_Localizer["Us"] <span class="count">@Model.Item1.Count()</span> @_Localizer["We made the product available"]</p>
+                </div>
+
+            </div>
+
+            <div class="row justify-content-center">
+
+                @if (Model.Item1 != null && Model.Item1.Any())
+                {
+                    @foreach (var ads in Model.Item1)
+                    {
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="single-shop-card">
+                                <div class="shop-image">
+                                    <a href="shop-details.html"><img style="width: 200px;height:150px;" src="@PathTools.AdvertisementOriginimage@ads.Image" alt="image"></a>
+                                </div>
+                                <div class="shop-content">
+                                    <h5>
+                                        <a style="color:#00467f;" href="shop-details.html">@ads.AdvertisementTitle</a>
+                                    </h5>
+                                    <span>@ads.CreateDate.ToLongDateString()</span>
+                                    <div class="cart-icon">
+                                        <a href="cart.html"><i class="fa fa-eye"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                    @if (Model.Item2 > 1)
+                    {
+                        int pageCount = ViewBag.pageId;
+                        int next = pageCount + 1;
+                        int last = pageCount - 1;
+
+                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 50px;">
+                            <div class="pagination-area">
+                                @for (int i = 1; i < (int)Model.Item2; i++)
+                                {
+                                    <span style="cursor:pointer;" class="page-numbers  @((ViewBag.pageId == i ?"current":"")) " onclick="changePage(@i)" @((ViewBag.pageId == i ?"aria-current='page''":""))>@i</span>
+                                }
+                            </div>
+                        </div>
+
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+
+</form>

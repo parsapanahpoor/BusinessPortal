@@ -27,6 +27,9 @@ namespace BusinessPortal.Application.Services.Interfaces
         //Filter Tariff In Admin Side 
         Task<FilterTariffViewModel> FilterTariff(FilterTariffViewModel filter);
 
+        //Show Tariffs In Home Page 
+        Task<List<Tariff>> ShowTariffInHomePage();
+
         #endregion
     }
 }

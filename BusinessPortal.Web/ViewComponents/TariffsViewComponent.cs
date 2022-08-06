@@ -1,4 +1,5 @@
-﻿using BusinessPortal.Domain.Entities.Tariff;
+﻿using BusinessPortal.Application.Services.Interfaces;
+using BusinessPortal.Domain.Entities.Tariff;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BusinessPortal.Web.ViewComponents
@@ -7,9 +8,9 @@ namespace BusinessPortal.Web.ViewComponents
     {
         #region Ctor
 
-        public Tariff _tariffService { get; set; }
+        public ITariffService _tariffService { get; set; }
 
-        public TariffsViewComponent(Tariff tariffService)
+        public TariffsViewComponent(ITariffService tariffService)
         {
            _tariffService = tariffService;
         }
@@ -18,7 +19,7 @@ namespace BusinessPortal.Web.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View("Tariffs");
+            return View("Tariffs" , await _tariffService.ShowTariffInHomePage());
         }
     }
 }

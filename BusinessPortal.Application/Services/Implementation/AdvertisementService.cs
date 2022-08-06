@@ -8,6 +8,7 @@ using BusinessPortal.Domain.Entities.Advertisement;
 using BusinessPortal.Domain.ViewModels.Admin.Advertisement;
 using BusinessPortal.Domain.ViewModels.Admin.Dashboard;
 using BusinessPortal.Domain.ViewModels.Advertisement;
+using BusinessPortal.Domain.ViewModels.Site.Advertisement;
 using BusinessPortal.Domain.ViewModels.UserPanel.Advertisement;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -35,7 +36,7 @@ namespace BusinessPortal.Application.Services.Implementation
 
         #region Site Side
 
-        public async Task<List<LastestCustomersAdvertisements>> GetLastestAdvertisementFromCustomers()
+        public async Task<List<LastestCustomersAdvertisements>> GetLastestAdvertisementFromCustomers(string culture)
         {
             var advertisement = await _context.Advertisement.Where(p => !p.IsDelete && p.AdvertisementStatus == AdvertisementStatus.Active
                                                     && p.FromCustomer && !p.FromEmployee && p.StartDate <= DateTime.Now && p.EndDate >= DateTime.Now)
@@ -48,7 +49,7 @@ namespace BusinessPortal.Application.Services.Implementation
                 model.Add(new LastestCustomersAdvertisements
                 {
                     AdvertisementId = item.Id,
-                    //AdvertisementTitle = item.Title,
+                    AdvertisementTitle = await _context.advertisementInfo.Where(p => !p.IsDelete && p.Lang_Id == culture && p.AdvertisementId == item.Id).Select(p => p.Title).FirstOrDefaultAsync(),
                     CreateDate = item.CreateDate,
                     AdvertisementAddress = await _context.Addresses.Include(p => p.LocationCountry).FirstOrDefaultAsync(p => p.Id == item.AddressId.Value)
                 }
@@ -58,9 +59,9 @@ namespace BusinessPortal.Application.Services.Implementation
             return model;
         }
 
-        public async Task<List<LastestEmployeesAdvertisements>> GetLastestAdvertisementFromEmployees()
+        public async Task<List<LastestEmployeesAdvertisements>> GetLastestAdvertisementFromEmployees(string culture)
         {
-            var advertisement = await _context.Advertisement.Where(p => !p.IsDelete && p.AdvertisementStatus == AdvertisementStatus.Active 
+            var advertisement = await _context.Advertisement.Where(p => !p.IsDelete && p.AdvertisementStatus == AdvertisementStatus.Active
                                                 && p.FromEmployee && !p.FromCustomer && p.StartDate <= DateTime.Now && p.EndDate >= DateTime.Now)
                                                     .OrderByDescending(p => p.CreateDate).Take(10).ToListAsync();
 
@@ -71,7 +72,7 @@ namespace BusinessPortal.Application.Services.Implementation
                 model.Add(new LastestEmployeesAdvertisements
                 {
                     AdvertisementId = item.Id,
-                    //AdvertisementTitle = item.Title,
+                    AdvertisementTitle = await _context.advertisementInfo.Where(p => !p.IsDelete && p.Lang_Id == culture && p.AdvertisementId == item.Id).Select(p => p.Title).FirstOrDefaultAsync(),
                     CreateDate = item.CreateDate,
                     AdvertisementAddress = await _context.Addresses.Include(p => p.LocationCountry).FirstOrDefaultAsync(p => p.Id == item.AddressId.Value)
                 }
@@ -124,7 +125,7 @@ namespace BusinessPortal.Application.Services.Implementation
                     CreateDate = item.CreateDate,
                     AdvertisementImage = item.ImageName,
                     AdvertisementAddress = await _context.Addresses.Include(p => p.LocationCountry).FirstOrDefaultAsync(p => p.Id == item.AddressId.Value),
-                    Customer = await _context.Users.FirstOrDefaultAsync(p=> p.Id == item.UserId && !p.IsDelete)
+                    Customer = await _context.Users.FirstOrDefaultAsync(p => p.Id == item.UserId && !p.IsDelete)
                 }
                 );
             }
@@ -163,7 +164,7 @@ namespace BusinessPortal.Application.Services.Implementation
 
         public async Task<EditAdvertisementFromAdminPanel> SetEditAdvertisementFromAdminPanel(ulong Id)
         {
-            var Ads = await  _context.Advertisement
+            var Ads = await _context.Advertisement
                 .Include(s => s.User)
                 .Include(s => s.State)
                 .ThenInclude(s => s.AddressesState)
@@ -185,7 +186,7 @@ namespace BusinessPortal.Application.Services.Implementation
             };
 
             var TagAdvertisementModel = await _context.AdvertisementTags.Where(s => s.AdvertisementId == Ads.Id).ToListAsync();
-                                
+
             model.AdvertisementTags = string.Join(",", TagAdvertisementModel.Select(p => p.TagTitle).ToList());
 
             return model;
@@ -198,8 +199,8 @@ namespace BusinessPortal.Application.Services.Implementation
                             .Include(s => s.State)
                             .Include(p => p.AdvertisementSelectedCategory)
                             .ThenInclude(p => p.AdvertisementCategory)
-                            .Include(p=> p.AdvertisementInfo)
-                            .ThenInclude(p=> p.Language)
+                            .Include(p => p.AdvertisementInfo)
+                            .ThenInclude(p => p.Language)
                             .AsQueryable();
 
             #region Sort by Gender
@@ -368,7 +369,7 @@ namespace BusinessPortal.Application.Services.Implementation
                             .Include(p => p.AdvertisementSelectedCategory)
                             .ThenInclude(p => p.AdvertisementCategory)
                             .Include(p => p.AdvertisementInfo)
-                            .ThenInclude(p=> p.Language)
+                            .ThenInclude(p => p.Language)
                             .AsQueryable();
 
 
@@ -539,8 +540,8 @@ namespace BusinessPortal.Application.Services.Implementation
                             .Include(s => s.State)
                             .Include(p => p.AdvertisementSelectedCategory)
                             .ThenInclude(p => p.AdvertisementCategory)
-                            .Include(p=>p.AdvertisementInfo)
-                            .ThenInclude(p=>p.Language)
+                            .Include(p => p.AdvertisementInfo)
+                            .ThenInclude(p => p.Language)
                             .AsQueryable();
 
 
@@ -704,7 +705,7 @@ namespace BusinessPortal.Application.Services.Implementation
 
         public async Task<CreateAdvertisementFromUserPanelResult> AddOnSaleAdvertisementFromUserPanell(CreateOnSaleAdvertisementFromUserPanel model, List<IFormFile> upload_imgs, List<ulong> SelectedCategory)
         {
-            var lang = CultureInfo.CurrentCulture.Name; 
+            var lang = CultureInfo.CurrentCulture.Name;
 
             if (upload_imgs.Count > 10)
             {
@@ -1055,8 +1056,8 @@ namespace BusinessPortal.Application.Services.Implementation
                 .Include(s => s.AdvertisementTags)
                 .SingleOrDefaultAsync(p => p.Id == model.AdvertisementID);
 
-            if (Ads == null)return EditAdvertisementFromAdminPanelResult.NotFound;
-                            
+            if (Ads == null) return EditAdvertisementFromAdminPanelResult.NotFound;
+
             #region Properties
 
             //Ads.Title = model.Title.SanitizeText();
@@ -1077,9 +1078,6 @@ namespace BusinessPortal.Application.Services.Implementation
                 {
                     AdvertisementId = Ads.Id,
                     Lang_Id = lang,
-                    Description = model.Description.SanitizeText(),
-                    Title = model.Title.SanitizeText(),
-                    AdsUrl = model.AdsUrl.SanitizeText(),
                     CreateDate = DateTime.Now
                 };
 
@@ -1088,10 +1086,6 @@ namespace BusinessPortal.Application.Services.Implementation
             }
             else
             {
-                adsInfo.Title = model.Title.SanitizeText();
-                adsInfo.Description = model.Description.SanitizeText();
-                adsInfo.AdsUrl = model.AdsUrl.SanitizeText();
-
                 _context.advertisementInfo.Update(adsInfo);
                 await _context.SaveChangesAsync();
             }
@@ -1326,7 +1320,7 @@ namespace BusinessPortal.Application.Services.Implementation
                 }
 
             }
-            
+
             if (ImageName != null && !ImageName.IsImage())
             {
                 return EditRequestAdvertisementFromUserPanelResualt.ImageIsNotValid;
@@ -1551,6 +1545,171 @@ namespace BusinessPortal.Application.Services.Implementation
             await _context.SaveChangesAsync();
 
             return EditOnSaleAdvertisementFromUserPanelResualt.Success;
+        }
+
+
+        #endregion
+
+        #region Site Side 
+
+        //List Of Customer Advertisements
+        public async Task<List<ListOfCustomerAdvertisementViewModel>> ListOfCustomerAdvertisementViewModel(string culture , ulong? categoryId)
+        {
+            #region filter properties
+
+            if (categoryId.HasValue)
+            {
+                var returnModel = await _context.AdvertisementSelectedCategories.Include(p => p.Advertisement).ThenInclude(p => p.AdvertisementInfo)
+                            .Include(p => p.AdvertisementCategory).Where(p => p.AdsCategoryID == categoryId.Value && !p.IsDelete && p.Advertisement.AdvertisementStatus == AdvertisementStatus.Active && !p.Advertisement.FromEmployee && p.Advertisement.FromCustomer
+                                && p.Advertisement.StartDate.Value.Year <= DateTime.Now.Year && p.Advertisement.StartDate.Value.DayOfYear <= DateTime.Now.DayOfYear
+                                && p.Advertisement.EndDate.Value.Year >= DateTime.Now.Year && p.Advertisement.EndDate.Value.DayOfYear >= DateTime.Now.DayOfYear).ToListAsync();
+
+                var returnModel1 = new List<ListOfCustomerAdvertisementViewModel>();
+
+                foreach (var item in returnModel)
+                {
+                    returnModel1.Add(new ListOfCustomerAdvertisementViewModel
+                    {
+                        AdvertisementId = item.Advertisement.Id,
+                        AdvertisementTitle = await _context.advertisementInfo.Where(p => !p.IsDelete && p.Lang_Id == culture && p.AdvertisementId == item.Id).Select(p => p.Title).FirstOrDefaultAsync(),
+                        CreateDate = item.Advertisement.CreateDate,
+                        Image = item.Advertisement.ImageName,
+                    });
+                }
+
+                return returnModel1;
+            }
+
+            #endregion
+
+            #region Get Current Advertisements
+
+            var advertisement = await _context.advertisementInfo
+                        .Include(p => p.Advertisement)
+                        .ThenInclude(p => p.AdvertisementSelectedCategory)
+                        .ThenInclude(p => p.AdvertisementCategory)
+                        .Where(p => !p.IsDelete && p.Advertisement.AdvertisementStatus == AdvertisementStatus.Active && !p.Advertisement.FromEmployee && p.Advertisement.FromCustomer
+                               && p.Advertisement.StartDate.Value.Year <= DateTime.Now.Year && p.Advertisement.StartDate.Value.DayOfYear <= DateTime.Now.DayOfYear
+                               && p.Advertisement.EndDate.Value.Year >= DateTime.Now.Year && p.Advertisement.EndDate.Value.DayOfYear >= DateTime.Now.DayOfYear
+                               && p.Lang_Id == culture)
+                        .Select(p => p.Advertisement).ToListAsync();
+
+            #region filter properties
+
+
+
+            #endregion
+
+            #endregion
+
+            #region model
+
+            var model = new List<ListOfCustomerAdvertisementViewModel>();
+
+            foreach (var item in advertisement)
+            {
+                model.Add(new ListOfCustomerAdvertisementViewModel
+                {
+                    AdvertisementId = item.Id,
+                    AdvertisementTitle = await _context.advertisementInfo.Where(p => !p.IsDelete && p.Lang_Id == culture && p.AdvertisementId == item.Id).Select(p => p.Title).FirstOrDefaultAsync(),
+                    CreateDate = item.CreateDate,
+                    Image = item.ImageName,
+                });
+            }
+
+            return model;
+
+            #endregion
+        }
+
+        //List Of Employee Advertisements
+        public async Task<List<ListOfSaleAdvertisementViewModel>> ListOfSaleAdvertisementViewModel(string culture  , ulong? categoryId)
+        {
+            #region filter properties
+
+            if (categoryId.HasValue)
+            {
+                var returnModel = await _context.AdvertisementSelectedCategories.Include(p => p.Advertisement).ThenInclude(p => p.AdvertisementInfo)
+                            .Include(p => p.AdvertisementCategory).Where(p => p.AdsCategoryID == categoryId.Value && !p.IsDelete && p.Advertisement.AdvertisementStatus == AdvertisementStatus.Active && p.Advertisement.FromEmployee && !p.Advertisement.FromCustomer
+                                && p.Advertisement.StartDate.Value.Year <= DateTime.Now.Year && p.Advertisement.StartDate.Value.DayOfYear <= DateTime.Now.DayOfYear
+                                && p.Advertisement.EndDate.Value.Year >= DateTime.Now.Year && p.Advertisement.EndDate.Value.DayOfYear >= DateTime.Now.DayOfYear).ToListAsync();
+
+                var returnModel1 = new List<ListOfSaleAdvertisementViewModel>();
+
+                foreach (var item in returnModel)
+                {
+                    returnModel1.Add(new ListOfSaleAdvertisementViewModel
+                    {
+                        AdvertisementId = item.Advertisement.Id,
+                        AdvertisementTitle = await _context.advertisementInfo.Where(p => !p.IsDelete && p.Lang_Id == culture && p.AdvertisementId == item.Id).Select(p => p.Title).FirstOrDefaultAsync(),
+                        CreateDate = item.Advertisement.CreateDate,
+                        Image = item.Advertisement.ImageName,
+                    });
+                }
+
+                return returnModel1;
+            }
+
+            #endregion
+
+
+            #region Get Current Advertisements
+
+            var advertisement = await _context.advertisementInfo
+                        .Include(p => p.Advertisement)
+                        .ThenInclude(p => p.AdvertisementSelectedCategory)
+                        .ThenInclude(p => p.AdvertisementCategory)
+                        .Where(p => !p.IsDelete && p.Advertisement.AdvertisementStatus == AdvertisementStatus.Active && p.Advertisement.FromEmployee && !p.Advertisement.FromCustomer
+                               && p.Advertisement.StartDate.Value.Year <= DateTime.Now.Year && p.Advertisement.StartDate.Value.DayOfYear <= DateTime.Now.DayOfYear
+                               && p.Advertisement.EndDate.Value.Year >= DateTime.Now.Year && p.Advertisement.EndDate.Value.DayOfYear >= DateTime.Now.DayOfYear
+                               && p.Lang_Id == culture)
+                        .Select(p => p.Advertisement).ToListAsync();
+
+            #endregion
+
+            #region model
+
+            var model = new List<ListOfSaleAdvertisementViewModel>();
+
+            foreach (var item in advertisement)
+            {
+                model.Add(new ListOfSaleAdvertisementViewModel
+                {
+                    AdvertisementId = item.Id,
+                    AdvertisementTitle = await _context.advertisementInfo.Where(p => !p.IsDelete && p.Lang_Id == culture && p.AdvertisementId == item.Id).Select(p => p.Title).FirstOrDefaultAsync(),
+                    CreateDate = item.CreateDate,
+                    Image = item.ImageName,
+                });
+            }
+
+            return model;
+
+            #endregion
+        }
+
+        //Filter Sale Advertisement Site Side 
+        public async Task<FilterSaleAdvertisementViewModel> FilterSaleAdvertisementViewModel(FilterSaleAdvertisementViewModel filter)
+        {
+            var query = _context.advertisementInfo
+                            .Include(p => p.Advertisement)
+                            .ThenInclude(p => p.AdvertisementSelectedCategory)
+                            .ThenInclude(p => p.AdvertisementCategory)
+                            .Where(p => !p.IsDelete && p.Advertisement.AdvertisementStatus == AdvertisementStatus.Active && p.Advertisement.FromEmployee && !p.Advertisement.FromCustomer
+                                   && p.Advertisement.StartDate.Value.Year <= DateTime.Now.Year && p.Advertisement.StartDate.Value.DayOfYear <= DateTime.Now.DayOfYear
+                                   && p.Advertisement.EndDate.Value.Year >= DateTime.Now.Year && p.Advertisement.EndDate.Value.DayOfYear >= DateTime.Now.DayOfYear
+                                   && p.Lang_Id == filter.LanguageId)
+                            .Select(p => p.Advertisement)
+                            .AsQueryable();
+
+            #region Filter
+
+
+
+            #endregion
+
+            await filter.Paging(query);
+
+            return filter;
         }
 
 
