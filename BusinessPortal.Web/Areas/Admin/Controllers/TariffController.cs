@@ -86,16 +86,6 @@ namespace BusinessPortal.Web.Areas.Admin.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> EditTariff(Tariff tariff)
         {
-            #region Model State 
-
-            if (!ModelState.IsValid)
-            {
-                TempData[ErrorMessage] = "اطلاعات وارد شده صحیح نمی باشد .";
-                return View(tariff);
-            }
-
-            #endregion
-
             #region Edit Tariff 
 
             var res = await _tariffService.EditTariff(tariff);

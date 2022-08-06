@@ -1,4 +1,5 @@
-﻿using BusinessPortal.Application.Services.Interfaces;
+﻿using BusinessPortal.Application.Extensions;
+using BusinessPortal.Application.Services.Interfaces;
 using BusinessPortal.Domain.ViewModels.Site.Advertisement;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
@@ -11,9 +12,12 @@ namespace BusinessPortal.Web.Controllers
 
         private readonly IAdvertisementService _advertisementService;
 
-        public AdvertisementController(IAdvertisementService advertisementService)
+        private readonly ITariffService _tariffService;
+
+        public AdvertisementController(IAdvertisementService advertisementService, ITariffService tariffService)
         {
-                _advertisementService = advertisementService;
+            _advertisementService = advertisementService;
+            _tariffService = tariffService;
         }
 
         #endregion
@@ -22,11 +26,11 @@ namespace BusinessPortal.Web.Controllers
 
         #region Filter Seller Advertisement 
 
-        public async Task<IActionResult> FilterSellerAdvertisement(ulong? categoryId , int pageId = 1 )
+        public async Task<IActionResult> FilterSellerAdvertisement(ulong? categoryId, int pageId = 1)
         {
             #region Get Model 
 
-            var model = await _advertisementService.ListOfSaleAdvertisementViewModel(CultureInfo.CurrentCulture.Name , categoryId);
+            var model = await _advertisementService.ListOfSaleAdvertisementViewModel(CultureInfo.CurrentCulture.Name, categoryId);
 
             #endregion
 
@@ -67,7 +71,7 @@ namespace BusinessPortal.Web.Controllers
         {
             #region Get Model 
 
-            var model = await _advertisementService.ListOfCustomerAdvertisementViewModel(CultureInfo.CurrentCulture.Name , categoryId);
+            var model = await _advertisementService.ListOfCustomerAdvertisementViewModel(CultureInfo.CurrentCulture.Name, categoryId);
 
             #endregion
 
@@ -98,6 +102,23 @@ namespace BusinessPortal.Web.Controllers
 
         #endregion
 
+        #endregion
+
+        #region Advertisement Detail
+
+        public async Task<IActionResult> AdvertisementDetail(ulong advertisementId)
+        {
+            #region Check User Tariff
+
+            if (!await _tariffService.CheckUserSeeAdsBaseOnTariff(User.GetUserId()))
+            {
+                return NotFound();
+            }
+
+            #endregion
+
+            return RedirectToAction("Index" , "Home");
+        }
 
         #endregion
     }

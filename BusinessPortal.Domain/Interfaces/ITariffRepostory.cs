@@ -1,4 +1,5 @@
-﻿using BusinessPortal.Domain.Entities.Tariff;
+﻿using BusinessPortal.Domain.Entities.Advertisement;
+using BusinessPortal.Domain.Entities.Tariff;
 using BusinessPortal.Domain.ViewModels.Admin.Tariff;
 using System;
 using System.Collections.Generic;
@@ -31,10 +32,32 @@ namespace BusinessPortal.Domain.Interfaces
         Task<FilterTariffViewModel> FilterTariff(FilterTariffViewModel filter);
 
         //Has User Any Tariff Right Now 
-        Task<bool> HasUserAnyActiveTariffRightNow(ulong tariffId, ulong userId);
+        Task<bool> HasUserAnyActiveTariffRightNow( ulong userId);
 
         //Add User Selected Tariff
         Task CreateUserSelectedTariff(UserSelectedTariff user);
+
+        //Get Count Of User Seen Ads Today 
+        Task<int> GetCountOfUserSeenAdsToday(ulong userId);
+
+        //Add User Seen Advertisement Log To Data Base 
+        Task CreateUserAdvertisementLog(UserSeenAdvertisementLog log);
+
+        //Get User Active Tariff 
+        Task<Tariff?> GetUserActiveTariff(ulong userId);
+
+        #endregion
+
+        #region User Pnael
+
+        //Get Count Of Create Customer Ads Today 
+        Task<int> GetCountOfCreateCustomerAdsToday(ulong userId);
+
+        //Ads User Create Customer Ads Log Today 
+        Task UserCreateCustomerAdsLog(UserCreateAdvertisementLog log);
+
+        //Get Count Of Create Sale Ads Today 
+        Task<int> GetCountOfCreateSaleAdsToday(ulong userId);
 
         #endregion
     }

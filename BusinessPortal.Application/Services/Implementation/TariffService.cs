@@ -1,4 +1,5 @@
 ﻿using BusinessPortal.Application.Services.Interfaces;
+using BusinessPortal.Domain.Entities.Advertisement;
 using BusinessPortal.Domain.Entities.Tariff;
 using BusinessPortal.Domain.Interfaces;
 using BusinessPortal.Domain.ViewModels.Admin.Tariff;
@@ -157,7 +158,7 @@ namespace BusinessPortal.Application.Services.Implementation
 
             #region Check User Has Any Tariff Right Now
 
-            if (await _tariff.HasUserAnyActiveTariffRightNow(tariffId, userId)) return 2;
+            if (await _tariff.HasUserAnyActiveTariffRightNow(userId)) return 2;
 
             #endregion
 
@@ -212,6 +213,198 @@ namespace BusinessPortal.Application.Services.Implementation
             #endregion
 
             return 4;
+        }
+
+        //Check to see ads based on tariffs
+        public async Task<bool> CheckUserSeeAdsBaseOnTariff(ulong userId)
+        {
+            #region Get Count Of User Seen Advertisement Today 
+
+            var seenLog = await _tariff.GetCountOfUserSeenAdsToday(userId);
+
+            #endregion
+
+            #region Add Log 
+
+            if (seenLog <= 3)
+            {
+                //Fill Model
+                UserSeenAdvertisementLog log = new UserSeenAdvertisementLog()
+                {
+                    CreateDate = DateTime.Now,
+                    UserId = userId,
+                };
+
+                //Add Log To Data Base 
+                await _tariff.CreateUserAdvertisementLog(log);
+
+                return true;
+            }
+
+            #endregion
+
+            #region check User Has Any Tariff 
+
+            if (await _tariff.HasUserAnyActiveTariffRightNow(userId))
+            {
+                #region Get User Active Tariff
+
+                var tariff = await _tariff.GetUserActiveTariff(userId);
+
+                //If the user rejects the allowed number
+                if (tariff.CountOfSeenAdvertisement > seenLog)
+                {
+                    //Fill Model
+                    UserSeenAdvertisementLog log = new UserSeenAdvertisementLog()
+                    {
+                        CreateDate = DateTime.Now,
+                        UserId = userId,
+                    };
+
+                    //Add Log To Data Base 
+                    await _tariff.CreateUserAdvertisementLog(log);
+
+                    return true;
+                }
+
+                #endregion
+            }
+
+            #endregion
+
+            return false;
+        }
+
+        #endregion
+
+        #region User Panel
+    
+        //Check User Create Custmer Ads Log 
+        public async Task<bool> CheckCustomerAdsBaseOnTariff(ulong userId)
+        {
+            #region Get Count Of Create Customer Advertisement Today 
+
+            var createLog = await _tariff.GetCountOfCreateCustomerAdsToday(userId);
+
+            #endregion
+
+            #region Add Log 
+
+            if (createLog <= 3)
+            {
+                //Fill Model
+                UserCreateAdvertisementLog log = new UserCreateAdvertisementLog()
+                {
+                    CreateDate = DateTime.Now,
+                    UserId = userId,
+                    FromCustomer = true,
+                    FromEmployee = false,
+                };
+
+                //Add Log To Data Base 
+                await _tariff.UserCreateCustomerAdsLog(log);
+
+                return true;
+            }
+
+            #endregion
+
+            #region check User Has Any Tariff 
+
+            if (await _tariff.HasUserAnyActiveTariffRightNow(userId))
+            {
+                #region Get User Active Tariff
+
+                var tariff = await _tariff.GetUserActiveTariff(userId);
+
+                //If the user rejects the allowed number
+                if (tariff.CountOfAddAdvertisement > createLog)
+                {
+                    //Fill Model
+                    UserCreateAdvertisementLog log = new UserCreateAdvertisementLog()
+                    {
+                        CreateDate = DateTime.Now,
+                        UserId = userId,
+                        FromCustomer = true,
+                        FromEmployee = false,
+                    };
+
+                    //Add Log To Data Base 
+                    await _tariff.UserCreateCustomerAdsLog(log);
+
+                    return true;
+                }
+
+                #endregion
+            }
+
+            #endregion
+
+            return false;
+        }
+
+        //Check User Create Sale Ads Log 
+        public async Task<bool> CheckSaleAdsBaseOnTariff(ulong userId)
+        {
+            #region Get Count Of Create Sale Advertisement Today 
+
+            var createLog = await _tariff.GetCountOfCreateSaleAdsToday(userId);
+
+            #endregion
+
+            #region Add Log 
+
+            if (createLog <= 3)
+            {
+                //Fill Model
+                UserCreateAdvertisementLog log = new UserCreateAdvertisementLog()
+                {
+                    CreateDate = DateTime.Now,
+                    UserId = userId,
+                    FromCustomer = false,
+                    FromEmployee = true,
+                };
+
+                //Add Log To Data Base 
+                await _tariff.UserCreateCustomerAdsLog(log);
+
+                return true;
+            }
+
+            #endregion
+
+            #region check User Has Any Tariff 
+
+            if (await _tariff.HasUserAnyActiveTariffRightNow(userId))
+            {
+                #region Get User Active Tariff
+
+                var tariff = await _tariff.GetUserActiveTariff(userId);
+
+                //If the user rejects the allowed number
+                if (tariff.CountOfAddAdvertisement > createLog)
+                {
+                    //Fill Model
+                    UserCreateAdvertisementLog log = new UserCreateAdvertisementLog()
+                    {
+                        CreateDate = DateTime.Now,
+                        UserId = userId,
+                        FromCustomer = true,
+                        FromEmployee = false,
+                    };
+
+                    //Add Log To Data Base 
+                    await _tariff.UserCreateCustomerAdsLog(log);
+
+                    return true;
+                }
+
+                #endregion
+            }
+
+            #endregion
+
+            return false;
         }
 
         #endregion

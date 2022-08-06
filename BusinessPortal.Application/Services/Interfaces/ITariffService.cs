@@ -34,5 +34,22 @@ namespace BusinessPortal.Application.Services.Interfaces
         Task<int> BuyTariff(ulong tariffId, ulong userId);
 
         #endregion
+
+        #region Site Side 
+
+        //Check to see ads based on tariffs
+        Task<bool> CheckUserSeeAdsBaseOnTariff(ulong userId);
+
+        #endregion
+
+        #region User Panel 
+
+        //Check User Create Custmer Ads Log 
+        Task<bool> CheckCustomerAdsBaseOnTariff(ulong userId);
+
+        //Check User Create Sale Ads Log 
+        Task<bool> CheckSaleAdsBaseOnTariff(ulong userId);
+
+        #endregion
     }
 }

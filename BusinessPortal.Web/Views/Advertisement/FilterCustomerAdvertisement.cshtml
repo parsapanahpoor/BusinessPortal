@@ -52,15 +52,15 @@
                         <div class="col-lg-3 col-md-6">
                             <div class="single-shop-card">
                                 <div class="shop-image">
-                                    <a href="shop-details.html"><img style="width: 200px;height:150px;" src="@PathTools.AdvertisementOriginimage@ads.Image" alt="image"></a>
+                                    <a   asp-action="AdvertisementDetail" asp-area="" asp-controller="Advertisement" asp-route-advertisementId="@ads.AdvertisementId"><img style="width: 200px;height:150px;" src="@PathTools.AdvertisementOriginimage@ads.Image" alt="image"></a>
                                 </div>
                                 <div class="shop-content">
                                     <h5>
-                                        <a style="color:#00467f;" href="shop-details.html">@ads.AdvertisementTitle</a>
+                                        <a style="color:#00467f;"   asp-action="AdvertisementDetail" asp-area="" asp-controller="Advertisement" asp-route-advertisementId="@ads.AdvertisementId">@ads.AdvertisementTitle</a>
                                     </h5>
                                     <span>@ads.CreateDate.ToLongDateString()</span>
                                     <div class="cart-icon">
-                                        <a href="cart.html"><i class="fa fa-eye"></i></a>
+                                        <a   asp-action="AdvertisementDetail" asp-area="" asp-controller="Advertisement" asp-route-advertisementId="@ads.AdvertisementId"><i class="fa fa-eye"></i></a>
                                     </div>
                                 </div>
                             </div>
