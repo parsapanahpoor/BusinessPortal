@@ -123,8 +123,14 @@
   <data name="AddAdvertisement" xml:space="preserve">
     <value>Reklam Ekle</value>
   </data>
+  <data name="Create Ticket" xml:space="preserve">
+    <value>Bilet ekle</value>
+  </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Gösterge Paneli</value>
+  </data>
+  <data name="List Of Tickets" xml:space="preserve">
+    <value>Bilet listesi</value>
   </data>
   <data name="ListOfAddress" xml:space="preserve">
     <value>Adres Listesi</value>
@@ -134,6 +140,9 @@
   </data>
   <data name="ListOfRequestAdvertisement" xml:space="preserve">
     <value>Reklam Talebi</value>
+  </data>
+  <data name="Manage Tickets" xml:space="preserve">
+    <value>Bilet yönetimi</value>
   </data>
   <data name="ManageAddress" xml:space="preserve">
     <value>Adresi Yönet</value>

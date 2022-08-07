@@ -123,8 +123,14 @@
   <data name="AddAdvertisement" xml:space="preserve">
     <value>Adicionar anúncio</value>
   </data>
+  <data name="Create Ticket" xml:space="preserve">
+    <value>Adicionar ingressos</value>
+  </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Painel</value>
+  </data>
+  <data name="List Of Tickets" xml:space="preserve">
+    <value>Lista de ingressos</value>
   </data>
   <data name="ListOfAddress" xml:space="preserve">
     <value>Anúncios à venda</value>
@@ -134,6 +140,9 @@
   </data>
   <data name="ListOfRequestAdvertisement" xml:space="preserve">
     <value>Anúncios solicitantes</value>
+  </data>
+  <data name="Manage Tickets" xml:space="preserve">
+    <value>Gerenciamento de tickets</value>
   </data>
   <data name="ManageAddress" xml:space="preserve">
     <value>Gerenciar endereço</value>

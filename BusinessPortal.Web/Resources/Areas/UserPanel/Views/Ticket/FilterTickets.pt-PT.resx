@@ -117,43 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddAddress" xml:space="preserve">
-    <value>اضف عنوان</value>
+  <data name="Create Date" xml:space="preserve">
+    <value>Data de registro</value>
   </data>
-  <data name="AddAdvertisement" xml:space="preserve">
-    <value>أضف إعلان</value>
+  <data name="Delete Filter" xml:space="preserve">
+    <value>Remova o filtro</value>
   </data>
-  <data name="Create Ticket" xml:space="preserve">
-    <value>أضف تذاكر</value>
-  </data>
-  <data name="Dashboard" xml:space="preserve">
-    <value>لوحة القيادة</value>
+  <data name="Filter" xml:space="preserve">
+    <value>Aplicar filtro</value>
   </data>
   <data name="List Of Tickets" xml:space="preserve">
-    <value>قائمة التذاكر</value>
+    <value>Lista de ingressos</value>
   </data>
-  <data name="ListOfAddress" xml:space="preserve">
-    <value>قائمة العناوين</value>
+  <data name="List Of User Tickets" xml:space="preserve">
+    <value>Lista de tickets de usuário</value>
   </data>
-  <data name="ListOfOnSaleAdvertisements" xml:space="preserve">
-    <value>إعلانات البيع</value>
+  <data name="No" xml:space="preserve">
+    <value>não</value>
   </data>
-  <data name="ListOfRequestAdvertisement" xml:space="preserve">
-    <value>طلب الإعلانات</value>
+  <data name="OnWorking" xml:space="preserve">
+    <value>em andamento</value>
   </data>
-  <data name="Manage Tickets" xml:space="preserve">
-    <value>إدارة التذاكر</value>
+  <data name="Options" xml:space="preserve">
+    <value>Definições</value>
   </data>
-  <data name="ManageAddress" xml:space="preserve">
-    <value>إدارة العنوان</value>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Lista de tickets de usuário</value>
   </data>
-  <data name="OnSaleAdvertisement" xml:space="preserve">
-    <value>إعلان للبيع</value>
+  <data name="Ticket OnWorking State" xml:space="preserve">
+    <value>Status de acompanhamento</value>
   </data>
-  <data name="RequestAdvertisement" xml:space="preserve">
-    <value>طلب إعلان</value>
+  <data name="Ticket State" xml:space="preserve">
+    <value>Estado do bilhete</value>
   </data>
-  <data name="RequestToBeSeller" xml:space="preserve">
-    <value>اطلب أن تكون بائعًا</value>
+  <data name="Ticket Title" xml:space="preserve">
+    <value>Título do bilhete</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Sim</value>
   </data>
 </root>

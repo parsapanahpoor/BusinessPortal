@@ -123,8 +123,14 @@
   <data name="AddAdvertisement" xml:space="preserve">
     <value>افزودن آگهی</value>
   </data>
+  <data name="Create Ticket" xml:space="preserve">
+    <value>افزودن تیکت ها </value>
+  </data>
   <data name="Dashboard" xml:space="preserve">
     <value>داشبورد</value>
+  </data>
+  <data name="List Of Tickets" xml:space="preserve">
+    <value>لیست تیکت ها</value>
   </data>
   <data name="ListOfAddress" xml:space="preserve">
     <value>لیست آدرس ها</value>
@@ -134,6 +140,9 @@
   </data>
   <data name="ListOfRequestAdvertisement" xml:space="preserve">
     <value>لیست آگهی های درخواستی</value>
+  </data>
+  <data name="Manage Tickets" xml:space="preserve">
+    <value>مدیریت تیکت ها </value>
   </data>
   <data name="ManageAddress" xml:space="preserve">
     <value>مدیریت موقعیت ها</value>

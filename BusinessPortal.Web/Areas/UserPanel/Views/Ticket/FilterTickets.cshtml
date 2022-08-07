@@ -1,0 +1,131 @@
+﻿@model BusinessPortal.Domain.ViewModels.User.Ticket.FilterSiteTicketViewModel
+@inject IViewLocalizer Localizer
+@inject IHtmlLocalizer<SharedLocalizer> SharedHtmlLocalizer
+@using BusinessPortal.Domain.ViewModels.User.Ticket
+@using BusinessPortal.Application.Convertors
+@using BusinessPortal.Application.Extensions
+@using BusinessPortal.Application.Utils
+
+@{
+    ViewData["Title"] = @Localizer["List Of Tickets"];
+}
+
+
+@section scripts{
+
+}
+
+<div class="content-body" style="min-height: 908px; margin-right:0px ; padding-top:0px;">
+    <div class="container-fluid">
+
+        <form asp-action="FilterTickets" asp-controller="Ticket" asp-area="UserPanel" id="filter-search" method="get">
+            <div class="row">
+
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">@ViewData["Title"]</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="basic-form">
+                                <form asp-action="FilterTickets" asp-controller="Ticket" asp-area="UserPanel" id="filter-search" method="get">
+                                    <input type="hidden" asp-for="Page" />
+
+                                    <div class="row">
+
+                                        <div class="form-group col-md-12">
+                                            <label asp-for="TicketTitle"> @Localizer["Ticket Title"] </label>
+                                            <input type="text" class="form-control" asp-for="TicketTitle">
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label asp-for="UserTicketFilterStatus"> @Localizer["Ticket State"] </label>
+                                            <select asp-for="UserTicketFilterStatus" class="form-control" asp-items="Html.GetEnumSelectList(typeof(UserTicketFilterStatus))"></select>
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label asp-for="UserTicketFilterOnWorkingStatus"> @Localizer["Ticket OnWorking State"] </label>
+                                            <select asp-for="UserTicketFilterOnWorkingStatus" class="form-control" asp-items="Html.GetEnumSelectList(typeof(UserTicketFilterOnWorkingStatus))"></select>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="d-flex justify-content-start mt-4">
+                                        <button class="btn btn-success mr-3" type="submit">@Localizer["Filter"]</button>
+                                        @if (Context.Request.QueryString.HasValue)
+                                        {
+                                            <a class="btn btn-danger" asp-action="FilterTickets" asp-controller="Ticket" asp-area="UserPanel">@Localizer["DeleteFilter"]</a>
+                                        }
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between">
+                            <div class="d-flex">
+                                <h4 class="card-title mr-3">
+                                    @ViewData["Title"]
+                                </h4>
+                                <span>@Model.GetShownEntitiesPagesTitle()</span>
+
+                            </div>
+                            @*       @if (Model.UserId != null)
+                                {
+                                <a asp-area="UserPanel" asp-controller="Address" asp-action="CreateAddress" title="@_Localizer["Create"]" class="btn btn-rounded btn-primary"><span class="btn-icon-left text-primary"><i class="fa fa-plus color-primary"></i></span>@_Localizer["Create"]</a>
+                                }*@
+                        </div>
+                        <div class="card-body">
+                            @if (Model.Entities != null && Model.Entities.Any())
+                            {
+                                <div class="table-responsive">
+                                    <table class="table table-responsive-md">
+                                        <thead>
+                                            <tr>
+                                                <th class="tc"><strong>@Localizer["Ticket Title"]</strong></th>
+                                                <th class="tc"><strong>@Localizer["Ticket State"]</strong></th>
+                                                <th class="tc"><strong>@Localizer["Create Date"]</strong></th>
+                                                <th class="tc"><strong>@Localizer["Options"]</strong></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var ticket in Model.Entities)
+                                            {
+                                                <tr id="ajax-url-item-@ticket.Id">
+                                                    <td class="tc">
+                                                        @ticket.Title
+                                                    </td>
+                                                    <td class="tc">
+                                                        <span> @Localizer["OnWorking"] </span>
+                                                        <span class="mr-8px badge @((ticket.OnWorking) ? "badge-success" : "badge-danger")">@((ticket.OnWorking) ? @Localizer["Yes"] : @Localizer["No"])</span>
+                                                    </td>
+                                                    <td class="tc">
+                                                        <p> @ticket.CreateDate.ToShamsi() </p>
+                                                    </td>
+                                                    <td class="tc">
+                                                        <a title="@Localizer["Edit"]" asp-action="TicketDetail" asp-controller="Ticket" asp-area="UserPanel" asp-route-id="@ticket.Id" class="btn btn-warning shadow btn-xs sharp m-1"><i class="fa fa-edit"></i></a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <partial name="_UserPagingPartial" model="Model.GetCurrentPaging()" />
+                            }
+                            else
+                            {
+                                <partial name="_NoItemFoundPartial" />
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+</div>

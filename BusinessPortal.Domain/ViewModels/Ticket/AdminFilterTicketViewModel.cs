@@ -35,30 +35,30 @@ namespace BusinessPortal.Domain.ViewModels.Admin.Ticket
 
     public enum AdminTicketFilterSeenByAdminStatus
     {
-        [Display(Name = "All")] All,
-        [Display(Name = "Seen By Admin")] SeenByAdmin,
-        [Display(Name = "Admin Doesnt See")] NotSeenByAdmin
+        [Display(Name = "همه")] All,
+        [Display(Name = "دیده شده از سمت ادمین")] SeenByAdmin,
+        [Display(Name = "دیده نشده از طرف ادمین")] NotSeenByAdmin
     }
 
     public enum AdminTicketFilterSeenByUserStatus
     {
-        [Display(Name = "All")] All,
-        [Display(Name = "Seen By User")] SeenByUser,
-        [Display(Name = "User Doesnt See")] NotSeenByUser
+        [Display(Name = "همه")] All,
+        [Display(Name = "دیده شده از سمت کاربر")] SeenByUser,
+        [Display(Name = "دیده نشده از سمت کاربر")] NotSeenByUser
     }
 
     public enum AdminTicketFilterStatus
     {
-        [Display(Name = "All")] All,
-        [Display(Name = "Answered")] Answered,
-        [Display(Name = "On Working")] Pending,
-        [Display(Name = "Closed")] Closed
+        [Display(Name = "همه ")] All,
+        [Display(Name = "پاسخ داده شده")] Answered,
+        [Display(Name = "درحال برسی")] Pending,
+        [Display(Name = "بسته شده")] Closed
     }
 
     public enum AdminTicketFilterOnWorkingStatus
     {
-        [Display(Name = "All")] All,
-        [Display(Name = "On Working")] OnWorking,
+        [Display(Name = "همه")] All,
+        [Display(Name = "درحال برسی")] OnWorking,
         [Display(Name = "NotWorking")] NotWorking
     }
 }

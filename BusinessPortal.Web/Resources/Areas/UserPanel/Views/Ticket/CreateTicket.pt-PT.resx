@@ -117,43 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddAddress" xml:space="preserve">
-    <value>اضف عنوان</value>
-  </data>
-  <data name="AddAdvertisement" xml:space="preserve">
-    <value>أضف إعلان</value>
-  </data>
   <data name="Create Ticket" xml:space="preserve">
-    <value>أضف تذاكر</value>
+    <value>Adicionar um novo bilhete</value>
   </data>
-  <data name="Dashboard" xml:space="preserve">
-    <value>لوحة القيادة</value>
+  <data name="Message" xml:space="preserve">
+    <value>Mensagem de texto</value>
   </data>
-  <data name="List Of Tickets" xml:space="preserve">
-    <value>قائمة التذاكر</value>
+  <data name="Message Place Holder" xml:space="preserve">
+    <value>Digite o texto do seu bilhete</value>
   </data>
-  <data name="ListOfAddress" xml:space="preserve">
-    <value>قائمة العناوين</value>
+  <data name="Submit" xml:space="preserve">
+    <value>Registro</value>
   </data>
-  <data name="ListOfOnSaleAdvertisements" xml:space="preserve">
-    <value>إعلانات البيع</value>
+  <data name="Ticket Title Place Holder" xml:space="preserve">
+    <value>Insira o título do seu bilhete</value>
   </data>
-  <data name="ListOfRequestAdvertisement" xml:space="preserve">
-    <value>طلب الإعلانات</value>
-  </data>
-  <data name="Manage Tickets" xml:space="preserve">
-    <value>إدارة التذاكر</value>
-  </data>
-  <data name="ManageAddress" xml:space="preserve">
-    <value>إدارة العنوان</value>
-  </data>
-  <data name="OnSaleAdvertisement" xml:space="preserve">
-    <value>إعلان للبيع</value>
-  </data>
-  <data name="RequestAdvertisement" xml:space="preserve">
-    <value>طلب إعلان</value>
-  </data>
-  <data name="RequestToBeSeller" xml:space="preserve">
-    <value>اطلب أن تكون بائعًا</value>
+  <data name="Title" xml:space="preserve">
+    <value>Título</value>
   </data>
 </root>

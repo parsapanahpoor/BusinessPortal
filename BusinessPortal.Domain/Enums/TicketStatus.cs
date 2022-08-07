@@ -9,8 +9,8 @@ namespace BusinessPortal.Domain.Enums
 {
     public enum TicketStatus
     {
-        [Display(Name = "Answered")] Answered = 1,
-        [Display(Name = "Pending")] Pending = 2,
-        [Display(Name = "Closed")] Closed = 3
+        [Display(Name = "جواب داده شده")] Answered = 1,
+        [Display(Name = "درانتظار")] Pending = 2,
+        [Display(Name = "بسته شده")] Closed = 3
     }
 }

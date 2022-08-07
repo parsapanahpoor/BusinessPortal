@@ -1,0 +1,78 @@
+﻿@using BusinessPortal.Domain.ViewModels.Common
+@model BusinessPortal.Domain.ViewModels.User.Ticket.CreateTicketViewModel
+@inject IViewLocalizer Localizer
+@inject IHtmlLocalizer<SharedLocalizer> SharedHtmlLocalizer
+@using BusinessPortal.Domain.ViewModels.User.Ticket
+
+@{
+    ViewData["Title"] = @Localizer["Create Ticket"];
+}
+
+@section scripts{
+    <partial name="_JqueryValidators" />
+}
+
+<div class="content-body" style="min-height: 1070px; margin-right: 0px; padding-top: 0px;">
+    <div class="container-fluid">
+
+<form method="post" asp-action="CreateTicket" asp-controller="Ticket" asp-area="UserPanel">
+
+            <div class="row">
+
+                <div class="col-xl-12 col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title"> @ViewData["Title"] </h4>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="contantUs-page-form-items-line1">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            </div>
+
+                            <div class="contantUs-page-form-items-line2 mt-2">
+                                <div class="row">
+                                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                        <div class="contantUs-page-form-input-media">
+                                            <label for="exampleFormControlInput1" class="form-label Label_Input_form_Personal">
+                                              @Localizer["Title"] <span class="text-danger">*</span>
+                                            </label>
+                                            <input type="text" asp-for="Title" class="form-control contantUs-page-form-input-select" id="exampleFormControlInput1" placeholder="@Localizer["Ticket Title Place Holder"]">
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="contantUs-page-form-items-line2" style="margin-top: 30px;">
+                                <div class="row">
+                                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                        <div class="contantUs-page-form-input-media">
+                                            <label for="exampleFormControlInput1" class="form-label Label_Input_form_Personal">
+                                                @Localizer["Message"] <span class="text-danger">*</span>
+                                            </label>
+                                            <textarea asp-for="Message" rows="10" class="form-control " placeholder="@Localizer["Message Place Holder"]"></textarea>
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="Message" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="contantUs-page-form-items-submit pt-50" style="margin-top: 50px;">
+                                <div class="row">
+                                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                        <button type="submit" class="btn btn-outline-success mt-1">@Localizer["Submit"]</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
