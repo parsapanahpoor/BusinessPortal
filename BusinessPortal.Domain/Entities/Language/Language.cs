@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessPortal.Domain.Entities.Product;
+using BusinessPortal.Domain.Entities.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -19,6 +21,9 @@ namespace BusinessPortal.Domain.Entities.Language
 
         #region Navigation
 
+        public ICollection<ServicesCategoryInfo> ServicesCategoryInfos { get; set; }
+
+        public ICollection<ProductCategoryInfo>  ProductCategoryInfos{ get; set; }
 
         #endregion
     }

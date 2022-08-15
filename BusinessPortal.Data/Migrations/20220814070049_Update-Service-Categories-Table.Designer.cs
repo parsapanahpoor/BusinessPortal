@@ -4,6 +4,7 @@ using BusinessPortal.Data.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BusinessPortal.Data.Migrations
 {
     [DbContext(typeof(BusinessPortalDbContext))]
-    partial class BusinessPortalDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220814070049_Update-Service-Categories-Table")]
+    partial class UpdateServiceCategoriesTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -691,73 +693,6 @@ namespace BusinessPortal.Data.Migrations
                     b.ToTable("States");
                 });
 
-            modelBuilder.Entity("BusinessPortal.Domain.Entities.Product.ProductCategory", b =>
-                {
-                    b.Property<decimal>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(20,0)");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<decimal?>("ParentId")
-                        .HasColumnType("decimal(20,0)");
-
-                    b.Property<string>("UniqueName")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ParentId");
-
-                    b.ToTable("ProductCategories");
-                });
-
-            modelBuilder.Entity("BusinessPortal.Domain.Entities.Product.ProductCategoryInfo", b =>
-                {
-                    b.Property<decimal>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(20,0)");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("LanguageId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<decimal>("ProductCategoryId")
-                        .HasColumnType("decimal(20,0)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(260)
-                        .HasColumnType("nvarchar(260)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LanguageId");
-
-                    b.HasIndex("ProductCategoryId");
-
-                    b.ToTable("ProductCategoryInfos");
-                });
-
             modelBuilder.Entity("BusinessPortal.Domain.Entities.Services.ServicesCategory", b =>
                 {
                     b.Property<decimal>("Id")
@@ -797,6 +732,9 @@ namespace BusinessPortal.Data.Migrations
                         .HasColumnType("decimal(20,0)");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
+
+                    b.Property<decimal>("ArticleCategoryId")
+                        .HasColumnType("decimal(20,0)");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -1275,35 +1213,6 @@ namespace BusinessPortal.Data.Migrations
                     b.Navigation("Parent");
                 });
 
-            modelBuilder.Entity("BusinessPortal.Domain.Entities.Product.ProductCategory", b =>
-                {
-                    b.HasOne("BusinessPortal.Domain.Entities.Product.ProductCategory", "Parent")
-                        .WithMany()
-                        .HasForeignKey("ParentId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("Parent");
-                });
-
-            modelBuilder.Entity("BusinessPortal.Domain.Entities.Product.ProductCategoryInfo", b =>
-                {
-                    b.HasOne("BusinessPortal.Domain.Entities.Language.Language", "Language")
-                        .WithMany("ProductCategoryInfos")
-                        .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("BusinessPortal.Domain.Entities.Product.ProductCategory", "ProductCategory")
-                        .WithMany("ProductCategoryInfos")
-                        .HasForeignKey("ProductCategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Language");
-
-                    b.Navigation("ProductCategory");
-                });
-
             modelBuilder.Entity("BusinessPortal.Domain.Entities.Services.ServicesCategory", b =>
                 {
                     b.HasOne("BusinessPortal.Domain.Entities.Services.ServicesCategory", "Parent")
@@ -1436,8 +1345,6 @@ namespace BusinessPortal.Data.Migrations
 
             modelBuilder.Entity("BusinessPortal.Domain.Entities.Language.Language", b =>
                 {
-                    b.Navigation("ProductCategoryInfos");
-
                     b.Navigation("ServicesCategoryInfos");
                 });
 
@@ -1450,11 +1357,6 @@ namespace BusinessPortal.Data.Migrations
                     b.Navigation("AddressesState");
 
                     b.Navigation("Children");
-                });
-
-            modelBuilder.Entity("BusinessPortal.Domain.Entities.Product.ProductCategory", b =>
-                {
-                    b.Navigation("ProductCategoryInfos");
                 });
 
             modelBuilder.Entity("BusinessPortal.Domain.Entities.Services.ServicesCategory", b =>

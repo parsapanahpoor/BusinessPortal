@@ -14,6 +14,9 @@ using BusinessPortal.Domain.Entities.Language;
 using BusinessPortal.Domain.Entities.Wallet;
 using BusinessPortal.Domain.Entities.Tariff;
 using BusinessPortal.Domain.Entities.Contact;
+using BusinessPortal.Domain.Entities.Services;
+using System.Globalization;
+using BusinessPortal.Domain.Entities.Product;
 
 namespace BusinessPortal.Data.DbContext
 {
@@ -106,9 +109,27 @@ namespace BusinessPortal.Data.DbContext
 
         #endregion
 
+        #region Product
+
+        public DbSet<ProductCategory> ProductCategories { get; set; }
+
+        public DbSet<ProductCategoryInfo> ProductCategoryInfos { get; set; }
+
+        #endregion
+
+        #region Categories
+
+        public DbSet<ServicesCategory> ServicesCategories { get; set; }
+
+        public DbSet<ServicesCategoryInfo> ServicesCategoryInfos { get; set; }
+
+        #endregion
+
         #endregion
 
         #region On Model Creating
+
+        public string culture = CultureInfo.CurrentCulture.Name;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -116,6 +137,13 @@ namespace BusinessPortal.Data.DbContext
             {
                 relationship.DeleteBehavior = DeleteBehavior.Restrict;
             }
+
+            #region query filter
+
+            modelBuilder.Entity<ServicesCategoryInfo>().HasQueryFilter(ac => ac.LanguageId == culture);
+            modelBuilder.Entity<ProductCategoryInfo>().HasQueryFilter(ac => ac.LanguageId == culture);
+
+            #endregion
 
             #region Seed Data
 

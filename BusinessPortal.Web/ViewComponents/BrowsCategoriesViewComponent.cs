@@ -8,9 +8,9 @@ namespace BusinessPortal.Web.ViewComponents
     {
         #region Ctor
 
-        public ICategoriesService _categoriesService { get; set; }
+        public IProductService _categoriesService { get; set; }
 
-        public BrowsCategoriesViewComponent(ICategoriesService categoriesService)
+        public BrowsCategoriesViewComponent(IProductService categoriesService)
         {
             _categoriesService = categoriesService;
         }
@@ -19,18 +19,18 @@ namespace BusinessPortal.Web.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View("BrowsCategories", await _categoriesService.GetCategoriesForShowInHeader());
+            return View("BrowsCategories", await _categoriesService.GetListOfProductCategoryInfoForShowInSiteHeader());
         }
     }
 
-    //Buy Categories View Component
+    //Service Categories View Component
     public class BuyCategoriesViewComponent : ViewComponent
     {
         #region Ctor
 
-        public ICategoriesService _categoriesService { get; set; }
+        public IServiceService _categoriesService { get; set; }
 
-        public BuyCategoriesViewComponent(ICategoriesService categoriesService)
+        public BuyCategoriesViewComponent(IServiceService categoriesService)
         {
             _categoriesService = categoriesService;
         }
@@ -39,7 +39,7 @@ namespace BusinessPortal.Web.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View("BuyCategories", await _categoriesService.GetCategoriesForShowInHeader());
+            return View("BuyCategories", await _categoriesService.GetMaiCategoriesForShowInSiteHeader());
         }
     }
 }

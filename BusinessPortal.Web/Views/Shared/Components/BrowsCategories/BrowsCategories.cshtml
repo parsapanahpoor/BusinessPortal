@@ -1,4 +1,4 @@
-﻿@model List<BusinessPortal.Domain.Entities.BrowseCategory.Category>
+﻿@model List<BusinessPortal.Domain.Entities.Product.ProductCategoryInfo>
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer _Localizer
 @using System.Globalization
@@ -8,34 +8,41 @@
 
     <div class="mega-menu">
         <button class="mega-menu-btn">
-            <i class="fa fa-bars ml-3 mr-3" aria-hidden="true" style="color: #fcb800;"></i> @_Localizer["Sale Ads Categories"]
+            <i class="fa fa-bars ml-3 mr-3" aria-hidden="true" style="color: #fcb800;"></i> @_Localizer["Product Ads Categories"]
         </button>
         <ul class="mega-menu-list">
 
-            @foreach (var item in Model.Where(p => p.ParentId == null))
+            @if (Model != null && Model.Any())
             {
-                <li class="mega-menu-item">
-                    <a asp-action="FilterSellerAdvertisement" asp-area="" asp-controller="Advertisement" asp-route-categoryId="@item.Id" class="mega-menu-link">
-                        @item.DisplayName
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-
-                    @if (Model.Any(p => p.ParentId == item.Id))
+                if (Model.Any(p => p.ProductCategory.ParentId == null))
+                {
+                    foreach (var item in Model.Where(p => p.ProductCategory.ParentId == null))
                     {
-                        <ul class="mega-menu-categories">
-                            @foreach (var item2 in Model.Where(p => p.ParentId == item.Id))
+                        <li class="mega-menu-item">
+                            <a href="#" class="mega-menu-link">
+                                @item.Title
+                                @if (Model.Any(p => p.ProductCategory.ParentId == item.Id))
+                                {
+                                    <i class="fa fa-angle-left"></i>
+                                }
+                            </a>
+
+                            @if (Model.Any(p => p.ProductCategory.ParentId == item.Id))
                             {
-                                <li class="mega-menu-item">
-                                    <a asp-action="FilterSellerAdvertisement" asp-area="" asp-controller="Advertisement" asp-route-categoryId="@item2.Id" class="mega-menu-categories-title">@item2.DisplayName</a>
-
-                                </li>
+                                <ul class="mega-menu-categories">
+                                    @foreach (var item2 in Model.Where(p => p.ProductCategory.ParentId == item.Id))
+                                    {
+                                        <li class="mega-menu-item">
+                                            <a href="#" class="mega-menu-categories-title">@item2.Title</a>
+                                        </li>
+                                    }
+                                </ul>
                             }
-                        </ul>
+
+                        </li>
                     }
-
-                </li>
+                }
             }
-
         </ul>
     </div>
 

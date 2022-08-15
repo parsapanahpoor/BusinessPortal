@@ -1,4 +1,4 @@
-﻿@model List<BusinessPortal.Domain.Entities.BrowseCategory.Category>
+﻿@model List<BusinessPortal.Domain.Entities.Services.ServicesCategoryInfo>
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer _Localizer
 @using System.Globalization
@@ -7,17 +7,19 @@
 
 <div class="mega-menu">
     <button class="mega-menu-btn-Services">
-        <i class="fa fa-bars " aria-hidden="true" style="color: #fcb800;"></i> @_Localizer["Buy Ads Categories"]
+        <i class="fa fa-bars " aria-hidden="true" style="color: #fcb800;"></i> @_Localizer["Service Ads Categories"]
     </button>
     <ul class="mega-menu-list-Services">
-        @foreach (var item in Model.Where(p => p.ParentId == null))
+        @if (Model != null && Model.Any())
         {
-            <li class="mega-menu-item">
-                <a  asp-action="FilterCustomerAdvertisement" asp-area="" asp-controller="Advertisement" asp-route-categoryId="@item.Id" class="mega-menu-link">
-                    @item.DisplayName
-                    <i class="fa fa-angle-left"></i>
-                </a>
-            </li>
+            foreach (var item in Model)
+            {
+                <li class="mega-menu-item">
+                    <a href="#" class="mega-menu-link">
+                        @item.Title
+                    </a>
+                </li>
+            }
         }
     </ul>
 </div>

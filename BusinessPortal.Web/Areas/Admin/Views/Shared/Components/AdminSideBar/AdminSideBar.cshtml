@@ -83,6 +83,46 @@
             </ul>
         </li>
 
+            <li>
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon glyphicon glyphicon-th-large"></i>
+                <span class="menu-text">  دسته بندی خدمات </span>
+                <i class="menu-expand"></i>
+            </a>
+            <ul class="submenu">
+                <li>
+                    <a asp-action="FilterServiceCategory" asp-area="Admin" asp-controller="Service">
+                        <span class="menu-text"> لیست دسته بندی خدمات </span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-action="CreateServiceCategory" asp-area="Admin" asp-controller="Service">
+                        <span class="menu-text"> افزودن دسته بندی خدمات  </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+               <li>
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon glyphicon glyphicon-th-large"></i>
+                <span class="menu-text">  دسته بندی محصولات </span>
+                <i class="menu-expand"></i>
+            </a>
+            <ul class="submenu">
+                <li>
+                    <a asp-action="FilterProductCategory" asp-area="Admin" asp-controller="Product">
+                        <span class="menu-text"> لیست دسته بندی محصولات </span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-action="CreateProductCategory" asp-area="Admin" asp-controller="Product">
+                        <span class="menu-text"> افزودن دسته بندی محصولات  </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
         <li>
             <a href="#" class="menu-dropdown">
                 <i class="menu-icon	glyphicon glyphicon-list-alt"></i>

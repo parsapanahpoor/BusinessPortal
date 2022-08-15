@@ -120,4 +120,7 @@
   <data name="Sale Ads Categories" xml:space="preserve">
     <value>Категория продаж</value>
   </data>
+  <data name="Sale Ads Categories1" xml:space="preserve">
+    <value>категоризация продуктов</value>
+  </data>
 </root>
