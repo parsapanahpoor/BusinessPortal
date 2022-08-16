@@ -16,7 +16,10 @@ namespace BusinessPortal.Web.Culture
         {
             new CultureItem{CultureKey = "fa-IR",Title="فارسی",Direction = "rtl",IsRtl = true},
             new CultureItem{CultureKey = "en-US",Title="English",Direction = "ltr",IsRtl = false},
-            // new CultureItem{CultureKey = "ru-RU",Title="Russian",Direction = "ltr",IsRtl = false},
+            new CultureItem{CultureKey = "ar-Sa",Title="Arabic",Direction = "ltr",IsRtl = false},
+            new CultureItem{CultureKey = "tr-TR",Title="Turkish",Direction = "ltr",IsRtl = false},
+            new CultureItem{CultureKey = "pt-PT",Title="portugees",Direction = "ltr",IsRtl = false},
+            new CultureItem{CultureKey = "ru-RU",Title="Russian",Direction = "ltr",IsRtl = false},
         };
 
         public static CultureItem GetCurrentCulture()
