@@ -902,7 +902,7 @@ namespace BusinessPortal.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
 
-                    b.Property<int>("CountOfAddAdvertisement")
+                    b.Property<int>("Consultation")
                         .HasColumnType("int");
 
                     b.Property<int>("CountOfSeenAdvertisement")

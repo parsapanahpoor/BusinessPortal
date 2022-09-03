@@ -283,7 +283,7 @@
     <value>Guaranteed sales</value>
   </data>
   <data name="Home Appliances" xml:space="preserve">
-    <value>Home Appliances</value>
+    <value>Home Appliances, Digital, Official</value>
   </data>
   <data name="India" xml:space="preserve">
     <value>India</value>
@@ -360,11 +360,17 @@
   <data name="Official" xml:space="preserve">
     <value>Official</value>
   </data>
+  <data name="offset" xml:space="preserve">
+    <value>Offset</value>
+  </data>
   <data name="Oil" xml:space="preserve">
     <value>Oil</value>
   </data>
   <data name="Oil,gasandpetrochemicals" xml:space="preserve">
     <value>Oil, gas and petrochemicals</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Order</value>
   </data>
   <data name="Our suggestions" xml:space="preserve">
     <value>Our suggestions</value>
@@ -476,6 +482,9 @@
   </data>
   <data name="subscribe to newsletter" xml:space="preserve">
     <value>subscribe to newsletter</value>
+  </data>
+  <data name="Subscription" xml:space="preserve">
+    <value>Subscription</value>
   </data>
   <data name="Sugar" xml:space="preserve">
     <value>Sugar</value>

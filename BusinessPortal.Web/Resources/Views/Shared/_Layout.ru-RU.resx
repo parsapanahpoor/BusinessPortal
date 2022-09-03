@@ -283,7 +283,7 @@
     <value>Гарантированные продажи</value>
   </data>
   <data name="Home Appliances" xml:space="preserve">
-    <value>Бытовая техника</value>
+    <value>Бытовая техника, Цифровой, Официальный</value>
   </data>
   <data name="India" xml:space="preserve">
     <value>Индия</value>
@@ -360,11 +360,17 @@
   <data name="Official" xml:space="preserve">
     <value>Официальный</value>
   </data>
+  <data name="offset" xml:space="preserve">
+    <value>Kомпенсировать</value>
+  </data>
   <data name="Oil" xml:space="preserve">
     <value>Масло</value>
   </data>
   <data name="Oil,gasandpetrochemicals" xml:space="preserve">
     <value>Нефть, газ и нефтехимия</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Заказ</value>
   </data>
   <data name="Our suggestions" xml:space="preserve">
     <value>Наши предложения</value>
@@ -476,6 +482,9 @@
   </data>
   <data name="subscribe to newsletter" xml:space="preserve">
     <value>Подписаться на новостную рассылку</value>
+  </data>
+  <data name="Subscription" xml:space="preserve">
+    <value>Подписка</value>
   </data>
   <data name="Sugar" xml:space="preserve">
     <value>Сахар</value>

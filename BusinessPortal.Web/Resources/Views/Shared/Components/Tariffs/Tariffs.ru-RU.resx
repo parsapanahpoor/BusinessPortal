@@ -117,14 +117,56 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="3 months" xml:space="preserve">
+    <value>3 месяцев</value>
+  </data>
+  <data name="6 months" xml:space="preserve">
+    <value>6 месяцев</value>
+  </data>
+  <data name="Access to site content" xml:space="preserve">
+    <value>Доступ к содержимому сайта</value>
+  </data>
   <data name="Add Ads Per Day" xml:space="preserve">
-    <value>Количество вставок в день</value>
+    <value>Количество вставок </value>
+  </data>
+  <data name="Bronze" xml:space="preserve">
+    <value>Бронза</value>
   </data>
   <data name="Buy a subscription" xml:space="preserve">
     <value>Покупной тариф</value>
   </data>
-  <data name="Seen Ads Per Day" xml:space="preserve">
-    <value>Количество посещений в день</value>
+  <data name="Free" xml:space="preserve">
+    <value>Свободно</value>
+  </data>
+  <data name="Free consultation" xml:space="preserve">
+    <value>Количество бесплатных консультаций</value>
+  </data>
+  <data name="Golden" xml:space="preserve">
+    <value>Золотой</value>
+  </data>
+  <data name="Having Tariff" xml:space="preserve">
+    <value>Наличие тарифа</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Месяц</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>Обычный</value>
+  </data>
+  <data name="one year" xml:space="preserve">
+    <value>один год</value>
+  </data>
+  <data name="Requester" xml:space="preserve">
+    <value>Заявитель</value>
+  </data>
+  <data name="Seen Ads" xml:space="preserve">
+    <value>Количество посещений</value>
+  </data>
+  <data name="Silver" xml:space="preserve">
+    <value>Серебряный</value>
+  </data>
+  <data name="subscribe to newsletter" xml:space="preserve">
+    <value>Подпишитесь на рассылку сайта</value>
   </data>
   <data name="Tariff Duration" xml:space="preserve">
     <value>временное ограничение</value>
@@ -134,5 +176,8 @@
   </data>
   <data name="Tariff Price" xml:space="preserve">
     <value>Сумма тарифа</value>
+  </data>
+  <data name="Times" xml:space="preserve">
+    <value>раз</value>
   </data>
 </root>

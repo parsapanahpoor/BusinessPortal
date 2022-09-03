@@ -283,7 +283,7 @@
     <value>مبيعات مضمونة</value>
   </data>
   <data name="Home Appliances" xml:space="preserve">
-    <value>أجهزة منزلية</value>
+    <value>أجهزة منزلية، رقمي، الرسمية</value>
   </data>
   <data name="India" xml:space="preserve">
     <value>الهند</value>
@@ -360,11 +360,17 @@
   <data name="Official" xml:space="preserve">
     <value>الرسمية</value>
   </data>
+  <data name="offset" xml:space="preserve">
+    <value>عوض</value>
+  </data>
   <data name="Oil" xml:space="preserve">
     <value>نفط</value>
   </data>
   <data name="Oil,gasandpetrochemicals" xml:space="preserve">
     <value>النفط والغاز والبتروكيماويات</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>ترتيب</value>
   </data>
   <data name="Our suggestions" xml:space="preserve">
     <value>اقتراحاتنا</value>
@@ -476,6 +482,9 @@
   </data>
   <data name="subscribe to newsletter" xml:space="preserve">
     <value>اشترك في النشرة الإخبارية</value>
+  </data>
+  <data name="Subscription" xml:space="preserve">
+    <value>الاشتراك</value>
   </data>
   <data name="Sugar" xml:space="preserve">
     <value>سكر</value>

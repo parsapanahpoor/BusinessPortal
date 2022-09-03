@@ -1,14 +1,19 @@
 ﻿@model List<BusinessPortal.Domain.ViewModels.Advertisement.LastestEmployeesAdvertisements>
 @using BusinessPortal.Application.Convertors
 @using BusinessPortal.Application.StaticTools
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _Localizer
+@using System.Globalization
+
+
 
 @if (Model != null && Model.Any())
 {
     <div class="col-sm-12 col-lg-6">
         <div class="latset-buy">
-            <div class="latset-buy-title">
-                <span>
-                    جدیدترین آگهی های فروشی
+            <div class="latset-buy-title p-3">
+                <span  style="color:#035f95">@_Localizer["Latest sales offers"]
+                   @* آخرین محصولات*@
                 </span>
             </div>
             <div class="latset-buy-list">

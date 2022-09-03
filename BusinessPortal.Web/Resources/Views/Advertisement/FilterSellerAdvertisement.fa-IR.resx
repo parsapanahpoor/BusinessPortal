@@ -120,6 +120,9 @@
   <data name="List of sales ads" xml:space="preserve">
     <value>لیست آگهی های فروش</value>
   </data>
+  <data name="The latest purchase requests" xml:space="preserve">
+    <value>آخرین درخواست های خرید</value>
+  </data>
   <data name="Us" xml:space="preserve">
     <value>ما</value>
   </data>

@@ -59,6 +59,12 @@ namespace BusinessPortal.Domain.Interfaces
         //Get Count Of Create Sale Ads Today 
         Task<int> GetCountOfCreateSaleAdsToday(ulong userId);
 
+        //Get User Selected Tariff By User Id 
+        Task<Tariff?> GetUserSelectedTariffByUserId(ulong userId);
+
+        //Get Just User Selected Tariff By User Id 
+        Task<UserSelectedTariff?> GetJustUserSelectedTariffByUserId(ulong userId);
+
         #endregion
     }
 }

@@ -117,6 +117,29 @@ namespace BusinessPortal.Data.Repository
             await _context.SaveChangesAsync();
         }
 
+        //Get User Selected Tariff By User Id 
+        public async Task<Tariff?> GetUserSelectedTariffByUserId(ulong userId)
+        {
+            var tariff = await _context.UserSelectedTariff
+                            .FirstOrDefaultAsync(p => !p.IsDelete && p.Startdate.Year <= DateTime.Now.Year
+                                                 && p.Startdate.DayOfYear <= DateTime.Now.DayOfYear
+                                                 && p.EndDate.Year >= DateTime.Now.Year
+                                                 && p.EndDate.DayOfYear >= DateTime.Now.DayOfYear);
+            if (tariff == null) return null;
+
+            return await _context.Tariffs.FirstOrDefaultAsync(p => !p.IsDelete && p.Id == tariff.TariffId);
+        }
+
+        //Get User Selected Tariff By User Id 
+        public async Task<UserSelectedTariff?> GetJustUserSelectedTariffByUserId(ulong userId)
+        {
+            return await _context.UserSelectedTariff
+                            .FirstOrDefaultAsync(p => !p.IsDelete && p.Startdate.Year <= DateTime.Now.Year
+                                                 && p.Startdate.DayOfYear <= DateTime.Now.DayOfYear
+                                                 && p.EndDate.Year >= DateTime.Now.Year
+                                                 && p.EndDate.DayOfYear >= DateTime.Now.DayOfYear);
+        }
+
         //Get User Active Tariff 
         public async Task<Tariff?> GetUserActiveTariff(ulong userId)
         {

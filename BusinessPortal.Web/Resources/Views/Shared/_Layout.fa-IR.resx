@@ -283,7 +283,7 @@
     <value>فروش تضمینی</value>
   </data>
   <data name="Home Appliances" xml:space="preserve">
-    <value>لوازم خانگی</value>
+    <value>لوازم خانگی، دیجیتال، اداری</value>
   </data>
   <data name="India" xml:space="preserve">
     <value>هندوستان</value>
@@ -360,6 +360,9 @@
   <data name="Official" xml:space="preserve">
     <value>اداری</value>
   </data>
+  <data name="offset" xml:space="preserve">
+    <value>تهاتر</value>
+  </data>
   <data name="Oil" xml:space="preserve">
     <value>نفت</value>
   </data>
@@ -368,6 +371,9 @@
   </data>
   <data name="Oil,gasandpetrochemicals" xml:space="preserve">
     <value>نفت، گاز و پتروشیمی</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>سفارش</value>
   </data>
   <data name="Our suggestions" xml:space="preserve">
     <value>پیشنهادات ما</value>
@@ -480,6 +486,9 @@
   <data name="subscribe to newsletter" xml:space="preserve">
     <value>مشترک شدن در خبرنامه</value>
   </data>
+  <data name="Subscription" xml:space="preserve">
+    <value>اشتراک</value>
+  </data>
   <data name="Sugar" xml:space="preserve">
     <value>قند</value>
   </data>
@@ -496,6 +505,9 @@
     <value>بیشترین تعداد پیشنهادات فروش</value>
   </data>
   <data name="The latest purchase requests" xml:space="preserve">
+    <value>آخرین درخواست های خرید</value>
+  </data>
+  <data name="The latest purchase requests1" xml:space="preserve">
     <value>آخرین درخواست های خرید</value>
   </data>
   <data name="Thread" xml:space="preserve">

@@ -5,25 +5,107 @@
 
     @foreach (var item in Model)
 {
-    <div class="col-lg-3 col-md-4">
+    <div class="col-lg-3 col-md-4 text-center text-align-justify">
         <div class="single-pricing-box bg-image">
             <div class="pricing-header">
-                <h5 class="hColorFon">@_Localizer["Tariff Name"]</h5>
-                <div class="price ">@item.TariffName</div>
+              
+                @if (@item.tariffDuration == 0)
+                {
+                     <div class="hColorFon-Normal">@_Localizer["Normal"]</div>
+                       
+                }
+                else if (@item.tariffDuration == 90)
+                { 
+                     <div class="hColorFon-Bronz ">@_Localizer["Bronze"]</div>
+                       
+                }
+                else if (@item.tariffDuration == 180)
+                { 
+                     <div class="hColorFon-Silver ">@_Localizer["Silver"]</div>
+                     
+                }
+                else if (@item.tariffDuration == 365)
+                { 
+                     <div class="hColorFon-Gold "> @_Localizer["Golden"]</div>
+                      
+                }
+
+
+
             </div>
 
             <ul class="pricing-features">
-                <li><i class="ri-check-line"></i> @_Localizer["Tariff Price"] : @item.TariffPrice $</li>
+                @if (item.TariffPrice == 0 )
+                {
+                    <li> <span class="pricefon">@_Localizer["Free"]</span> </li>
+                }
+                else
+                {
+                    <li> <span class="pricefon">@item.TariffPrice $</span> </li>
+                }
 
-                <li><i class="ri-check-line"></i> @_Localizer["Seen Ads Per Day"] : @item.CountOfSeenAdvertisement</li>
+                <li><i class="ri-check-line"></i> @_Localizer["subscribe to newsletter"] </li>
 
-                <li><i class="ri-check-line"></i> @_Localizer["Add Ads Per Day"] :  @item.CountOfAddAdvertisement</li>
+                @if (item.TariffPrice == 0)
+                {
+                    <li><i class="ri-check-line"></i> @_Localizer["Access to site content"]  </li>
+                }
+                else
+                {
+                    <li><i class="ri-check-line"></i> @_Localizer["Seen Ads"]  @item.CountOfSeenAdvertisement @_Localizer["Requester"]</li>
+                }
+                
+                
+                @if (@item.tariffDuration == 0)
+                {
+                    <li><i class="ri-check-line"></i> @_Localizer["Having Tariff"]   @_Localizer["Normal"]</li>
+                }
+                else if (@item.tariffDuration == 90)
+                { 
+                    <li><i class="ri-check-line"></i> @_Localizer["Having Tariff"]   @_Localizer["Bronze"]</li>
+                }
+                else if (@item.tariffDuration == 180)
+                { 
+                    <li><i class="ri-check-line"></i> @_Localizer["Having Tariff"]   @_Localizer["Silver"]</li>
+                }
+                else if (@item.tariffDuration == 365)
+                { 
+                    <li><i class="ri-check-line"></i> @_Localizer["Having Tariff"]   @_Localizer["Golden"]</li>
+                }
 
-                <li><i class="ri-check-line"></i> @_Localizer["Tariff Duration"] :  @item.tariffDuration</li>
+
+                
+               
+                <li><i class="ri-check-line"></i> @_Localizer["Free consultation"]  @item.Consultation @_Localizer["Times"] </li>
+               
+                @if (@item.tariffDuration == 0)
+                {
+                    <hr class="alert" style="background: transparent  !important"/>
+                    
+                }
+                else if (@item.tariffDuration == 90)
+                {
+                   <li  class="pricefon"> @_Localizer["3 months"] </li> 
+                }
+                else if (@item.tariffDuration == 180)
+                {
+                   <li  class="pricefon"> @_Localizer["6 months"] </li> 
+                }
+                else if (@item.tariffDuration == 365)
+                {
+                   <li  class="pricefon"> @_Localizer["one year"] </li> 
+                }
             </ul>
 
             <div class="pricing-btn  text-center">
-                <a asp-action="BuyTariff" asp-area="" asp-controller="Taariff" asp-route-tariffId="@item.Id" class="default-btn">@_Localizer["Buy a subscription"]</a>
+                @if (item.TariffPrice != 0)
+                {
+                    <a asp-action="BuyTariff" asp-area="" asp-controller="Taariff" asp-route-tariffId="@item.Id" class="default-btn">@_Localizer["Buy a subscription"]</a>
+                }
+                else
+                {
+                    <a href="#" class="default-btn">@_Localizer["Buy a subscription"]</a>
+                }
             </div>
         </div>
     </div>

@@ -4,6 +4,7 @@ using BusinessPortal.Domain.Entities.Tariff;
 using BusinessPortal.Domain.Interfaces;
 using BusinessPortal.Domain.ViewModels.Admin.Tariff;
 using BusinessPortal.Domain.ViewModels.Admin.Wallet;
+using BusinessPortal.Domain.ViewModels.UserPanel.SideBar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,8 +44,8 @@ namespace BusinessPortal.Application.Services.Implementation
                 tariffDuration = model.TariffDuration,
                 TariffName = model.TariffName,
                 TariffPrice = model.TariffPrice,
-                CountOfAddAdvertisement = model.CountOfAddAdvertisement,
                 CountOfSeenAdvertisement = model.CountOfSeenAdvertisement,
+                Consultation = model.Counsoltant
             };
 
             #endregion
@@ -79,8 +80,8 @@ namespace BusinessPortal.Application.Services.Implementation
             tariff.TariffPrice = model.TariffPrice;
             tariff.TariffName = model.TariffName;
             tariff.tariffDuration = model.tariffDuration;
-            tariff.CountOfAddAdvertisement = model.CountOfAddAdvertisement;
             tariff.CountOfSeenAdvertisement = model.CountOfSeenAdvertisement;
+            tariff.Consultation = model.Consultation;
 
             #endregion
 
@@ -182,7 +183,7 @@ namespace BusinessPortal.Application.Services.Implementation
             UserSelectedTariff selectedTariff = new UserSelectedTariff()
             {
                 CreateDate = DateTime.Now,
-                EndDate = DateTime.Now.AddDays(tariff.tariffDuration),
+                EndDate = DateTime.Now.AddMonths(tariff.tariffDuration),
                 Startdate = DateTime.Now,
                 IsDelete = false,
                 TariffId = tariffId,
@@ -224,9 +225,16 @@ namespace BusinessPortal.Application.Services.Implementation
 
             #endregion
 
+            #region Get User Selected Tariff
+
+            var tariff = await _tariff.GetUserSelectedTariffByUserId(userId);
+            if (tariff == null) return false;
+
+            #endregion
+
             #region Add Log 
 
-            if (seenLog <= 3)
+            if (seenLog <= tariff.tariffDuration)
             {
                 //Fill Model
                 UserSeenAdvertisementLog log = new UserSeenAdvertisementLog()
@@ -248,8 +256,6 @@ namespace BusinessPortal.Application.Services.Implementation
             if (await _tariff.HasUserAnyActiveTariffRightNow(userId))
             {
                 #region Get User Active Tariff
-
-                var tariff = await _tariff.GetUserActiveTariff(userId);
 
                 //If the user rejects the allowed number
                 if (tariff.CountOfSeenAdvertisement > seenLog)
@@ -278,133 +284,163 @@ namespace BusinessPortal.Application.Services.Implementation
         #endregion
 
         #region User Panel
-    
+
         //Check User Create Custmer Ads Log 
-        public async Task<bool> CheckCustomerAdsBaseOnTariff(ulong userId)
-        {
-            #region Get Count Of Create Customer Advertisement Today 
+        //public async Task<bool> CheckCustomerAdsBaseOnTariff(ulong userId)
+        //{
+        //    #region Get Count Of Create Customer Advertisement Today 
 
-            var createLog = await _tariff.GetCountOfCreateCustomerAdsToday(userId);
+        //    var createLog = await _tariff.GetCountOfCreateCustomerAdsToday(userId);
 
-            #endregion
+        //    #endregion
 
-            #region Add Log 
+        //    #region Add Log 
 
-            if (createLog <= 3)
-            {
-                //Fill Model
-                UserCreateAdvertisementLog log = new UserCreateAdvertisementLog()
-                {
-                    CreateDate = DateTime.Now,
-                    UserId = userId,
-                    FromCustomer = true,
-                    FromEmployee = false,
-                };
+        //    if (createLog <= 3)
+        //    {
+        //        //Fill Model
+        //        UserCreateAdvertisementLog log = new UserCreateAdvertisementLog()
+        //        {
+        //            CreateDate = DateTime.Now,
+        //            UserId = userId,
+        //            FromCustomer = true,
+        //            FromEmployee = false,
+        //        };
 
-                //Add Log To Data Base 
-                await _tariff.UserCreateCustomerAdsLog(log);
+        //        //Add Log To Data Base 
+        //        await _tariff.UserCreateCustomerAdsLog(log);
 
-                return true;
-            }
+        //        return true;
+        //    }
 
-            #endregion
+        //    #endregion
 
-            #region check User Has Any Tariff 
+        //    #region check User Has Any Tariff 
 
-            if (await _tariff.HasUserAnyActiveTariffRightNow(userId))
-            {
-                #region Get User Active Tariff
+        //    if (await _tariff.HasUserAnyActiveTariffRightNow(userId))
+        //    {
+        //        #region Get User Active Tariff
 
-                var tariff = await _tariff.GetUserActiveTariff(userId);
+        //        var tariff = await _tariff.GetUserActiveTariff(userId);
 
-                //If the user rejects the allowed number
-                if (tariff.CountOfAddAdvertisement > createLog)
-                {
-                    //Fill Model
-                    UserCreateAdvertisementLog log = new UserCreateAdvertisementLog()
-                    {
-                        CreateDate = DateTime.Now,
-                        UserId = userId,
-                        FromCustomer = true,
-                        FromEmployee = false,
-                    };
+        //        //If the user rejects the allowed number
+        //        if (tariff.CountOfAddAdvertisement > createLog)
+        //        {
+        //            //Fill Model
+        //            UserCreateAdvertisementLog log = new UserCreateAdvertisementLog()
+        //            {
+        //                CreateDate = DateTime.Now,
+        //                UserId = userId,
+        //                FromCustomer = true,
+        //                FromEmployee = false,
+        //            };
 
-                    //Add Log To Data Base 
-                    await _tariff.UserCreateCustomerAdsLog(log);
+        //            //Add Log To Data Base 
+        //            await _tariff.UserCreateCustomerAdsLog(log);
 
-                    return true;
-                }
+        //            return true;
+        //        }
 
-                #endregion
-            }
+        //        #endregion
+        //    }
 
-            #endregion
+        //    #endregion
 
-            return false;
-        }
+        //    return false;
+        //}
 
         //Check User Create Sale Ads Log 
-        public async Task<bool> CheckSaleAdsBaseOnTariff(ulong userId)
+        //public async Task<bool> CheckSaleAdsBaseOnTariff(ulong userId)
+        //{
+        //    #region Get Count Of Create Sale Advertisement Today 
+
+        //    var createLog = await _tariff.GetCountOfCreateSaleAdsToday(userId);
+
+        //    #endregion
+
+        //    #region Add Log 
+
+        //    if (createLog <= 3)
+        //    {
+        //        //Fill Model
+        //        UserCreateAdvertisementLog log = new UserCreateAdvertisementLog()
+        //        {
+        //            CreateDate = DateTime.Now,
+        //            UserId = userId,
+        //            FromCustomer = false,
+        //            FromEmployee = true,
+        //        };
+
+        //        //Add Log To Data Base 
+        //        await _tariff.UserCreateCustomerAdsLog(log);
+
+        //        return true;
+        //    }
+
+        //    #endregion
+
+        //    #region check User Has Any Tariff 
+
+        //    if (await _tariff.HasUserAnyActiveTariffRightNow(userId))
+        //    {
+        //        #region Get User Active Tariff
+
+        //        var tariff = await _tariff.GetUserActiveTariff(userId);
+
+        //        //If the user rejects the allowed number
+        //        if (tariff.CountOfAddAdvertisement > createLog)
+        //        {
+        //            //Fill Model
+        //            UserCreateAdvertisementLog log = new UserCreateAdvertisementLog()
+        //            {
+        //                CreateDate = DateTime.Now,
+        //                UserId = userId,
+        //                FromCustomer = false,
+        //                FromEmployee = true,
+        //            };
+
+        //            //Add Log To Data Base 
+        //            await _tariff.UserCreateCustomerAdsLog(log);
+
+        //            return true;
+        //        }
+
+        //        #endregion
+        //    }
+
+        //    #endregion
+
+        //    return false;
+        //}
+
+        //Get User Side Bar Selected Tariff Informations
+        public async Task<UserPanelTariffViewModel?> UserPanelTariffViewModel(ulong userId)
         {
-            #region Get Count Of Create Sale Advertisement Today 
+            var count = 0;
 
-            var createLog = await _tariff.GetCountOfCreateSaleAdsToday(userId);
+            #region Get User Active Tariff
+
+            var Tariff = await _tariff.GetUserActiveTariff(userId);
 
             #endregion
 
-            #region Add Log 
+            #region Get User Selected Tariff Record 
 
-            if (createLog <= 3)
+            var selectedTariff = await _tariff.GetJustUserSelectedTariffByUserId(userId);
+            if (selectedTariff != null)
             {
-                //Fill Model
-                UserCreateAdvertisementLog log = new UserCreateAdvertisementLog()
-                {
-                    CreateDate = DateTime.Now,
-                    UserId = userId,
-                    FromCustomer = false,
-                    FromEmployee = true,
-                };
-
-                //Add Log To Data Base 
-                await _tariff.UserCreateCustomerAdsLog(log);
-
-                return true;
+                count = selectedTariff.EndDate.DayOfYear - selectedTariff.Startdate.DayOfYear;
             }
 
             #endregion
 
-            #region check User Has Any Tariff 
-
-            if (await _tariff.HasUserAnyActiveTariffRightNow(userId))
+            UserPanelTariffViewModel model = new UserPanelTariffViewModel()
             {
-                #region Get User Active Tariff
+                TariffName = ((Tariff != null) ? Tariff.TariffName : null),
+                CountOfTariff = count,
+            };
 
-                var tariff = await _tariff.GetUserActiveTariff(userId);
-
-                //If the user rejects the allowed number
-                if (tariff.CountOfAddAdvertisement > createLog)
-                {
-                    //Fill Model
-                    UserCreateAdvertisementLog log = new UserCreateAdvertisementLog()
-                    {
-                        CreateDate = DateTime.Now,
-                        UserId = userId,
-                        FromCustomer = false,
-                        FromEmployee = true,
-                    };
-
-                    //Add Log To Data Base 
-                    await _tariff.UserCreateCustomerAdsLog(log);
-
-                    return true;
-                }
-
-                #endregion
-            }
-
-            #endregion
-
-            return false;
+            return model;
         }
 
         #endregion

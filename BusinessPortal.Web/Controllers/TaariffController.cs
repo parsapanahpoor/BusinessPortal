@@ -1,5 +1,6 @@
 ﻿using BusinessPortal.Application.Extensions;
 using BusinessPortal.Application.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 
@@ -23,6 +24,7 @@ namespace BusinessPortal.Web.Controllers
 
         #region Buy Tariff
 
+        [Authorize]
         public async Task<IActionResult> BuyTariff(ulong tariffId)
         {
             #region Buy Tariff Method 
@@ -45,7 +47,7 @@ namespace BusinessPortal.Web.Controllers
 
                 case 4:
                     TempData[SuccessMessage] = "The operation has been successfully completed";
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home" , new { area = "UserPanel" });
             }
 
             #endregion

@@ -238,7 +238,7 @@
     <value>Vendas garantidas</value>
   </data>
   <data name="Home Appliances" xml:space="preserve">
-    <value>Eletrodomésticos</value>
+    <value>Eletrodomésticos, Digital, Oficial</value>
   </data>
   <data name="India" xml:space="preserve">
     <value>Índia</value>
@@ -266,9 +266,6 @@
   </data>
   <data name="LoremText" xml:space="preserve">
     <value>LoremText</value>
-  </data>
-  <data name="Maximum number of purchase requests" xml:space="preserve">
-    <value>Número máximo de solicitações de compra</value>
   </data>
   <data name="medical" xml:space="preserve">
     <value>médica</value>
@@ -390,6 +387,9 @@ Farmacêutica</value>
   </data>
   <data name="Textiles and clothing" xml:space="preserve">
     <value>Têxteis e roupas</value>
+  </data>
+  <data name="The highest number of purchase requests" xml:space="preserve">
+    <value>O maior número de solicitações de compra</value>
   </data>
   <data name="The highest number of sales offers" xml:space="preserve">
     <value>O maior número de ofertas de vendas</value>

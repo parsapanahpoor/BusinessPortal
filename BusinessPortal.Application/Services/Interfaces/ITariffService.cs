@@ -1,5 +1,6 @@
 ﻿using BusinessPortal.Domain.Entities.Tariff;
 using BusinessPortal.Domain.ViewModels.Admin.Tariff;
+using BusinessPortal.Domain.ViewModels.UserPanel.SideBar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,10 +46,13 @@ namespace BusinessPortal.Application.Services.Interfaces
         #region User Panel 
 
         //Check User Create Custmer Ads Log 
-        Task<bool> CheckCustomerAdsBaseOnTariff(ulong userId);
+        //Task<bool> CheckCustomerAdsBaseOnTariff(ulong userId);
 
         //Check User Create Sale Ads Log 
-        Task<bool> CheckSaleAdsBaseOnTariff(ulong userId);
+        //Task<bool> CheckSaleAdsBaseOnTariff(ulong userId);
+
+        //Get User Side Bar Selected Tariff Informations
+        Task<UserPanelTariffViewModel?> UserPanelTariffViewModel(ulong userId);
 
         #endregion
     }

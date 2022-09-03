@@ -117,14 +117,56 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="3 months" xml:space="preserve">
+    <value>3 اشهر</value>
+  </data>
+  <data name="6 months" xml:space="preserve">
+    <value>6 اشهر</value>
+  </data>
+  <data name="Access to site content" xml:space="preserve">
+    <value>الوصول إلى محتوى الموقع</value>
+  </data>
   <data name="Add Ads Per Day" xml:space="preserve">
     <value>عدد الإدخالات في اليوم</value>
+  </data>
+  <data name="Bronze" xml:space="preserve">
+    <value>برونزية</value>
   </data>
   <data name="Buy a subscription" xml:space="preserve">
     <value>تعرفة الشراء</value>
   </data>
-  <data name="Seen Ads Per Day" xml:space="preserve">
-    <value>تعداد بازدید در روز</value>
+  <data name="Free" xml:space="preserve">
+    <value>حر</value>
+  </data>
+  <data name="Free consultation" xml:space="preserve">
+    <value>عدد الاستشارات المجانية</value>
+  </data>
+  <data name="Golden" xml:space="preserve">
+    <value>ذهبي</value>
+  </data>
+  <data name="Having Tariff" xml:space="preserve">
+    <value>وجود تعريفة</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>شهر</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>طبيعي</value>
+  </data>
+  <data name="one year" xml:space="preserve">
+    <value>سنة واحدة</value>
+  </data>
+  <data name="Requester" xml:space="preserve">
+    <value>مقدم الطلب</value>
+  </data>
+  <data name="Seen Ads" xml:space="preserve">
+    <value>عدد الزيارات</value>
+  </data>
+  <data name="Silver" xml:space="preserve">
+    <value>فضة</value>
+  </data>
+  <data name="subscribe to newsletter" xml:space="preserve">
+    <value>اشترك في النشرة الإخبارية للموقع</value>
   </data>
   <data name="Tariff Duration" xml:space="preserve">
     <value>الإطار الزمني</value>
@@ -134,5 +176,8 @@
   </data>
   <data name="Tariff Price" xml:space="preserve">
     <value>مبلغ التعريفة</value>
+  </data>
+  <data name="Times" xml:space="preserve">
+    <value>مرات</value>
   </data>
 </root>

@@ -63,10 +63,10 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
         {
             #region Check User Logs
 
-            if (!await _tariffService.CheckCustomerAdsBaseOnTariff(User.GetUserId()))
-            {
-                return NotFound();
-            }
+            //if (!await _tariffService.CheckCustomerAdsBaseOnTariff(User.GetUserId()))
+            //{
+            //    return NotFound();
+            //}
 
             #endregion
 
@@ -805,10 +805,10 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
         {
             #region Check Create Sale Ads Log 
 
-            if (!await _tariffService.CheckSaleAdsBaseOnTariff(User.GetUserId()))
-            {
-                return NotFound();
-            }
+            //if (!await _tariffService.CheckSaleAdsBaseOnTariff(User.GetUserId()))
+            //{
+            //    return NotFound();
+            //}
 
             #endregion
 

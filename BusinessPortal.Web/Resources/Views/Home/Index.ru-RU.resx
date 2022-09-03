@@ -238,7 +238,7 @@
     <value>Гарантированные продажи</value>
   </data>
   <data name="Home Appliances" xml:space="preserve">
-    <value>Бытовая техника</value>
+    <value>Бытовая техника, Цифровой, Официальный</value>
   </data>
   <data name="India" xml:space="preserve">
     <value>Индия</value>
@@ -266,9 +266,6 @@
   </data>
   <data name="LoremText" xml:space="preserve">
     <value>ЛоремТекст</value>
-  </data>
-  <data name="Maximum number of purchase requests" xml:space="preserve">
-    <value>Максимальное количество запросов на покупку</value>
   </data>
   <data name="medical" xml:space="preserve">
     <value>медицинский</value>
@@ -389,6 +386,9 @@
   </data>
   <data name="Textiles and clothing" xml:space="preserve">
     <value>Текстиль и одежда</value>
+  </data>
+  <data name="The highest number of purchase requests" xml:space="preserve">
+    <value>Самое большое количество запросов на покупку</value>
   </data>
   <data name="The highest number of sales offers" xml:space="preserve">
     <value>Самое большое количество предложений о продаже</value>

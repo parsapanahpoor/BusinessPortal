@@ -18,14 +18,14 @@ namespace BusinessPortal.Domain.ViewModels.Admin.Tariff
         [Display(Name = "مبلغ تعرفه")]
         public int TariffPrice { get; set; }
 
-        [Display(Name = "تعداد آگهی های قابل مشاهده در روز")]
+        [Display(Name = "تعداد آگهی های قابل مشاهده ")]
         public int CountOfSeenAdvertisement { get; set; }
-
-        [Display(Name = "تعداد آگهی های قابل درج در روز")]
-        public int CountOfAddAdvertisement { get; set; }
 
         [Display(Name = "مدت زمان تعرفه")]
         public int TariffDuration { get; set; }
+
+        [Display(Name = "تعداد مشاوره ی رایگان")]
+        public int Counsoltant { get; set; }
 
         #endregion
     }

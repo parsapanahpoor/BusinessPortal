@@ -70,7 +70,7 @@
                             <li><a asp-action="Login" asp-controller="Account" class="default-btn Loginbtn "> @_Localizer["Login"]/@_Localizer["Register"]</a></li>
                         }
                         <li>
-                            <a asp-action="Register" asp-controller="Account" class="default-btn Loginbtn  ">@_Localizer["joinUs"]</a>
+                            <a asp-action="Register" asp-controller="Account" class="default-btn Loginbtn  ">@_Localizer["Order"]</a>
                         </li>
 
 
@@ -91,7 +91,7 @@
                                         <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="pt-PT" class="dropdown-item">Portuguese</a>
                                         <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="ru-RU" class="dropdown-item">Russian</a>
                                         <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="tr-TR" class="dropdown-item">Turkish</a>
-                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="fa-IR" class="dropdown-item">Farsi </a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="fa-IR" class="dropdown-item">Persian </a>
                                     </div>
                                 </div>
                             </li>
@@ -110,7 +110,7 @@
                                     </button>
 
                                     <div class="dropdown-menu language-dropdown-menu">
-                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="fa-IR" class="dropdown-item"> Farsi</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="fa-IR" class="dropdown-item"> Persian</a>
                                         <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="en-US" class="dropdown-item">English</a>
                                         <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="ar-SA" class="dropdown-item">Arabic</a>
                                         <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="pt-PT" class="dropdown-item">Portuguese</a>
@@ -139,7 +139,7 @@
                                         <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="pt-PT" class="dropdown-item">Portuguese</a>
                                         <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="ru-RU" class="dropdown-item">Russian</a>
                                         <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="tr-TR" class="dropdown-item">Turkish</a>
-                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="fa-IR" class="dropdown-item"> Farsi</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="fa-IR" class="dropdown-item"> Persian</a>
                                     </div>
                                 </div>
                             </li>
@@ -163,7 +163,7 @@
                                         <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="ar-SA" class="dropdown-item">Arabic</a>
                                         <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="pt-PT" class="dropdown-item">Portuguese</a>
                                         <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="ru-RU" class="dropdown-item">Russian</a>
-                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="fa-IR" class="dropdown-item"> Farsi</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="fa-IR" class="dropdown-item"> Persian</a>
                                     </div>
                                 </div>
                             </li>
@@ -187,7 +187,7 @@
                                         <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="ar-SA" class="dropdown-item">Arabic</a>
                                         <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="pt-PT" class="dropdown-item">Portuguese</a>
                                         <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="tr-TR" class="dropdown-item">Turkish</a>
-                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="fa-IR" class="dropdown-item"> Farsi</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="fa-IR" class="dropdown-item"> Persian</a>
                                     </div>
                                 </div>
                             </li>
@@ -211,7 +211,7 @@
                                         <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="ru-RU" class="dropdown-item">Russian</a>
                                         <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="ar-SA" class="dropdown-item">Arabic</a>
                                         <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="tr-TR" class="dropdown-item">Turkish</a>
-                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="fa-IR" class="dropdown-item"> Farsi</a>
+                                        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="fa-IR" class="dropdown-item"> Persian</a>
                                     </div>
                                 </div>
                             </li>
@@ -232,16 +232,16 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="">
             <div class="row ">
 
 
-                <div class="col-md-3 mt-3">
+                <div class="col-md-2 text-center justify-content-center mt-3">
                     @await Component.InvokeAsync("BrowsCategories")
                 </div>
 
 
-                <div class="col-md-6 text-center justify-content-center">
+                <div class="col-md-7 text-center justify-content-center">
                     <div class="main-navbar">
                         <nav class="navbar navbar-expand-md navbar-light">
                             <div class="collapse navbar-collapse mean-menu " id="navbarSupportedContent">
@@ -262,6 +262,16 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
+                                        <a href="#Tarrif" class="nav-link">
+                                            @_Localizer["Subscription"]
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            @_Localizer["offset"]
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
                                         <a href="/Home/Contact" class="nav-link">
                                             @_Localizer["Consulting"]
                                         </a>
@@ -278,7 +288,7 @@
                         </nav>
                     </div>
                 </div>
-                <div class="col-md-3 mt-3">
+                <div class="col-md-2 text-center justify-content-center mt-3">
                     @await Component.InvokeAsync("BuyCategories")
                 </div>
             </div>

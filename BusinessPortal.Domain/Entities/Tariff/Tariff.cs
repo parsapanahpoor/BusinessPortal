@@ -17,9 +17,9 @@ namespace BusinessPortal.Domain.Entities.Tariff
 
         public int CountOfSeenAdvertisement { get; set; }
 
-        public int CountOfAddAdvertisement { get; set; }
-
         public int tariffDuration { get; set; }
+
+        public int Consultation { get; set; }
 
         #endregion
 

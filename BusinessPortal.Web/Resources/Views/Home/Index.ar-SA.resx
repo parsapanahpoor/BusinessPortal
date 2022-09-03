@@ -238,7 +238,7 @@
     <value>مبيعات مضمونة</value>
   </data>
   <data name="Home Appliances" xml:space="preserve">
-    <value>أجهزة منزلية</value>
+    <value>أجهزة منزلية، رقمي، الرسمية</value>
   </data>
   <data name="India" xml:space="preserve">
     <value>الهند</value>
@@ -266,9 +266,6 @@
   </data>
   <data name="LoremText" xml:space="preserve">
     <value>LoremText</value>
-  </data>
-  <data name="Maximum number of purchase requests" xml:space="preserve">
-    <value>العدد الأقصى لطلبات الشراء</value>
   </data>
   <data name="medical" xml:space="preserve">
     <value>طبي</value>
@@ -389,6 +386,9 @@
   </data>
   <data name="Textiles and clothing" xml:space="preserve">
     <value>المنسوجات والملابس</value>
+  </data>
+  <data name="The highest number of purchase requests" xml:space="preserve">
+    <value>أكبر عدد من طلبات الشراء</value>
   </data>
   <data name="The highest number of sales offers" xml:space="preserve">
     <value>أكبر عدد من عروض البيع</value>

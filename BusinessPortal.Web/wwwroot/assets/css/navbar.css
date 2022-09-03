@@ -235,7 +235,7 @@ Navbar Area CSS
 .main-navbar .navbar .navbar-nav .nav-item a {
   color: var(--black-color);
   font-size: var(--font-size);
-  font-weight: 600;
+  font-weight: 700;
   padding-left: 0;
   padding-right: 0;
   padding-top: 25px;

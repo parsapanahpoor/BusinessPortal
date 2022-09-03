@@ -117,14 +117,56 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="3 months" xml:space="preserve">
+    <value>3 meses</value>
+  </data>
+  <data name="6 months" xml:space="preserve">
+    <value>6 meses</value>
+  </data>
+  <data name="Access to site content" xml:space="preserve">
+    <value>Acesso ao conteúdo do site</value>
+  </data>
   <data name="Add Ads Per Day" xml:space="preserve">
-    <value>Número de inserções por dia</value>
+    <value>Número de inserções </value>
+  </data>
+  <data name="Bronze" xml:space="preserve">
+    <value>Bronze</value>
   </data>
   <data name="Buy a subscription" xml:space="preserve">
     <value>Tarifa de compra</value>
   </data>
-  <data name="Seen Ads Per Day" xml:space="preserve">
-    <value>Número de visitas por dia</value>
+  <data name="Free" xml:space="preserve">
+    <value>Livre</value>
+  </data>
+  <data name="Free consultation" xml:space="preserve">
+    <value>Ücretsiz danışma sayısı</value>
+  </data>
+  <data name="Golden" xml:space="preserve">
+    <value>Dourado</value>
+  </data>
+  <data name="Having Tariff" xml:space="preserve">
+    <value>Tarife sahibi olmak</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Mês</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="one year" xml:space="preserve">
+    <value>um ano</value>
+  </data>
+  <data name="Requester" xml:space="preserve">
+    <value>Solicitante</value>
+  </data>
+  <data name="Seen Ads" xml:space="preserve">
+    <value>Número de visitas</value>
+  </data>
+  <data name="Silver" xml:space="preserve">
+    <value>Prata</value>
+  </data>
+  <data name="subscribe to newsletter" xml:space="preserve">
+    <value>Sitenin bültenine abone olun</value>
   </data>
   <data name="Tariff Duration" xml:space="preserve">
     <value>prazo</value>
@@ -134,5 +176,8 @@
   </data>
   <data name="Tariff Price" xml:space="preserve">
     <value>Valor da tarifa</value>
+  </data>
+  <data name="Times" xml:space="preserve">
+    <value>vezes</value>
   </data>
 </root>

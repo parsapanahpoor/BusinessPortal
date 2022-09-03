@@ -15,10 +15,12 @@ namespace BusinessPortal.Web.Areas.UserPanel.ViewComponents
         #region Ctor
 
         public IUserService _userService { get; set; }
+        private readonly ITariffService _tiffService;
 
-        public UserSideBarViewComponent(IUserService userService)
+        public UserSideBarViewComponent(IUserService userService , ITariffService tariffService)
         {
             _userService = userService;
+            _tiffService = tariffService;
         }
 
         #endregion
@@ -28,6 +30,8 @@ namespace BusinessPortal.Web.Areas.UserPanel.ViewComponents
             ViewBag.HasSellerPermission = await _userService.HasUserPermissionForSeller(User.GetUserId());
 
             ViewBag.HasAnyRequest = await _userService.IsExistRequestForSellerByUserId(User.GetUserId());
+
+            ViewBag.userSelectedTariffInfo = await _tiffService.UserPanelTariffViewModel(User.GetUserId());
 
             return View("UserSideBar");
         }

@@ -117,22 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Add Ads Per Day" xml:space="preserve">
-    <value>تعداد درج در روز</value>
+  <data name="3 months" xml:space="preserve">
+    <value>3ماهه</value>
+  </data>
+  <data name="6 months" xml:space="preserve">
+    <value>6ماهه</value>
+  </data>
+  <data name="Access to site content" xml:space="preserve">
+    <value>دسترسی به محتوا سایت</value>
+  </data>
+  <data name="Add Ads" xml:space="preserve">
+    <value>تعداد درج </value>
+  </data>
+  <data name="Bronze" xml:space="preserve">
+    <value>برنزی</value>
   </data>
   <data name="Buy a subscription" xml:space="preserve">
-    <value>خرید تعرفه</value>
+    <value>خرید </value>
   </data>
-  <data name="Seen Ads Per Day" xml:space="preserve">
-    <value>تعداد بازدید در روز</value>
+  <data name="Free" xml:space="preserve">
+    <value>رایگان</value>
+  </data>
+  <data name="Free consultation" xml:space="preserve">
+    <value>مشاوره رایگان</value>
+  </data>
+  <data name="Golden" xml:space="preserve">
+    <value>طلایی</value>
+  </data>
+  <data name="Having Tariff" xml:space="preserve">
+    <value>داشتن پروفایل </value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>ماه</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>عادی</value>
+  </data>
+  <data name="one year" xml:space="preserve">
+    <value>یکساله</value>
+  </data>
+  <data name="Requester" xml:space="preserve">
+    <value>متقاضی</value>
+  </data>
+  <data name="Seen Ads" xml:space="preserve">
+    <value>تعداد بازدید </value>
+  </data>
+  <data name="Silver" xml:space="preserve">
+    <value>نقره ای</value>
+  </data>
+  <data name="subscribe to newsletter" xml:space="preserve">
+    <value>عضویت در خبرنامه سایت </value>
   </data>
   <data name="Tariff Duration" xml:space="preserve">
-    <value>بازه ی زمانی </value>
+    <value />
   </data>
   <data name="Tariff Name" xml:space="preserve">
     <value>عنوان تعرفه </value>
   </data>
   <data name="Tariff Price" xml:space="preserve">
     <value>مبلغ تعرفه</value>
+  </data>
+  <data name="Times" xml:space="preserve">
+    <value>نوبت</value>
   </data>
 </root>

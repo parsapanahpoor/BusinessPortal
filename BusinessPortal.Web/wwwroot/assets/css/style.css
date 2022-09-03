@@ -131,7 +131,7 @@ Default CSS
     --white-color: #ffffff;
     --black-color: #222222;
     --paragraph-color: #6c7177;
-    --font-size: 16px;
+    --font-size: 15px;
     --transition: .6s;
 }
 
@@ -213,6 +213,9 @@ img {
     padding-bottom: 100px;
 }
 
+.pt-75 {
+    padding-top: 75px;
+}
 .pb-75 {
     padding-bottom: 75px;
 }
@@ -586,7 +589,7 @@ Main Slides Area CSS
         }
 .Bannersb {
     border-radius:8px;
-    padding:5px;
+    padding:8px;
 }
 /*================================================
 Main Banner Area CSS
@@ -6660,10 +6663,36 @@ Go Top CSS
 /*# sourceMappingURL=main.css.map */
 
 
-.hColorFon {
-    color: var(--main-color);
+.hColorFon-Gold {
+    color: #035f95 !important;
+    font-size: 28px;
+    font-weight: 700;
+    background-color: #f2b300;
+}
+.hColorFon-Silver {
+    color: #035f95 !important;
+    font-size: 28px;
+    font-weight: 700;
+    background-color: #aeb5ba;
+}
+.hColorFon-Bronz {
+    color: #035f95 !important;
+    font-size: 28px;
+    font-weight: 700;
+    /*background-color: #806000;*/
+    background-color: #977c13;
+}
+.hColorFon-Normal {
+    color: #035f95 !important;
+    font-size: 28px;
+    font-weight: 700;
+    background-color: #99ccff;
 }
 
+.pricefon {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+}
 
 
 .single-shop-card2 {
@@ -7395,9 +7424,9 @@ a {
 .mega-menu-list {
     width: 400px;
     margin-top: 35px;
-    background-color: #fff;
+    background-color: transparent;
     position: absolute;
-    top: 12px;
+    top: 32px;
     z-index: 999;
     right: 0;
     left: 0;
@@ -7412,6 +7441,7 @@ a {
     overflow: visible !important;
     max-height: 500px;
     top: 14px;
+    background-color: #fff;
     transition: all 300ms ease;
     border: 1px solid rgb(231, 231, 231);
 }
@@ -7586,4 +7616,8 @@ a {
     font-size: 14px;
     padding: 2px 0;
     display: block;
+}
+.Tarif_Container {
+    padding-left:20px !important;
+    padding-right:20px !important;
 }
