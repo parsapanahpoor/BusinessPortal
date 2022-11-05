@@ -120,6 +120,9 @@
   <data name="AboutUs" xml:space="preserve">
     <value>Hakkımızda</value>
   </data>
+  <data name="Account" xml:space="preserve">
+    <value>Hesap</value>
+  </data>
   <data name="Account management" xml:space="preserve">
     <value>Gerenciamento de contas</value>
   </data>
@@ -181,7 +184,7 @@
     <value>temiz enerjiler</value>
   </data>
   <data name="CompanyAddress" xml:space="preserve">
-    <value>Iran - Tehrran - Pasdaran - Nabshe Golestane Dovom</value>
+    <value>İran- Tahran - Pasdaran - Gülistan II'nin köşesi</value>
   </data>
   <data name="CompanyEmail" xml:space="preserve">
     <value>BusinessPortal@Yahoo.com</value>
@@ -251,6 +254,9 @@
   </data>
   <data name="Enter your email" xml:space="preserve">
     <value>E-postanızı giriniz</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>çıkış</value>
   </data>
   <data name="Finland" xml:space="preserve">
     <value>Finlândia</value>
@@ -349,7 +355,7 @@
     <value>Mais</value>
   </data>
   <data name="New wave" xml:space="preserve">
-    <value>Yeni dalga</value>
+    <value>MetaWaveCo</value>
   </data>
   <data name="NewsLetter" xml:space="preserve">
     <value>Güncellemeleri ve haberleri almak için bültenimize abone olun</value>

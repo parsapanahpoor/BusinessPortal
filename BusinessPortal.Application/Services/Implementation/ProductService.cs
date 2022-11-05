@@ -1,10 +1,14 @@
-﻿using BusinessPortal.Application.Security;
+﻿using BusinessPortal.Application.Extensions;
+using BusinessPortal.Application.Security;
 using BusinessPortal.Application.Services.Interfaces;
+using BusinessPortal.Application.StaticTools;
 using BusinessPortal.Domain.Entities.Product;
 using BusinessPortal.Domain.Interfaces;
 using BusinessPortal.Domain.ViewModels.Admin.Product;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,7 +63,7 @@ namespace BusinessPortal.Application.Services.Implementation
         }
 
         //Create Product Category
-        public async Task<CreateProductCategoryResult> CreateProductCategory(CreateProductCategoryViewModel productCategory)
+        public async Task<CreateProductCategoryResult> CreateProductCategory(CreateProductCategoryViewModel productCategory, IFormFile? productCategoryLogo)
         {
             #region Is Exist Product Category By Unique Name
 
@@ -78,6 +82,17 @@ namespace BusinessPortal.Application.Services.Implementation
                 IsDelete = false,
                 IsActive = true
             };
+
+            #region Add Image 
+
+            if (productCategoryLogo != null && productCategoryLogo.IsImage())
+            {
+                var imageName = Guid.NewGuid() + Path.GetExtension(productCategoryLogo.FileName);
+                productCategoryLogo.AddImageToServer(imageName, PathTools.ProductCategoryimageServerOrigin, 400, 300, PathTools.ProductCategoryImageServerThumb);
+                mainProductCategory.ProductCategoryImage = imageName;
+            }
+
+            #endregion
 
             if (productCategory.ParentId != null && productCategory.ParentId != 0)
             {
@@ -126,7 +141,7 @@ namespace BusinessPortal.Application.Services.Implementation
         }
 
         //Edit Product Group
-        public async Task<EditProductCategoryResult> EditProduct(EditProductCategoryViewModel productCategory)
+        public async Task<EditProductCategoryResult> EditProduct(EditProductCategoryViewModel productCategory, IFormFile? productCategoryLogo)
         {
             #region Get Product Category By Id
 
@@ -164,6 +179,19 @@ namespace BusinessPortal.Application.Services.Implementation
 
             productCat.UniqueName = productCategory.UniqueName.SanitizeText();
             productCat.IsActive = true;
+
+            if (productCategoryLogo != null && productCategoryLogo.IsImage())
+            {
+                var imageName = Guid.NewGuid() + Path.GetExtension(productCategoryLogo.FileName);
+                productCategoryLogo.AddImageToServer(imageName, PathTools.ProductCategoryimageServerOrigin, 400, 300, PathTools.ProductCategoryImageServerThumb);
+
+                if (!string.IsNullOrEmpty(productCat.ProductCategoryImage))
+                {
+                    productCat.ProductCategoryImage.DeleteImage(PathTools.ProductCategoryimageServerOrigin, PathTools.ProductCategoryImageServerThumb);
+                }
+
+                productCat.ProductCategoryImage = imageName;
+            }
 
             _productRepository.UpdateProductCategory(productCat);
 

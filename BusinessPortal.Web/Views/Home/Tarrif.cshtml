@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _Localizer
+@using System.Globalization
+
+
+@{
+    ViewData["Title"] = @_Localizer["Subscription"];
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="Tarrif" class="pricing-area bg-f9fafb pt-75 ">
+    <div class="Tarif_Container">
+        <div class="section-title-wrap">
+            <div class="row text-center align-items-center">
+                <div class="col-lg-12">
+                    <h4 class="textcol">@_Localizer["Membership plan"]</h4>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            @await Component.InvokeAsync("Tariffs")
+        </div>
+    </div>
+</div>

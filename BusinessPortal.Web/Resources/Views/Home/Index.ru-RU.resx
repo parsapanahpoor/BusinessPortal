@@ -277,7 +277,7 @@
     <value>Медицина и терапия</value>
   </data>
   <data name="Membership plan" xml:space="preserve">
-    <value>План членства</value>
+    <value>Подписка</value>
   </data>
   <data name="Mineral Products" xml:space="preserve">
     <value>минеральные продукты</value>
@@ -410,5 +410,8 @@
   </data>
   <data name="Water" xml:space="preserve">
     <value>Вода</value>
+  </data>
+  <data name="Years of Experience" xml:space="preserve">
+    <value>Годы опыта</value>
   </data>
 </root>

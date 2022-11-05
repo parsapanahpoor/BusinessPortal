@@ -277,7 +277,7 @@
     <value>Medicina e terapia</value>
   </data>
   <data name="Membership plan" xml:space="preserve">
-    <value>Plano de associação</value>
+    <value>abonelik</value>
   </data>
   <data name="Mineral Products" xml:space="preserve">
     <value>Mineral ürünler</value>
@@ -410,5 +410,8 @@
   </data>
   <data name="Water" xml:space="preserve">
     <value>Su</value>
+  </data>
+  <data name="Years of Experience" xml:space="preserve">
+    <value>Yılların Deneyimi</value>
   </data>
 </root>

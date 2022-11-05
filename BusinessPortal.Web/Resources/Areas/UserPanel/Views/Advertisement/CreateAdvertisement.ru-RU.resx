@@ -130,13 +130,13 @@
     <value>Выбрать рекламное изображение</value>
   </data>
   <data name="AdvertisementInfo" xml:space="preserve">
-    <value>Информация о рекламе</value>
+    <value>Сведения о запросе на покупку</value>
   </data>
   <data name="AdvertisementTags" xml:space="preserve">
     <value>Рекламные теги</value>
   </data>
   <data name="AdvertisementTitle" xml:space="preserve">
-    <value>Название объявления</value>
+    <value>Название запроса</value>
   </data>
   <data name="AdvertisementTitlePlaceHolder" xml:space="preserve">
     <value>Заполнить заголовок объявления</value>

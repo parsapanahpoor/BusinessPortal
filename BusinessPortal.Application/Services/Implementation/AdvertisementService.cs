@@ -5,15 +5,22 @@ using BusinessPortal.Application.Services.Interfaces;
 using BusinessPortal.Application.StaticTools;
 using BusinessPortal.Data.DbContext;
 using BusinessPortal.Domain.Entities.Advertisement;
+using BusinessPortal.Domain.Entities.Countries;
+using BusinessPortal.Domain.Entities.Services;
 using BusinessPortal.Domain.ViewModels.Admin.Advertisement;
+using BusinessPortal.Domain.ViewModels.Admin.Countries;
 using BusinessPortal.Domain.ViewModels.Admin.Dashboard;
+using BusinessPortal.Domain.ViewModels.Admin.Service;
 using BusinessPortal.Domain.ViewModels.Advertisement;
 using BusinessPortal.Domain.ViewModels.Site.Advertisement;
 using BusinessPortal.Domain.ViewModels.UserPanel.Advertisement;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -38,7 +45,7 @@ namespace BusinessPortal.Application.Services.Implementation
 
         public async Task<List<LastestCustomersAdvertisements>> GetLastestAdvertisementFromCustomers(string culture)
         {
-            var advertisement = await _context.Advertisement.Where(p => !p.IsDelete && p.AdvertisementStatus == AdvertisementStatus.Active
+            var advertisement = await _context.Advertisement.Include(p=> p.Countries).Where(p => !p.IsDelete && p.AdvertisementStatus == AdvertisementStatus.Active
                                                     && p.FromCustomer && !p.FromEmployee && p.StartDate <= DateTime.Now && p.EndDate >= DateTime.Now)
                                                     .OrderByDescending(p => p.CreateDate).Take(10).ToListAsync();
 
@@ -51,7 +58,8 @@ namespace BusinessPortal.Application.Services.Implementation
                     AdvertisementId = item.Id,
                     AdvertisementTitle = await _context.advertisementInfo.Where(p => !p.IsDelete && p.Lang_Id == culture && p.AdvertisementId == item.Id).Select(p => p.Title).FirstOrDefaultAsync(),
                     CreateDate = item.CreateDate,
-                    AdvertisementAddress = await _context.Addresses.Include(p => p.LocationCountry).FirstOrDefaultAsync(p => p.Id == item.AddressId.Value)
+                    AdvertisementAddress = await _context.Addresses.Include(p => p.LocationCountry).FirstOrDefaultAsync(p => p.Id == item.AddressId.Value),
+                    Countries = item.Countries
                 }
                 );
             }
@@ -61,7 +69,7 @@ namespace BusinessPortal.Application.Services.Implementation
 
         public async Task<List<LastestEmployeesAdvertisements>> GetLastestAdvertisementFromEmployees(string culture)
         {
-            var advertisement = await _context.Advertisement.Where(p => !p.IsDelete && p.AdvertisementStatus == AdvertisementStatus.Active
+            var advertisement = await _context.Advertisement.Include(p => p.Countries).Where(p => !p.IsDelete && p.AdvertisementStatus == AdvertisementStatus.Active
                                                 && p.FromEmployee && !p.FromCustomer && p.StartDate <= DateTime.Now && p.EndDate >= DateTime.Now)
                                                     .OrderByDescending(p => p.CreateDate).Take(10).ToListAsync();
 
@@ -74,7 +82,8 @@ namespace BusinessPortal.Application.Services.Implementation
                     AdvertisementId = item.Id,
                     AdvertisementTitle = await _context.advertisementInfo.Where(p => !p.IsDelete && p.Lang_Id == culture && p.AdvertisementId == item.Id).Select(p => p.Title).FirstOrDefaultAsync(),
                     CreateDate = item.CreateDate,
-                    AdvertisementAddress = await _context.Addresses.Include(p => p.LocationCountry).FirstOrDefaultAsync(p => p.Id == item.AddressId.Value)
+                    AdvertisementAddress = await _context.Addresses.Include(p => p.LocationCountry).FirstOrDefaultAsync(p => p.Id == item.AddressId.Value),
+                    Countries = item.Countries
                 }
                 );
             }
@@ -718,7 +727,7 @@ namespace BusinessPortal.Application.Services.Implementation
             {
                 AddressId = model.AddressID,
                 UserId = (ulong)model.UserId,
-
+                CountriesId = ((model.CountryId.HasValue) ? model.CountryId : null),
                 ImageName = null,
                 VisitCount = 0,
                 CreateDate = DateTime.Now,
@@ -840,6 +849,7 @@ namespace BusinessPortal.Application.Services.Implementation
                 AdvertisementStatus = AdvertisementStatus.WaitigForConfirm,
                 FromCustomer = true,
                 FromEmployee = false,
+                CountriesId = ((model.CountryId.HasValue) ? model.CountryId : null )
             };
 
             #endregion
@@ -956,7 +966,8 @@ namespace BusinessPortal.Application.Services.Implementation
                 AdvertisementStatus = Ads.AdvertisementStatus,
                 FromCustomer = Ads.FromCustomer,
                 FromEmployee = Ads.FromEmployee,
-                DeclineMessage = Ads.DeclineMessage
+                DeclineMessage = Ads.DeclineMessage,
+                CountryId = ((Ads.CountriesId.HasValue) ? Ads.CountriesId : null)
             };
 
             #endregion
@@ -1013,7 +1024,8 @@ namespace BusinessPortal.Application.Services.Implementation
                 AdvertisementStatus = Ads.AdvertisementStatus,
                 FromCustomer = Ads.FromCustomer,
                 FromEmployee = Ads.FromEmployee,
-                DeclineMessage = Ads.DeclineMessage
+                DeclineMessage = Ads.DeclineMessage,
+                CountryId = ((Ads.CountriesId.HasValue) ? Ads.CountriesId.Value : null)
             };
 
             #endregion
@@ -1255,6 +1267,7 @@ namespace BusinessPortal.Application.Services.Implementation
             //Ads.Description = model.Description.ConvertNewLineToBr();
             //Ads.AdsUrl = model.AdsUrl.SanitizeText();
             Ads.AdvertisementStatus = AdvertisementStatus.WaitigForConfirm;
+            Ads.CountriesId = model.CountryId;
 
             #endregion
 
@@ -1412,6 +1425,7 @@ namespace BusinessPortal.Application.Services.Implementation
             //Ads.Description = model.Description.ConvertNewLineToBr();
             //Ads.AdsUrl = model.AdsUrl.SanitizeText();
             Ads.AdvertisementStatus = AdvertisementStatus.WaitigForConfirm;
+            Ads.CountriesId = model.CountryId;
 
             #endregion
 
@@ -1553,7 +1567,7 @@ namespace BusinessPortal.Application.Services.Implementation
         #region Site Side 
 
         //List Of Customer Advertisements
-        public async Task<List<ListOfCustomerAdvertisementViewModel>> ListOfCustomerAdvertisementViewModel(string culture , ulong? categoryId)
+        public async Task<List<ListOfCustomerAdvertisementViewModel>> ListOfCustomerAdvertisementViewModel(string culture, ulong? categoryId)
         {
             #region filter properties
 
@@ -1623,7 +1637,7 @@ namespace BusinessPortal.Application.Services.Implementation
         }
 
         //List Of Employee Advertisements
-        public async Task<List<ListOfSaleAdvertisementViewModel>> ListOfSaleAdvertisementViewModel(string culture  , ulong? categoryId)
+        public async Task<List<ListOfSaleAdvertisementViewModel>> ListOfSaleAdvertisementViewModel(string culture, ulong? categoryId)
         {
             #region filter properties
 
@@ -1715,5 +1729,140 @@ namespace BusinessPortal.Application.Services.Implementation
 
         #endregion
 
+        #region Countries
+
+        //Filter Countries ViewModel Admin Side 
+        public async Task<FilterCountriesViewModel> FilterCountries(FilterCountriesViewModel filter)
+        {
+            var query = _context.Countries.Where(p => !p.IsDelete)
+             .OrderByDescending(s => s.CreateDate)
+             .AsQueryable();
+
+            #region Filter
+
+            if (!string.IsNullOrEmpty(filter.UniqueName))
+            {
+                query = query.Where(s => EF.Functions.Like(s.CountryUniqueName, $"%{filter.UniqueName}%"));
+            }
+
+            #endregion
+
+            await filter.Paging(query);
+
+            return filter;
+        }
+
+        //Create Country Admin Side 
+        public async Task<bool> CreateCountryAdminSide(string uniqueName, IFormFile flag)
+        {
+            #region Is Exist Service Category By Unique Name
+
+            if (await _context.Countries.AnyAsync(p => !p.IsDelete && p.CountryUniqueName == uniqueName))
+            {
+                return false;
+            }
+
+            #endregion
+
+            #region Add Service Category
+
+            var country = new Countries()
+            {
+                CountryUniqueName = uniqueName.SanitizeText(),
+                IsDelete = false,
+            };
+
+            #region Add Image 
+
+            if (flag != null && flag.IsImage())
+            {
+                var imageName = Guid.NewGuid() + Path.GetExtension(flag.FileName);
+                flag.AddImageToServer(imageName, PathTools.CountryimageServerOrigin, 400, 300, PathTools.CountryImageServerThumb);
+                country.FlagName = imageName;
+            }
+
+            #endregion
+
+            await _context.Countries.AddAsync(country);
+            await _context.SaveChangesAsync();
+
+            #endregion
+
+            return true;
+        }
+
+        //Get Country 
+        public async Task<Countries?> GetCountryById(ulong countryId)
+        {
+            return await _context.Countries.FirstOrDefaultAsync(p => !p.IsDelete && p.Id == countryId);
+        }
+
+        //Edit Country
+        public async Task<bool> EditCountry(ulong countryId, string uniqueName, IFormFile? flag)
+        {
+            #region Get CountryId 
+
+            var country = await GetCountryById(countryId);
+            if (country == null)
+            {
+                return false;
+            }
+
+            #endregion
+
+            #region Update Country
+
+            country.CountryUniqueName = uniqueName;
+
+            if (flag != null && flag.IsImage())
+            {
+                var imageName = Guid.NewGuid() + Path.GetExtension(flag.FileName);
+                flag.AddImageToServer(imageName, PathTools.CountryimageServerOrigin, 400, 300, PathTools.CountryImageServerThumb);
+
+                if (!string.IsNullOrEmpty(country.FlagName))
+                {
+                    country.FlagName.DeleteImage(PathTools.CountryimageServerOrigin, PathTools.CountryImageServerThumb);
+                }
+
+                country.FlagName = imageName;
+            }
+
+            _context.Countries.Update(country);
+            await _context.SaveChangesAsync();
+
+            #endregion
+
+            return true;
+        }
+
+        //Delete Country By Id 
+        public async Task<bool> DeleteCountry(ulong countryId)
+        {
+            //Get Country
+            var country = await GetCountryById(countryId);
+            if (country == null) return false;
+
+            country.IsDelete = true;
+
+            //Update Country
+            _context.Countries.Update(country);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
+        //List Of Countries For Drowp Down
+        public List<SelectListItem> ListOfCountriesForDrowpDown()
+        {
+            return _context.Countries.Where(p => p.IsDelete == false)
+                   .Select(p => new SelectListItem
+                   {
+                       Text = p.CountryUniqueName,
+                       Value = p.Id.ToString(),
+                   }).ToList();
+
+        }
+
+        #endregion
     }
 }

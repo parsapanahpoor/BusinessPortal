@@ -120,6 +120,9 @@
   <data name="AboutUs" xml:space="preserve">
     <value>О нас</value>
   </data>
+  <data name="Account" xml:space="preserve">
+    <value>Счет</value>
+  </data>
   <data name="Account management" xml:space="preserve">
     <value>Управление аккаунтом</value>
   </data>
@@ -181,7 +184,7 @@
     <value>Чистые энергии</value>
   </data>
   <data name="CompanyAddress" xml:space="preserve">
-    <value>Iran - Tehrran - Pasdaran - Nabshe Golestane Dovom</value>
+    <value>Иран, Тегеран - Пасдаран - угол Голестан II</value>
   </data>
   <data name="CompanyEmail" xml:space="preserve">
     <value>BusinessPortal@Yahoo.com</value>
@@ -251,6 +254,9 @@
   </data>
   <data name="Enter your email" xml:space="preserve">
     <value>Введите адрес электронной почты</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Выход</value>
   </data>
   <data name="Finland" xml:space="preserve">
     <value>Финляндия</value>
@@ -349,7 +355,7 @@
     <value>Более</value>
   </data>
   <data name="New wave" xml:space="preserve">
-    <value>Новая волна</value>
+    <value>MetaWaveCo</value>
   </data>
   <data name="NewsLetter" xml:space="preserve">
     <value>Подпишитесь на нашу рассылку, чтобы получать обновления и новости</value>

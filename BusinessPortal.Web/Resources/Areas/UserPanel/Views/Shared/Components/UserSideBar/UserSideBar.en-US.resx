@@ -121,7 +121,10 @@
     <value>Add Address</value>
   </data>
   <data name="AddAdvertisement" xml:space="preserve">
-    <value>Add Advertisement</value>
+    <value>Create Offer</value>
+  </data>
+  <data name="AddAdvertisement2" xml:space="preserve">
+    <value>Create  Request</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Dashboard</value>
@@ -130,19 +133,19 @@
     <value>List Of Address</value>
   </data>
   <data name="ListOfOnSaleAdvertisements" xml:space="preserve">
-    <value>On Sale Advertisements</value>
+    <value>List of Sales Offers</value>
   </data>
   <data name="ListOfRequestAdvertisement" xml:space="preserve">
-    <value>Request Advertisements</value>
+    <value>List of Buy Request</value>
   </data>
   <data name="ManageAddress" xml:space="preserve">
     <value>Manage Address</value>
   </data>
   <data name="OnSaleAdvertisement" xml:space="preserve">
-    <value>On Sale Advertisement </value>
+    <value>Sale Offer</value>
   </data>
   <data name="RequestAdvertisement" xml:space="preserve">
-    <value>Request Advertisement</value>
+    <value>Buy Request </value>
   </data>
   <data name="RequestToBeSeller" xml:space="preserve">
     <value>Request To Be Seller</value>

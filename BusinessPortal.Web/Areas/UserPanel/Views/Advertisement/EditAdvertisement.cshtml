@@ -244,6 +244,19 @@
                                         <span asp-validation-for="Title" class="text-danger"></span>
                                     </div>
 
+                                       <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                        <div class="contantUs-page-form-input-media my-3">
+                                            <label for="exampleFormControlInput1" class="form-label Label_Input_form_Personal">
+                                                @_Localizer["Countries"] <span class="text-danger">*</span>
+                                            </label>
+                                                <select asp-for="CountryId" id="Address" asp-items="@ViewData["Countriees"] as SelectList" class="Address form-control contantUs-page-form-input-select">
+                                                    <option value=" ">@Localizer["You Can Select One Destination Country"]</option>
+                                                </select>
+
+                                        </div>
+                                        <span asp-validation-for="AddressID" class="text-danger"></span>
+                                    </div>
+
                                     <div class="form-group col-md-12">
                                           <label>  @_Localizer["AdvertisementURL"]     </label>
                                         <input asp-for="AdsUrl" type="text" class="form-control" placeholder="@_Localizer["AdvertisementURLPlaceHolder"] ">

@@ -110,6 +110,12 @@ namespace BusinessPortal.Data.Repository
                                                                        && p.CreateDate.Day == DateTime.Now.Day);
         }
 
+        //Get Count Of User Seen Ads  
+        public async Task<int> GetCountOfUserSeenAds(ulong userId)
+        {
+            return await _context.UserSeenAdvertisementLogs.CountAsync(p => !p.IsDelete && p.UserId == userId);
+        }
+
         //Add User Seen Advertisement Log To Data Base 
         public async Task CreateUserAdvertisementLog(UserSeenAdvertisementLog log)
         {
@@ -120,32 +126,52 @@ namespace BusinessPortal.Data.Repository
         //Get User Selected Tariff By User Id 
         public async Task<Tariff?> GetUserSelectedTariffByUserId(ulong userId)
         {
-            var tariff = await _context.UserSelectedTariff
-                            .FirstOrDefaultAsync(p => !p.IsDelete && p.Startdate.Year <= DateTime.Now.Year
-                                                 && p.Startdate.DayOfYear <= DateTime.Now.DayOfYear
-                                                 && p.EndDate.Year >= DateTime.Now.Year
-                                                 && p.EndDate.DayOfYear >= DateTime.Now.DayOfYear);
-            if (tariff == null) return null;
+            var userSelectedTariff = await _context.UserSelectedTariff.Include(p => p.Tariff)
+                                      .Where(p => !p.IsDelete
+                                          && ((p.Startdate.Year <= DateTime.Now.Year && p.EndDate.Year > DateTime.Now.Year)
+                                          || (p.Startdate.Year == DateTime.Now.Year
+                                               && p.Startdate.DayOfYear <= DateTime.Now.DayOfYear
+                                               && p.EndDate.Year == DateTime.Now.Year
+                                               && p.EndDate.DayOfYear >= DateTime.Now.DayOfYear))).ToListAsync();
 
-            return await _context.Tariffs.FirstOrDefaultAsync(p => !p.IsDelete && p.Id == tariff.TariffId);
+            var returnModel = userSelectedTariff.FirstOrDefault(p => p.UserId == userId);
+
+            if (returnModel == null) return null;
+
+            return returnModel.Tariff;
         }
 
         //Get User Selected Tariff By User Id 
         public async Task<UserSelectedTariff?> GetJustUserSelectedTariffByUserId(ulong userId)
         {
-            return await _context.UserSelectedTariff
-                            .FirstOrDefaultAsync(p => !p.IsDelete && p.Startdate.Year <= DateTime.Now.Year
-                                                 && p.Startdate.DayOfYear <= DateTime.Now.DayOfYear
-                                                 && p.EndDate.Year >= DateTime.Now.Year
-                                                 && p.EndDate.DayOfYear >= DateTime.Now.DayOfYear);
+            var userSelectedTariff = await _context.UserSelectedTariff.Include(p => p.Tariff)
+                                      .Where(p => !p.IsDelete
+                                           && ((p.Startdate.Year <= DateTime.Now.Year && p.EndDate.Year > DateTime.Now.Year)
+                                          || (p.Startdate.Year == DateTime.Now.Year
+                                               && p.Startdate.DayOfYear <= DateTime.Now.DayOfYear
+                                               && p.EndDate.Year == DateTime.Now.Year
+                                               && p.EndDate.DayOfYear >= DateTime.Now.DayOfYear))).ToListAsync();
+
+            return userSelectedTariff.FirstOrDefault(p => p.UserId == userId);
+
         }
 
         //Get User Active Tariff 
         public async Task<Tariff?> GetUserActiveTariff(ulong userId)
         {
-            return await _context.UserSelectedTariff.Include(p => p.Tariff).Where(p => !p.IsDelete && p.UserId == userId &&
-                                                              p.Startdate.Year == DateTime.Now.Year && p.Startdate.DayOfYear <= DateTime.Now.DayOfYear &&
-                                                              p.EndDate.Year == DateTime.Now.Year && p.EndDate.DayOfYear >= DateTime.Now.DayOfYear).Select(p => p.Tariff).FirstOrDefaultAsync();
+            var userSelectedTariff = await _context.UserSelectedTariff.Include(p => p.Tariff)
+                                      .Where(p => !p.IsDelete
+                                          && ((p.Startdate.Year <= DateTime.Now.Year && p.EndDate.Year > DateTime.Now.Year)
+                                          || (p.Startdate.Year == DateTime.Now.Year
+                                               && p.Startdate.DayOfYear <= DateTime.Now.DayOfYear
+                                               && p.EndDate.Year == DateTime.Now.Year
+                                               && p.EndDate.DayOfYear >= DateTime.Now.DayOfYear))).ToListAsync();
+
+            var returnModel = userSelectedTariff.FirstOrDefault(p=> p.UserId == userId);
+
+            if (returnModel == null) return null;
+
+            return returnModel.Tariff;
         }
 
         //Get Count Of Create Customer Ads Today 
@@ -174,6 +200,7 @@ namespace BusinessPortal.Data.Repository
                                                                        && p.CreateDate.Month == DateTime.Now.Month
                                                                        && p.CreateDate.Day == DateTime.Now.Day);
         }
+
 
         #endregion
     }

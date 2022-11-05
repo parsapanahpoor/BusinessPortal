@@ -23,7 +23,7 @@ namespace BusinessPortal.Application.Services.Implementation
 
         private readonly IWalletService _walletService;
 
-        public TariffService(ITariffRepostory tariff , IUserService userService , IWalletService walletService)
+        public TariffService(ITariffRepostory tariff, IUserService userService, IWalletService walletService)
         {
             _tariff = tariff;
             _userService = userService;
@@ -136,7 +136,7 @@ namespace BusinessPortal.Application.Services.Implementation
         #region Site Side 
 
         //Buy Tariff By User 
-        public async Task<int> BuyTariff(ulong tariffId , ulong userId)
+        public async Task<int> BuyTariff(ulong tariffId, ulong userId)
         {
             //1. Account Balance in not enough
             //2. You Have Tariff Right Now
@@ -221,7 +221,7 @@ namespace BusinessPortal.Application.Services.Implementation
         {
             #region Get Count Of User Seen Advertisement Today 
 
-            var seenLog = await _tariff.GetCountOfUserSeenAdsToday(userId);
+            var seenLog = await _tariff.GetCountOfUserSeenAds(userId);
 
             #endregion
 
@@ -429,7 +429,17 @@ namespace BusinessPortal.Application.Services.Implementation
             var selectedTariff = await _tariff.GetJustUserSelectedTariffByUserId(userId);
             if (selectedTariff != null)
             {
-                count = selectedTariff.EndDate.DayOfYear - selectedTariff.Startdate.DayOfYear;
+                if (selectedTariff.Startdate.Year < selectedTariff.EndDate.Year)
+                {
+                    var startDay = ((12 - selectedTariff.Startdate.Month) * 30) - selectedTariff.Startdate.Day;
+                    var endMonth = (selectedTariff.EndDate.Month * 30) + selectedTariff.EndDate.Day;
+
+                    count = startDay + endMonth;
+                }
+                else
+                {
+                    count = (selectedTariff.EndDate.DayOfYear - selectedTariff.Startdate.DayOfYear);
+                }
             }
 
             #endregion

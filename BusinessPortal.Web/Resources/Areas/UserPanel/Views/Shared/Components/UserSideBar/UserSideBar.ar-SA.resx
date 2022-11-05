@@ -121,13 +121,19 @@
     <value>اضف عنوان</value>
   </data>
   <data name="AddAdvertisement" xml:space="preserve">
-    <value>أضف إعلان</value>
+    <value>إنشاء عرض</value>
+  </data>
+  <data name="AddAdvertisement2" xml:space="preserve">
+    <value>إنشاء طلب</value>
   </data>
   <data name="Create Ticket" xml:space="preserve">
     <value>أضف تذاكر</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>لوحة القيادة</value>
+  </data>
+  <data name="Days Left" xml:space="preserve">
+    <value>ايام متبقية</value>
   </data>
   <data name="List Of Tickets" xml:space="preserve">
     <value>قائمة التذاكر</value>
@@ -136,10 +142,10 @@
     <value>قائمة العناوين</value>
   </data>
   <data name="ListOfOnSaleAdvertisements" xml:space="preserve">
-    <value>إعلانات البيع</value>
+    <value>قائمة عروض البيع</value>
   </data>
   <data name="ListOfRequestAdvertisement" xml:space="preserve">
-    <value>طلب الإعلانات</value>
+    <value>قائمة طلب الشراء</value>
   </data>
   <data name="Manage Tickets" xml:space="preserve">
     <value>إدارة التذاكر</value>
@@ -148,12 +154,15 @@
     <value>إدارة العنوان</value>
   </data>
   <data name="OnSaleAdvertisement" xml:space="preserve">
-    <value>إعلان للبيع</value>
+    <value>عرض بيع</value>
   </data>
   <data name="RequestAdvertisement" xml:space="preserve">
-    <value>طلب إعلان</value>
+    <value>طلب شراء</value>
   </data>
   <data name="RequestToBeSeller" xml:space="preserve">
     <value>اطلب أن تكون بائعًا</value>
+  </data>
+  <data name="User Tariff" xml:space="preserve">
+    <value>تعرفة المستخدم</value>
   </data>
 </root>

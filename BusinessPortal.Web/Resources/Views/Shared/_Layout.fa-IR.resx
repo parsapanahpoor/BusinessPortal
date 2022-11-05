@@ -120,6 +120,9 @@
   <data name="AboutUs" xml:space="preserve">
     <value>درباره ما</value>
   </data>
+  <data name="Account" xml:space="preserve">
+    <value>حساب کاربری</value>
+  </data>
   <data name="Account management" xml:space="preserve">
     <value>مدیریت حساب</value>
   </data>
@@ -181,7 +184,7 @@
     <value>انرژیهای پاک</value>
   </data>
   <data name="CompanyAddress" xml:space="preserve">
-    <value>Iran - Tehrran - Pasdaran - Nabshe Golestane Dovom</value>
+    <value>ایران، تهران، پاسداران، نبش گلستان دوم</value>
   </data>
   <data name="CompanyEmail" xml:space="preserve">
     <value>BusinessPortal@Yahoo.com</value>
@@ -252,6 +255,9 @@
   <data name="Enter your email" xml:space="preserve">
     <value>ایمیل خود را وارد کنید</value>
   </data>
+  <data name="Exit" xml:space="preserve">
+    <value>خروج</value>
+  </data>
   <data name="Finland" xml:space="preserve">
     <value>فنلاند</value>
   </data>
@@ -268,7 +274,7 @@
     <value>رایگان</value>
   </data>
   <data name="Frequently Asked Questions" xml:space="preserve">
-    <value>Frequently Asked Questions</value>
+    <value>سوالات متداول</value>
   </data>
   <data name="gas" xml:space="preserve">
     <value>گاز</value>
@@ -349,7 +355,7 @@
     <value>سایر</value>
   </data>
   <data name="New wave" xml:space="preserve">
-    <value>فراموج</value>
+    <value>شرکت فراموج نوین خزر</value>
   </data>
   <data name="NewsLetter" xml:space="preserve">
     <value>برای دریافت به روز رسانی و اخبار در خبرنامه ما مشترک شوید</value>

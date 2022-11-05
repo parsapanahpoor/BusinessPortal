@@ -124,7 +124,7 @@ Topbar Area CSS
     .topbar-others-options li .language-option {    
         padding: 0;
         position: relative;
-        top: -2px;
+        /*top: -2px;*/
     }
 
 .topbar-others-options li .language-option button {

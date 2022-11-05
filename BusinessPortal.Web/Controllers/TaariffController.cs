@@ -35,15 +35,15 @@ namespace BusinessPortal.Web.Controllers
             {
                 case 1:
                     TempData[ErrorMessage] = "Your Wallet Balance Is Not Enough";
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home", new { area = "UserPanel" });
 
                 case 2:
                     TempData[ErrorMessage] = "You Have Tariff Right Now";
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home", new { area = "UserPanel" });
 
                 case 3:
                     TempData[ErrorMessage] = "The operation has failed";
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home", new { area = "UserPanel" });
 
                 case 4:
                     TempData[SuccessMessage] = "The operation has been successfully completed";

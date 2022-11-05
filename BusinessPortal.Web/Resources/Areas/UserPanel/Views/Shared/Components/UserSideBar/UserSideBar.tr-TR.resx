@@ -121,13 +121,19 @@
     <value>Adres Ekle</value>
   </data>
   <data name="AddAdvertisement" xml:space="preserve">
-    <value>Reklam Ekle</value>
+    <value>Teklif Oluştur</value>
+  </data>
+  <data name="AddAdvertisement2" xml:space="preserve">
+    <value>Talep Oluştur</value>
   </data>
   <data name="Create Ticket" xml:space="preserve">
     <value>Bilet ekle</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Gösterge Paneli</value>
+  </data>
+  <data name="Days Left" xml:space="preserve">
+    <value>Kalan günler</value>
   </data>
   <data name="List Of Tickets" xml:space="preserve">
     <value>Bilet listesi</value>
@@ -136,10 +142,10 @@
     <value>Adres Listesi</value>
   </data>
   <data name="ListOfOnSaleAdvertisements" xml:space="preserve">
-    <value>Satış İlanları</value>
+    <value>Satış tekliflerinin listesi</value>
   </data>
   <data name="ListOfRequestAdvertisement" xml:space="preserve">
-    <value>Reklam Talebi</value>
+    <value>Satın Alma Talebi Listesi</value>
   </data>
   <data name="Manage Tickets" xml:space="preserve">
     <value>Bilet yönetimi</value>
@@ -148,12 +154,15 @@
     <value>Adresi Yönet</value>
   </data>
   <data name="OnSaleAdvertisement" xml:space="preserve">
-    <value>Satışta Reklam</value>
+    <value>Satış Teklifi</value>
   </data>
   <data name="RequestAdvertisement" xml:space="preserve">
-    <value>Reklam İste</value>
+    <value>Satın Alma Talebi</value>
   </data>
   <data name="RequestToBeSeller" xml:space="preserve">
     <value>Satıcı Olma Talebi</value>
+  </data>
+  <data name="User Tariff" xml:space="preserve">
+    <value>Kullanıcı Tarifesi</value>
   </data>
 </root>

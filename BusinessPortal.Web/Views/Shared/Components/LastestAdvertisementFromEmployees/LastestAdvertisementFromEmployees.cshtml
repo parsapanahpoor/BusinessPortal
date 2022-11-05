@@ -28,7 +28,13 @@
                                 </a>
                             </div>
                             <div class="latset-buy-text">
-                                <p>@item.AdvertisementTitle</p>
+                                <p>
+                                    @item.AdvertisementTitle    
+                                
+                                @if (item.Countries != null)
+                                {
+                                    <img style="height: 25px;width: 25px;" src="@PathTools.CountryThumbimage@item.Countries.FlagName" />
+                                }</p>
                             </div>
                             <div class="latset-buy-date">
                                 <a href="#">@item.CreateDate.ToLongDateString()</a>

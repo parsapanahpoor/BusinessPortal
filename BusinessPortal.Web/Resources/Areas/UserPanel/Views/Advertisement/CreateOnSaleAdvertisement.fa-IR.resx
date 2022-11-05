@@ -121,36 +121,42 @@
     <value>آدرس</value>
   </data>
   <data name="AdvertisementDescription" xml:space="preserve">
-    <value>متن آگهی</value>
+    <value>متن پیشنهاد فروش</value>
   </data>
   <data name="AdvertisementDescriptionPlaceHolder" xml:space="preserve">
-    <value>توضیحات آگهی را وارد کنید </value>
+    <value>توضیحات پیشنهاد فروش را وارد کنید </value>
   </data>
   <data name="AdvertisementImage" xml:space="preserve">
     <value>عکس  خود را انتخاب کنید</value>
   </data>
   <data name="AdvertisementInfo" xml:space="preserve">
-    <value>اطلاعات آگهی </value>
+    <value>اطلاعات پیشنهاد فروش</value>
   </data>
   <data name="AdvertisementTags" xml:space="preserve">
-    <value>تگ های آگهی</value>
+    <value>تگ های پیشنهاد فروش</value>
   </data>
   <data name="AdvertisementTitle" xml:space="preserve">
-    <value>عنوان آگهی</value>
+    <value>عنوان پیشنهاد فروش</value>
   </data>
   <data name="AdvertisementTitlePlaceHolder" xml:space="preserve">
-    <value>عنوان آگهی را وارد کنید</value>
+    <value>عنوان پیشنهاد فروش را وارد کنید</value>
   </data>
   <data name="AdvertisementURL" xml:space="preserve">
-    <value>Advertisement URL</value>
+    <value>پیشنهاد فروشURL</value>
   </data>
   <data name="AdvertisementURLPlaceHolder" xml:space="preserve">
-    <value>Advertisement URL را وارد کنید</value>
+    <value>پیشنهاد فروشURL را وارد کنید</value>
+  </data>
+  <data name="Countries" xml:space="preserve">
+    <value>مکان ها</value>
   </data>
   <data name="PageTitle" xml:space="preserve">
-    <value>افزودن آگهی </value>
+    <value>ایجاد پیشنهاد فروش </value>
   </data>
   <data name="Submit" xml:space="preserve">
     <value>ارسال</value>
+  </data>
+  <data name="You Can Select One Destination Country" xml:space="preserve">
+    <value>شما می توانید یک کشور مقصد برای آگهی خود انتخاب کنید</value>
   </data>
 </root>

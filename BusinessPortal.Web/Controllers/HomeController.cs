@@ -47,6 +47,11 @@ namespace BusinessPortal.Web.Controllers
             return View();
         }
 
+        public IActionResult Tarrif()
+        {
+            return View();
+        }
+
         #region Change Language
 
         public IActionResult ChangeLanguage(string culture)

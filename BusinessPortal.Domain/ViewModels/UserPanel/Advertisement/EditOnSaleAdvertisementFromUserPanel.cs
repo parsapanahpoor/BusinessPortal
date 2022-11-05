@@ -33,6 +33,9 @@ namespace BusinessPortal.Domain.ViewModels.UserPanel.Advertisement
         [MaxLength(300, ErrorMessage = "Please Enter {0} Less Than {1} Character")]
         public string? AdsImage { get; set; }
 
+        [Display(Name = " Country Id  ")]
+        public ulong? CountryId { get; set; }
+
         [Display(Name = " AdsUrl  ")]
         [MaxLength(300, ErrorMessage = "Please Enter {0} Less Than {1} Character")]
         public string? AdsUrl { get; set; }

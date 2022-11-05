@@ -73,5 +73,40 @@ namespace BusinessPortal.Application.StaticTools
 
         #endregion
 
+        #region Product Category Image
+
+        public static string DefaultProductCategoryimage = "/UploadedImages/DefaultImages/Default.png";
+
+        public static string ProductCategoryOriginimage = "/UploadedImages/ProductCategories/Origin/";
+        public static string ProductCategoryThumbimage = "/UploadedImages/ProductCategories/Thumb/";
+        public static string ProductCategoryimageServerOrigin = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/ProductCategories/Origin/");
+        public static string ProductCategoryImageServerThumb = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/ProductCategories/Thumb/");
+        public static string ProductCategoryimageServerOriginThumb = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/ProductCategories/Thumb/");
+
+        #endregion
+
+        #region Product Category Image
+
+        public static string DefaultServiceCategoryimage = "/UploadedImages/DefaultImages/Default.png";
+
+        public static string ServiceCategoryOriginimage = "/UploadedImages/ServiceCategory/Origin/";
+        public static string ServiceCategoryThumbimage = "/UploadedImages/ServiceCategory/Thumb/";
+        public static string ServiceCategoryimageServerOrigin = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/ServiceCategory/Origin/");
+        public static string ServiceCategoryImageServerThumb = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/ServiceCategory/Thumb/");
+        public static string ServiceCategoryimageServerOriginThumb = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/ServiceCategory/Thumb/");
+
+        #endregion
+
+        #region Countries Image
+
+        public static string DefaultCountryimage = "/UploadedImages/DefaultImages/Default.png";
+
+        public static string CountryOriginimage = "/UploadedImages/Country/Origin/";
+        public static string CountryThumbimage = "/UploadedImages/Country/Thumb/";
+        public static string CountryimageServerOrigin = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/Country/Origin/");
+        public static string CountryImageServerThumb = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/Country/Thumb/");
+        public static string CountryimageServerOriginThumb = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/Country/Thumb/");
+
+        #endregion
     }
 }

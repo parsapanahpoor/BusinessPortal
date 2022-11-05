@@ -159,6 +159,9 @@
   <data name="AdvertisementURLPlaceHolder" xml:space="preserve">
     <value>Advertisement URL را وارد کنید</value>
   </data>
+  <data name="Countries" xml:space="preserve">
+    <value>مکان ها</value>
+  </data>
   <data name="Image" xml:space="preserve">
     <value>تصویر </value>
   </data>
@@ -173,5 +176,8 @@
   </data>
   <data name="Upload" xml:space="preserve">
     <value>آپلود</value>
+  </data>
+  <data name="You Can Select One Destination Country" xml:space="preserve">
+    <value>شما می توانید یک کشور مقصد برای آگهی خود انتخاب کنید</value>
   </data>
 </root>

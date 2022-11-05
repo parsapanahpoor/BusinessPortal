@@ -121,13 +121,19 @@
     <value>Adicionar endereço</value>
   </data>
   <data name="AddAdvertisement" xml:space="preserve">
-    <value>Adicionar anúncio</value>
+    <value>Criar oferta</value>
+  </data>
+  <data name="AddAdvertisement2" xml:space="preserve">
+    <value>Criar solicitação</value>
   </data>
   <data name="Create Ticket" xml:space="preserve">
     <value>Adicionar ingressos</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Painel</value>
+  </data>
+  <data name="Days Left" xml:space="preserve">
+    <value>Dias restantes</value>
   </data>
   <data name="List Of Tickets" xml:space="preserve">
     <value>Lista de ingressos</value>
@@ -136,10 +142,10 @@
     <value>Anúncios à venda</value>
   </data>
   <data name="ListOfOnSaleAdvertisements" xml:space="preserve">
-    <value>Lista de anúncios à venda</value>
+    <value>Lista de ofertas de vendas</value>
   </data>
   <data name="ListOfRequestAdvertisement" xml:space="preserve">
-    <value>Anúncios solicitantes</value>
+    <value>Lista de Solicitação de Compra</value>
   </data>
   <data name="Manage Tickets" xml:space="preserve">
     <value>Gerenciamento de tickets</value>
@@ -148,12 +154,15 @@
     <value>Gerenciar endereço</value>
   </data>
   <data name="OnSaleAdvertisement" xml:space="preserve">
-    <value>Anúncio à venda</value>
+    <value>Oferta de venda</value>
   </data>
   <data name="RequestAdvertisement" xml:space="preserve">
-    <value>Solicitar anúncio</value>
+    <value>Solicitação de compra</value>
   </data>
   <data name="RequestToBeSeller" xml:space="preserve">
     <value>Solicitar ser vendedor</value>
+  </data>
+  <data name="User Tariff" xml:space="preserve">
+    <value>Tarifa do Usuário</value>
   </data>
 </root>

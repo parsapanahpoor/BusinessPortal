@@ -1,10 +1,13 @@
 ﻿using BusinessPortal.Domain.Entities.Advertisement;
+using BusinessPortal.Domain.Entities.Countries;
 using BusinessPortal.Domain.ViewModels.Admin.Advertisement;
+using BusinessPortal.Domain.ViewModels.Admin.Countries;
 using BusinessPortal.Domain.ViewModels.Admin.Dashboard;
 using BusinessPortal.Domain.ViewModels.Advertisement;
 using BusinessPortal.Domain.ViewModels.Site.Advertisement;
 using BusinessPortal.Domain.ViewModels.UserPanel.Advertisement;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,5 +63,26 @@ namespace BusinessPortal.Application.Services.Interfaces
 
         #endregion
 
+        #region Countries
+
+        //Filter Countries ViewModel Admin Side 
+        Task<FilterCountriesViewModel> FilterCountries(FilterCountriesViewModel filter);
+
+        //Create Country Admin Side 
+        Task<bool> CreateCountryAdminSide(string uniqueName, IFormFile flag);
+
+        //Get Country 
+        Task<Countries?> GetCountryById(ulong countryId);
+
+        //Edit Country
+        Task<bool> EditCountry(ulong countryId, string uniqueName, IFormFile? flag);
+
+        //Delete Country By Id 
+        Task<bool> DeleteCountry(ulong countryId);
+
+        //List Of Countries For Drowp Down
+        List<SelectListItem> ListOfCountriesForDrowpDown();
+
+        #endregion
     }
 }

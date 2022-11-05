@@ -118,9 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Buy Ads Categories" xml:space="preserve">
-    <value>دسته بندی های خرید</value>
+    <value>دسته بندی خرید</value>
   </data>
   <data name="Service Ads Categories" xml:space="preserve">
-    <value>دسته بندی های خدمات</value>
+    <value>دسته بندی خدمات</value>
   </data>
 </root>

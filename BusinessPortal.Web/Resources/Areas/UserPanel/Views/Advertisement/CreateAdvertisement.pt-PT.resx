@@ -130,13 +130,13 @@
     <value>Escolha a imagem do anúncio</value>
   </data>
   <data name="AdvertisementInfo" xml:space="preserve">
-    <value>Informações de anúncios</value>
+    <value>Detalhes da solicitação de compra</value>
   </data>
   <data name="AdvertisementTags" xml:space="preserve">
     <value>Tags de anúncio</value>
   </data>
   <data name="AdvertisementTitle" xml:space="preserve">
-    <value>Título do anúncio</value>
+    <value>Título da solicitação</value>
   </data>
   <data name="AdvertisementTitlePlaceHolder" xml:space="preserve">
     <value>Preencha o título do anúncio</value>

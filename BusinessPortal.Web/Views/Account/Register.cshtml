@@ -1,7 +1,10 @@
 ﻿@model BusinessPortal.Domain.ViewModels.Account.RegisterUserViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _Localizer
+@using System.Globalization
 
 @{
-    ViewData["Title"] = "ثبت نام";
+    ViewData["Title"] = @_Localizer["Register"];
 }
 
 @section Scripts
@@ -16,13 +19,13 @@
             <div class="row ">
                 <form asp-action="Register" asp-controller="Account" method="post">
 
-                    <h4 class="text-center ">ایجاد حساب کاربری</h4>
+                    <h4 class="text-center ">@_Localizer["Create an account"]</h4>
 
 
                     <div class="form-group">
                        
                         <div class="col-md-12">
-                            <input asp-for="Email" class="form-control" placeholder="ایمیل" />
+                            <input asp-for="Email" class="form-control" placeholder="@_Localizer["Email"]" />
                             <span class="text-danger" asp-validation-for="Email"></span>
                         </div>
                     </div>
@@ -30,7 +33,7 @@
                     <div class="form-group">
                        
                         <div class="col-md-12">
-                            <input asp-for="Mobile" class="form-control" placeholder="تلفن همراه" />
+                            <input asp-for="Mobile" class="form-control" placeholder="@_Localizer["Mobile"]" />
                             <span class="text-danger" asp-validation-for="Mobile"></span>
                         </div>
                     </div>
@@ -38,29 +41,29 @@
                     <div class="form-group">
                        
                         <div class="col-md-12">
-                            <input asp-for="Password" type="password" class="form-control" placeholder="کلمه عبور" />
+                            <input asp-for="Password" type="password" class="form-control" placeholder="@_Localizer["Password"]" />
                             <span class="text-danger" asp-validation-for="Password"></span>
                         </div>
                     </div>
                     <div class="form-group">
                       
                         <div class="col-md-12">
-                            <input asp-for="RePassword" type="password" class="form-control" placeholder="تکرار کلمه ی عبور " />
+                            <input asp-for="RePassword" type="password" class="form-control" placeholder="@_Localizer["RePassword"]" />
                             <span class="text-danger" asp-validation-for="RePassword"></span>
                         </div>
                     </div>
                     <div class="remember-me-wrap">
                         <p>
                             <input type="checkbox" id="test1">
-                            <label for="test1"> با <a href="terms-of-service.html">شرایط و ضوابط</a>موافق هستم</label>
+                            <label for="test1">  <a href="terms-of-service.html">@_Localizer["Terms and Conditions"]</a>@_Localizer["accepted"]</label>
                         </p>
                     </div>
 
                     <div class="row p-3 m-3 ">
-                        <button type="submit" class="default-btn">ثبت نام</button>
+                        <button type="submit" class="default-btn">@_Localizer["Register"]</button>
                     </div>
                     <div class="account-text">
-                        <p>حساب کاربری دارید؟ <a asp-action="Login" asp-controller="Account">ورود</a></p>
+                        <p>@_Localizer["Haveaccount"] <a asp-action="Login" asp-controller="Account">@_Localizer["Login"]</a></p>
                     </div>
 
                 </form>

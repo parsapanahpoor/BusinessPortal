@@ -1,6 +1,7 @@
 ﻿using BusinessPortal.Domain.Entities.Product;
 using BusinessPortal.Domain.Entities.Services;
 using BusinessPortal.Domain.ViewModels.Admin.Service;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,13 +25,13 @@ namespace BusinessPortal.Application.Services.Interfaces
         Task<ServicesCategory?> GetServiceCategoryById(ulong serviceCategoryId);
 
         //Create Service Category
-        Task<CreateServicecCategoryResult> CreateServiceCategory(CreateServiceCategoryViewModel serviceCategory);
+        Task<CreateServicecCategoryResult> CreateServiceCategory(CreateServiceCategoryViewModel serviceCategory, IFormFile? serviceCategoryImage);
 
         //Fill Edit Service Category Info
         Task<EditServiceCategoryViewModel?> FillServiceArticleCategoryViewModel(ulong serviceCategoryId);
 
         //Edit Service Group
-        Task<EditServiceCategoryResult> EditService(EditServiceCategoryViewModel serviceCategory);
+        Task<EditServiceCategoryResult> EditService(EditServiceCategoryViewModel serviceCategory, IFormFile? serviceCategoryImage);
 
         //Delete Service Category
         Task<bool> DeleteServiceCategory(ulong serviceCategoryId);

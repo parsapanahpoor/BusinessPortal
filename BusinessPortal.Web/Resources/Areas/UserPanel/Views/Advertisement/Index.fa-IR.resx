@@ -124,7 +124,7 @@
     <value>توضیحات را وارد کنید</value>
   </data>
   <data name="AdvertisementTitlePlaceHolder" xml:space="preserve">
-    <value>عنوان آگهی را وارد کنید</value>
+    <value>عنوان را وارد کنید</value>
   </data>
   <data name="AdvertisementURLPlaceHolder" xml:space="preserve">
     <value>URL را وارد کنید</value>
@@ -166,10 +166,10 @@
     <value>زبان ها </value>
   </data>
   <data name="NotSpecified" xml:space="preserve">
-    <value>تایین نشده</value>
+    <value>تایید نشده</value>
   </data>
   <data name="PageTitle" xml:space="preserve">
-    <value>لیست آگهی ها</value>
+    <value>لیست درخواستهای خرید</value>
   </data>
   <data name="Reject" xml:space="preserve">
     <value>تایید نشده</value>

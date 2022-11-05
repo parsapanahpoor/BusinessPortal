@@ -266,6 +266,36 @@ Default Btn CSS
     overflow: hidden;
     white-space: nowrap;
 }
+.defawes {
+    padding: 10px;
+    text-align: center;
+    color: var(--white-color) !important;
+    font-size: var(--font-size);
+    font-weight: 400;
+    -webkit-transition: var(--transition);
+    transition: var(--transition);
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: relative;
+    z-index: 0;
+    background: var(--main-color);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: 50px;
+    border: 1px solid #f5b653
+}
+    .defawes :hover {
+        color: var(--white-color);
+    }
 
     .default-btn:before {
         content: '';
@@ -7467,7 +7497,7 @@ a {
 .mega-menu-categories {
     width: 400px;
     display: inline-block;
-    align-items: center;
+    /*align-items: center;*/
     position: absolute;
     opacity: 0;
     visibility: hidden;
@@ -7585,7 +7615,7 @@ a {
 .mega-menu-categories {
     width: 300px;
     display: inline-block;
-    align-items: center;
+   /* align-items: center;*/
     position: absolute;
     opacity: 0;
     visibility: hidden;

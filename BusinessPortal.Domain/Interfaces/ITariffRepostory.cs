@@ -65,6 +65,9 @@ namespace BusinessPortal.Domain.Interfaces
         //Get Just User Selected Tariff By User Id 
         Task<UserSelectedTariff?> GetJustUserSelectedTariffByUserId(ulong userId);
 
+        //Get Count Of User Seen Ads  
+        Task<int> GetCountOfUserSeenAds(ulong userId);
+
         #endregion
     }
 }

@@ -121,13 +121,19 @@
     <value>Добавить адрес</value>
   </data>
   <data name="AddAdvertisement" xml:space="preserve">
-    <value>Добавить рекламу</value>
+    <value>Создать предложение</value>
+  </data>
+  <data name="AddAdvertisement2" xml:space="preserve">
+    <value>Создать запрос</value>
   </data>
   <data name="Create Ticket" xml:space="preserve">
     <value>Добавить билеты</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Панель приборов</value>
+  </data>
+  <data name="Days Left" xml:space="preserve">
+    <value>Осталось дней</value>
   </data>
   <data name="List Of Tickets" xml:space="preserve">
     <value>Список билетов</value>
@@ -136,10 +142,10 @@
     <value>Список адресов</value>
   </data>
   <data name="ListOfOnSaleAdvertisements" xml:space="preserve">
-    <value>Объявления о продаже</value>
+    <value>Предложение продажи</value>
   </data>
   <data name="ListOfRequestAdvertisement" xml:space="preserve">
-    <value>Запросить рекламу</value>
+    <value>Список запросов на покупку</value>
   </data>
   <data name="Manage Tickets" xml:space="preserve">
     <value>Управление билетами</value>
@@ -148,12 +154,15 @@
     <value>Управление адресом</value>
   </data>
   <data name="OnSaleAdvertisement" xml:space="preserve">
-    <value>Реклама в продаже</value>
+    <value>Предложение продажи</value>
   </data>
   <data name="RequestAdvertisement" xml:space="preserve">
-    <value>Запросить рекламу</value>
+    <value>Запрос на покупку</value>
   </data>
   <data name="RequestToBeSeller" xml:space="preserve">
     <value>Запрос на роль продавца</value>
+  </data>
+  <data name="User Tariff" xml:space="preserve">
+    <value>Пользовательский тариф</value>
   </data>
 </root>

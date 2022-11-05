@@ -22,6 +22,8 @@ namespace BusinessPortal.Domain.Entities.Services
 
         public bool IsDelete { get; set; }
 
+        public string? ServiceCategoryImage { get; set; }
+
         #endregion
 
         #region relations

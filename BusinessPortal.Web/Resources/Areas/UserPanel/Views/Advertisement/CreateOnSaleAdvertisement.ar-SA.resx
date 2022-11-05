@@ -121,34 +121,34 @@
     <value>عنوان</value>
   </data>
   <data name="AdvertisementDescription" xml:space="preserve">
-    <value>وصف الإعلان</value>
+    <value>وصف اقتراح البيع</value>
   </data>
   <data name="AdvertisementDescriptionPlaceHolder" xml:space="preserve">
-    <value>ملء وصف الإعلان</value>
+    <value>ملء وصف اقتراح البيع</value>
   </data>
   <data name="AdvertisementImage" xml:space="preserve">
-    <value>اختار صورة إعلان</value>
+    <value>اختار صورة اقتراح البيع</value>
   </data>
   <data name="AdvertisementInfo" xml:space="preserve">
-    <value>معلومات الإعلانات</value>
+    <value>معلومات اقتراح البيع</value>
   </data>
   <data name="AdvertisementTags" xml:space="preserve">
-    <value>علامات الإعلان</value>
+    <value>علامات اقتراح البيع</value>
   </data>
   <data name="AdvertisementTitle" xml:space="preserve">
-    <value>عنوان الإعلان</value>
+    <value>عنوان اقتراح البيع</value>
   </data>
   <data name="AdvertisementTitlePlaceHolder" xml:space="preserve">
-    <value>ملء عنوان الإعلان</value>
+    <value>ملء عنوان اقتراح البيع</value>
   </data>
   <data name="AdvertisementURL" xml:space="preserve">
-    <value>عنوان URL للإعلان</value>
+    <value>عنوان URL لاقتراح البيع</value>
   </data>
   <data name="AdvertisementURLPlaceHolder" xml:space="preserve">
-    <value>ملء عنوان URL للإعلان</value>
+    <value>ملء عنوان URL لاقتراح البيع</value>
   </data>
   <data name="PageTitle" xml:space="preserve">
-    <value>عنوان الإعلان</value>
+    <value>إنشاء اقتراح البيع</value>
   </data>
   <data name="Submit" xml:space="preserve">
     <value>إرسال</value>

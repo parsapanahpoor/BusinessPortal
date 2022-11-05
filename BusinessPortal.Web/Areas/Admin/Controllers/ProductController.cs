@@ -20,7 +20,6 @@ namespace BusinessPortal.Web.Areas.Admin.Controllers
 
         #region Product Category
 
-
         #region Filter Product Categories
 
         public async Task<IActionResult> FilterProductCategory(FilterProductCategoryViewModel filter)
@@ -45,7 +44,7 @@ namespace BusinessPortal.Web.Areas.Admin.Controllers
             return View();
         }
         [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateProductCategory(CreateProductCategoryViewModel productCategory)
+        public async Task<IActionResult> CreateProductCategory(CreateProductCategoryViewModel productCategory , IFormFile? productCategoryLogo)
         {
             #region Model State
 
@@ -63,9 +62,9 @@ namespace BusinessPortal.Web.Areas.Admin.Controllers
 
             #endregion
 
-            #region Add Location 
+            #region Add Product Category  
 
-            var result = await _productService.CreateProductCategory(productCategory);
+            var result = await _productService.CreateProductCategory(productCategory , productCategoryLogo);
 
             switch (result)
             {
@@ -119,7 +118,7 @@ namespace BusinessPortal.Web.Areas.Admin.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditProductCategory(EditProductCategoryViewModel productCategory)
+        public async Task<IActionResult> EditProductCategory(EditProductCategoryViewModel productCategory,  IFormFile? productCategoryLogo)
         {
             #region Is Exist Product Category By Id
 
@@ -144,7 +143,7 @@ namespace BusinessPortal.Web.Areas.Admin.Controllers
 
             #region Edit Product Category
 
-            var result = await _productService.EditProduct(productCategory);
+            var result = await _productService.EditProduct(productCategory , productCategoryLogo);
 
             switch (result)
             {

@@ -13,6 +13,9 @@
     <Folder Include="Areas\UserPanel\Models\" />
     <Folder Include="wwwroot\UploadedImages\AdvertisementImages\Thumb\" />
     <Folder Include="wwwroot\UploadedImages\AdvertisementImages\Origin\" />
+    <Folder Include="wwwroot\UploadedImages\ProductCategories\Thumb\" />
+    <Folder Include="wwwroot\UploadedImages\ServiceCategory\Thumb\" />
+    <Folder Include="wwwroot\UploadedImages\ServiceCategory\Origin\" />
     <Folder Include="wwwroot\UploadedImages\StateImage\" />
   </ItemGroup>
 

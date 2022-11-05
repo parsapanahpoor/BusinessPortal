@@ -124,7 +124,8 @@ namespace BusinessPortal.Data.Repository
                                 Id = p.Id,
                                 UniqueName = p.UniqueName,
                                 ParentId = p.ParentId,
-                                CurrentInfos = p.ServicesCategoryInfo.AsQueryable().IgnoreQueryFilters().ToList()
+                                CurrentInfos = p.ServicesCategoryInfo.AsQueryable().IgnoreQueryFilters().ToList(),
+                                ImageName = p.ServiceCategoryImage
                             }).FirstOrDefaultAsync();
         }
 

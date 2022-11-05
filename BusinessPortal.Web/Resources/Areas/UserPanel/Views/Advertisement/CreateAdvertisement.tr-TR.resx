@@ -121,33 +121,36 @@
     <value>Adres</value>
   </data>
   <data name="AdvertisementDescription" xml:space="preserve">
-    <value>Reklam Açıklaması</value>
+    <value>İstek metni</value>
   </data>
   <data name="AdvertisementDescriptionPlaceHolder" xml:space="preserve">
-    <value>Reklam Açıklamasını Doldur</value>
+    <value>İstek açıklamasını girin</value>
   </data>
   <data name="AdvertisementImage" xml:space="preserve">
-    <value>Reklam Resmini Seçin</value>
+    <value>İsteğiniz için bir fotoğraf seçin</value>
   </data>
   <data name="AdvertisementInfo" xml:space="preserve">
-    <value>Reklam Bilgileri</value>
+    <value>Satın alma isteği ayrıntıları</value>
   </data>
   <data name="AdvertisementTags" xml:space="preserve">
-    <value>Reklam Etiketleri</value>
+    <value>Etiketleri iste</value>
   </data>
   <data name="AdvertisementTitle" xml:space="preserve">
-    <value>Reklam Başlığı</value>
+    <value>Talebin başlığı</value>
   </data>
   <data name="AdvertisementTitlePlaceHolder" xml:space="preserve">
-    <value>ReklamBaşlıkYerSahibi</value>
+    <value>İsteğin başlığını girin</value>
   </data>
   <data name="AdvertisementURL" xml:space="preserve">
-    <value>Reklam URL'si</value>
+    <value>URL başlığı iste</value>
+  </data>
+  <data name="AdvertisementURLPlaceHolder" xml:space="preserve">
+    <value>İstek bağlantısını girin</value>
   </data>
   <data name="PageTitle" xml:space="preserve">
-    <value>Reklam Başlığı</value>
+    <value>İstek ekle</value>
   </data>
   <data name="Submit" xml:space="preserve">
-    <value>Göndermek</value>
+    <value>Sunmak</value>
   </data>
 </root>

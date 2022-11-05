@@ -23,13 +23,13 @@
 </li>
 }
 
-<form method="post" asp-action="EditServiceCategory" asp-controller="Service" asp-area="Admin">
+    <form method="post" asp-action="EditServiceCategory" asp-controller="Service" asp-area="Admin" enctype="multipart/form-data">
     <input type="hidden" asp-for="ParentId" />
     <input type="hidden" asp-for="Id" />
     <input type="hidden" asp-for="CurrentInfos" />
 
     <div class="row">
-        <div class="col-lg-12 col-sm-12">
+        <div class="col-lg-9 col-sm-12">
             <div class="widget">
                 <div class="widget-header bordered-bottom bordered-blue">
                     @if (parentLocation != null)
@@ -95,6 +95,48 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-lg-3 col-sm-12">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="widget">
+                        <div class="widget-header bordered-bottom bordered-green">
+                            <span class="widget-caption"> تصویر    </span>
+                        </div>
+                        <div class="widget-body">
+                            <div class="row">
+
+                                <input type="file" class="display-none" name="serviceCategoryImage" id="ArticleImage" ImageInput="1" accept=".jpg,.jpeg,.png" />
+
+                                <div class="col-md-12">
+                                    <label for="ArticleImage" class="file-input-style">
+                                        <i class="glyphicon glyphicon-upload"></i>
+                                        <span class="mr-8px">لطفا  تصویر را انتخاب کنید .</span>
+                                    </label>
+                                </div>
+
+                                @if (!string.IsNullOrEmpty(Model.ImageName))
+                                {
+                                    <div class="col-md-12 tc mt-10px">
+                                        <img src="@BusinessPortal.Application.StaticTools.PathTools.ServiceCategoryOriginimage@Model.ImageName" class="Article-Priew" ImageFile="1" />
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-md-12 tc mt-10px">
+                                        <img src="@BusinessPortal.Application.StaticTools.PathTools.DefaultProductCategoryimage" class="Article-Priew" ImageFile="1" />
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 </form>
 

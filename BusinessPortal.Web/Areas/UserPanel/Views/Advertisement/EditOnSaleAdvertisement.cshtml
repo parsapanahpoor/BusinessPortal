@@ -21,213 +21,213 @@
 
 
 @section styles{
-<style>
-    .quote-imgs-thumbs {
-        background: #eee;
-        border: 1px solid #ccc;
-        border-radius: 0.25rem;
-        margin: 1.5rem 0;
-        padding: 0.75rem;
-    }
+    <style>
+        .quote-imgs-thumbs {
+            background: #eee;
+            border: 1px solid #ccc;
+            border-radius: 0.25rem;
+            margin: 1.5rem 0;
+            padding: 0.75rem;
+        }
 
-    .quote-imgs-thumbs--hidden {
-        display: none;
-    }
+        .quote-imgs-thumbs--hidden {
+            display: none;
+        }
 
-    .img-preview-thumb {
-        background: #fff;
-        border: 1px solid #777;
-        border-radius: 0.25rem;
-        box-shadow: 0.125rem 0.125rem 0.0625rem rgba(0, 0, 0, 0.12);
-        margin-right: 1rem;
-        max-width: 140px;
-        padding: 0.25rem;
-    }
-
-    tags.tagify {
-        height: auto !important;
-    }
-
-    div.gallery {
-        margin: 5px;
-        border: 1px solid #ccc;
-        float: left;
-        width: 180px;
-    }
-
-        div.gallery:hover {
+        .img-preview-thumb {
+            background: #fff;
             border: 1px solid #777;
+            border-radius: 0.25rem;
+            box-shadow: 0.125rem 0.125rem 0.0625rem rgba(0, 0, 0, 0.12);
+            margin-right: 1rem;
+            max-width: 140px;
+            padding: 0.25rem;
         }
 
-        div.gallery img {
-            width: 100%;
-            height: auto;
+        tags.tagify {
+            height: auto !important;
         }
 
-    div.desc {
-        padding: 15px;
-        text-align: center;
-    }
+        div.gallery {
+            margin: 5px;
+            border: 1px solid #ccc;
+            float: left;
+            width: 180px;
+        }
 
-    tags.tagify {
-        height: auto !important;
-    }
+            div.gallery:hover {
+                border: 1px solid #777;
+            }
+
+            div.gallery img {
+                width: 100%;
+                height: auto;
+            }
+
+        div.desc {
+            padding: 15px;
+            text-align: center;
+        }
+
+        tags.tagify {
+            height: auto !important;
+        }
 
 
-    .ck-content {
-        height: 200px;
-    }
+        .ck-content {
+            height: 200px;
+        }
 
-    .custom-color {
-        color: #aaa;
-    }
+        .custom-color {
+            color: #aaa;
+        }
 
-    .font-11 {
-        font-size: 11px;
-    }
+        .font-11 {
+            font-size: 11px;
+        }
 
-    .scroll_box {
-        overflow-y: auto;
-        overflow-x: hidden;
-        height: 761px;
-        margin: 0;
-    }
+        .scroll_box {
+            overflow-y: auto;
+            overflow-x: hidden;
+            height: 761px;
+            margin: 0;
+        }
 
-    #Advertisement-Category-container {
-        height: 500px !important;
-    }
+        #Advertisement-Category-container {
+            height: 500px !important;
+        }
 
-    #Advertisement-Address {
-        resize: none !important;
-        height: 150px !important;
-    }
+        #Advertisement-Address {
+            resize: none !important;
+            height: 150px !important;
+        }
 
-</style>
+    </style>
 }
 
-@section scripts{
+    @section scripts{
 
-<script>
-    function readURL(input) {
+    <script>
+        function readURL(input) {
 
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
-            reader.onload = function (e) {
-                $('#imagename').attr('src', e.target.result);
+                reader.onload = function (e) {
+                    $('#imagename').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
             }
-
-            reader.readAsDataURL(input.files[0]);
         }
-    }
 
-    $("#ImageName").change(function () {
-        readURL(this);
-    });
-
-    $("#AdvertisementStatus").on("change",
-        function() {
-            var selectedAdvertisementStatusValue = $("#AdvertisementStatus :selected").val();
-            if (selectedAdvertisementStatusValue.toLocaleLowerCase() === "notapproved") {
-                $("#RejectDescription-div").removeClass("d-none");
-            } else {
-                $("#RejectDescription-div").addClass("d-none");
-            }
+        $("#ImageName").change(function () {
+            readURL(this);
         });
 
-</script>
-<partial name="_JqueryValidators" />
-<script>
-    var imgUpload = document.getElementById('upload_imgs')
-        , imgPreview = document.getElementById('img_preview')
-        , imgUploadForm = document.getElementById('img-upload-form')
-        , totalFiles
-        , previewTitle
-        , previewTitleText
-        , img;
+        $("#AdvertisementStatus").on("change",
+            function () {
+                var selectedAdvertisementStatusValue = $("#AdvertisementStatus :selected").val();
+                if (selectedAdvertisementStatusValue.toLocaleLowerCase() === "notapproved") {
+                    $("#RejectDescription-div").removeClass("d-none");
+                } else {
+                    $("#RejectDescription-div").addClass("d-none");
+                }
+            });
 
-    imgUpload.addEventListener('change', previewImgs, false);
-    imgUploadForm.addEventListener('submit', function (e) {
-        //e.preventDefault();
-        //alert('Images Uploaded! (not really, but it would if this was on your website)');
-    }, false);
+    </script>
+    <partial name="_JqueryValidators" />
+    <script>
+        var imgUpload = document.getElementById('upload_imgs')
+            , imgPreview = document.getElementById('img_preview')
+            , imgUploadForm = document.getElementById('img-upload-form')
+            , totalFiles
+            , previewTitle
+            , previewTitleText
+            , img;
 
-    function previewImgs(event) {
-        $("#img_preview").empty();
-        totalFiles = imgUpload.files.length;
+        imgUpload.addEventListener('change', previewImgs, false);
+        imgUploadForm.addEventListener('submit', function (e) {
+            //e.preventDefault();
+            //alert('Images Uploaded! (not really, but it would if this was on your website)');
+        }, false);
 
-        if (!!totalFiles) {
-            imgPreview.classList.remove('quote-imgs-thumbs--hidden');
-            previewTitle = document.createElement('p');
-            previewTitle.style.fontWeight = 'bold';
-            previewTitleText = document.createTextNode(totalFiles + '  عکس انتخاب شده');
-            previewTitle.appendChild(previewTitleText);
-            imgPreview.appendChild(previewTitle);
-        }
+        function previewImgs(event) {
+            $("#img_preview").empty();
+            totalFiles = imgUpload.files.length;
 
-        for (var i = 0; i < totalFiles; i++) {
-            img = document.createElement('img');
-            img.src = URL.createObjectURL(event.target.files[i]);
-            img.classList.add('img-preview-thumb');
-            imgPreview.appendChild(img);
-        }
-    }
-</script>
-<script>
-    $('[ajax-url-button]').on('click', function (e) {
-        e.preventDefault();
-        var url = $(this).attr('href');
-        var itemId = $(this).attr('ajax-url-button');
-        console.log(url);
-        swal({
-            title: 'Warning',
-            text: "Are you sure you want to perform the operation?
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonClass: "btn-danger",
-            confirmButtonText: "yes",
-            cancelButtonText: "no",
-            closeOnConfirm: false,
-            closeOnCancel: false
-        }).then((result) => {
-            if (result.value) {
-                $.get(url).then(result => {
-                    if (result.status === 'Success') {
-                        ShowMessage('success', result.message);
-                        $('#ajax-url-item-' + itemId).hide(1500);
-                    } else {
-                        ShowMessage('failed', result.message);
-                    }
-                });
-            } else if (result.dismiss === swal.DismissReason.cancel) {
-                swal('to announce', 'The operation was canceled', 'error');
+            if (!!totalFiles) {
+                imgPreview.classList.remove('quote-imgs-thumbs--hidden');
+                previewTitle = document.createElement('p');
+                previewTitle.style.fontWeight = 'bold';
+                previewTitleText = document.createTextNode(totalFiles + '  عکس انتخاب شده');
+                previewTitle.appendChild(previewTitleText);
+                imgPreview.appendChild(previewTitle);
             }
+
+            for (var i = 0; i < totalFiles; i++) {
+                img = document.createElement('img');
+                img.src = URL.createObjectURL(event.target.files[i]);
+                img.classList.add('img-preview-thumb');
+                imgPreview.appendChild(img);
+            }
+        }
+    </script>
+    <script>
+        $('[ajax-url-button]').on('click', function (e) {
+            e.preventDefault();
+            var url = $(this).attr('href');
+            var itemId = $(this).attr('ajax-url-button');
+            console.log(url);
+            swal({
+                title: 'Warning',
+                text: "Are you sure you want to perform the operation?
+                    type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "yes",
+                cancelButtonText: "no",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }).then((result) => {
+                if (result.value) {
+                    $.get(url).then(result => {
+                        if (result.status === 'Success') {
+                            ShowMessage('success', result.message);
+                            $('#ajax-url-item-' + itemId).hide(1500);
+                        } else {
+                            ShowMessage('failed', result.message);
+                        }
+                    });
+                } else if (result.dismiss === swal.DismissReason.cancel) {
+                    swal('to announce', 'The operation was canceled', 'error');
+                }
+            });
         });
-    });
-</script>
+    </script>
 }
 
 
-<div class="content-body" style=" margin-right:0px ; padding-top:0px;">
-    <div class="container-fluid">
-        <form asp-controller="Advertisement" asp-area="UserPanel" asp-action="EditOnSaleAdvertisement" method="post" enctype="multipart/form-data">
-            <input type="hidden" asp-for="AdvertisementID" />
-            <input type="hidden" asp-for="AdsImage" />
-            <input type="hidden" asp-for="UserId" />
+    <div class="content-body" style=" margin-right:0px ; padding-top:0px;">
+        <div class="container-fluid">
+            <form asp-controller="Advertisement" asp-area="UserPanel" asp-action="EditOnSaleAdvertisement" method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="AdvertisementID" />
+                <input type="hidden" asp-for="AdsImage" />
+                <input type="hidden" asp-for="UserId" />
 
-       
-            <div class="row">
 
-                <div class="col-xl-7 col-lg-7">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>@_Localizer["AdvertisementInfo"]</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="basic-form">
-                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
 
-                                <div class="form-row">
+                    <div class="col-xl-7 col-lg-7">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>@_Localizer["AdvertisementInfo"]</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                    <div class="form-row">
 
                                     @if (!string.IsNullOrEmpty(Model.DeclineMessage) && Model.AdvertisementStatus == AdvertisementStatus.NotApproved)
                                     {
@@ -245,21 +245,35 @@
                                         <span asp-validation-for="Title" class="text-danger"></span>
                                     </div>
 
+
+                                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                        <div class="contantUs-page-form-input-media my-3">
+                                            <label for="exampleFormControlInput1" class="form-label Label_Input_form_Personal">
+                                                @_Localizer["Countries"] <span class="text-danger">*</span>
+                                            </label>
+                                            <select asp-for="CountryId" id="Address" asp-items="@ViewData["Countriees"] as SelectList" class="Address form-control contantUs-page-form-input-select">
+                                                <option value=" ">@Localizer["You Can Select One Destination Country"]</option>
+                                            </select>
+
+                                        </div>
+                                        <span asp-validation-for="AddressID" class="text-danger"></span>
+                                    </div>
+
                                     <div class="form-group col-md-12">
-                                          <label>  @_Localizer["AdvertisementURL"]     </label>
+                                        <label>  @_Localizer["AdvertisementURL"]     </label>
                                         <input asp-for="AdsUrl" type="text" class="form-control" placeholder="@_Localizer["AdvertisementURLPlaceHolder"] ">
                                         <span asp-validation-for="AdsUrl" class="text-danger"></span>
                                     </div>
 
 
                                     <div class="form-group col-md-12">
-                                          <label>@_Localizer["AdvertisementTags"]</label>
+                                        <label>@_Localizer["AdvertisementTags"]</label>
                                         <input asp-for="AdvertisementTags" tagify="1" type="text" class="form-control">
                                         <span asp-validation-for="AdvertisementTags" class="text-danger"></span>
                                     </div>
 
                                     <div class="form-group col-md-12">
-                             <label>  @_Localizer["AdvertisementDescription"]      </label>
+                                        <label>  @_Localizer["AdvertisementDescription"]      </label>
                                         <textarea asp-for="Description" rows="10" class="form-control" placeholder=" @_Localizer["AdvertisementDescriptionPlaceHolder"] "></textarea>
                                         <span asp-validation-for="Description" class="text-danger"></span>
                                     </div>

@@ -1,6 +1,7 @@
 ﻿using BusinessPortal.Application.Extensions;
 using BusinessPortal.Application.Services.Interfaces;
 using BusinessPortal.Domain.ViewModels.Site.Advertisement;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 
@@ -106,6 +107,7 @@ namespace BusinessPortal.Web.Controllers
 
         #region Advertisement Detail
 
+        [Authorize]
         public async Task<IActionResult> AdvertisementDetail(ulong advertisementId)
         {
             #region Check User Tariff

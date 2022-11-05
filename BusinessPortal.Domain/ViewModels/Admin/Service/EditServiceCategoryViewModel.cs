@@ -27,6 +27,8 @@ namespace BusinessPortal.Domain.ViewModels.Admin.Service
 
         public ulong? ParentId { get; set; }
 
+        public string? ImageName { get; set; }
+
         #endregion
     }
 

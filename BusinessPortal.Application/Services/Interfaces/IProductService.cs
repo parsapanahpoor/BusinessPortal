@@ -1,5 +1,6 @@
 ﻿using BusinessPortal.Domain.Entities.Product;
 using BusinessPortal.Domain.ViewModels.Admin.Product;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,13 +31,13 @@ namespace BusinessPortal.Application.Services.Interfaces
         Task<bool> IsExistProductCategoryById(ulong productCategoryId);
 
         //Create Product Category
-        Task<CreateProductCategoryResult> CreateProductCategory(CreateProductCategoryViewModel productCategory);
+        Task<CreateProductCategoryResult> CreateProductCategory(CreateProductCategoryViewModel productCategory , IFormFile? productCategoryLogo);
 
         //Fill Edit Service Category Info
         Task<EditProductCategoryViewModel?> FillProductCategoryViewModel(ulong productCategoryId);
 
         //Edit Product Group
-        Task<EditProductCategoryResult> EditProduct(EditProductCategoryViewModel productCategory);
+        Task<EditProductCategoryResult> EditProduct(EditProductCategoryViewModel productCategory, IFormFile? productCategoryLogo);
 
         //Delete Product Category
         Task<bool> DeleteProductCategory(ulong productCategoryId);

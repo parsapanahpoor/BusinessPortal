@@ -23,4 +23,5 @@ namespace BusinessPortal.Web.ViewComponents
             return View("LastestAdvertisementFromCustomers", await _advertisementService.GetLastestAdvertisementFromCustomers(culture));
         }
     }
+
 }

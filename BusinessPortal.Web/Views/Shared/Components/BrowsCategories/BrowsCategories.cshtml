@@ -27,7 +27,7 @@
                             <ul class="mega-menu-categories">
                                 @foreach (var item2 in Model.Where(p => p.ProductCategory.ParentId == item.ProductCategory.Id))
                                 {
-                                    <li class="mega-menu-item">
+                                    <li class="mega-menu-item" style="text-align: right !important">
                                         <a href="#" class="mega-menu-categories-title">@item2.Title</a>
                                     </li>
                                 }

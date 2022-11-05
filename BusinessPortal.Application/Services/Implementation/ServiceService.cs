@@ -1,10 +1,13 @@
 ﻿using AngleSharp.Css;
+using BusinessPortal.Application.Extensions;
 using BusinessPortal.Application.Security;
 using BusinessPortal.Application.Services.Interfaces;
+using BusinessPortal.Application.StaticTools;
 using BusinessPortal.Domain.Entities.Product;
 using BusinessPortal.Domain.Entities.Services;
 using BusinessPortal.Domain.Interfaces;
 using BusinessPortal.Domain.ViewModels.Admin.Service;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,7 +51,7 @@ namespace BusinessPortal.Application.Services.Implementation
         }
 
         //Create Service Category
-        public async Task<CreateServicecCategoryResult> CreateServiceCategory(CreateServiceCategoryViewModel serviceCategory)
+        public async Task<CreateServicecCategoryResult> CreateServiceCategory(CreateServiceCategoryViewModel serviceCategory, IFormFile? serviceCategoryImage)
         {
             #region Is Exist Service Category By Unique Name
 
@@ -67,6 +70,17 @@ namespace BusinessPortal.Application.Services.Implementation
                 IsDelete = false,
                 IsActive = true
             };
+
+            #region Add Image 
+
+            if (serviceCategoryImage != null && serviceCategoryImage.IsImage())
+            {
+                var imageName = Guid.NewGuid() + Path.GetExtension(serviceCategoryImage.FileName);
+                serviceCategoryImage.AddImageToServer(imageName, PathTools.ServiceCategoryimageServerOrigin, 400, 300, PathTools.ServiceCategoryImageServerThumb);
+                mainServiceCategory.ServiceCategoryImage = imageName;
+            }
+
+            #endregion
 
             if (serviceCategory.ParentId != null && serviceCategory.ParentId != 0)
             {
@@ -115,7 +129,7 @@ namespace BusinessPortal.Application.Services.Implementation
         }
 
         //Edit Service Group
-        public async Task<EditServiceCategoryResult> EditService(EditServiceCategoryViewModel serviceCategory)
+        public async Task<EditServiceCategoryResult> EditService(EditServiceCategoryViewModel serviceCategory, IFormFile? serviceCategoryImage)
         {
             #region Get Service Category By Id
 
@@ -153,6 +167,19 @@ namespace BusinessPortal.Application.Services.Implementation
 
             serviceCat.UniqueName = serviceCategory.UniqueName.SanitizeText();
             serviceCat.IsActive = true;
+
+            if (serviceCategoryImage != null && serviceCategoryImage.IsImage())
+            {
+                var imageName = Guid.NewGuid() + Path.GetExtension(serviceCategoryImage.FileName);
+                serviceCategoryImage.AddImageToServer(imageName, PathTools.ServiceCategoryimageServerOrigin, 400, 300, PathTools.ServiceCategoryImageServerThumb);
+
+                if (!string.IsNullOrEmpty(serviceCat.ServiceCategoryImage))
+                {
+                    serviceCat.ServiceCategoryImage.DeleteImage(PathTools.ServiceCategoryimageServerOrigin, PathTools.ServiceCategoryImageServerThumb);
+                }
+
+                serviceCat.ServiceCategoryImage = imageName;
+            }
 
             _serviceRepository.UpdateServiceCategory(serviceCat);
 

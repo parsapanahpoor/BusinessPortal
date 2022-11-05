@@ -121,34 +121,34 @@
     <value>عنوان</value>
   </data>
   <data name="AdvertisementDescription" xml:space="preserve">
-    <value>وصف الإعلان</value>
+    <value>وصف طلب</value>
   </data>
   <data name="AdvertisementDescriptionPlaceHolder" xml:space="preserve">
-    <value>ملء وصف الإعلان</value>
+    <value>ملء وصف طلب</value>
   </data>
   <data name="AdvertisementImage" xml:space="preserve">
-    <value>اختار صورة إعلان</value>
+    <value>اختار صورة طلب</value>
   </data>
   <data name="AdvertisementInfo" xml:space="preserve">
-    <value>معلومات الإعلانات</value>
+    <value>تفاصيل طلب الشراء</value>
   </data>
   <data name="AdvertisementTags" xml:space="preserve">
-    <value>علامات الإعلان</value>
+    <value>علامات طلب</value>
   </data>
   <data name="AdvertisementTitle" xml:space="preserve">
-    <value>عنوان الإعلان</value>
+    <value>عنوان الطلب</value>
   </data>
   <data name="AdvertisementTitlePlaceHolder" xml:space="preserve">
-    <value>ملء عنوان الإعلان</value>
+    <value>ملء عنوان طلب</value>
   </data>
   <data name="AdvertisementURL" xml:space="preserve">
-    <value>عنوان URL للإعلان</value>
+    <value>طلب عنوان الارتباط</value>
   </data>
   <data name="AdvertisementURLPlaceHolder" xml:space="preserve">
-    <value>ملء عنوان URL للإعلان</value>
+    <value>أدخل رابط الطلب</value>
   </data>
   <data name="PageTitle" xml:space="preserve">
-    <value>عنوان الإعلان</value>
+    <value>عنوان طلب</value>
   </data>
   <data name="Submit" xml:space="preserve">
     <value>إرسال</value>

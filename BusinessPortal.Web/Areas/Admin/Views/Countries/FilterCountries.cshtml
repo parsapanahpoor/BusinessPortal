@@ -1,0 +1,120 @@
+﻿@model BusinessPortal.Domain.ViewModels.Admin.Countries.FilterCountriesViewModel
+@using BusinessPortal.Application.Extensions
+@using BusinessPortal.Application.Convertors
+@using BusinessPortal.Domain.ViewModels.Admin.Advertisement
+@using BusinessPortal.Application.StaticTools
+
+@{
+    ViewData["Title"] = "لیست کشورها";
+}
+
+@section Scripts
+    {
+    <partial name="_AdminSweetAlertLocalizer" />
+}
+
+    @section Breadcrumbs
+    {
+    <li>
+        <a href="javascript:void(0)"> @ViewData["Title"] </a>
+    </li>
+}
+
+    <div class="row">
+        <div class="col-lg-3 col-sm-12">
+            <a class="btn btn-sky w-100 margin-bottom-10" asp-action="AddCountry" asp-controller="Countries" asp-area="Admin">افزودن </a>
+            <div class="widget">
+                <div class="widget-header bordered-bottom bordered-green">
+
+                    <span class="widget-caption"> فیلتر مکان ها </span>
+
+                </div>
+                <div class="widget-body">
+                    <div>
+                        <form asp-action="FilterCountries" asp-controller="Countries" asp-area="Admin" id="filter-search" method="get">
+                            <input type="hidden" asp-for="Page" />
+
+                            <div class="form-group">
+                                <label>نام یکتا</label>
+                                <input type="text" class="form-control" asp-for="UniqueName">
+                            </div>
+
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-12 flex-style">
+                                    <button type="submit" class="btn btn-labeled w-100 btn-palegreen">
+                                        <i class="btn-label glyphicon glyphicon-filter"></i>فیلتر
+                                    </button>
+
+                                @if (Context.Request.QueryString.HasValue)
+                                {
+                                    <a asp-area="Admin" asp-controller="Service" asp-action="FilterServiceCategory" class="btn btn-labeled w-100 btn-darkorange mr-10px ">
+                                        <i class="btn-label glyphicon glyphicon-remove"></i>حذف فیلتر
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-9 col-sm-12">
+        <div class="well with-header with-footer table-responsive">
+            <div class="header bordered-azure">
+                <div class="flex-style">
+                        <span> لیست مکان ها </span>
+                    <span>@Model.GetShownEntitiesPagesTitle()</span>
+                </div>
+            </div>
+
+            @if (Model.Entities != null && Model.Entities.Any())
+            {
+                <table class="table table-hover table-bordered tc vm margin-bottom-30">
+                    <thead class="tc vm">
+                        <tr class="tc vm">
+                            <th class="tc vm">
+                                تصویر
+                            </th>
+                            <th class="tc vm">
+                                عنوان 
+                            </th>
+                            <th class="tc vm">
+                                امکانات
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="tc vm">
+                        @foreach (var country in Model.Entities)
+                        {
+                            <tr class="tc vm" remove-ajax-item="@country.Id">
+                                <td class="tc vm" style="max-width: 200px">
+                                    <img src="@PathTools.CountryThumbimage@country.FlagName" class="avatar-style" />
+                                </td>
+                                <td class="tc vm">
+                                    <p> @country.CountryUniqueName </p>
+                                </td>
+                                <td class="tc vm">
+                                    <a asp-action="EditCountry" asp-controller="Countries" asp-area="Admin" asp-route-countryId="@country.Id" class="btn btn-warning btn-circle btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
+                                    <button onclick="DeleteAjax(@country.Id, '@Url.Action("DeleteCountry", "Countries", new {area = "Admin", countryId = country.Id})')" class="btn btn-danger btn-circle btn-xs"><i class="glyphicon glyphicon-trash"></i></button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <div class="footer tc">
+
+                    <partial name="_AdminPaging" model="@Model.GetCurrentPaging()" />
+
+                </div>
+            }
+            else
+            {
+                <partial name="_AdminNotFoundPartial" />
+            }
+        </div>
+    </div>
+</div>

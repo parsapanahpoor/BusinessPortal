@@ -121,13 +121,19 @@
     <value>افزودن آدرس</value>
   </data>
   <data name="AddAdvertisement" xml:space="preserve">
-    <value>افزودن آگهی</value>
+    <value>ایجاد پیشنهاد جدید</value>
+  </data>
+  <data name="AddAdvertisement2" xml:space="preserve">
+    <value>ایجاد درخواست جدید</value>
   </data>
   <data name="Create Ticket" xml:space="preserve">
     <value>افزودن تیکت ها </value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>داشبورد</value>
+  </data>
+  <data name="Days Left" xml:space="preserve">
+    <value>روز باقی مانده</value>
   </data>
   <data name="List Of Tickets" xml:space="preserve">
     <value>لیست تیکت ها</value>
@@ -136,10 +142,10 @@
     <value>لیست آدرس ها</value>
   </data>
   <data name="ListOfOnSaleAdvertisements" xml:space="preserve">
-    <value>لیست آگهی های فروش</value>
+    <value>لیست پیشنهادات فروش</value>
   </data>
   <data name="ListOfRequestAdvertisement" xml:space="preserve">
-    <value>لیست آگهی های درخواستی</value>
+    <value>لیست درخواستهای خرید</value>
   </data>
   <data name="Manage Tickets" xml:space="preserve">
     <value>مدیریت تیکت ها </value>
@@ -148,12 +154,15 @@
     <value>مدیریت موقعیت ها</value>
   </data>
   <data name="OnSaleAdvertisement" xml:space="preserve">
-    <value>آگهی های فروش</value>
+    <value>پیشنهاد فروش</value>
   </data>
   <data name="RequestAdvertisement" xml:space="preserve">
-    <value>آگهی های درخواستی</value>
+    <value>درخواست خرید</value>
   </data>
   <data name="RequestToBeSeller" xml:space="preserve">
     <value>درخواست برای فروش</value>
+  </data>
+  <data name="User Tariff" xml:space="preserve">
+    <value>تعرفه ی فعال شما</value>
   </data>
 </root>

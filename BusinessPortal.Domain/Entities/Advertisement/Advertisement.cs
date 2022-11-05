@@ -37,6 +37,8 @@ namespace BusinessPortal.Domain.Entities.Advertisement
 
         public string? DeclineMessage { get; set; }
 
+        public ulong? CountriesId { get; set; }
+
         #endregion
 
         #region Relations
@@ -46,9 +48,14 @@ namespace BusinessPortal.Domain.Entities.Advertisement
 
         [ForeignKey("AddressId")]
         public State State { get; set; }
+
         public List<AdvertisementSelectedCategory> AdvertisementSelectedCategory { get; set; }
+
         public ICollection<AdvertisementTag> AdvertisementTags { get; set; }
+
         public ICollection<AdvertisementInfo> AdvertisementInfo { get; set; }
+
+        public Countries.Countries Countries { get; set; }
 
         #endregion
     }

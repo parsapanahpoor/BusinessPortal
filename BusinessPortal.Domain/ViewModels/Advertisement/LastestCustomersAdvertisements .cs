@@ -1,4 +1,5 @@
 ﻿using BusinessPortal.Domain.Entities.Address;
+using BusinessPortal.Domain.Entities.Countries;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,7 @@ namespace BusinessPortal.Domain.ViewModels.Advertisement
         public DateTime CreateDate { get; set; }
 
         public Address AdvertisementAddress { get; set; }
+
+        public Countries? Countries { get; set; }
     }
 }

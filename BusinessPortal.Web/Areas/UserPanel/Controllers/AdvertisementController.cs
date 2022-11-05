@@ -110,6 +110,13 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
 
             #endregion
 
+            #region Get All Countries
+
+            var countries = _advertisementService.ListOfCountriesForDrowpDown();
+            ViewData["Countriees"] = new SelectList(countries, "Value", "Text");
+
+            #endregion
+
             return View();
         }
 
@@ -117,7 +124,6 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
         public async Task<IActionResult> CreateAdvertisement(CreateRequestAdvertisementFromUserPanel model, List<IFormFile> upload_imgs, List<ulong> SelectedCategory)
         {
             var UserAddress = _stateService.GetUserAddressDrwopDown(User.GetUserId());
-
 
             if (ModelState.IsValid)
             {
@@ -342,6 +348,13 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
 
             ViewData["Address"] = new SelectList(UserAddress, "Value", "Text");
 
+            #region Get All Countries
+
+            var countries = _advertisementService.ListOfCountriesForDrowpDown();
+            ViewData["Countriees"] = new SelectList(countries, "Value", "Text");
+
+            #endregion
+
             return View();
         }
 
@@ -372,6 +385,13 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
 
             #endregion
 
+            #region Get All Countries
+
+            var countries = _advertisementService.ListOfCountriesForDrowpDown();
+            ViewData["Countriees"] = new SelectList(countries, "Value", "Text", ((advertisement.CountryId.HasValue) ? advertisement.CountryId.Value : null));
+
+            #endregion
+
             return View(advertisement);
         }
 
@@ -391,6 +411,13 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
             }
 
             var advertisement = await _advertisementService.GetAdvertisementByID(model.AdvertisementID);
+
+            #region Get All Countries
+
+            var countries = _advertisementService.ListOfCountriesForDrowpDown();
+            ViewData["Countriees"] = new SelectList(countries, "Value", "Text", ((advertisement.CountriesId.HasValue) ? advertisement.CountriesId.Value : null));
+
+            #endregion
 
             if (advertisement == null) return NotFound();
 
@@ -852,6 +879,13 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
 
             #endregion
 
+            #region Get All Countries
+
+            var countries = _advertisementService.ListOfCountriesForDrowpDown();
+            ViewData["Countriees"] = new SelectList(countries, "Value", "Text");
+
+            #endregion
+
             return View();
         }
 
@@ -859,7 +893,6 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
         public async Task<IActionResult> CreateOnSaleAdvertisement(CreateOnSaleAdvertisementFromUserPanel model, List<IFormFile> upload_imgs, List<ulong> SelectedCategory)
         {
             var UserAddress = _stateService.GetUserAddressDrwopDown(User.GetUserId());
-
 
             if (ModelState.IsValid)
             {
@@ -1077,6 +1110,13 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
 
             ViewData["Address"] = new SelectList(UserAddress, "Value", "Text");
 
+            #region Get All Countries
+
+            var countries = _advertisementService.ListOfCountriesForDrowpDown();
+            ViewData["Countriees"] = new SelectList(countries, "Value", "Text");
+
+            #endregion
+
             return View();
         }
 
@@ -1104,6 +1144,13 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
             {
                 ViewBag.AdveritsementAddress = await _advertisementService.GetAddressByAddressId(advertisement.AddressID.Value);
             }
+
+            #endregion
+
+            #region Get All Countries
+
+            var countries = _advertisementService.ListOfCountriesForDrowpDown();
+            ViewData["Countriees"] = new SelectList(countries, "Value", "Text", ((advertisement.CountryId.HasValue) ? advertisement.CountryId.Value : null));
 
             #endregion
 
@@ -1395,6 +1442,12 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
 
             }
 
+            #region Get All Countries
+
+            var countries = _advertisementService.ListOfCountriesForDrowpDown();
+            ViewData["Countriees"] = new SelectList(countries, "Value", "Text", ((advertisement.CountriesId.HasValue) ? advertisement.CountriesId.Value : null));
+
+            #endregion
 
             return View(model);
         }

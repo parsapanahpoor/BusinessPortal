@@ -63,7 +63,7 @@
             </a>
         </li>
 
-        <li>
+       @* <li>
             <a href="#" class="menu-dropdown">
                 <i class="menu-icon glyphicon glyphicon-th-large"></i>
                 <span class="menu-text">  دسته بندی ها </span>
@@ -81,7 +81,7 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </li>*@
 
             <li>
             <a href="#" class="menu-dropdown">
@@ -98,6 +98,26 @@
                 <li>
                     <a asp-action="CreateServiceCategory" asp-area="Admin" asp-controller="Service">
                         <span class="menu-text"> افزودن دسته بندی خدمات  </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon glyphicon glyphicon-th-large"></i>
+                <span class="menu-text">   مکان ها </span>
+                <i class="menu-expand"></i>
+            </a>
+            <ul class="submenu">
+                <li>
+                    <a asp-action="FilterCountries" asp-area="Admin" asp-controller="Countries">
+                        <span class="menu-text"> لیست مکان ها </span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-action="AddCountry" asp-area="Admin" asp-controller="Countries">
+                        <span class="menu-text"> افزودن مکان جدید  </span>
                     </a>
                 </li>
             </ul>
@@ -126,13 +146,18 @@
         <li>
             <a href="#" class="menu-dropdown">
                 <i class="menu-icon	glyphicon glyphicon-list-alt"></i>
-                <span class="menu-text">  لیست آگهی ها </span>
+                <span class="menu-text">پیشنهادات و درخواستها</span>
                 <i class="menu-expand"></i>
             </a>
             <ul class="submenu">
                 <li>
                     <a asp-action="Index" asp-area="Admin" asp-controller="Advertisement">
-                        <span class="menu-text"> لیست آگهی ها </span>
+                        <span class="menu-text"> پیشنهادهای فروش </span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-area="Admin" asp-controller="Advertisement">
+                        <span class="menu-text"> درخواستهای خرید </span>
                     </a>
                 </li>
             </ul>

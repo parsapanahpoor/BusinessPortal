@@ -20,6 +20,8 @@ namespace BusinessPortal.Domain.ViewModels.Admin.Product
         public List<CreateProductCategoryInfoViewModel> ProductCategoryInfos { get; set; }
 
         public ulong? ParentId { get; set; }
+
+        public string? ProductCategoryImage { get; set; }
     }
 
     public class CreateProductCategoryInfoViewModel : BaseInfoViewModel

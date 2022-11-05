@@ -120,6 +120,9 @@
   <data name="AboutUs" xml:space="preserve">
     <value>About Us</value>
   </data>
+  <data name="Account" xml:space="preserve">
+    <value>Account</value>
+  </data>
   <data name="Account management" xml:space="preserve">
     <value>Account management</value>
   </data>
@@ -252,6 +255,9 @@
   <data name="Enter your email" xml:space="preserve">
     <value>Enter your email</value>
   </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Log Out</value>
+  </data>
   <data name="Finland" xml:space="preserve">
     <value>Finland</value>
   </data>
@@ -349,7 +355,7 @@
     <value>More</value>
   </data>
   <data name="New wave" xml:space="preserve">
-    <value>New wave</value>
+    <value>MetaWaveCo</value>
   </data>
   <data name="NewsLetter" xml:space="preserve">
     <value>Subscribe to our newsletter to receive updates and news</value>

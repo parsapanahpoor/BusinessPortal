@@ -121,34 +121,34 @@
     <value>Address</value>
   </data>
   <data name="AdvertisementDescription" xml:space="preserve">
-    <value>Advertisement Description</value>
+    <value>Request Description</value>
   </data>
   <data name="AdvertisementDescriptionPlaceHolder" xml:space="preserve">
-    <value>Fill Advertisement Description</value>
+    <value>Fill Request Description</value>
   </data>
   <data name="AdvertisementImage" xml:space="preserve">
-    <value>Chose Advertisement Image</value>
+    <value>Chose Request Image</value>
   </data>
   <data name="AdvertisementInfo" xml:space="preserve">
-    <value>Ads Info</value>
+    <value>Purchase Request details</value>
   </data>
   <data name="AdvertisementTags" xml:space="preserve">
-    <value>Advertisement Tags</value>
+    <value>Request Tags</value>
   </data>
   <data name="AdvertisementTitle" xml:space="preserve">
-    <value>Advertisement Title</value>
+    <value>Request Title</value>
   </data>
   <data name="AdvertisementTitlePlaceHolder" xml:space="preserve">
-    <value>Fill Advertisement Title</value>
+    <value>Fill Request Title</value>
   </data>
   <data name="AdvertisementURL" xml:space="preserve">
-    <value>Advertisement URL</value>
+    <value>Request URL</value>
   </data>
   <data name="AdvertisementURLPlaceHolder" xml:space="preserve">
-    <value>Fill Advertisement URL</value>
+    <value>Fill Request URL</value>
   </data>
   <data name="PageTitle" xml:space="preserve">
-    <value>Advertisement Title</value>
+    <value>Request Title</value>
   </data>
   <data name="Submit" xml:space="preserve">
     <value>Submit</value>

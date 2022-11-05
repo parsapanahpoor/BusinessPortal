@@ -1,0 +1,89 @@
+﻿@model BusinessPortal.Domain.Entities.Countries.Countries
+@using BusinessPortal.Web.Culture
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = "ویرایش مکان ";
+}
+
+@section Scripts
+    {
+    <partial name="_JqueryValidation" />
+}
+
+    @section Breadcrumbs
+    {
+    <li>
+        <a href="javascript:void(0)"> @ViewData["Title"] </a>
+    </li>
+}
+
+    <form method="post" asp-action="EditCountry" asp-controller="Countries" asp-area="Admin" enctype="multipart/form-data">
+        <input type="hidden" value="@Model.Id" name="countryId" />
+        <div class="row">
+            <div class="col-lg-9 col-sm-12">
+                <div class="widget">
+                    <div class="widget-header bordered-bottom bordered-green">
+
+                        <span class="widget-caption"> ویرایش مکان   </span>
+
+                    </div>
+                    <div class="widget-body">
+                        <div>
+
+                            <div class="row">
+                                <div class="form-group col-md-12 col-sm-12">
+                                    <label>عنوان مکان</label>
+                                    <input type="text" class="form-control" name="uniqueName" value="@Model.CountryUniqueName">
+                                </div>
+
+                            </div>
+
+                            <hr class="margin-bottom-10 margin-top-10" />
+
+                            <div class="row">
+                                <div class="col-md-12 flex-style">
+                                    <button type="submit" class="btn btn-labeled btn-palegreen">
+                                        <i class="btn-label glyphicon glyphicon-ok"></i>ثبت
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-12">
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="widget">
+                            <div class="widget-header bordered-bottom bordered-green">
+                                <span class="widget-caption"> تصویر    </span>
+                            </div>
+                            <div class="widget-body">
+                                <div class="row">
+
+                                    <input type="file" class="display-none" name="flag" id="ArticleImage" ImageInput="1" accept=".jpg,.jpeg,.png" />
+
+                                    <div class="col-md-12">
+                                        <label for="ArticleImage" class="file-input-style">
+                                            <i class="glyphicon glyphicon-upload"></i>
+                                            <span class="mr-8px">لطفا  تصویر را انتخاب کنید .</span>
+                                        </label>
+                                    </div>
+
+                                    <div class="col-md-12 tc mt-10px">
+                                        <img src="@BusinessPortal.Application.StaticTools.PathTools.CountryThumbimage/@Model.FlagName" class="Article-Priew" ImageFile="1" />
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+

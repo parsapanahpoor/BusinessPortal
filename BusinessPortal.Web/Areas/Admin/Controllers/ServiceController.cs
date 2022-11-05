@@ -44,7 +44,7 @@ namespace BusinessPortal.Web.Areas.Admin.Controllers
             return View();
         }
         [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateServiceCategory(CreateServiceCategoryViewModel servicecCategory)
+        public async Task<IActionResult> CreateServiceCategory(CreateServiceCategoryViewModel servicecCategory , IFormFile? serviceCategoryImage)
         {
             #region Model State
 
@@ -64,7 +64,7 @@ namespace BusinessPortal.Web.Areas.Admin.Controllers
 
             #region Add Location 
 
-            var result = await _serviceService.CreateServiceCategory(servicecCategory);
+            var result = await _serviceService.CreateServiceCategory(servicecCategory , serviceCategoryImage);
 
             switch (result)
             {
@@ -118,7 +118,7 @@ namespace BusinessPortal.Web.Areas.Admin.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditServiceCategory(EditServiceCategoryViewModel serviceCategory)
+        public async Task<IActionResult> EditServiceCategory(EditServiceCategoryViewModel serviceCategory, IFormFile? serviceCategoryImage)
         {
             #region Is Exist Service Category By Id
 
@@ -143,7 +143,7 @@ namespace BusinessPortal.Web.Areas.Admin.Controllers
 
             #region Edit Article Category
 
-            var result = await _serviceService.EditService(serviceCategory);
+            var result = await _serviceService.EditService(serviceCategory , serviceCategoryImage);
 
             switch (result)
             {

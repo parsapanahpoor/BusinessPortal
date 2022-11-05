@@ -17,6 +17,7 @@ using BusinessPortal.Domain.Entities.Contact;
 using BusinessPortal.Domain.Entities.Services;
 using System.Globalization;
 using BusinessPortal.Domain.Entities.Product;
+using BusinessPortal.Domain.Entities.Countries;
 
 namespace BusinessPortal.Data.DbContext
 {
@@ -122,6 +123,12 @@ namespace BusinessPortal.Data.DbContext
         public DbSet<ServicesCategory> ServicesCategories { get; set; }
 
         public DbSet<ServicesCategoryInfo> ServicesCategoryInfos { get; set; }
+
+        #endregion
+
+        #region Countries
+
+        public DbSet<Countries> Countries { get; set; }
 
         #endregion
 

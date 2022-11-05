@@ -306,6 +306,9 @@ namespace BusinessPortal.Data.Migrations
                     b.Property<int>("AdvertisementStatus")
                         .HasColumnType("int");
 
+                    b.Property<decimal?>("CountriesId")
+                        .HasColumnType("decimal(20,0)");
+
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
@@ -343,6 +346,8 @@ namespace BusinessPortal.Data.Migrations
                     b.HasIndex("AddressId");
 
                     b.HasIndex("AddressId1");
+
+                    b.HasIndex("CountriesId");
 
                     b.HasIndex("UserId");
 
@@ -617,6 +622,33 @@ namespace BusinessPortal.Data.Migrations
                     b.ToTable("TicketMessages");
                 });
 
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Countries.Countries", b =>
+                {
+                    b.Property<decimal>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(20,0)");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
+
+                    b.Property<string>("CountryUniqueName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FlagName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Countries");
+                });
+
             modelBuilder.Entity("BusinessPortal.Domain.Entities.Language.Language", b =>
                 {
                     b.Property<string>("LanguageTitle")
@@ -711,6 +743,9 @@ namespace BusinessPortal.Data.Migrations
                     b.Property<decimal?>("ParentId")
                         .HasColumnType("decimal(20,0)");
 
+                    b.Property<string>("ProductCategoryImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UniqueName")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -777,6 +812,9 @@ namespace BusinessPortal.Data.Migrations
 
                     b.Property<decimal?>("ParentId")
                         .HasColumnType("decimal(20,0)");
+
+                    b.Property<string>("ServiceCategoryImage")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UniqueName")
                         .IsRequired()
@@ -1145,11 +1183,18 @@ namespace BusinessPortal.Data.Migrations
                         .HasForeignKey("AddressId1")
                         .OnDelete(DeleteBehavior.Restrict);
 
+                    b.HasOne("BusinessPortal.Domain.Entities.Countries.Countries", "Countries")
+                        .WithMany("Advertisement")
+                        .HasForeignKey("CountriesId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("BusinessPortal.Domain.Entities.Account.User", "User")
                         .WithMany("Advertisements")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Countries");
 
                     b.Navigation("State");
 
@@ -1432,6 +1477,11 @@ namespace BusinessPortal.Data.Migrations
             modelBuilder.Entity("BusinessPortal.Domain.Entities.Contact.Ticket", b =>
                 {
                     b.Navigation("TicketMessages");
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Countries.Countries", b =>
+                {
+                    b.Navigation("Advertisement");
                 });
 
             modelBuilder.Entity("BusinessPortal.Domain.Entities.Language.Language", b =>

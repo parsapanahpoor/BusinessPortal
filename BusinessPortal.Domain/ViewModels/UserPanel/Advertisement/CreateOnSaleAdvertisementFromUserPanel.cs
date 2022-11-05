@@ -26,6 +26,9 @@ namespace BusinessPortal.Domain.ViewModels.UserPanel.Advertisement
         [Required(ErrorMessage = "Please Enter {0}")]
         public ulong? AddressID { get; set; }
 
+        [Display(Name = "Country")]
+        public ulong? CountryId { get; set; }
+
         public ulong? UserId { get; set; }
 
         [Display(Name = "Title  ")]

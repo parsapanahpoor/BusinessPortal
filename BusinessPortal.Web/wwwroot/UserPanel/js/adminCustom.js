@@ -81,7 +81,7 @@ $('[ajax-url-button]').on('click', function (e) {
     var itemId = $(this).attr('ajax-url-button');
     swal({
         title: 'Warning',
-        text: "Are you sure you want to perform the operation?
+        text: "Are you sure you want to perform the operation?,
         type: "warning",
         showCancelButton: true,
         confirmButtonClass: "btn-danger",
