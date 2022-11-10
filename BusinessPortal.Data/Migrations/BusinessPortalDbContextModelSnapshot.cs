@@ -289,6 +289,102 @@ namespace BusinessPortal.Data.Migrations
                     b.ToTable("Addresses");
                 });
 
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Ads.Ads", b =>
+                {
+                    b.Property<decimal>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(20,0)");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
+
+                    b.Property<string>("AdsImage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("UserId")
+                        .HasColumnType("decimal(20,0)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Ads");
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Ads.AdsGallery", b =>
+                {
+                    b.Property<decimal>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(20,0)");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
+
+                    b.Property<decimal>("AdsId")
+                        .HasColumnType("decimal(20,0)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AdsId");
+
+                    b.ToTable("AdsGalleries");
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Ads.AdsInfo", b =>
+                {
+                    b.Property<decimal>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(20,0)");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
+
+                    b.Property<decimal>("AdsId")
+                        .HasColumnType("decimal(20,0)");
+
+                    b.Property<string>("AdsName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Lang_Id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LongDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShortDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AdsId");
+
+                    b.ToTable("AdsInfo");
+                });
+
             modelBuilder.Entity("BusinessPortal.Domain.Entities.Advertisement.Advertisement", b =>
                 {
                     b.Property<decimal>("Id")
@@ -1171,6 +1267,39 @@ namespace BusinessPortal.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Ads.Ads", b =>
+                {
+                    b.HasOne("BusinessPortal.Domain.Entities.Account.User", "User")
+                        .WithMany("Ads")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Ads.AdsGallery", b =>
+                {
+                    b.HasOne("BusinessPortal.Domain.Entities.Ads.Ads", "Ads")
+                        .WithMany("AdsGalleries")
+                        .HasForeignKey("AdsId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Ads");
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Ads.AdsInfo", b =>
+                {
+                    b.HasOne("BusinessPortal.Domain.Entities.Ads.Ads", "Ads")
+                        .WithMany("AdsInfos")
+                        .HasForeignKey("AdsId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Ads");
+                });
+
             modelBuilder.Entity("BusinessPortal.Domain.Entities.Advertisement.Advertisement", b =>
                 {
                     b.HasOne("BusinessPortal.Domain.Entities.Location.State", "State")
@@ -1430,6 +1559,8 @@ namespace BusinessPortal.Data.Migrations
                 {
                     b.Navigation("Addresses");
 
+                    b.Navigation("Ads");
+
                     b.Navigation("Advertisements");
 
                     b.Navigation("RequestForSeller")
@@ -1456,6 +1587,13 @@ namespace BusinessPortal.Data.Migrations
             modelBuilder.Entity("BusinessPortal.Domain.Entities.Address.Address", b =>
                 {
                     b.Navigation("Advertisement");
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Ads.Ads", b =>
+                {
+                    b.Navigation("AdsGalleries");
+
+                    b.Navigation("AdsInfos");
                 });
 
             modelBuilder.Entity("BusinessPortal.Domain.Entities.Advertisement.Advertisement", b =>

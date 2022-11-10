@@ -126,6 +126,12 @@
   <data name="AddAdvertisement2" xml:space="preserve">
     <value>ایجاد درخواست جدید</value>
   </data>
+  <data name="Ads" xml:space="preserve">
+    <value>تبلیغات</value>
+  </data>
+  <data name="Create Ads" xml:space="preserve">
+    <value>ایجاد تبلیغات</value>
+  </data>
   <data name="Create Ticket" xml:space="preserve">
     <value>افزودن تیکت ها </value>
   </data>
@@ -134,6 +140,9 @@
   </data>
   <data name="Days Left" xml:space="preserve">
     <value>روز باقی مانده</value>
+  </data>
+  <data name="List Of Ads" xml:space="preserve">
+    <value>لیست تبلیغات</value>
   </data>
   <data name="List Of Tickets" xml:space="preserve">
     <value>لیست تیکت ها</value>

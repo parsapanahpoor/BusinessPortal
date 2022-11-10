@@ -18,6 +18,7 @@ using BusinessPortal.Domain.Entities.Services;
 using System.Globalization;
 using BusinessPortal.Domain.Entities.Product;
 using BusinessPortal.Domain.Entities.Countries;
+using BusinessPortal.Domain.Entities.Ads;
 
 namespace BusinessPortal.Data.DbContext
 {
@@ -123,6 +124,16 @@ namespace BusinessPortal.Data.DbContext
         public DbSet<ServicesCategory> ServicesCategories { get; set; }
 
         public DbSet<ServicesCategoryInfo> ServicesCategoryInfos { get; set; }
+
+        #endregion
+
+        #region Ads 
+
+        public DbSet<Ads> Ads { get; set; }
+
+        public DbSet<AdsGallery> AdsGalleries { get; set; }
+
+        public DbSet<AdsInfo> AdsInfo { get; set; }
 
         #endregion
 

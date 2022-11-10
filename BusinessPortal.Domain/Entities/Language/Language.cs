@@ -18,7 +18,6 @@ namespace BusinessPortal.Domain.Entities.Language
 
         #endregion
 
-
         #region Navigation
 
         public ICollection<ServicesCategoryInfo> ServicesCategoryInfos { get; set; }

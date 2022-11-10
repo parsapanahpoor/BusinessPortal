@@ -108,5 +108,17 @@ namespace BusinessPortal.Application.StaticTools
         public static string CountryimageServerOriginThumb = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/Country/Thumb/");
 
         #endregion
+
+        #region Ads 
+
+        public static string DefaultAdsimage = "/UploadedImages/DefaultImages/Default.png";
+
+        public static string AdsOriginimage = "/UploadedImages/AdsImages/Origin/";
+        public static string AdsThumbimage = "/UploadedImages/AdsImages/Thumb/";
+        public static string AdsimageServerOrigin = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/AdsImages/Origin/");
+        public static string AdsImageServerThumb = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/AdsImages/Thumb/");
+        public static string AdsimageServerOriginThumb = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/AdsImages/Thumb/");
+
+        #endregion
     }
 }

@@ -1438,8 +1438,6 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
 
                         break;
                 }
-
-
             }
 
             #region Get All Countries

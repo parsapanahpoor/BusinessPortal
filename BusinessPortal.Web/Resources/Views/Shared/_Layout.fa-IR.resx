@@ -126,6 +126,9 @@
   <data name="Account management" xml:space="preserve">
     <value>مدیریت حساب</value>
   </data>
+  <data name="Ads" xml:space="preserve">
+    <value>تبلیغات</value>
+  </data>
   <data name="AdvertisementCategories" xml:space="preserve">
     <value>دسته بندی خدمات</value>
   </data>

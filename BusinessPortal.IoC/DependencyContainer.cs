@@ -31,6 +31,7 @@ namespace BusinessPortal.IoC
             services.AddScoped<ITicketService , TicketService>();
             services.AddScoped<IServiceService , ServiceService>();
             services.AddScoped<IProductService , ProductService>();
+            services.AddScoped<IAdsService , AdsService>();
 
             #endregion
 

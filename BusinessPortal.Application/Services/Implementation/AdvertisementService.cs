@@ -1666,7 +1666,6 @@ namespace BusinessPortal.Application.Services.Implementation
 
             #endregion
 
-
             #region Get Current Advertisements
 
             var advertisement = await _context.advertisementInfo
@@ -1797,7 +1796,7 @@ namespace BusinessPortal.Application.Services.Implementation
             return await _context.Countries.FirstOrDefaultAsync(p => !p.IsDelete && p.Id == countryId);
         }
 
-        //Edit Country
+        //Edit Countrym
         public async Task<bool> EditCountry(ulong countryId, string uniqueName, IFormFile? flag)
         {
             #region Get CountryId 

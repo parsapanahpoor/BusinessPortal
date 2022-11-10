@@ -1,0 +1,160 @@
+﻿@model BusinessPortal.Domain.ViewModels.UserPanel.Ads.AdsViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _Localizer
+@using System.Globalization
+
+@{
+    ViewData["Title"] = _Localizer["PageTitle"];
+}
+
+@using BusinessPortal.Application.Utils
+@using BusinessPortal.Domain.Entities.Advertisement
+
+
+@section styles{
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <style>
+
+
+        .quote-imgs-thumbs {
+            background: #eee;
+            border: 1px solid #ccc;
+            border-radius: 0.25rem;
+            margin: 1.5rem 0;
+            padding: 0.75rem;
+        }
+
+        .quote-imgs-thumbs--hidden {
+            display: none;
+        }
+
+        .img-preview-thumb {
+            background: #fff;
+            border: 1px solid #777;
+            border-radius: 0.25rem;
+            box-shadow: 0.125rem 0.125rem 0.0625rem rgba(0, 0, 0, 0.12);
+            margin-right: 1rem;
+            max-width: 140px;
+            padding: 0.25rem;
+        }
+
+        tags.tagify {
+            height: auto !important;
+        }
+
+
+        .ck-content {
+            height: 200px;
+        }
+    </style>
+
+}
+
+@section scripts{
+
+    <partial name="_JqueryValidators" />
+
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+
+        var imgUpload = document.getElementById('upload_imgs')
+            , imgPreview = document.getElementById('img_preview')
+            , imgUploadForm = document.getElementById('img-upload-form')
+            , totalFiles
+            , previewTitle
+            , previewTitleText
+            , img;
+
+        imgUpload.addEventListener('change', previewImgs, false);
+        imgUploadForm.addEventListener('submit', function (e) {
+            //e.preventDefault();
+            //alert('Images Uploaded! (not really, but it would if this was on your website)');
+        }, false);
+
+        function previewImgs(event) {
+            $("#img_preview").empty();
+            totalFiles = imgUpload.files.length;
+
+            if (!!totalFiles) {
+                imgPreview.classList.remove('quote-imgs-thumbs--hidden');
+                previewTitle = document.createElement('p');
+                previewTitle.style.fontWeight = 'bold';
+                previewTitleText = document.createTextNode(totalFiles + '  عکس انتخاب شده');
+                previewTitle.appendChild(previewTitleText);
+                imgPreview.appendChild(previewTitle);
+            }
+
+            for (var i = 0; i < totalFiles; i++) {
+                img = document.createElement('img');
+                img.src = URL.createObjectURL(event.target.files[i]);
+                img.classList.add('img-preview-thumb');
+                imgPreview.appendChild(img);
+            }
+        }
+
+    </script>
+}
+
+
+<div class="content-body" style=" margin-right:0px ; padding-top:0px;">
+    <div class="container-fluid">
+        <form asp-controller="Ads" asp-area="UserPanel" asp-action="CreateAds" method="post" enctype="multipart/form-data">
+
+            <div class="row">
+
+                <div class="col-xl-12 col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>@_Localizer["Ads Info"]</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="basic-form">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                <div class="form-row">
+
+                                    <div class="form-group col-md-12">
+                                        <label>  @_Localizer["Ads Name"]    </label>
+                                        <input asp-for="AdsName" type="text" class="form-control" placeholder=" @_Localizer["Ads Name"] ">
+                                            <span asp-validation-for="AdsName" class="text-danger"></span>
+                                    </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label>  @_Localizer["Short Description"]    </label>
+                                            <input asp-for="ShortDescription" type="text" class="form-control" placeholder=" @_Localizer["Short Description"] ">
+                                            <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                                        </div>
+
+
+                                        <div class="grid-x grid-padding-x pt-3">
+                                            <div class="small-10 small-offset-1 medium-8 medium-offset-2 cell">
+                                                <p>
+                                                    <label for="upload_imgs" @*class="button hollow"*@ class="btn btn-success">@Localizer["Choose Your Image"]</label>
+                                                    <input class="show-for-sr" style="display:none" type="file" id="upload_imgs" name="upload_imgs" multiple />
+                                                </p>
+                                                <div class="quote-imgs-thumbs quote-imgs-thumbs--hidden" id="img_preview" aria-live="polite"></div>
+                                            </div>
+                                        </div>
+
+                                    <div class="form-group col-md-12">
+                                            <label>  @_Localizer["Long Description"]      </label>
+                                        <textarea asp-for="LongDescription" rows="10" class="form-control" placeholder=" @_Localizer["Long Description"] "></textarea>
+                                        <span asp-validation-for="LongDescription" class="text-danger"></span>
+                                    </div>
+
+                                </div>
+
+                                <button type="submit" class="btn btn-outline-primary">@_Localizer["Submit"]</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+

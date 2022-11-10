@@ -1,4 +1,5 @@
 ﻿using BusinessPortal.Domain.Entities.Account;
+using BusinessPortal.Domain.Entities.Ads;
 using BusinessPortal.Domain.Entities.Advertisement;
 using BusinessPortal.Domain.Entities.Common;
 using BusinessPortal.Domain.Entities.Contact;
@@ -91,6 +92,8 @@ namespace BusinessPortal.Domain.Entities.Account
         public ICollection<Ticket> Tickets { get; set; }
 
         public ICollection<TicketMessage> TicketMessages { get; set; }
+
+        public ICollection<Ads.Ads> Ads { get; set; }
 
         #endregion
     }
