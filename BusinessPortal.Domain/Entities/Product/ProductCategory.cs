@@ -32,6 +32,8 @@ namespace BusinessPortal.Domain.Entities.Product
 
         public ProductCategory Parent { get; set; }
 
+        public List<ProductSelectedCategories> ProductSelectedCategories { get; set; }
+
         #endregion
     }
 }

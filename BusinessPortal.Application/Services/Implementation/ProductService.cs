@@ -1,14 +1,21 @@
-﻿using BusinessPortal.Application.Extensions;
+﻿using BusinessPortal.Application.Convertors;
+using BusinessPortal.Application.Extensions;
 using BusinessPortal.Application.Security;
 using BusinessPortal.Application.Services.Interfaces;
 using BusinessPortal.Application.StaticTools;
+using BusinessPortal.Data.DbContext;
 using BusinessPortal.Domain.Entities.Product;
+using BusinessPortal.Domain.Entities.Services;
 using BusinessPortal.Domain.Interfaces;
 using BusinessPortal.Domain.ViewModels.Admin.Product;
+using BusinessPortal.Domain.ViewModels.UserPanel.Product;
+using BusinessPortal.Domain.ViewModels.UserPanel.ProductService;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Drawing2D;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,9 +28,12 @@ namespace BusinessPortal.Application.Services.Implementation
 
         private readonly IProductRepository _productRepository;
 
-        public ProductService(IProductRepository productRepository)
+        private readonly BusinessPortalDbContext _context;
+
+        public ProductService(IProductRepository productRepository , BusinessPortalDbContext context)
         {
             _productRepository = productRepository;
+            _context = context;
         }
 
         #endregion
@@ -228,6 +238,346 @@ namespace BusinessPortal.Application.Services.Implementation
 
             //Delete Product And Service Category Info
             await _productRepository.DeleteProductCategory(productCategory);
+
+            return true;
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Product
+
+        #region User Panel Side
+
+        //Product Category
+        public async Task<List<CreateProductViewModel>> FillCreateProductViewModel()
+        {
+            return await _context.ProductCategories.Include(p => p.ProductCategoryInfos)
+                .Where(p => !p.IsDelete)
+                .Select(p => new CreateProductViewModel()
+                {
+                    ProductCategoryName = p.UniqueName,
+                    ParentId = p.ParentId,
+                    ProductId = p.Id
+                }).ToListAsync();
+        }
+
+        //Add Product From User Panel
+        public async Task<CreateProductFromUserPanelResult> AddProductFromUserPanel(AddProductViewModel model, List<IFormFile> upload_imgs, List<ulong> SelectedCategory)
+        {
+            string lang = CultureInfo.CurrentCulture.Name;
+
+            if (upload_imgs.Count > 10)
+            {
+                return CreateProductFromUserPanelResult.ImageCountNotValid;
+            }
+
+            #region Product Properties
+
+            Domain.Entities.Product.Product ads = new Domain.Entities.Product.Product()
+            {
+                AddressId = model.AddressID,
+                UserId = (ulong)model.UserId,
+                ImageName = null,
+                CreateDate = DateTime.Now,
+            };
+
+            #endregion
+
+            #region Product Service Image
+
+            if (upload_imgs != null && upload_imgs.Any())
+            {
+                foreach (var item in upload_imgs)
+                {
+                    if (item.IsImage())
+                    {
+                        var imageName = Guid.NewGuid() + Path.GetExtension(item.FileName);
+                        item.AddImageToServer(imageName, PathTools.ProductimageServerOrigin, 150, 150, PathTools.ProductImageServerThumb);
+                        ads.ImageName = imageName;
+
+                    }
+
+                    if (item != null && !item.IsImage())
+                    {
+                        return CreateProductFromUserPanelResult.ImageIsNotExist;
+                    }
+                }
+            }
+            else
+            {
+                return CreateProductFromUserPanelResult.ImageIsNotValid;
+            }
+
+            #endregion
+
+            await _context.Products.AddAsync(ads);
+            await _context.SaveChangesAsync();
+
+            #region Add Product Category
+
+            foreach (var item in SelectedCategory)
+            {
+                ProductSelectedCategories Category = new ProductSelectedCategories()
+                {
+                    CategoryId = item,
+                    ProductId = ads.Id
+                };
+
+                await _context.ProductSelectedCategories.AddAsync(Category);
+            }
+
+            await _context.SaveChangesAsync();
+
+            #endregion
+
+            #region Product Info Properties
+
+            ProductInfo adsInfo = new ProductInfo()
+            {
+                ProductId = ads.Id,
+                Lang_Id = lang,
+                Title = model.Title.SanitizeText(),
+                Description = model.Description.ConvertNewLineToBr().SanitizeText(),
+                CreateDate = DateTime.Now
+            };
+
+            await _context.ProductInfos.AddAsync(adsInfo);
+            await _context.SaveChangesAsync();
+
+            #endregion
+
+            return CreateProductFromUserPanelResult.Success;
+        }
+
+        //Filter Product  
+        public async Task<FilterProductViewModel> FilterProductUserSide(FilterProductViewModel filter)
+        {
+            var query = _context.Products
+                            .Where(p => p.UserId == filter.UserId && !p.IsDelete)
+                            .Include(s => s.User)
+                            .Include(s => s.State)
+                            .Include(p => p.ProductSelectedCategories)
+                            .ThenInclude(p => p.ProductCategory)
+                            .Include(p => p.ProductInfo)
+                            .ThenInclude(p => p.Language)
+                            .OrderByDescending(p => p.CreateDate)
+                            .AsQueryable();
+
+            await filter.Paging(query);
+
+            return filter;
+        }
+
+        //Fill Edit Product View Model
+        public async Task<EditProductViewModel> FillEditProductViewModel(ulong Id)
+        {
+            var lang = CultureInfo.CurrentCulture.Name;
+
+            var Ads = await _context.Products
+                .Include(s => s.User)
+                .Include(s => s.State)
+                .ThenInclude(s => s.AddressesState)
+                .FirstOrDefaultAsync(p => p.Id == Id);
+
+            if (Ads == null) return null;
+
+            #region Fill View Model
+
+            EditProductViewModel model = new EditProductViewModel()
+            {
+                AdvertisementID = Ads.Id,
+                AddressID = Ads.AddressId,
+                UserId = Ads.UserId,
+                AdsImage = Ads.ImageName,
+            };
+
+            #endregion
+
+            #region Product Info
+
+            var adsInfo = await _context.ProductInfos.FirstOrDefaultAsync(p => p.ProductId == Ads.Id
+                                                        && p.Lang_Id == lang && !p.IsDelete);
+
+            if (adsInfo != null)
+            {
+                model.Title = adsInfo.Title;
+                model.Description = adsInfo.Description;
+            }
+
+            #endregion
+
+            return model;
+        }
+
+        //Get All Product Categories
+        public async Task<List<ulong>> GetAllPRoductCategories(ulong Id)
+        {
+            return await _context.ProductSelectedCategories
+                .Where(p => p.ProductId == Id)
+                .Select(p => p.CategoryId)
+                .ToListAsync();
+        }
+
+        //Get Address By Address Id
+        public async Task<Domain.Entities.Address.Address?> GetAddressByAddressId(ulong AddressId)
+        {
+            return await _context.Addresses.SingleOrDefaultAsync(p => p.Id == AddressId);
+        }
+
+        //Get Product By Id 
+        public async Task<Domain.Entities.Product.Product?> GetProductById(ulong Id)
+        {
+            return await _context.Products.FirstOrDefaultAsync(p => p.Id == Id);
+        }
+
+        //Edit Product 
+        public async Task<EditRequestProductFromUserPanelResualt> EditProductFromUserPanel(EditProductViewModel model, IFormFile ImageName, List<IFormFile> upload_imgs, List<ulong> SelectedCategory)
+        {
+            var lang = CultureInfo.CurrentCulture.Name;
+
+            var Ads = await _context.Products
+                .Include(s => s.User)
+                .Include(s => s.State)
+                .ThenInclude(s => s.AddressesState)
+                .FirstOrDefaultAsync(p => p.Id == model.AdvertisementID && p.UserId == model.UserId && !p.IsDelete);
+
+            if (Ads == null)
+            {
+                return EditRequestProductFromUserPanelResualt.NotFound;
+            }
+
+            #region Properties
+
+
+            #endregion
+
+            #region Product Info 
+
+            var adsInfo = await _context.ProductInfos.FirstOrDefaultAsync(p => p.ProductId == Ads.Id
+                                                           && p.Lang_Id == lang && !p.IsDelete);
+
+            if (adsInfo == null)
+            {
+                ProductInfo advertisementInfo = new ProductInfo()
+                {
+                    ProductId = Ads.Id,
+                    Lang_Id = lang,
+                    Description = model.Description.SanitizeText(),
+                    Title = model.Title.SanitizeText(),
+                    CreateDate = DateTime.Now
+                };
+
+                await _context.ProductInfos.AddAsync(advertisementInfo);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                adsInfo.Title = model.Title.SanitizeText();
+                adsInfo.Description = model.Description.SanitizeText();
+
+                _context.ProductInfos.Update(adsInfo);
+                await _context.SaveChangesAsync();
+            }
+
+            #endregion
+
+            #region Image Part
+
+            if (ImageName != null && ImageName.IsImage())
+            {
+                if (Ads.ImageName != "Default.png")
+                {
+                    var imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(ImageName.FileName);
+
+                    var res = ImageName.AddImageToServer(imageName, PathTools.ProductimageServerOrigin, 150, 150
+                     , PathTools.ProductimageServerOriginThumb, Ads.ImageName);
+
+                    if (res)
+                    {
+                        Ads.ImageName = imageName;
+                    }
+                }
+                else
+                {
+                    var imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(ImageName.FileName);
+
+                    var res = ImageName.AddImageToServer(imageName, PathTools.ProductimageServerOrigin, 150, 150
+                     , PathTools.ProductImageServerThumb);
+
+                    if (res)
+                    {
+                        Ads.ImageName = imageName;
+                    }
+                }
+
+            }
+
+            if (ImageName != null && !ImageName.IsImage())
+            {
+                return EditRequestProductFromUserPanelResualt.ImageIsNotValid;
+            }
+
+            if (ImageName == null && string.IsNullOrEmpty(model.AdsImage))
+            {
+                return EditRequestProductFromUserPanelResualt.ImageIsNotFound;
+            }
+
+            #endregion
+
+            #region Categories
+
+            var selected = await _context.ProductSelectedCategories.Where(p => p.ProductId == model.AdvertisementID).ToListAsync();
+
+            foreach (var item in selected)
+            {
+                _context.ProductSelectedCategories.Remove(item);
+            }
+
+            foreach (var item in SelectedCategory)
+            {
+                ProductSelectedCategories Category = new ProductSelectedCategories()
+                {
+                    CategoryId = item,
+                    ProductId = Ads.Id
+                };
+
+                await _context.ProductSelectedCategories.AddAsync(Category);
+            }
+
+            #endregion
+
+            _context.Products.Update(Ads);
+            await _context.SaveChangesAsync();
+
+            return EditRequestProductFromUserPanelResualt.Success;
+        }
+
+        //Delete Product 
+        public async Task<bool> DeleteProductFromUserPanel(ulong productId, ulong userId)
+        {
+            var ads = await _context.Products.FirstOrDefaultAsync(p => p.Id == productId && p.UserId == userId && !p.IsDelete);
+
+            if (ads == null) return false;
+
+            ads.IsDelete = true;
+
+            var adsInfo = await _context.ProductInfos.Where(p => p.ProductId == productId
+                                        && !p.IsDelete).ToListAsync();
+
+            if (adsInfo != null && adsInfo.Any())
+            {
+                foreach (var item in adsInfo)
+                {
+                    item.IsDelete = true;
+
+                    _context.ProductInfos.Update(item);
+                }
+            }
+
+            _context.Products.Update(ads);
+            await _context.SaveChangesAsync();
 
             return true;
         }

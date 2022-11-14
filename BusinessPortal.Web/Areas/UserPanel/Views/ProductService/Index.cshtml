@@ -1,0 +1,113 @@
+﻿@model BusinessPortal.Domain.ViewModels.UserPanel.ProductService.FilterProductServiceViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _Localizer
+@using System.Globalization
+
+@{
+    ViewData["Title"] = @_Localizer["PageTitle"];
+}
+
+@using BusinessPortal.Application.Utils
+@using BusinessPortal.Domain.ViewModels.UserPanel.Advertisement
+@using BusinessPortal.Domain.Entities.Advertisement
+@using BusinessPortal.Domain.ViewModels.Common
+@using BusinessPortal.Application.Extensions
+@using BusinessPortal.Application.StaticTools
+@using BusinessPortal.Application.Convertors
+
+@section scripts{
+
+}
+
+    <div class="content-body" style="min-height: 908px; margin-right:0px ; padding-top:0px;">
+        <div class="container-fluid">
+
+            <form method="get" asp-area="UserPanel" asp-controller="ProductService" asp-action="Index" id="filter-form">
+                <div class="row">
+
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between">
+                            <div class="d-flex">
+                                <h4 class="card-title mr-3">
+                                    @ViewData["Title"]
+                                </h4>
+                                <span>@Model.GetShownEntitiesPagesTitle()</span>
+
+                            </div>
+
+                                <a asp-area="UserPanel" asp-controller="ProductService" asp-action="CreateAdvertisement" title="@_Localizer["Create"]" class="btn btn-rounded btn-primary"><span class="btn-icon-left text-primary"><i class="fa fa-plus color-primary"></i></span>@_Localizer["Create"]</a>
+
+                        </div>
+                        <div class="card-body">
+                            @if (Model.Entities != null && Model.Entities.Any())
+                            {
+                                <div class="table-responsive">
+                                    <table class="table table-responsive-md">
+                                        <thead>
+                                            <tr>
+                                                <th class="tc"><strong>  @_Localizer["Image"]</strong></th>
+                                                <th class="tc"><strong>@_Localizer["Languages"]   </strong></th>
+                                                <th class="tc"><strong> @_Localizer["StartDate"] </strong></th>
+                                                <th class="tc"><strong></strong></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.Entities)
+                                            {
+                                                <tr id="ajax-url-item-@item.Id">
+                                                    <td class="tc">
+                                                        <img style="border-radius:50%;height:70px;width:70px" src="@((string.IsNullOrEmpty(item.ImageName))? PathTools.DefaultAdvertisementimage : PathTools.ProductServiceOriginimage + item.ImageName )" />
+                                                    </td>
+                                                    <td class="tc">
+                                                        @if (item.ProductServiceInfo != null && item.ProductServiceInfo.Any())
+                                                        {
+                                                            foreach (var langs in item.ProductServiceInfo)
+                                                            {
+                                                                <div class="badge light badge-dark cursor-pointer">@langs.Language.LanguageTitle</div>
+                                                            }
+                                                        }
+                                                    </td>
+
+                                                    <td class="tc">
+                                                       @item.CreateDate
+                                                    </td>
+
+                                                    <td class="tc">
+
+                                                        @if (item.ProductServiceInfo.Any(p => p.Lang_Id == CultureInfo.CurrentCulture.Name))
+                                                        {
+                                                            <a title="@_Localizer["Edit Language"]" asp-area="UserPanel" asp-controller="ProductService" asp-action="EditAdvertisement" asp-route-Id="@item.Id" class="btn btn-warning shadow btn-xs sharp m-1"><i class="fa fa-edit"></i></a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <a title="@_Localizer["Edit Language"]" asp-area="UserPanel" asp-controller="ProductService" asp-action="EditAdvertisement" asp-route-Id="@item.Id" class="btn btn-success shadow btn-xs sharp m-1"><i class="fa fa-edit"></i></a>
+                                                        }
+                                                        @if (!item.IsDelete)
+                                                        {
+                                                            <a ajax-url-button="@item.Id" title="حذف" asp-area="UserPanel" asp-controller="ProductService" asp-action="DeleteRequestAdvertisement" asp-route-Id="@item.Id" class="btn btn-danger shadow btn-xs sharp m-1"><i class="fa fa-trash"></i></a>
+                                                        }
+
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <partial name="_UserPagingPartial" model="Model.GetCurrentPaging()" />
+                            }
+                            else
+                            {
+                                <partial name="_NoItemFoundPartial" />
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+</div>
+
+

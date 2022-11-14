@@ -368,7 +368,7 @@ namespace BusinessPortal.Data.Migrations
 
                     b.Property<string>("Lang_Id")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("LongDescription")
                         .IsRequired()
@@ -381,6 +381,8 @@ namespace BusinessPortal.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AdsId");
+
+                    b.HasIndex("Lang_Id");
 
                     b.ToTable("AdsInfo");
                 });
@@ -819,6 +821,40 @@ namespace BusinessPortal.Data.Migrations
                     b.ToTable("States");
                 });
 
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Product.Product", b =>
+                {
+                    b.Property<decimal>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(20,0)");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
+
+                    b.Property<decimal?>("AddressId")
+                        .HasColumnType("decimal(20,0)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageName")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("UserId")
+                        .HasColumnType("decimal(20,0)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AddressId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Products");
+                });
+
             modelBuilder.Entity("BusinessPortal.Domain.Entities.Product.ProductCategory", b =>
                 {
                     b.Property<decimal>("Id")
@@ -887,6 +923,176 @@ namespace BusinessPortal.Data.Migrations
                     b.HasIndex("ProductCategoryId");
 
                     b.ToTable("ProductCategoryInfos");
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Product.ProductInfo", b =>
+                {
+                    b.Property<decimal>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(20,0)");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Lang_Id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<decimal>("ProductId")
+                        .HasColumnType("decimal(20,0)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(400)
+                        .HasColumnType("nvarchar(400)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Lang_Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductInfos");
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Product.ProductSelectedCategories", b =>
+                {
+                    b.Property<decimal>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(20,0)");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
+
+                    b.Property<decimal>("CategoryId")
+                        .HasColumnType("decimal(20,0)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("ProductId")
+                        .HasColumnType("decimal(20,0)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductSelectedCategories");
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Services.ProductService", b =>
+                {
+                    b.Property<decimal>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(20,0)");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
+
+                    b.Property<decimal?>("AddressId")
+                        .HasColumnType("decimal(20,0)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageName")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("UserId")
+                        .HasColumnType("decimal(20,0)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AddressId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ProductService");
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Services.ProductServiceInfo", b =>
+                {
+                    b.Property<decimal>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(20,0)");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Lang_Id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<decimal>("ProductServiceId")
+                        .HasColumnType("decimal(20,0)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(400)
+                        .HasColumnType("nvarchar(400)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Lang_Id");
+
+                    b.HasIndex("ProductServiceId");
+
+                    b.ToTable("ProductServiceInfo");
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Services.ProductServiceSelectedService", b =>
+                {
+                    b.Property<decimal>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(20,0)");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("ProductServiceId")
+                        .HasColumnType("decimal(20,0)");
+
+                    b.Property<decimal>("ServiceId")
+                        .HasColumnType("decimal(20,0)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductServiceId");
+
+                    b.HasIndex("ServiceId");
+
+                    b.ToTable("ProductServiceSelectedService");
                 });
 
             modelBuilder.Entity("BusinessPortal.Domain.Entities.Services.ServicesCategory", b =>
@@ -1297,7 +1503,15 @@ namespace BusinessPortal.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("BusinessPortal.Domain.Entities.Language.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("Lang_Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("Ads");
+
+                    b.Navigation("Language");
                 });
 
             modelBuilder.Entity("BusinessPortal.Domain.Entities.Advertisement.Advertisement", b =>
@@ -1449,6 +1663,24 @@ namespace BusinessPortal.Data.Migrations
                     b.Navigation("Parent");
                 });
 
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Product.Product", b =>
+                {
+                    b.HasOne("BusinessPortal.Domain.Entities.Location.State", "State")
+                        .WithMany()
+                        .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("BusinessPortal.Domain.Entities.Account.User", "User")
+                        .WithMany("Products")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("State");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("BusinessPortal.Domain.Entities.Product.ProductCategory", b =>
                 {
                     b.HasOne("BusinessPortal.Domain.Entities.Product.ProductCategory", "Parent")
@@ -1476,6 +1708,100 @@ namespace BusinessPortal.Data.Migrations
                     b.Navigation("Language");
 
                     b.Navigation("ProductCategory");
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Product.ProductInfo", b =>
+                {
+                    b.HasOne("BusinessPortal.Domain.Entities.Language.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("Lang_Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("BusinessPortal.Domain.Entities.Product.Product", "Product")
+                        .WithMany("ProductInfo")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Language");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Product.ProductSelectedCategories", b =>
+                {
+                    b.HasOne("BusinessPortal.Domain.Entities.Product.ProductCategory", "ProductCategory")
+                        .WithMany("ProductSelectedCategories")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("BusinessPortal.Domain.Entities.Product.Product", "Product")
+                        .WithMany("ProductSelectedCategories")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("ProductCategory");
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Services.ProductService", b =>
+                {
+                    b.HasOne("BusinessPortal.Domain.Entities.Location.State", "State")
+                        .WithMany()
+                        .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("BusinessPortal.Domain.Entities.Account.User", "User")
+                        .WithMany("ProductServices")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("State");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Services.ProductServiceInfo", b =>
+                {
+                    b.HasOne("BusinessPortal.Domain.Entities.Language.Language", "Language")
+                        .WithMany("ProductServiceInfos")
+                        .HasForeignKey("Lang_Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("BusinessPortal.Domain.Entities.Services.ProductService", "ProductService")
+                        .WithMany("ProductServiceInfo")
+                        .HasForeignKey("ProductServiceId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Language");
+
+                    b.Navigation("ProductService");
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Services.ProductServiceSelectedService", b =>
+                {
+                    b.HasOne("BusinessPortal.Domain.Entities.Services.ProductService", "ProductService")
+                        .WithMany("ProductServiceSelectedService")
+                        .HasForeignKey("ProductServiceId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("BusinessPortal.Domain.Entities.Services.ServicesCategory", "ServicesCategory")
+                        .WithMany()
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ProductService");
+
+                    b.Navigation("ServicesCategory");
                 });
 
             modelBuilder.Entity("BusinessPortal.Domain.Entities.Services.ServicesCategory", b =>
@@ -1563,6 +1889,10 @@ namespace BusinessPortal.Data.Migrations
 
                     b.Navigation("Advertisements");
 
+                    b.Navigation("ProductServices");
+
+                    b.Navigation("Products");
+
                     b.Navigation("RequestForSeller")
                         .IsRequired();
 
@@ -1626,6 +1956,8 @@ namespace BusinessPortal.Data.Migrations
                 {
                     b.Navigation("ProductCategoryInfos");
 
+                    b.Navigation("ProductServiceInfos");
+
                     b.Navigation("ServicesCategoryInfos");
                 });
 
@@ -1640,9 +1972,25 @@ namespace BusinessPortal.Data.Migrations
                     b.Navigation("Children");
                 });
 
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Product.Product", b =>
+                {
+                    b.Navigation("ProductInfo");
+
+                    b.Navigation("ProductSelectedCategories");
+                });
+
             modelBuilder.Entity("BusinessPortal.Domain.Entities.Product.ProductCategory", b =>
                 {
                     b.Navigation("ProductCategoryInfos");
+
+                    b.Navigation("ProductSelectedCategories");
+                });
+
+            modelBuilder.Entity("BusinessPortal.Domain.Entities.Services.ProductService", b =>
+                {
+                    b.Navigation("ProductServiceInfo");
+
+                    b.Navigation("ProductServiceSelectedService");
                 });
 
             modelBuilder.Entity("BusinessPortal.Domain.Entities.Services.ServicesCategory", b =>

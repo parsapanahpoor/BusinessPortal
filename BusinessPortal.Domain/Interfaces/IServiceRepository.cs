@@ -1,6 +1,7 @@
 ﻿using BusinessPortal.Domain.Entities.Product;
 using BusinessPortal.Domain.Entities.Services;
 using BusinessPortal.Domain.ViewModels.Admin.Service;
+using BusinessPortal.Domain.ViewModels.UserPanel.ProductService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +55,12 @@ namespace BusinessPortal.Domain.Interfaces
         Task DeleteServiceCategory(ServicesCategory serviceCategory);
 
         #endregion
+
+        #endregion
+
+        #region UserPanel Side
+
+        Task<List<CreateProductServiceViewModel>> FillCreateProductServiceViewModel();
 
         #endregion
     }

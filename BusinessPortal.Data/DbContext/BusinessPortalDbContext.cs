@@ -117,13 +117,25 @@ namespace BusinessPortal.Data.DbContext
 
         public DbSet<ProductCategoryInfo> ProductCategoryInfos { get; set; }
 
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<ProductInfo> ProductInfos { get; set; }
+
+        public DbSet<ProductSelectedCategories> ProductSelectedCategories { get; set; }
+
         #endregion
 
-        #region Categories
+        #region Service Products && Service Categories
 
         public DbSet<ServicesCategory> ServicesCategories { get; set; }
 
         public DbSet<ServicesCategoryInfo> ServicesCategoryInfos { get; set; }
+
+        public DbSet<ProductServiceSelectedService> ProductServiceSelectedService { get; set; }
+
+        public DbSet<ProductServiceInfo> ProductServiceInfo { get; set; }
+
+        public DbSet<ProductService> ProductService { get; set; }
 
         #endregion
 

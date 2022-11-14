@@ -3,9 +3,12 @@ using BusinessPortal.Domain.Entities.Product;
 using BusinessPortal.Domain.Entities.Services;
 using BusinessPortal.Domain.Interfaces;
 using BusinessPortal.Domain.ViewModels.Admin.Service;
+using BusinessPortal.Domain.ViewModels.UserPanel.Advertisement;
+using BusinessPortal.Domain.ViewModels.UserPanel.ProductService;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -199,6 +202,22 @@ namespace BusinessPortal.Data.Repository
         }
 
         #endregion
+
+        #endregion
+
+        #region User Panel
+
+        public async Task<List<CreateProductServiceViewModel>> FillCreateProductServiceViewModel()
+        {
+            return await _context.ServicesCategories.Include(p=> p.ServicesCategoryInfo)
+                .Where(p => !p.IsDelete)
+                .Select(p=> new CreateProductServiceViewModel()
+                {
+                    ServiceCategoryName = p.UniqueName ,
+                    ParentId = p.ParentId,
+                    ServiceId = p.Id
+                }).ToListAsync();
+        }
 
         #endregion
     }

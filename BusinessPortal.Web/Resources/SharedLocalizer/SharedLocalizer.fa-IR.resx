@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Create Product" xml:space="preserve">
+    <value>افزودن محصول </value>
+  </data>
+  <data name="Create Product Service" xml:space="preserve">
+    <value>افزودن محصول خدماتی</value>
+  </data>
+  <data name="List Of Product" xml:space="preserve">
+    <value>لیست محصولات خدماتی</value>
+  </data>
+  <data name="List Of Product Service" xml:space="preserve">
+    <value>لیست محصولات خدماتی</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>محصولات</value>
+  </data>
+  <data name="Product Service" xml:space="preserve">
+    <value>محصولات خدماتی</value>
+  </data>
   <data name="The operation has been successfully completed" xml:space="preserve">
     <value>عملیات باموفقیت انجام شده است </value>
   </data>

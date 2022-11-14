@@ -132,6 +132,12 @@
   <data name="Create Ads" xml:space="preserve">
     <value>ایجاد تبلیغات</value>
   </data>
+  <data name="Create Product" xml:space="preserve">
+    <value>افزودن</value>
+  </data>
+  <data name="Create Product Service" xml:space="preserve">
+    <value>افزودن</value>
+  </data>
   <data name="Create Ticket" xml:space="preserve">
     <value>افزودن تیکت ها </value>
   </data>
@@ -143,6 +149,12 @@
   </data>
   <data name="List Of Ads" xml:space="preserve">
     <value>لیست تبلیغات</value>
+  </data>
+  <data name="List Of Product" xml:space="preserve">
+    <value>لیست محصولات</value>
+  </data>
+  <data name="List Of Product Service" xml:space="preserve">
+    <value>لیست محصولات خدماتی</value>
   </data>
   <data name="List Of Tickets" xml:space="preserve">
     <value>لیست تیکت ها</value>
@@ -164,6 +176,12 @@
   </data>
   <data name="OnSaleAdvertisement" xml:space="preserve">
     <value>پیشنهاد فروش</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>محصولات</value>
+  </data>
+  <data name="Product Service" xml:space="preserve">
+    <value>محصولات خدماتی</value>
   </data>
   <data name="RequestAdvertisement" xml:space="preserve">
     <value>درخواست خرید</value>

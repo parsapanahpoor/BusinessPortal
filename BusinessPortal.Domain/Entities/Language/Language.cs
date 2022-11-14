@@ -24,6 +24,8 @@ namespace BusinessPortal.Domain.Entities.Language
 
         public ICollection<ProductCategoryInfo>  ProductCategoryInfos{ get; set; }
 
+        public ICollection<ProductServiceInfo>  ProductServiceInfos{ get; set; }
+
         #endregion
     }
 }

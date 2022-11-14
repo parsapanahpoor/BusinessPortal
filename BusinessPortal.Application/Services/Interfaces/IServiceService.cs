@@ -1,6 +1,7 @@
 ﻿using BusinessPortal.Domain.Entities.Product;
 using BusinessPortal.Domain.Entities.Services;
 using BusinessPortal.Domain.ViewModels.Admin.Service;
+using BusinessPortal.Domain.ViewModels.UserPanel.ProductService;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,36 @@ namespace BusinessPortal.Application.Services.Interfaces
         Task<bool> DeleteServiceCategory(ulong serviceCategoryId);
 
         #endregion
+
+        #endregion
+
+        #region User Panel Side 
+
+        Task<List<CreateProductServiceViewModel>> FillCreateProductServiceViewModel();
+
+        //Add Product Service From User Panel
+        Task<CreateServiceFromUserPanelResult> AddProductServiceFromUserPanel(AddProductSeviceViewModel model, List<IFormFile> upload_imgs, List<ulong> SelectedCategory);
+
+        //Filter Product Service 
+        Task<FilterProductServiceViewModel> FilterProductServiceUserSide(FilterProductServiceViewModel filter);
+
+        //Fill Edit Product Service View Model
+        Task<EditProductServiceViewModel> FillEditProductServiceViewModel(ulong Id);
+
+        //Get All PRoduct Service Categories
+        Task<List<ulong>> GetAllPRoductServiceCategories(ulong Id);
+
+        //Get Address By Address Id
+        Task<Domain.Entities.Address.Address?> GetAddressByAddressId(ulong AddressId);
+
+        //Get Product Service By Id 
+        Task<Domain.Entities.Services.ProductService?> GetProductServiceById(ulong Id);
+
+        //Edit Product Service
+        Task<EditRequestProductServiceFromUserPanelResualt> EditProductServiceFromUserPanel(EditProductServiceViewModel model, IFormFile ImageName, List<IFormFile> upload_imgs, List<ulong> SelectedCategory);
+
+        //Delete Product Service 
+        Task<bool> DeleteProductServiceFromUserPanel(ulong productSericeId, ulong userId);
 
         #endregion
     }

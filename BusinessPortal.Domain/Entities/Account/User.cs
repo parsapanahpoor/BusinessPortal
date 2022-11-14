@@ -4,6 +4,8 @@ using BusinessPortal.Domain.Entities.Advertisement;
 using BusinessPortal.Domain.Entities.Common;
 using BusinessPortal.Domain.Entities.Contact;
 using BusinessPortal.Domain.Entities.Location;
+using BusinessPortal.Domain.Entities.Product;
+using BusinessPortal.Domain.Entities.Services;
 using BusinessPortal.Domain.Entities.Tariff;
 using System;
 using System.Collections.Generic;
@@ -76,6 +78,10 @@ namespace BusinessPortal.Domain.Entities.Account
         public ICollection<Address.Address> Addresses { get; set; }
 
         public ICollection<Advertisement.Advertisement> Advertisements { get; set; }
+
+        public ICollection<ProductService> ProductServices { get; set; }
+
+        public ICollection<Product.Product> Products { get; set; }
 
         public RequestForSeller RequestForSeller { get; set; }
 

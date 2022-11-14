@@ -120,5 +120,29 @@ namespace BusinessPortal.Application.StaticTools
         public static string AdsimageServerOriginThumb = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/AdsImages/Thumb/");
 
         #endregion
+
+        #region Product Service Image
+
+        public static string DefaultProductServiceimage = "/UploadedImages/DefaultImages/Default.png";
+
+        public static string ProductServiceOriginimage = "/UploadedImages/ProductService/Origin/";
+        public static string ProductServiceThumbimage = "/UploadedImages/ProductService/Thumb/";
+        public static string ProductServiceimageServerOrigin = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/ProductService/Origin/");
+        public static string ProductServiceImageServerThumb = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/ProductService/Thumb/");
+        public static string ProductServiceimageServerOriginThumb = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/ProductService/Thumb/");
+
+        #endregion
+
+        #region Product Service Image
+
+        public static string DefaultProductimage = "/UploadedImages/DefaultImages/Default.png";
+
+        public static string ProductOriginimage = "/UploadedImages/Product/Origin/";
+        public static string ProductThumbimage = "/UploadedImages/Product/Thumb/";
+        public static string ProductimageServerOrigin = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/Product/Origin/");
+        public static string ProductImageServerThumb = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/Product/Thumb/");
+        public static string ProductimageServerOriginThumb = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/Product/Thumb/");
+
+        #endregion
     }
 }

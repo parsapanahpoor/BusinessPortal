@@ -1,5 +1,6 @@
 ﻿using BusinessPortal.Domain.Entities.Product;
 using BusinessPortal.Domain.ViewModels.Admin.Product;
+using BusinessPortal.Domain.ViewModels.UserPanel.Product;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,41 @@ namespace BusinessPortal.Application.Services.Interfaces
 
         //Delete Product Category
         Task<bool> DeleteProductCategory(ulong productCategoryId);
+
+        #endregion
+
+        #endregion
+
+        #region Product
+
+        #region User Panel Side 
+
+        //Product Category
+        Task<List<CreateProductViewModel>> FillCreateProductViewModel();
+
+        //Add Product From User Panel
+        Task<CreateProductFromUserPanelResult> AddProductFromUserPanel(AddProductViewModel model, List<IFormFile> upload_imgs, List<ulong> SelectedCategory);
+
+        //Filter Product  
+        Task<FilterProductViewModel> FilterProductUserSide(FilterProductViewModel filter);
+
+        //Fill Edit Product View Model
+        Task<EditProductViewModel> FillEditProductViewModel(ulong Id);
+
+        //Get All Product Categories
+        Task<List<ulong>> GetAllPRoductCategories(ulong Id);
+
+        //Get Address By Address Id
+        Task<Domain.Entities.Address.Address?> GetAddressByAddressId(ulong AddressId);
+
+        //Get Product By Id 
+        Task<Domain.Entities.Product.Product?> GetProductById(ulong Id);
+
+        //Edit Product 
+        Task<EditRequestProductFromUserPanelResualt> EditProductFromUserPanel(EditProductViewModel model, IFormFile ImageName, List<IFormFile> upload_imgs, List<ulong> SelectedCategory);
+
+        //Delete Product 
+        Task<bool> DeleteProductFromUserPanel(ulong productId, ulong userId);
 
         #endregion
 
