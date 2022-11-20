@@ -1,8 +1,10 @@
 ﻿using BusinessPortal.Domain.Entities.Product;
 using BusinessPortal.Domain.Entities.Services;
 using BusinessPortal.Domain.ViewModels.Admin.Service;
+using BusinessPortal.Domain.ViewModels.Site.Services;
 using BusinessPortal.Domain.ViewModels.UserPanel.ProductService;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +43,8 @@ namespace BusinessPortal.Application.Services.Interfaces
 
         #endregion
 
+        #region Product
+
         #region User Panel Side 
 
         Task<List<CreateProductServiceViewModel>> FillCreateProductServiceViewModel();
@@ -68,6 +72,28 @@ namespace BusinessPortal.Application.Services.Interfaces
 
         //Delete Product Service 
         Task<bool> DeleteProductServiceFromUserPanel(ulong productSericeId, ulong userId);
+
+        #endregion
+
+        #region Admin Side 
+
+        //Filter Product Service From Admin Side 
+        Task<FilterProductServiceAdminSideViewModel> FilterProductServiceAdminSide(FilterProductServiceAdminSideViewModel filter);
+
+        //Show Product Service Language
+        Task<ProductServiceInfo?> ShowProductServiceLanguage(ulong adsId);
+
+        //Delete Product Service
+        Task<bool> DeleteProductService(ulong Id);
+
+        #endregion
+
+        #region Site Side 
+
+        //List Of Services
+        Task<List<ListOfServicesViewModel>> ListOfServicesViewModel(string culture, ulong? categoryId);
+
+        #endregion
 
         #endregion
     }

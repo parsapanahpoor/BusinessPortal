@@ -121,7 +121,7 @@
     <value>Gerenciamento de contas</value>
   </data>
   <data name="AdvertisementCategories" xml:space="preserve">
-    <value>Hizmet Kategorileri</value>
+    <value>Hizmet </value>
   </data>
   <data name="Advertising" xml:space="preserve">
     <value>Anúncio</value>
@@ -334,7 +334,7 @@
     <value>Produtos</value>
   </data>
   <data name="ProductsCategories" xml:space="preserve">
-    <value>Categorias de produtos</value>
+    <value>Produtos</value>
   </data>
   <data name="Purchase requests" xml:space="preserve">
     <value>Solicitações de compra</value>

@@ -1,0 +1,17 @@
+﻿@model BusinessPortal.Domain.Entities.Services.ProductServiceInfo
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="form-group col-md-12 col-sm-12">
+            <label asp-for="Title">عنوان </label>
+            <input type="text" class="form-control" asp-for="Title" disabled>
+        </div>
+
+        <div class="form-group col-md-12 col-sm-12">
+            <label asp-for="Description">توضیح کامل </label>
+            <textarea type="text" class="form-control">@Model.Description</textarea>
+        </div>
+
+    </div>
+</div>

@@ -138,6 +138,9 @@
   <data name="Create Product Service" xml:space="preserve">
     <value>افزودن</value>
   </data>
+  <data name="Create Service" xml:space="preserve">
+    <value>افزودن خدمت</value>
+  </data>
   <data name="Create Ticket" xml:space="preserve">
     <value>افزودن تیکت ها </value>
   </data>
@@ -155,6 +158,9 @@
   </data>
   <data name="List Of Product Service" xml:space="preserve">
     <value>لیست محصولات خدماتی</value>
+  </data>
+  <data name="List Of Service" xml:space="preserve">
+    <value>لیست خدمات</value>
   </data>
   <data name="List Of Tickets" xml:space="preserve">
     <value>لیست تیکت ها</value>
@@ -188,6 +194,9 @@
   </data>
   <data name="RequestToBeSeller" xml:space="preserve">
     <value>درخواست برای فروش</value>
+  </data>
+  <data name="Service" xml:space="preserve">
+    <value>خدمات</value>
   </data>
   <data name="User Tariff" xml:space="preserve">
     <value>تعرفه ی فعال شما</value>

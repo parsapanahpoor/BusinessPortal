@@ -121,7 +121,7 @@
     <value>Gerenciamento de contas</value>
   </data>
   <data name="AdvertisementCategories" xml:space="preserve">
-    <value>Categorias de serviço</value>
+    <value> serviço</value>
   </data>
   <data name="Advertising" xml:space="preserve">
     <value>Anúncio</value>
@@ -335,7 +335,7 @@ Farmacêutica</value>
     <value>Produtos</value>
   </data>
   <data name="ProductsCategories" xml:space="preserve">
-    <value>Categorias de produtos</value>
+    <value>produtos</value>
   </data>
   <data name="Purchase requests" xml:space="preserve">
     <value>Solicitações de compra</value>

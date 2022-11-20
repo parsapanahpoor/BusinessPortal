@@ -7,7 +7,7 @@
 
 <div class="mega-menu">
     <button class="mega-menu-btn-Services">
-        <i class="fa fa-bars " aria-hidden="true" style="color: #fcb800;"></i> @_Localizer["Service Ads Categories"]
+        <i class="fa fa-bars  ml-3 mr-3" aria-hidden="true" style="color: #fcb800;"></i> @_Localizer["Services"]
     </button>
     <ul class="mega-menu-list-Services">
         @if (Model != null && Model.Any())
@@ -15,7 +15,7 @@
             foreach (var item in Model)
             {
                 <li class="mega-menu-item">
-                    <a href="#" class="mega-menu-link">
+                    <a asp-action="FilterServiceProduct" asp-area="" asp-controller="ServiceProduct" asp-route-categoryId="@item.ServicesCategoryId" class="mega-menu-link">
                         @item.Title
                     </a>
                 </li>

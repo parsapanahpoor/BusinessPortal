@@ -121,7 +121,7 @@
     <value>Управление аккаунтом</value>
   </data>
   <data name="AdvertisementCategories" xml:space="preserve">
-    <value>Категории услуг</value>
+    <value>услуг</value>
   </data>
   <data name="Advertising" xml:space="preserve">
     <value>Реклама</value>
@@ -334,7 +334,7 @@
     <value>Товары</value>
   </data>
   <data name="ProductsCategories" xml:space="preserve">
-    <value>Категории продуктов</value>
+    <value>продуктов</value>
   </data>
   <data name="Purchase requests" xml:space="preserve">
     <value>Запросы </value>

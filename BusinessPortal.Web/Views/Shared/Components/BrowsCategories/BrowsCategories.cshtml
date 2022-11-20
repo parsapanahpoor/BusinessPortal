@@ -8,13 +8,13 @@
 
     <div class="mega-menu">
         <button class="mega-menu-btn">
-            <i class="fa fa-bars ml-3 mr-3" aria-hidden="true" style="color: #fcb800;"></i> @_Localizer["Product Ads Categories"]
+            <i class="fa fa-bars ml-3 mr-3" aria-hidden="true" style="color: #fcb800;"></i> @_Localizer["Products"]
         </button>
         <ul class="mega-menu-list">
                 @foreach (var item in Model.Where(p => p.ProductCategory.ParentId == null))
                 {
                     <li class="mega-menu-item">
-                        <a href="#" class="mega-menu-link">
+                    <a asp-action="FilterProducts" asp-area="" asp-controller="Product" asp-route-categoryId="@item.ProductCategoryId" class="mega-menu-link">
                             @item.Title
                           @if (Model.Any(p => p.ProductCategory.ParentId == item.ProductCategory.Id))
                         {
@@ -28,7 +28,7 @@
                                 @foreach (var item2 in Model.Where(p => p.ProductCategory.ParentId == item.ProductCategory.Id))
                                 {
                                     <li class="mega-menu-item" style="text-align: right !important">
-                                        <a href="#" class="mega-menu-categories-title">@item2.Title</a>
+                                    <a asp-action="FilterProducts" asp-area="" asp-controller="Product" asp-route-categoryId="@item2.ProductCategoryId" class="mega-menu-categories-title">@item2.Title</a>
                                     </li>
                                 }
                             </ul>

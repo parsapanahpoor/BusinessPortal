@@ -121,7 +121,7 @@
     <value>ادارة الحساب</value>
   </data>
   <data name="AdvertisementCategories" xml:space="preserve">
-    <value>فئات الخدمة</value>
+    <value>الخدمة</value>
   </data>
   <data name="Advertising" xml:space="preserve">
     <value>دعاية</value>
@@ -334,7 +334,7 @@
     <value>منتجات</value>
   </data>
   <data name="ProductsCategories" xml:space="preserve">
-    <value>فئات المنتجات</value>
+    <value>المنتجات</value>
   </data>
   <data name="Purchase requests" xml:space="preserve">
     <value>طلبات الشراء</value>

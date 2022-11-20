@@ -124,7 +124,7 @@
     <value>Account management</value>
   </data>
   <data name="AdvertisementCategories" xml:space="preserve">
-    <value>Service Categories</value>
+    <value>Service </value>
   </data>
   <data name="Advertising" xml:space="preserve">
     <value>Advertising</value>
@@ -337,7 +337,7 @@
     <value>Products</value>
   </data>
   <data name="ProductsCategories" xml:space="preserve">
-    <value>Products Categories</value>
+    <value>Products </value>
   </data>
   <data name="Purchase requests" xml:space="preserve">
     <value>Purchase requests</value>

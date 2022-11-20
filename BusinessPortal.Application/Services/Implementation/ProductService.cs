@@ -4,10 +4,15 @@ using BusinessPortal.Application.Security;
 using BusinessPortal.Application.Services.Interfaces;
 using BusinessPortal.Application.StaticTools;
 using BusinessPortal.Data.DbContext;
+using BusinessPortal.Domain.Entities.Ads;
+using BusinessPortal.Domain.Entities.Advertisement;
 using BusinessPortal.Domain.Entities.Product;
 using BusinessPortal.Domain.Entities.Services;
 using BusinessPortal.Domain.Interfaces;
+using BusinessPortal.Domain.ViewModels.Admin.Ads;
 using BusinessPortal.Domain.ViewModels.Admin.Product;
+using BusinessPortal.Domain.ViewModels.Site.Advertisement;
+using BusinessPortal.Domain.ViewModels.Site.Product;
 using BusinessPortal.Domain.ViewModels.UserPanel.Product;
 using BusinessPortal.Domain.ViewModels.UserPanel.ProductService;
 using Microsoft.AspNetCore.Http;
@@ -580,6 +585,113 @@ namespace BusinessPortal.Application.Services.Implementation
             await _context.SaveChangesAsync();
 
             return true;
+        }
+
+        #endregion
+
+        #region Admin Side 
+
+        //Filter Product From Admin Side 
+        public async Task<FilterProductAdminSideViewModel> FilterProductAdminSide(FilterProductAdminSideViewModel filter)
+        {
+            var query = _context.Products
+                            .Include(s => s.User)
+                            .Include(p => p.ProductInfo)
+                            .ThenInclude(p => p.Language)
+                            .Where(p => !p.IsDelete)
+                            .OrderByDescending(p => p.CreateDate)
+                            .AsQueryable();
+
+            await filter.Paging(query);
+
+            return filter;
+        }
+
+        //Show Product Language
+        public async Task<ProductInfo?> ShowProductLanguage(ulong adsId)
+        {
+            return await _context.ProductInfos.FirstOrDefaultAsync(p => p.Id == adsId && !p.IsDelete);
+        }
+
+        //Delete Product
+        public async Task<bool> DeleteProduct(ulong Id)
+        {
+            var ads = await _context.Products.FirstOrDefaultAsync(p => !p.IsDelete && p.Id == Id);
+
+            if (ads == null)
+            {
+                return false;
+            }
+
+            ads.IsDelete = true;
+
+            _context.Products.Update(ads);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
+        #endregion
+
+        #region Site Side 
+
+        //List Of Products
+        public async Task<List<ListOfProductsViewModel>> ListOfProductsViewModel(string culture, ulong? categoryId)
+        {
+            #region filter properties
+
+            if (categoryId.HasValue)
+            {
+                var returnModel = await _context.ProductSelectedCategories.Include(p => p.Product).ThenInclude(p => p.ProductInfo)
+                            .Include(p => p.ProductCategory).Where(p => p.CategoryId == categoryId.Value && !p.IsDelete && !p.Product.IsDelete).ToListAsync();
+
+                var returnModel1 = new List<ListOfProductsViewModel>();
+
+                foreach (var item in returnModel)
+                {
+                    returnModel1.Add(new ListOfProductsViewModel
+                    {
+                        PRoductId = item.Product.Id,
+                        ProductTitle = await _context.ProductInfos.Where(p => !p.IsDelete && p.Lang_Id == culture && p.ProductId == item.Id).Select(p => p.Title).FirstOrDefaultAsync(),
+                        CreateDate = item.Product.CreateDate,
+                        Image = item.Product.ImageName,
+                    });
+                }
+
+                return returnModel1;
+            }
+
+            #endregion
+
+            #region Get Current Product
+
+            var advertisement = await _context.ProductInfos
+                        .Include(p => p.Product)
+                        .ThenInclude(p => p.ProductSelectedCategories)
+                        .ThenInclude(p => p.ProductCategory)
+                        .Where(p => !p.IsDelete && !p.Product.IsDelete && p.Lang_Id == culture)
+                        .Select(p => p.Product).ToListAsync();
+
+            #endregion
+
+            #region model
+
+            var model = new List<ListOfProductsViewModel>();
+
+            foreach (var item in advertisement)
+            {
+                model.Add(new ListOfProductsViewModel
+                {
+                    PRoductId = item.Id,
+                    ProductTitle = await _context.ProductInfos.Where(p => !p.IsDelete && p.Lang_Id == culture && p.ProductId == item.Id).Select(p => p.Title).FirstOrDefaultAsync(),
+                    CreateDate = item.CreateDate,
+                    Image = item.ImageName,
+                });
+            }
+
+            return model;
+
+            #endregion
         }
 
         #endregion

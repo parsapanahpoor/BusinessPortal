@@ -130,7 +130,7 @@
     <value>تبلیغات</value>
   </data>
   <data name="AdvertisementCategories" xml:space="preserve">
-    <value>دسته بندی خدمات</value>
+    <value> خدمات</value>
   </data>
   <data name="Advertising" xml:space="preserve">
     <value>تبلیغات</value>
@@ -418,7 +418,7 @@
     <value>محصولات</value>
   </data>
   <data name="ProductsCategories" xml:space="preserve">
-    <value>دسته بندی محصولات</value>
+    <value> محصولات</value>
   </data>
   <data name="Purchase requests" xml:space="preserve">
     <value>درخواست های خرید</value>
@@ -443,6 +443,12 @@
   </data>
   <data name="See More" xml:space="preserve">
     <value>بیشتر ببین</value>
+  </data>
+  <data name="Service" xml:space="preserve">
+    <value>خدمات</value>
+  </data>
+  <data name="Service Products" xml:space="preserve">
+    <value>محصولات خدماتی</value>
   </data>
   <data name="Services" xml:space="preserve">
     <value>خدمات</value>

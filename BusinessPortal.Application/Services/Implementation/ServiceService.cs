@@ -9,7 +9,10 @@ using BusinessPortal.Domain.Entities.Advertisement;
 using BusinessPortal.Domain.Entities.Product;
 using BusinessPortal.Domain.Entities.Services;
 using BusinessPortal.Domain.Interfaces;
+using BusinessPortal.Domain.ViewModels.Admin.Product;
 using BusinessPortal.Domain.ViewModels.Admin.Service;
+using BusinessPortal.Domain.ViewModels.Site.Product;
+using BusinessPortal.Domain.ViewModels.Site.Services;
 using BusinessPortal.Domain.ViewModels.UserPanel.Advertisement;
 using BusinessPortal.Domain.ViewModels.UserPanel.ProductService;
 using Microsoft.AspNetCore.Http;
@@ -233,6 +236,8 @@ namespace BusinessPortal.Application.Services.Implementation
 
         #endregion
 
+        #region Product
+
         #region User Panel
 
         public async Task<List<CreateProductServiceViewModel>> FillCreateProductServiceViewModel()
@@ -339,7 +344,7 @@ namespace BusinessPortal.Application.Services.Implementation
                             .ThenInclude(p => p.ServicesCategory)
                             .Include(p => p.ProductServiceInfo)
                             .ThenInclude(p => p.Language)
-                            .OrderByDescending(p=> p.CreateDate)
+                            .OrderByDescending(p => p.CreateDate)
                             .AsQueryable();
 
             await filter.Paging(query);
@@ -559,6 +564,115 @@ namespace BusinessPortal.Application.Services.Implementation
             return true;
         }
 
+
+        #endregion
+
+        #region Admin Side 
+
+        //Filter Product Service From Admin Side 
+        public async Task<FilterProductServiceAdminSideViewModel> FilterProductServiceAdminSide(FilterProductServiceAdminSideViewModel filter)
+        {
+            var query = _context.ProductService
+                            .Include(s => s.User)
+                            .Include(p => p.ProductServiceInfo)
+                            .ThenInclude(p => p.Language)
+                            .Where(p => !p.IsDelete)
+                            .OrderByDescending(p => p.CreateDate)
+                            .AsQueryable();
+
+            await filter.Paging(query);
+
+            return filter;
+        }
+
+        //Show Product Service Language
+        public async Task<ProductServiceInfo?> ShowProductServiceLanguage(ulong adsId)
+        {
+            return await _context.ProductServiceInfo.FirstOrDefaultAsync(p => p.Id == adsId && !p.IsDelete);
+        }
+
+        //Delete Product Service
+        public async Task<bool> DeleteProductService(ulong Id)
+        {
+            var ads = await _context.ProductService.FirstOrDefaultAsync(p => !p.IsDelete && p.Id == Id);
+
+            if (ads == null)
+            {
+                return false;
+            }
+
+            ads.IsDelete = true;
+
+            _context.ProductService.Update(ads);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
+        #endregion
+
+        #region Site Side
+
+        //List Of Services
+        public async Task<List<ListOfServicesViewModel>> ListOfServicesViewModel(string culture, ulong? categoryId)
+        {
+            #region filter properties
+
+            if (categoryId.HasValue)
+            {
+                var returnModel = await _context.ProductServiceSelectedService.Include(p => p.ProductService).ThenInclude(p => p.ProductServiceInfo)
+                            .Include(p => p.ServicesCategory).Where(p => p.ServiceId == categoryId.Value && !p.IsDelete && !p.ProductService.IsDelete).ToListAsync();
+
+                var returnModel1 = new List<ListOfServicesViewModel>();
+
+                foreach (var item in returnModel)
+                {
+                    returnModel1.Add(new ListOfServicesViewModel
+                    {
+                        ServiceId = item.ProductService.Id,
+                        ProductTitle = await _context.ProductServiceInfo.Where(p => !p.IsDelete && p.Lang_Id == culture && p.ProductServiceId == item.Id).Select(p => p.Title).FirstOrDefaultAsync(),
+                        CreateDate = item.ProductService.CreateDate,
+                        Image = item.ProductService.ImageName,
+                    });
+                }
+
+                return returnModel1;
+            }
+
+            #endregion
+
+            #region Get Current Product
+
+            var advertisement = await _context.ProductServiceInfo
+                        .Include(p => p.ProductService)
+                        .ThenInclude(p => p.ProductServiceSelectedService)
+                        .ThenInclude(p => p.ServicesCategory)
+                        .Where(p => !p.IsDelete && !p.ProductService.IsDelete && p.Lang_Id == culture)
+                        .Select(p => p.ProductService).ToListAsync();
+
+            #endregion
+
+            #region model
+
+            var model = new List<ListOfServicesViewModel>();
+
+            foreach (var item in advertisement)
+            {
+                model.Add(new ListOfServicesViewModel
+                {
+                    ServiceId = item.Id,
+                    ProductTitle = await _context.ProductServiceInfo.Where(p => !p.IsDelete && p.Lang_Id == culture && p.ProductServiceId == item.Id).Select(p => p.Title).FirstOrDefaultAsync(),
+                    CreateDate = item.CreateDate,
+                    Image = item.ImageName,
+                });
+            }
+
+            return model;
+
+            #endregion
+        }
+
+        #endregion
 
         #endregion
     }

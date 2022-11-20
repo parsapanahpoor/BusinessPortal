@@ -120,7 +120,7 @@
   <data name="Buy Ads Categories" xml:space="preserve">
     <value>فئات التسوق</value>
   </data>
-  <data name="Service Ads Categories" xml:space="preserve">
-    <value>فئات الخدمات</value>
+  <data name="Services" xml:space="preserve">
+    <value>الخدمات</value>
   </data>
 </root>
