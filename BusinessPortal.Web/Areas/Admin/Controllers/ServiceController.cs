@@ -1,7 +1,9 @@
 ﻿using BusinessPortal.Application.Services.Interfaces;
+using BusinessPortal.Domain.ViewModels.Admin.Product;
 using BusinessPortal.Domain.ViewModels.Admin.Service;
 using BusinessPortal.Web.HttpManager;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 
 namespace BusinessPortal.Web.Areas.Admin.Controllers
 {
@@ -182,6 +184,74 @@ namespace BusinessPortal.Web.Areas.Admin.Controllers
             }
 
             return JsonResponseStatus.Error();
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Product Service
+
+        #region Filter Product Service 
+
+        public async Task<IActionResult> FilterProductServiceAdminSideViewModel(FilterProductServiceAdminSideViewModel filter)
+        {
+            return View(await _serviceService.FilterProductServiceAdminSide(filter));
+        }
+
+        #endregion
+
+        #region Show Product Service Language
+
+        public async Task<IActionResult> ShowProductServiceLanguage(ulong adsId)
+        {
+            var ads = await _serviceService.ShowProductServiceLanguage(adsId);
+
+            return PartialView("_ShowProductServiceLanguage", ads);
+        }
+
+        #endregion
+
+        #region Delete Product Service
+
+        public async Task<IActionResult> DeleteProductService(ulong Id)
+        {
+            var res = await _serviceService.DeleteProductService(Id);
+
+            if (res == true)
+            {
+                if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                {
+                    TempData[SuccessMessage] = "عملیات باموفقیت انجام شده است.";
+                }
+                if (CultureInfo.CurrentCulture.Name == "en-US")
+                {
+                    TempData[SuccessMessage] = "Please select at least one image.";
+                }
+                if (CultureInfo.CurrentCulture.Name == "ru-RU")
+                {
+                    TempData[SuccessMessage] = "Операция завершена успешно.";
+                }
+                if (CultureInfo.CurrentCulture.Name == "ar-SA")
+                {
+                    TempData[SuccessMessage] = "تمت العملية بنجاح.";
+                }
+                if (CultureInfo.CurrentCulture.Name == "pt-PT")
+                {
+                    TempData[SuccessMessage] = "A operação foi concluída com sucesso.";
+                }
+                if (CultureInfo.CurrentCulture.Name == "tr-TR")
+                {
+                    TempData[SuccessMessage] = "İşlem başarıyla tamamlandı.";
+                }
+
+                return RedirectToAction(nameof(FilterProductServiceAdminSideViewModel));
+            }
+            else
+            {
+                return RedirectToAction(nameof(FilterProductServiceAdminSideViewModel));
+            }
+
         }
 
         #endregion

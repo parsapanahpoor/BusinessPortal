@@ -1,5 +1,6 @@
 ﻿using BusinessPortal.Domain.Entities.Product;
 using BusinessPortal.Domain.ViewModels.Admin.Product;
+using BusinessPortal.Domain.ViewModels.Site.Product;
 using BusinessPortal.Domain.ViewModels.UserPanel.Product;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -77,6 +78,26 @@ namespace BusinessPortal.Application.Services.Interfaces
 
         //Delete Product 
         Task<bool> DeleteProductFromUserPanel(ulong productId, ulong userId);
+
+        #endregion
+
+        #region Admin Side 
+
+        //Filter Product From Admin Side 
+        Task<FilterProductAdminSideViewModel> FilterProductAdminSide(FilterProductAdminSideViewModel filter);
+
+        //Show Product Language
+        Task<ProductInfo?> ShowProductLanguage(ulong adsId);
+
+        //Delete Product
+        Task<bool> DeleteProduct(ulong Id);
+
+        #endregion
+
+        #region Site Side 
+
+        //List Of Products
+        Task<List<ListOfProductsViewModel>> ListOfProductsViewModel(string culture, ulong? categoryId);
 
         #endregion
 

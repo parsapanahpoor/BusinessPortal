@@ -15,7 +15,7 @@
             foreach (var item in Model)
             {
                 <li class="mega-menu-item">
-                    <a href="#" class="mega-menu-link">
+                    <a asp-action="FilterServiceProduct" asp-area="" asp-controller="ServiceProduct" asp-route-categoryId="@item.ServicesCategoryId" class="mega-menu-link">
                         @item.Title
                     </a>
                 </li>

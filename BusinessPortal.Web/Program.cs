@@ -103,8 +103,8 @@ app.UseSession();
 
 var supportedCultures = new List<CultureInfo>()
             {
-                new CultureInfo("fa-IR"),
                 new CultureInfo("en-US"),
+                new CultureInfo("fa-IR"),
                 new CultureInfo("ru-RU"),
                 new CultureInfo("ar-SA"),
                 new CultureInfo("tr-TR"),
@@ -112,7 +112,7 @@ var supportedCultures = new List<CultureInfo>()
             };
 var options = new RequestLocalizationOptions()
 {
-    DefaultRequestCulture = new RequestCulture("fa-IR"),
+    DefaultRequestCulture = new RequestCulture("en-US"),
     SupportedCultures = supportedCultures,
     SupportedUICultures = supportedCultures,
     RequestCultureProviders = new List<IRequestCultureProvider>()

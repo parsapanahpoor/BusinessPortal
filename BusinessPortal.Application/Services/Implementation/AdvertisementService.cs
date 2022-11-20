@@ -714,6 +714,27 @@ namespace BusinessPortal.Application.Services.Implementation
 
         public async Task<CreateAdvertisementFromUserPanelResult> AddOnSaleAdvertisementFromUserPanell(CreateOnSaleAdvertisementFromUserPanel model, List<IFormFile> upload_imgs, List<ulong> SelectedCategory)
         {
+            #region Category Validation 
+
+            var mainCat = 0;
+
+            foreach (var item in SelectedCategory)
+            {
+                var category = await _context.Categories.FirstOrDefaultAsync(p => p.Id == item);
+
+                if (category.ParentId == null)
+                {
+                    mainCat++;
+                }
+            }
+
+            if (mainCat > 1)
+            {
+                return CreateAdvertisementFromUserPanelResult.CatgeoryError;
+            }
+
+            #endregion
+
             var lang = CultureInfo.CurrentCulture.Name;
 
             if (upload_imgs.Count > 10)
@@ -830,6 +851,27 @@ namespace BusinessPortal.Application.Services.Implementation
 
         public async Task<CreateAdvertisementFromUserPanelResult> AddAdvertisementFromUserPanell(CreateRequestAdvertisementFromUserPanel model, List<IFormFile> upload_imgs, List<ulong> SelectedCategory)
         {
+            #region Category Validation 
+
+            var mainCat = 0;
+
+            foreach (var item in SelectedCategory)
+            {
+                var category = await _context.Categories.FirstOrDefaultAsync(p => p.Id == item);
+
+                if (category.ParentId == null)
+                {
+                    mainCat++;
+                }
+            }
+
+            if (mainCat > 1)
+            {
+                return CreateAdvertisementFromUserPanelResult.CatgeoryError;
+            }
+
+            #endregion
+
             string lang = CultureInfo.CurrentCulture.Name;
 
             if (upload_imgs.Count > 10)

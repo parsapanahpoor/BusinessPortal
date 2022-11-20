@@ -227,6 +227,18 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
 
                         break;
 
+                    case CreateAdvertisementFromUserPanelResult.CatgeoryError:
+                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        {
+                            TempData[WarningMessage] = "دسته بندی های انتخاب شده مغایرت دارند.";
+                        }
+                        if (CultureInfo.CurrentCulture.Name == "en-US")
+                        {
+                            TempData[WarningMessage] = "There Is Problem In Selected Categories";
+                        }
+
+                        break;
+
                     case CreateAdvertisementFromUserPanelResult.Success:
                         if (CultureInfo.CurrentCulture.Name == "fa-IR")
                         {
@@ -986,6 +998,18 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         if (CultureInfo.CurrentCulture.Name == "pt-PT")
                         {
                             TempData[WarningMessage] = "A imagem dos anúncios comete erros";
+                        }
+
+                        break;
+
+                    case CreateAdvertisementFromUserPanelResult.CatgeoryError:
+                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        {
+                            TempData[WarningMessage] = "دسته بندی های انتخاب شده مغایرت دارند.";
+                        }
+                        if (CultureInfo.CurrentCulture.Name == "en-US")
+                        {
+                            TempData[WarningMessage] = "There Is Problem In Selected Categories";
                         }
 
                         break;

@@ -73,6 +73,7 @@ namespace BusinessPortal.Domain.ViewModels.UserPanel.Advertisement
         ImageCountNotValid,
         ImageIsNotValid,
         [Display(Name = "لطفا تصویر را وارد کنید ")]
-        ImageIsNotExist
+        ImageIsNotExist,
+        CatgeoryError 
     }
 }

@@ -63,27 +63,47 @@
             </a>
         </li>
 
-       @* <li>
+        <li>
             <a href="#" class="menu-dropdown">
-                <i class="menu-icon glyphicon glyphicon-th-large"></i>
-                <span class="menu-text">  دسته بندی ها </span>
+                <i class="menu-icon	glyphicon glyphicon-list-alt"></i>
+                <span class="menu-text">پیشنهادات و درخواستها</span>
                 <i class="menu-expand"></i>
             </a>
             <ul class="submenu">
                 <li>
-                    <a asp-action="Index" asp-area="Admin" asp-controller="Categories">
-                        <span class="menu-text"> لیست دسته بندی ها </span>
+                    <a asp-action="Index" asp-area="Admin" asp-controller="Advertisement">
+                        <span class="menu-text"> پیشنهادهای فروش </span>
                     </a>
                 </li>
                 <li>
-                    <a asp-action="CreateMainCategory" asp-area="Admin" asp-controller="Categories">
-                        <span class="menu-text"> افزودن دسته بندی  </span>
+                    <a asp-action="Index" asp-area="Admin" asp-controller="Advertisement">
+                        <span class="menu-text"> درخواستهای خرید </span>
                     </a>
                 </li>
             </ul>
+        </li>
+
+        @* <li>
+        <a href="#" class="menu-dropdown">
+        <i class="menu-icon glyphicon glyphicon-th-large"></i>
+        <span class="menu-text">  دسته بندی ها </span>
+        <i class="menu-expand"></i>
+        </a>
+        <ul class="submenu">
+        <li>
+        <a asp-action="Index" asp-area="Admin" asp-controller="Categories">
+        <span class="menu-text"> لیست دسته بندی ها </span>
+        </a>
+        </li>
+        <li>
+        <a asp-action="CreateMainCategory" asp-area="Admin" asp-controller="Categories">
+        <span class="menu-text"> افزودن دسته بندی  </span>
+        </a>
+        </li>
+        </ul>
         </li>*@
 
-            <li>
+        <li>
             <a href="#" class="menu-dropdown">
                 <i class="menu-icon glyphicon glyphicon-th-large"></i>
                 <span class="menu-text">  دسته بندی خدمات </span>
@@ -103,27 +123,22 @@
             </ul>
         </li>
 
-        <li>
+           <li>
             <a href="#" class="menu-dropdown">
                 <i class="menu-icon glyphicon glyphicon-th-large"></i>
-                <span class="menu-text">   مکان ها </span>
+                <span class="menu-text">  مدیریت خدمات </span>
                 <i class="menu-expand"></i>
             </a>
             <ul class="submenu">
                 <li>
-                    <a asp-action="FilterCountries" asp-area="Admin" asp-controller="Countries">
-                        <span class="menu-text"> لیست مکان ها </span>
-                    </a>
-                </li>
-                <li>
-                    <a asp-action="AddCountry" asp-area="Admin" asp-controller="Countries">
-                        <span class="menu-text"> افزودن مکان جدید  </span>
+                    <a asp-action="FilterProductServiceAdminSideViewModel" asp-area="Admin" asp-controller="Service">
+                        <span class="menu-text"> لیست خدمات </span>
                     </a>
                 </li>
             </ul>
         </li>
 
-               <li>
+        <li>
             <a href="#" class="menu-dropdown">
                 <i class="menu-icon glyphicon glyphicon-th-large"></i>
                 <span class="menu-text">  دسته بندی محصولات </span>
@@ -145,19 +160,14 @@
 
         <li>
             <a href="#" class="menu-dropdown">
-                <i class="menu-icon	glyphicon glyphicon-list-alt"></i>
-                <span class="menu-text">پیشنهادات و درخواستها</span>
+                <i class="menu-icon glyphicon glyphicon-th-large"></i>
+                <span class="menu-text">  مدیریت محصولات </span>
                 <i class="menu-expand"></i>
             </a>
             <ul class="submenu">
                 <li>
-                    <a asp-action="Index" asp-area="Admin" asp-controller="Advertisement">
-                        <span class="menu-text"> پیشنهادهای فروش </span>
-                    </a>
-                </li>
-                <li>
-                    <a asp-action="Index" asp-area="Admin" asp-controller="Advertisement">
-                        <span class="menu-text"> درخواستهای خرید </span>
+                    <a asp-action="FilterProductAdminSide" asp-area="Admin" asp-controller="Product">
+                        <span class="menu-text"> لیست محصولات </span>
                     </a>
                 </li>
             </ul>
@@ -178,7 +188,27 @@
             </ul>
         </li>
 
-            <li>
+        <li>
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon glyphicon glyphicon-th-large"></i>
+                <span class="menu-text">   کشورها </span>
+                <i class="menu-expand"></i>
+            </a>
+            <ul class="submenu">
+                <li>
+                    <a asp-action="FilterCountries" asp-area="Admin" asp-controller="Countries">
+                        <span class="menu-text"> لیست کشورها </span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-action="AddCountry" asp-area="Admin" asp-controller="Countries">
+                        <span class="menu-text"> افزودن کشور جدید  </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
             <a href="#" class="menu-dropdown">
                 <i class="menu-icon glyphicon glyphicon-th-large"></i>
                 <span class="menu-text">  مدیریت تعرفه ها </span>
@@ -219,7 +249,7 @@
             </ul>
         </li>
 
-             <li>
+        <li>
             <a href="#" class="menu-dropdown">
                 <i class="menu-icon fa fa-ticket"></i>
                 <span class="menu-text"> مدیریت تیکت ها </span>

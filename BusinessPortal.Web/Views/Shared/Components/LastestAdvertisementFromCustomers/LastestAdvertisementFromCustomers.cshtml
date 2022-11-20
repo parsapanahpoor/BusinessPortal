@@ -22,15 +22,15 @@
                         <li>
                             <div class="latset-buy-link">
                                 <a href="#">
-                                    <img style="height: 25px;width: 25px;" src="@PathTools.Stateimage@item.AdvertisementAddress.LocationCountry.IconeName" />@item.AdvertisementAddress.LocationCountry.Title
+                                    @if (item.Countries != null)
+                                    {
+                                        <img style="height: 25px;width: 25px;" src="@PathTools.CountryThumbimage@item.Countries.FlagName" />
+                                    }
                                 </a>
                             </div>
                             <div class="latset-buy-text">
                                 <p>
-                                    @item.AdvertisementTitle   @if (item.Countries != null)
-                                    {
-                                        <img style="height: 25px;width: 25px;" src="@PathTools.CountryThumbimage@item.Countries.FlagName" />
-                                    }
+                                    @item.AdvertisementTitle  
                                 </p>
                              
                             </div>

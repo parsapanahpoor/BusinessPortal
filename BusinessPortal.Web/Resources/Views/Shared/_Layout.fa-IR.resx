@@ -444,6 +444,12 @@
   <data name="See More" xml:space="preserve">
     <value>بیشتر ببین</value>
   </data>
+  <data name="Service" xml:space="preserve">
+    <value>خدمات</value>
+  </data>
+  <data name="Service Products" xml:space="preserve">
+    <value>محصولات خدماتی</value>
+  </data>
   <data name="Services" xml:space="preserve">
     <value>خدمات</value>
   </data>
