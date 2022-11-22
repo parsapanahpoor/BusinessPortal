@@ -181,12 +181,12 @@ namespace BusinessPortal.Data.DbContext
 
             modelBuilder.Entity<Language>().HasData(new Language
             {
-                  LanguageTitle = "fa-IR"
+                LanguageTitle = "en-US"
             });
 
             modelBuilder.Entity<Language>().HasData(new Language
             {
-                LanguageTitle = "en-US"
+                LanguageTitle = "bg-BG"
             });
 
             modelBuilder.Entity<Language>().HasData(new Language

@@ -104,7 +104,7 @@ app.UseSession();
 var supportedCultures = new List<CultureInfo>()
             {
                 new CultureInfo("en-US"),
-                new CultureInfo("fa-IR"),
+                new CultureInfo("bg-BG"),
                 new CultureInfo("ru-RU"),
                 new CultureInfo("ar-SA"),
                 new CultureInfo("tr-TR"),
