@@ -69,6 +69,7 @@ namespace BusinessPortal.Domain.ViewModels.UserPanel.Advertisement
         ImageIsNotValid,
         FillRejectDescription,
         [Display(Name = "تصویر آگهی را وارد کنید ")]
-        ImageIsNotFound
+        ImageIsNotFound,
+        CatgeoryError
     }
 }

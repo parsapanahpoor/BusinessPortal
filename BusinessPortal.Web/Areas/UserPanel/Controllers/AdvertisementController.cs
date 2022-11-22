@@ -694,6 +694,34 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         }
 
                         break;
+
+                    case EditRequestAdvertisementFromUserPanelResualt.CatgeoryError:
+                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        {
+                            TempData[ErrorMessage] = "دسته بندی های انتخابی مورد قبول نمی باشند.";
+                        }
+                        if (CultureInfo.CurrentCulture.Name == "en-US")
+                        {
+                            TempData[ErrorMessage] = "Selected Categories Are Not Valid.";
+                        }
+                        if (CultureInfo.CurrentCulture.Name == "ru-RU")
+                        {
+                            TempData[ErrorMessage] = "Selected Categories Are Not Valid.";
+                        }
+                        if (CultureInfo.CurrentCulture.Name == "ar-SA")
+                        {
+                            TempData[ErrorMessage] = "Selected Categories Are Not Valid.";
+                        }
+                        if (CultureInfo.CurrentCulture.Name == "tr-TR")
+                        {
+                            TempData[ErrorMessage] = "Selected Categories Are Not Valid.";
+                        }
+                        if (CultureInfo.CurrentCulture.Name == "pt-PT")
+                        {
+                            TempData[ErrorMessage] = "Selected Categories Are Not Valid.";
+                        }
+
+                        break;
                 }
 
             }
@@ -1458,6 +1486,34 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         if (CultureInfo.CurrentCulture.Name == "tr-TR")
                         {
                             TempData[ErrorMessage] = "Lütfen reklam resmini girin";
+                        }
+
+                        break;
+
+                    case EditOnSaleAdvertisementFromUserPanelResualt.CatgeoryError:
+                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        {
+                            TempData[ErrorMessage] = "دسته بندی های انتخابی مورد قبول نمی باشند.";
+                        }
+                        if (CultureInfo.CurrentCulture.Name == "en-US")
+                        {
+                            TempData[ErrorMessage] = "Selected Categories Are Not Valid.";
+                        }
+                        if (CultureInfo.CurrentCulture.Name == "ru-RU")
+                        {
+                            TempData[ErrorMessage] = "Selected Categories Are Not Valid.";
+                        }
+                        if (CultureInfo.CurrentCulture.Name == "ar-SA")
+                        {
+                            TempData[ErrorMessage] = "Selected Categories Are Not Valid.";
+                        }
+                        if (CultureInfo.CurrentCulture.Name == "tr-TR")
+                        {
+                            TempData[ErrorMessage] = "Selected Categories Are Not Valid.";
+                        }
+                        if (CultureInfo.CurrentCulture.Name == "pt-PT")
+                        {
+                            TempData[ErrorMessage] = "Selected Categories Are Not Valid.";
                         }
 
                         break;

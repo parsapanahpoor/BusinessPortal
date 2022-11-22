@@ -718,6 +718,8 @@ namespace BusinessPortal.Application.Services.Implementation
 
             var mainCat = 0;
 
+            ulong mainCategoryId = 0;
+
             foreach (var item in SelectedCategory)
             {
                 var category = await _context.Categories.FirstOrDefaultAsync(p => p.Id == item);
@@ -725,7 +727,16 @@ namespace BusinessPortal.Application.Services.Implementation
                 if (category.ParentId == null)
                 {
                     mainCat++;
+                    mainCategoryId = item;
                 }
+                else
+                {
+                    if (category.ParentId != mainCategoryId)
+                    {
+                        return CreateAdvertisementFromUserPanelResult.CatgeoryError;
+                    }
+                }
+
             }
 
             if (mainCat > 1)
@@ -855,6 +866,8 @@ namespace BusinessPortal.Application.Services.Implementation
 
             var mainCat = 0;
 
+            ulong mainCategoryId = 0;
+
             foreach (var item in SelectedCategory)
             {
                 var category = await _context.Categories.FirstOrDefaultAsync(p => p.Id == item);
@@ -862,7 +875,16 @@ namespace BusinessPortal.Application.Services.Implementation
                 if (category.ParentId == null)
                 {
                     mainCat++;
+                    mainCategoryId = item;
                 }
+                else
+                {
+                    if (category.ParentId != mainCategoryId)
+                    {
+                        return CreateAdvertisementFromUserPanelResult.CatgeoryError;
+                    }
+                }
+
             }
 
             if (mainCat > 1)
@@ -1289,6 +1311,38 @@ namespace BusinessPortal.Application.Services.Implementation
 
         public async Task<EditRequestAdvertisementFromUserPanelResualt> EditRequestAdvertisementFromUserPanel(EditRequestAdvertisementFromUserPanel model, IFormFile ImageName, List<IFormFile> upload_imgs, List<ulong> SelectedCategory)
         {
+            #region Category Validation 
+
+            var mainCat = 0;
+
+            ulong mainCategoryId = 0;
+
+            foreach (var item in SelectedCategory)
+            {
+                var category = await _context.Categories.FirstOrDefaultAsync(p => p.Id == item);
+
+                if (category.ParentId == null)
+                {
+                    mainCat++;
+                    mainCategoryId = item;
+                }
+                else
+                {
+                    if (category.ParentId != mainCategoryId)
+                    {
+                        return EditRequestAdvertisementFromUserPanelResualt.CatgeoryError;
+                    }
+                }
+
+            }
+
+            if (mainCat > 1)
+            {
+                return EditRequestAdvertisementFromUserPanelResualt.CatgeoryError;
+            }
+
+            #endregion
+
             var lang = CultureInfo.CurrentCulture.Name;
 
             var Ads = await _context.Advertisement
@@ -1447,6 +1501,38 @@ namespace BusinessPortal.Application.Services.Implementation
 
         public async Task<EditOnSaleAdvertisementFromUserPanelResualt> EditOnSaleAdvertisementFromUserPanel(EditOnSaleAdvertisementFromUserPanel model, IFormFile ImageName, List<IFormFile> upload_imgs, List<ulong> SelectedCategory)
         {
+            #region Category Validation 
+
+            var mainCat = 0;
+
+            ulong mainCategoryId = 0;
+
+            foreach (var item in SelectedCategory)
+            {
+                var category = await _context.Categories.FirstOrDefaultAsync(p => p.Id == item);
+
+                if (category.ParentId == null)
+                {
+                    mainCat++;
+                    mainCategoryId = item;
+                }
+                else
+                {
+                    if (category.ParentId != mainCategoryId)
+                    {
+                        return EditOnSaleAdvertisementFromUserPanelResualt.CatgeoryError;
+                    }
+                }
+
+            }
+
+            if (mainCat > 1)
+            {
+                return EditOnSaleAdvertisementFromUserPanelResualt.CatgeoryError;
+            }
+
+            #endregion
+
             var lang = CultureInfo.CurrentCulture.Name;
 
             var Ads = await _context.Advertisement
