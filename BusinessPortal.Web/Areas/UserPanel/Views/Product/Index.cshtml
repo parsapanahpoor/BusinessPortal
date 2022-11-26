@@ -64,7 +64,14 @@
                                                         {
                                                             foreach (var langs in item.ProductInfo)
                                                             {
-                                                                <div class="badge light badge-dark cursor-pointer">@langs.Language.LanguageTitle</div>
+                                                                if (langs.Language.LanguageTitle == "bg-BG")
+                                                                {
+                                                                    <div class="badge light badge-dark cursor-pointer">fa-IR</div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="badge light badge-dark cursor-pointer">@langs.Language.LanguageTitle</div>
+                                                                }
                                                             }
                                                         }
                                                     </td>

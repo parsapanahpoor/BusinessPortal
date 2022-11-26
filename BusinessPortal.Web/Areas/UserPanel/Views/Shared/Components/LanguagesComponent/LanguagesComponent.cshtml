@@ -2,7 +2,16 @@
 
 @foreach (var item in Model)
 {
-    <li class="nav-item d-none d-sm-inline-block">
+    if (item.LanguageTitle == "bg-BG")
+    {
+          <li class="nav-item d-none d-sm-inline-block">
+        <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="@item.LanguageTitle" class="nav-link">fa-IR</a>
+    </li>
+    }else
+    {
+          <li class="nav-item d-none d-sm-inline-block">
         <a asp-action="ChangeLanguage" asp-area="" asp-controller="Home" asp-route-Culture="@item.LanguageTitle" class="nav-link">@item.LanguageTitle</a>
     </li>
+    }
+  
 }

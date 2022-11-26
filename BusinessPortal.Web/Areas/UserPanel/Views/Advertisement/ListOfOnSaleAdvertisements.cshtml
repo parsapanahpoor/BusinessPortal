@@ -19,56 +19,56 @@
 
 }
 
-<div class="content-body" style="min-height: 908px; margin-right:0px ; padding-top:0px;">
-    <div class="container-fluid">
+    <div class="content-body" style="min-height: 908px; margin-right:0px ; padding-top:0px;">
+        <div class="container-fluid">
 
-        <form method="get" asp-area="UserPanel" asp-controller="Advertisement" asp-action="ListOfOnSaleAdvertisements" id="filter-form">
-            <div class="row">
+            <form method="get" asp-area="UserPanel" asp-controller="Advertisement" asp-action="ListOfOnSaleAdvertisements" id="filter-form">
+                <div class="row">
 
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">@_Localizer["Filters"]</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="basic-form">
-                                <form method="get" asp-area="Admin" asp-controller="Advertisement" asp-action="ListOfOnSaleAdvertisements" id="filter-form">
-                                    <input type="hidden" asp-for="Page" id="PageId" />
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">@_Localizer["Filters"]</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <form method="get" asp-area="Admin" asp-controller="Advertisement" asp-action="ListOfOnSaleAdvertisements" id="filter-form">
+                                        <input type="hidden" asp-for="Page" id="PageId" />
 
-                                    <div class="form-group col-md-12">
-                                        <label asp-for="Title">@_Localizer["Title"] </label>
-                                        <input type="text" asp-for="Title" class="form-control" placeholder="@_Localizer["AdvertisementTitlePlaceHolder"]">
-                                    </div>
+                                        <div class="form-group col-md-12">
+                                            <label asp-for="Title">@_Localizer["Title"] </label>
+                                            <input type="text" asp-for="Title" class="form-control" placeholder="@_Localizer["AdvertisementTitlePlaceHolder"]">
+                                        </div>
 
-                                    <div class="form-group col-md-12">
-                                        <label asp-for="Description"> @_Localizer["Description"]  </label>
-                                        <input type="text" asp-for="Description" class="form-control" placeholder="@_Localizer["AdvertisementDescriptionPlaceHolder"] ">
-                                    </div>
+                                        <div class="form-group col-md-12">
+                                            <label asp-for="Description"> @_Localizer["Description"]  </label>
+                                            <input type="text" asp-for="Description" class="form-control" placeholder="@_Localizer["AdvertisementDescriptionPlaceHolder"] ">
+                                        </div>
 
-                                    <div class="form-group col-md-12">
-                                        <label asp-for="AdsUrl">@_Localizer["URL"]  </label>
-                                        <input type="text" asp-for="AdsUrl" class="form-control" placeholder="@_Localizer["AdvertisementURLPlaceHolder"]">
-                                    </div>
+                                        <div class="form-group col-md-12">
+                                            <label asp-for="AdsUrl">@_Localizer["URL"]  </label>
+                                            <input type="text" asp-for="AdsUrl" class="form-control" placeholder="@_Localizer["AdvertisementURLPlaceHolder"]">
+                                        </div>
 
-                                    @*<div class="form-group col-md-12">
-                                        <label asp-for="FilterOnSaleAdvertisementOrder">@_Localizer["CreateDate"]</label>
-                                        <select asp-for="FilterOnSaleAdvertisementOrder" class="form-control">
-                                            @foreach (var advertisementAdminDateOrder in Enum.GetValues<FilterOnSaleAdvertisementOrder>().ToList())
-                                            {
-                                                if (Model.FilterOnSaleAdvertisementOrder == advertisementAdminDateOrder)
-                                                {
-                                                    <option selected="" value="@advertisementAdminDateOrder">@advertisementAdminDateOrder.GetEnumName()</option>
-                                                }
-                                                else
-                                                {
-                                                    <option value="@advertisementAdminDateOrder">@advertisementAdminDateOrder.GetEnumName()</option>
-                                                }
-                                            }
-                                        </select>
+                                        @*<div class="form-group col-md-12">
+                                    <label asp-for="FilterOnSaleAdvertisementOrder">@_Localizer["CreateDate"]</label>
+                                    <select asp-for="FilterOnSaleAdvertisementOrder" class="form-control">
+                                    @foreach (var advertisementAdminDateOrder in Enum.GetValues<FilterOnSaleAdvertisementOrder>().ToList())
+                                    {
+                                    if (Model.FilterOnSaleAdvertisementOrder == advertisementAdminDateOrder)
+                                    {
+                                    <option selected="" value="@advertisementAdminDateOrder">@advertisementAdminDateOrder.GetEnumName()</option>
+                                    }
+                                    else
+                                    {
+                                    <option value="@advertisementAdminDateOrder">@advertisementAdminDateOrder.GetEnumName()</option>
+                                    }
+                                    }
+                                    </select>
                                     </div>*@
 
-                                    <div class="d-flex justify-content-start mt-4">
-                                        <button class="btn btn-success mr-3" type="submit">@_Localizer["SubmitFilter"]</button>
+                                        <div class="d-flex justify-content-start mt-4">
+                                            <button class="btn btn-success mr-3" type="submit">@_Localizer["SubmitFilter"]</button>
                                         @if (Context.Request.QueryString.HasValue)
                                         {
                                             <a class="btn btn-danger" asp-area="UserPanel" asp-controller="Advertisement" asp-action="ListOfOnSaleAdvertisements">@_Localizer["DeleteFilter"]</a>
@@ -122,7 +122,14 @@
                                                         {
                                                             foreach (var langs in item.AdvertisementInfo)
                                                             {
-                                                                <div class="badge light badge-dark cursor-pointer">@langs.Language.LanguageTitle</div>
+                                                                if (langs.Language.LanguageTitle == "bg-BG")
+                                                                {
+                                                                    <div class="badge light badge-dark cursor-pointer">fa-IR</div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="badge light badge-dark cursor-pointer">@langs.Language.LanguageTitle</div>
+                                                                }
                                                             }
                                                         }
                                                     </td>

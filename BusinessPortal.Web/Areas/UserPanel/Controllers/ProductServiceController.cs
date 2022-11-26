@@ -107,7 +107,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
             {
                 if (SelectedCategory == null)
                 {
-                    if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                    if (CultureInfo.CurrentCulture.Name == "bg-BG")
                     {
                         TempData[WarningMessage] = "دسته بندی های خدمت باید انتخاب شود  ";
                     }
@@ -137,7 +137,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
 
                 if (model.AddressID == null)
                 {
-                    if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                    if (CultureInfo.CurrentCulture.Name == "bg-BG")
                     {
                         TempData[WarningMessage] = "آدرس باید انتخاب شود   ";
                     }
@@ -172,7 +172,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                 switch (result)
                 {
                     case CreateServiceFromUserPanelResult.ImageCountNotValid:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[WarningMessage] = "تصویر وارد شده دچار مشکل است ";
                         }
@@ -200,7 +200,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case CreateServiceFromUserPanelResult.Success:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[SuccessMessage] = "محصول خدماتی مورد نطر با موفقیت ثبت شده است ";
                         }
@@ -228,7 +228,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         return RedirectToAction("Index", "ProductService", new { area = "UserPanel" });
 
                     case CreateServiceFromUserPanelResult.ImageIsNotValid:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "لطفا فقط عکس با فرمت های معتبر انتخاب کنید";
                         }
@@ -256,7 +256,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case CreateServiceFromUserPanelResult.Faild:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "ثبت آگهی مورد نظر با مشکل روبرو گردیده است  ";
                         }
@@ -284,7 +284,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case CreateServiceFromUserPanelResult.ImageIsNotExist:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "لطفا تصویر آگهی را وارد کنید ";
                         }
@@ -449,7 +449,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
             {
                 if (SelectedCategory == null)
                 {
-                    if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                    if (CultureInfo.CurrentCulture.Name == "bg-BG")
                     {
                         TempData[WarningMessage] = "دسته بندی های باید انتخاب شود  ";
                     }
@@ -482,7 +482,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                 switch (result)
                 {
                     case EditRequestProductServiceFromUserPanelResualt.ImageCountNotValid:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[WarningMessage] = "مجموع عکس های وارد شده نباید بیشتر از ده تا باشد!";
                         }
@@ -510,7 +510,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case EditRequestProductServiceFromUserPanelResualt.NotFound:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "خدمت مورد نظر یافت شند! ";
                         }
@@ -538,7 +538,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         return Redirect("/UserPanel/ProductService/Index");
 
                     case EditRequestProductServiceFromUserPanelResualt.Success:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[SuccessMessage] = "خدمت مورد نظر با موفقیت ویرایش شده است ";
                         }
@@ -566,7 +566,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         return Redirect("/UserPanel/ProductService/Index");
 
                     case EditRequestProductServiceFromUserPanelResualt.Faild:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "ویرایش خدمت مورد نظر با مشکل روبرو گردیده است  ";
                         }
@@ -594,7 +594,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case EditRequestProductServiceFromUserPanelResualt.SiteSettingNotExist:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "تعداد روز نمایش آگهی در تنظیمات سایت یافت نشده است  ";
                         }
@@ -622,7 +622,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case EditRequestProductServiceFromUserPanelResualt.FillRejectDescription:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "علت عدم تایید آگهی را وارد کنید";
                         }
@@ -650,7 +650,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case EditRequestProductServiceFromUserPanelResualt.ImageIsNotValid:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "لطفا فقط عکس با فرمت های معتبر انتخاب شود";
                         }
@@ -678,7 +678,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case EditRequestProductServiceFromUserPanelResualt.ImageIsNotFound:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "لطفا تصویر آگهی را وارد کنید ";
                         }
@@ -721,7 +721,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
 
             if (result == true)
             {
-                if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                if (CultureInfo.CurrentCulture.Name == "bg-BG")
                 {
                     TempData[SuccessMessage] = "عملیات باموفقیت انجام شده است.";
                 }

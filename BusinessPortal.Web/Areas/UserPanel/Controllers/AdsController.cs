@@ -60,7 +60,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
             {
                 if (upload_imgs == null || upload_imgs.Count() >= 10)
                 {
-                    if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                    if (CultureInfo.CurrentCulture.Name == "bg-BG")
                     {
                         TempData[WarningMessage] = "لطفا حداقل یک تصویر را انتخاب کنید.";
                     }
@@ -98,7 +98,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
             var res = await _adsService.AddAdsFromUserPanel(ads , upload_imgs , User.GetUserId());
             if (res)
             {
-                if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                if (CultureInfo.CurrentCulture.Name == "bg-BG")
                 {
                     TempData[SuccessMessage] = "عملیات باموفقیت انجام شده است.";
                 }
@@ -180,7 +180,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                 var result = await _adsService.EditOnSaleAdvertisementFromUserPanel(model, ImageName, upload_imgs);
                 if (result)
                 {
-                    if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                    if (CultureInfo.CurrentCulture.Name == "bg-BG")
                     {
                         TempData[SuccessMessage] = "عملیات باموفقیت انجام شده است.";
                     }
@@ -224,7 +224,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
             var result = await _adsService.DeleteGalleryByUser(galleryId);
             if (result)
             {
-                if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                if (CultureInfo.CurrentCulture.Name == "bg-BG")
                 {
                     TempData[SuccessMessage] = "عملیات باموفقیت انجام شده است.";
                 }
@@ -267,7 +267,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
 
             if (res == true)
             {
-                if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                if (CultureInfo.CurrentCulture.Name == "bg-BG")
                 {
                     TempData[SuccessMessage] = "عملیات باموفقیت انجام شده است.";
                 }

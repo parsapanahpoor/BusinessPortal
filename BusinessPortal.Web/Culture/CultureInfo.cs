@@ -14,7 +14,7 @@ namespace BusinessPortal.Web.Culture
     {
         public static List<CultureItem> CultureItems { get; set; } = new List<CultureItem>
         {
-            new CultureItem{CultureKey = "fa-IR",Title="فارسی",Direction = "rtl",IsRtl = true},
+            new CultureItem{CultureKey = "bg-BG",Title="فارسی",Direction = "rtl",IsRtl = true},
             new CultureItem{CultureKey = "en-US",Title="English",Direction = "ltr",IsRtl = false},
             new CultureItem{CultureKey = "ar-Sa",Title="Arabic",Direction = "ltr",IsRtl = false},
             new CultureItem{CultureKey = "tr-TR",Title="Turkish",Direction = "ltr",IsRtl = false},

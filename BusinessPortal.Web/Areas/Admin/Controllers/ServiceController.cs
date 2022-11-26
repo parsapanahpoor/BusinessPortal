@@ -45,6 +45,7 @@ namespace BusinessPortal.Web.Areas.Admin.Controllers
 
             return View();
         }
+
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateServiceCategory(CreateServiceCategoryViewModel servicecCategory , IFormFile? serviceCategoryImage)
         {

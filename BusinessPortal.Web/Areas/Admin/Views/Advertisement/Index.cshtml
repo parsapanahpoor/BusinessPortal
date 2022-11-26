@@ -174,8 +174,17 @@
                                     {
                                         foreach (var langs in ads.AdvertisementInfo)
                                         {
-                                            <a onclick="ShowAdvertisementLanguage(@langs.Id)" class="badge light badge-primary cursor-pointer">@langs.Language.LanguageTitle</a>
+                                           
+                                            if (langs.Language.LanguageTitle == "bg-BG")
+                                            {
+                                              <a onclick="ShowAdvertisementLanguage(@langs.Id)" class="badge light badge-primary cursor-pointer">fa-IR</a>
                                             <hr class="margin-7" />
+                                            }
+                                            else
+                                            {
+                                                <a onclick="ShowAdvertisementLanguage(@langs.Id)" class="badge light badge-primary cursor-pointer">@langs.Language.LanguageTitle</a>
+                                                <hr class="margin-7" />
+                                            }
                                         }
                                     }
                                 </td>

@@ -129,7 +129,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
             {
                 if (SelectedCategory == null)
                 {
-                    if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                    if (CultureInfo.CurrentCulture.Name == "bg-BG")
                     {
                         TempData[WarningMessage] = "دسته بندی های آگهی باید انتخاب شود  ";
                     }
@@ -161,7 +161,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
 
                 if (model.AddressID == null)
                 {
-                    if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                    if (CultureInfo.CurrentCulture.Name == "bg-BG")
                     {
                         TempData[WarningMessage] = "آدرس باید انتخاب شود   ";
                     }
@@ -200,7 +200,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                 switch (result)
                 {
                     case CreateAdvertisementFromUserPanelResult.ImageCountNotValid:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[WarningMessage] = "تصویر وارد شده دچار مشکل است ";
                         }
@@ -228,7 +228,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case CreateAdvertisementFromUserPanelResult.CatgeoryError:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[WarningMessage] = "دسته بندی های انتخاب شده مغایرت دارند.";
                         }
@@ -240,7 +240,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case CreateAdvertisementFromUserPanelResult.Success:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[SuccessMessage] = "آگهی مورد نطر با موفقیت ثبت شده است ";
                         }
@@ -268,7 +268,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         return RedirectToAction("Index", "Advertisement", new { area = "UserPanel" });
 
                     case CreateAdvertisementFromUserPanelResult.ImageIsNotValid:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "لطفا فقط عکس با فرمت های معتبر انتخاب کنید";
                         }
@@ -296,7 +296,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case CreateAdvertisementFromUserPanelResult.Faild:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "ثبت آگهی مورد نظر با مشکل روبرو گردیده است  ";
                         }
@@ -324,7 +324,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case CreateAdvertisementFromUserPanelResult.ImageIsNotExist:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "لطفا تصویر آگهی را وارد کنید ";
                         }
@@ -439,7 +439,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
             {
                 if (SelectedCategory == null)
                 {
-                    if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                    if (CultureInfo.CurrentCulture.Name == "bg-BG")
                     {
                         TempData[WarningMessage] = "دسته بندی های آگهی باید انتخاب شود  ";
                     }
@@ -472,7 +472,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                 switch (result)
                 {
                     case EditRequestAdvertisementFromUserPanelResualt.ImageCountNotValid:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[WarningMessage] = "مجموع عکس های وارد شده نباید بیشتر از ده تا باشد!";
                         }
@@ -500,7 +500,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case EditRequestAdvertisementFromUserPanelResualt.NotFound:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "آگهی مورد نظر یافت شند! ";
                         }
@@ -528,7 +528,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         return Redirect("/UserPanel/Advertisement/Index");
 
                     case EditRequestAdvertisementFromUserPanelResualt.Success:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[SuccessMessage] = "آگهی مورد نظر با موفقیت ویرایش شده است ";
                         }
@@ -556,7 +556,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         return Redirect("/UserPanel/Advertisement/Index");
 
                     case EditRequestAdvertisementFromUserPanelResualt.Faild:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "ویرایش آگهی مورد نظر با مشکل روبرو گردیده است  ";
                         }
@@ -584,7 +584,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case EditRequestAdvertisementFromUserPanelResualt.SiteSettingNotExist:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "تعداد روز نمایش آگهی در تنظیمات سایت یافت نشده است  ";
                         }
@@ -612,7 +612,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case EditRequestAdvertisementFromUserPanelResualt.FillRejectDescription:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "علت عدم تایید آگهی را وارد کنید";
                         }
@@ -640,7 +640,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case EditRequestAdvertisementFromUserPanelResualt.ImageIsNotValid:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "لطفا فقط عکس با فرمت های معتبر انتخاب شود";
                         }
@@ -668,7 +668,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case EditRequestAdvertisementFromUserPanelResualt.ImageIsNotFound:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "لطفا تصویر آگهی را وارد کنید ";
                         }
@@ -696,7 +696,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case EditRequestAdvertisementFromUserPanelResualt.CatgeoryError:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "دسته بندی های انتخابی مورد قبول نمی باشند.";
                         }
@@ -741,7 +741,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
 
             if (result)
             {
-                if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                if (CultureInfo.CurrentCulture.Name == "bg-BG")
                 {
                     return JsonResponseStatus.SendStatus(
                                              JsonResponseStatusType.Success,
@@ -1003,7 +1003,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                 switch (result)
                 {
                     case CreateAdvertisementFromUserPanelResult.ImageCountNotValid:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[WarningMessage] = "تصویر وارد شده دچار مشکل است ";
                         }
@@ -1031,7 +1031,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case CreateAdvertisementFromUserPanelResult.CatgeoryError:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[WarningMessage] = "دسته بندی های انتخاب شده مغایرت دارند.";
                         }
@@ -1043,7 +1043,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case CreateAdvertisementFromUserPanelResult.Success:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[SuccessMessage] = "آگهی مورد نطر با موفقیت ثبت شده است ";
                         }
@@ -1070,7 +1070,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
 
                         return RedirectToAction("ListOfOnSaleAdvertisements", "Advertisement", new { area = "UserPanel" });
                     case CreateAdvertisementFromUserPanelResult.ImageIsNotValid:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "لطفا فقط عکس با فرمت های معتبر انتخاب کنید";
                         }
@@ -1098,7 +1098,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case CreateAdvertisementFromUserPanelResult.Faild:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "ثبت آگهی مورد نظر با مشکل روبرو گردیده است  ";
                         }
@@ -1126,7 +1126,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case CreateAdvertisementFromUserPanelResult.ImageIsNotExist:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "لطفا تصویر آگهی را وارد کنید ";
                         }
@@ -1234,7 +1234,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
             {
                 if (SelectedCategory == null)
                 {
-                    if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                    if (CultureInfo.CurrentCulture.Name == "bg-BG")
                     {
                         TempData[WarningMessage] = "دسته بندی های آگهی باید انتخاب شود  ";
                     }
@@ -1267,7 +1267,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                 switch (result)
                 {
                     case EditOnSaleAdvertisementFromUserPanelResualt.ImageCountNotValid:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[WarningMessage] = "مجموع عکس های وارد شده نباید بیشتر از ده تا باشد!";
                         }
@@ -1295,7 +1295,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case EditOnSaleAdvertisementFromUserPanelResualt.NotFound:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "آگهی مورد نظر یافت شند! ";
                         }
@@ -1323,7 +1323,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         return Redirect("/UserPanel/Advertisement/ListOfOnSaleAdvertisements");
 
                     case EditOnSaleAdvertisementFromUserPanelResualt.Success:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[SuccessMessage] = "آگهی مورد نظر با موفقیت ویرایش شده است ";
                         }
@@ -1351,7 +1351,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         return Redirect("/UserPanel/Advertisement/ListOfOnSaleAdvertisements");
 
                     case EditOnSaleAdvertisementFromUserPanelResualt.Faild:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "ویرایش آگهی مورد نظر با مشکل روبرو گردیده است  ";
                         }
@@ -1379,7 +1379,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case EditOnSaleAdvertisementFromUserPanelResualt.SiteSettingNotExist:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "تعداد روز نمایش آگهی در تنظیمات سایت یافت نشده است  ";
                         }
@@ -1407,7 +1407,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case EditOnSaleAdvertisementFromUserPanelResualt.FillRejectDescription:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "علت عدم تایید آگهی را وارد کنید";
                         }
@@ -1435,7 +1435,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case EditOnSaleAdvertisementFromUserPanelResualt.ImageIsNotValid:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "لطفا فقط عکس با فرمت های معتبر انتخاب شود";
                         }
@@ -1463,7 +1463,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case EditOnSaleAdvertisementFromUserPanelResualt.ImageIsNotFound:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "لطفا تصویر آگهی را وارد کنید ";
                         }
@@ -1491,7 +1491,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         break;
 
                     case EditOnSaleAdvertisementFromUserPanelResualt.CatgeoryError:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "دسته بندی های انتخابی مورد قبول نمی باشند.";
                         }

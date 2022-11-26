@@ -80,7 +80,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                 switch (result)
                 {
                     case CreateAddressFormUserPanelResult.Success:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[SuccessMessage] = "آدرس با موفقیت ثبت شده است  ";
                         }
@@ -108,7 +108,7 @@ namespace BusinessPortal.Web.Areas.UserPanel.Controllers
                         return RedirectToAction("Index", new { UserId = createAddressFromUserPanel.UserId });
 
                     case CreateAddressFormUserPanelResult.Error:
-                        if (CultureInfo.CurrentCulture.Name == "fa-IR")
+                        if (CultureInfo.CurrentCulture.Name == "bg-BG")
                         {
                             TempData[ErrorMessage] = "عملیات با شکست مواجه شد!";
                         }
