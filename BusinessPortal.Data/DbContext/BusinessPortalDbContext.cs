@@ -21,6 +21,7 @@ using BusinessPortal.Domain.Entities.Countries;
 using BusinessPortal.Domain.Entities.Ads;
 using BusinessPortal.Domain.Entities.Slider;
 using BusinessPortal.Domain.Entities.Banners;
+using BusinessPortal.Domain.Entities.Slogan;
 
 namespace BusinessPortal.Data.DbContext
 {
@@ -169,6 +170,14 @@ namespace BusinessPortal.Data.DbContext
 
         #endregion
 
+        #region Slogan
+
+        public DbSet<Slogan> Slogans { get; set; }
+
+        public DbSet<SloganInfo> SloganInfos { get; set; }
+
+        #endregion
+
         #endregion
 
         #region On Model Creating
@@ -186,6 +195,7 @@ namespace BusinessPortal.Data.DbContext
 
             modelBuilder.Entity<ServicesCategoryInfo>().HasQueryFilter(ac => ac.LanguageId == culture);
             modelBuilder.Entity<ProductCategoryInfo>().HasQueryFilter(ac => ac.LanguageId == culture);
+            modelBuilder.Entity<SloganInfo>().HasQueryFilter(ac => ac.LanguageId == culture);
 
             #endregion
 

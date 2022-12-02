@@ -9,102 +9,102 @@
 }
 
 @section Styles
-{
+    {
 
 }
 
-@section Scripts
-{
+    @section Scripts
+    {
     <script>
 
         function ShowAdvertisementLanguage(adsId) {
 
-    console.log(adsId);
+            console.log(adsId);
 
-    $.ajax({
-        url: "/Admin/Advertisement/ShowAdvertisementLanguage",
-        type: "Get",
-        data: {
-            adsId: adsId
-        },
-        beforeSend: function () {
-            open_waiting();
-        },
-        success: function (response) {
-            close_waiting();
-            var modalTitle = " نمایش ریز اطلاعات آگهی";
-            $("#NormalModalTitle").html(modalTitle);
-            $("#NormalModalBody").html(response);
-            $("#NormalModal").modal("show");
-        },
-        error: function () {
-            close_waiting();
-            ShowMessage("خطا", "عملیات با خطا مواجه شد لطفا مجدد تلاش کنید .", "error");
+            $.ajax({
+                url: "/Admin/Advertisement/ShowAdvertisementLanguage",
+                type: "Get",
+                data: {
+                    adsId: adsId
+                },
+                beforeSend: function () {
+                    open_waiting();
+                },
+                success: function (response) {
+                    close_waiting();
+                    var modalTitle = " نمایش ریز اطلاعات آگهی";
+                    $("#NormalModalTitle").html(modalTitle);
+                    $("#NormalModalBody").html(response);
+                    $("#NormalModal").modal("show");
+                },
+                error: function () {
+                    close_waiting();
+                    ShowMessage("خطا", "عملیات با خطا مواجه شد لطفا مجدد تلاش کنید .", "error");
+                }
+            });
         }
-    });
-}
 
 
     </script>
 }
 
-@section Breadcrumbs
-{
-<li>
-    <a href="javascript:void(0)"> @ViewData["Title"] </a>
-</li>
+    @section Breadcrumbs
+    {
+    <li>
+        <a href="javascript:void(0)"> @ViewData["Title"] </a>
+    </li>
 }
 
-<div class="row">
-    <div class="col-lg-3 col-sm-12">
+    <div class="row">
+        <div class="col-lg-3 col-sm-12">
 
-        <div class="widget">
-            <div class="widget-header bordered-bottom bordered-green">
-                <span class="widget-caption"> فیلتر آگهی ها  </span>
-            </div>
-            <div class="widget-body">
-                <div>
-                    <form asp-action="Index" asp-controller="Advertisement" asp-area="Admin" id="filter-search" method="get">
+            <div class="widget">
+                <div class="widget-header bordered-bottom bordered-green">
+                    <span class="widget-caption"> فیلتر آگهی ها  </span>
+                </div>
+                <div class="widget-body">
+                    <div>
+                        <form asp-action="Index" asp-controller="Advertisement" asp-area="Admin" id="filter-search" method="get">
 
-                        <input type="hidden" asp-for="Page" />
+                            <input type="hidden" asp-for="Page" />
 
-                        <div class="form-group">
-                            <label asp-for="Title"> عنوان آگهی     </label>
-                            <input type="text" class="form-control" asp-for="Title" placeholder="عنوان آگهی را وارد کنید ">
-                        </div>
+                            <div class="form-group">
+                                <label asp-for="Title"> عنوان آگهی     </label>
+                                <input type="text" class="form-control" asp-for="Title" placeholder="عنوان آگهی را وارد کنید ">
+                            </div>
 
-                        <div class="form-group">
-                            <label asp-for="Username"> نام کاربر      </label>
-                            <input type="text" class="form-control" asp-for="Username" placeholder="نام کاربر را وارد کنید ">
-                        </div>
+                            <div class="form-group">
+                                <label asp-for="Username"> نام کاربر      </label>
+                                <input type="text" class="form-control" asp-for="Username" placeholder="نام کاربر را وارد کنید ">
+                            </div>
 
-                        <div class="form-group">
-                            <label asp-for="FilterAdvertisementActiveState"> وضعیت ثبت  </label>
-                            <select asp-for="FilterAdvertisementActiveState" class="form-control" asp-items="Html.GetEnumSelectList(typeof(FilterAdvertisementActiveState))"></select>
-                        </div>
+                            <div class="form-group">
+                                <label asp-for="FilterAdvertisementActiveState"> وضعیت ثبت  </label>
+                                <select asp-for="FilterAdvertisementActiveState" class="form-control" asp-items="Html.GetEnumSelectList(typeof(FilterAdvertisementActiveState))"></select>
+                            </div>
 
-                        <div class="form-group">
-                            <label asp-for="FilterAdvertisementGender"> وضعیت  </label>
-                            <select asp-for="FilterAdvertisementGender" class="form-control" asp-items="Html.GetEnumSelectList(typeof(FilterAdvertisementGender))"></select>
-                        </div>
+                            <div class="form-group">
+                                <label asp-for="FilterAdvertisementGender"> وضعیت  </label>
+                                <select asp-for="FilterAdvertisementGender" class="form-control" asp-items="Html.GetEnumSelectList(typeof(FilterAdvertisementGender))"></select>
+                            </div>
 
-                        <div class="form-group">
-                            <label asp-for="FilterAdvertisementState"> حذف شده / حذف تشده  </label>
-                            <select asp-for="FilterAdvertisementState" class="form-control" asp-items="Html.GetEnumSelectList(typeof(FilterAdvertisementState))"></select>
-                        </div>
+                            <div class="form-group">
+                                <label asp-for="FilterAdvertisementState"> حذف شده / حذف تشده  </label>
+                                <select asp-for="FilterAdvertisementState" class="form-control" asp-items="Html.GetEnumSelectList(typeof(FilterAdvertisementState))"></select>
+                            </div>
 
-                        <div class="form-group">
-                            <label asp-for="FilterAdvertisementOrder"> مرتب سازی براساس تاریخ </label>
-                            <select asp-for="FilterAdvertisementOrder" class="form-control" asp-items="Html.GetEnumSelectList(typeof(FilterAdvertisementOrder))"></select>
-                        </div>
+                            <div class="form-group">
+                                <label asp-for="FilterAdvertisementOrder"> مرتب سازی براساس تاریخ </label>
+                                <select asp-for="FilterAdvertisementOrder" class="form-control" asp-items="Html.GetEnumSelectList(typeof(FilterAdvertisementOrder))"></select>
+                            </div>
 
-                        <hr />
+                            <hr />
 
-                        <div class="row">
-                            <div class="col-md-12 flex-style">
-                                <button type="submit" class="btn btn-labeled w-100 btn-palegreen">
-                                    <i class="btn-label glyphicon glyphicon-filter"></i>اعمال فیلتر
-                                </button>
+                            <div class="row">
+                                <div class="col-md-12 flex-style">
+                                    <button type="submit" class="btn btn-labeled w-100 btn-palegreen">
+                                        <i class="btn-label glyphicon glyphicon-filter"></i>اعمال فیلتر
+                                    </button>
 
                                 @if (Context.Request.QueryString.HasValue)
                                 {
@@ -174,11 +174,11 @@
                                     {
                                         foreach (var langs in ads.AdvertisementInfo)
                                         {
-                                           
+
                                             if (langs.Language.LanguageTitle == "bg-BG")
                                             {
-                                              <a onclick="ShowAdvertisementLanguage(@langs.Id)" class="badge light badge-primary cursor-pointer">fa-IR</a>
-                                            <hr class="margin-7" />
+                                                <a onclick="ShowAdvertisementLanguage(@langs.Id)" class="badge light badge-primary cursor-pointer">fa-IR</a>
+                                                <hr class="margin-7" />
                                             }
                                             else
                                             {
@@ -216,6 +216,12 @@
                                         {
                                             <span class="mr-8px label label-warning">   فروشی    </span>
                                         }
+                                        @if (ads.OurOffer)
+                                        {
+                                            <hr />
+
+                                            <span class="mr-8px label label-success">   پیشنهاد ما    </span>
+                                        }
                                     </p>
                                 </td>
                                 <td class="tc vm">
@@ -238,8 +244,16 @@
                                 </td>
                                 <td class="tc vm">
                                     <a asp-action="EditAdvertisement" asp-area="Admin" asp-controller="Advertisement" asp-route-Id="@ads.Id" class="btn btn-warning btn-circle btn-xs"><i class="glyphicon glyphicon-pencil"></i></a>
-                                    @*                                    <a asp-area="" asp-action="ArticleDetail" asp-controller="Article" asp-route-ArticleId="@Article.Id" asp-route-ArticleTitle="@Article.Title.FixTextForUrl()" class="btn btn-azure btn-circle btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>
-                                    *@
+
+                                    @if (ads.OurOffer)
+                                    {
+                                        <a asp-action="DissActiveOurOffer" asp-area="Admin" asp-controller="Advertisement" asp-route-Id="@ads.Id" class="btn btn-danger btn-circle btn-xs"><i class="glyphicon glyphicon-remove"></i></a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-action="ActiveOurOffer" asp-area="Admin" asp-controller="Advertisement" asp-route-Id="@ads.Id" class="btn btn-success btn-circle btn-xs"><i class="glyphicon glyphicon-ok"></i></a>
+                                    }
+
                                     @if (ads.IsDelete)
                                     {
                                         <span class="mr-8px label label-orange">   حذف شده   </span>

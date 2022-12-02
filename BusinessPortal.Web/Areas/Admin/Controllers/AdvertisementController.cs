@@ -148,5 +148,39 @@ namespace BusinessPortal.Web.Areas.Admin.Controllers
         }
 
         #endregion
+
+        #region Active Our Offer
+
+        public async Task<IActionResult> ActiveOurOffer(ulong id)
+        {
+            var res = await _advertisementService.ActiveOurOffer(id);
+            if (res)
+            {
+                TempData[SuccessMessage] = "عملیات باموفقیت انجام شده است. ";
+                return Redirect("/Admin/Advertisement/Index");
+            }
+
+            TempData[ErrorMessage] = "آگهی مورد نظر یافت شند! ";
+            return Redirect("/Admin/Advertisement/Index");
+        }
+
+        #endregion
+
+        #region Diss Active Our Offer
+
+        public async Task<IActionResult> DissActiveOurOffer(ulong id)
+        {
+            var res = await _advertisementService.DisActiveOurOffer(id);
+            if (res)
+            {
+                TempData[SuccessMessage] = "عملیات باموفقیت انجام شده است. ";
+                return Redirect("/Admin/Advertisement/Index");
+            }
+
+            TempData[ErrorMessage] = "آگهی مورد نظر یافت شند! ";
+            return Redirect("/Admin/Advertisement/Index");
+        }
+
+        #endregion
     }
 }

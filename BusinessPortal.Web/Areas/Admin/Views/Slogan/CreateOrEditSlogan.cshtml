@@ -1,0 +1,100 @@
+﻿@model BusinessPortal.Domain.ViewModels.Admin.Slogan.CreateOrEditSloganViewModel
+
+@using BusinessPortal.Domain.Entities.Services
+@using BusinessPortal.Web.Culture
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = "مدیریت شعار سایت ";
+}
+
+@section Scripts
+    {
+    <partial name="_JqueryValidation" />
+}
+
+    @section Breadcrumbs
+    {
+    <li>
+        <a asp-area="Admin" asp-controller="Slogan" asp-action="CreateOrEditSlogan"> مدیریت شعار سایت / </a>
+        <a href="javascript:void(0)"> @ViewData["Title"] </a>
+    </li>
+}
+
+    <form method="post" asp-action="CreateOrEditSlogan" asp-controller="Slogan" asp-area="Admin" enctype="multipart/form-data">
+        <input type="hidden" asp-for="CurrentInfos" />
+
+        <div class="row">
+            <div class="col-lg-12 col-sm-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div>
+                        @if (Model.CurrentInfos == null)
+                        {
+                                int i = 0;
+                            @foreach (var language in ApplicationCultures.CultureItems)
+                            {
+                                <div class="card">
+                                    <div class="card-body">
+                                        <input type="hidden" asp-for="CreateOrEditSloganInfo[i].Culture" value="@language.CultureKey" />
+                                        <h5 class="mb-4">
+                                            عنوان شعار ( @language.Title )
+                                        </h5>
+                                        <div class="form-group">
+                                            <label>عنوان شعار </label>
+                                            <input class="form-control" asp-for="CreateOrEditSloganInfo[i].Title" />
+                                            <span asp-validation-for="CreateOrEditSloganInfo[i].Title" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="margin-bottom-10 margin-top-10" />
+
+                                <br />
+                                i++;
+                            }
+                        }
+                        else
+                        {
+
+                            int i = 0;
+
+                            @foreach (var language in ApplicationCultures.CultureItems)
+                            {
+                                var data = Model.CurrentInfos.FirstOrDefault(s => s.LanguageId == language.CultureKey);
+                                <div class="card">
+                                    <div class="card-body">
+                                        <input type="hidden" asp-for="CreateOrEditSloganInfo[i].Culture" value="@language.CultureKey" />
+                                        <h5 class="mb-4">
+                                            عنوان شعار ( @language.Title )
+                                        </h5>
+                                        <div class="form-group">
+                                            <label>عنوان شعار </label>
+                                            <input class="form-control" asp-for="CreateOrEditSloganInfo[i].Title" value="@data?.Title" />
+                                            <span asp-validation-for="CreateOrEditSloganInfo[i].Title" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="margin-bottom-10 margin-top-10" />
+
+                                <br />
+                                i++;
+                            }
+                        }
+                        <div class="row">
+                            <div class="col-md-12 flex-style">
+                                <button type="submit" class="btn btn-labeled btn-blue">
+                                    <i class="btn-label glyphicon glyphicon-ok"></i>ثبت
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+

@@ -39,6 +39,8 @@ namespace BusinessPortal.Domain.Entities.Advertisement
 
         public ulong? CountriesId { get; set; }
 
+        public bool OurOffer { get; set; }
+
         #endregion
 
         #region Relations

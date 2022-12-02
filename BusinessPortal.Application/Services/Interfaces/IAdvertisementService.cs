@@ -8,6 +8,7 @@ using BusinessPortal.Domain.ViewModels.Site.Advertisement;
 using BusinessPortal.Domain.ViewModels.UserPanel.Advertisement;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,11 +39,22 @@ namespace BusinessPortal.Application.Services.Interfaces
         #region Admin Side 
 
         Task<AdvertisementInfo?> ShowAdvertisementLanguage(ulong adsId);
+
         Task<FilterAdvertisementAdminSidedViewModel> FilterRequestAdvertisementAdminSide(FilterAdvertisementAdminSidedViewModel filter);
+
         Task<AdminDashboardViewModel> FillAdminDashboadrdViewModel();
+
         Task<EditAdvertisementFromAdminPanel> SetEditAdvertisementFromAdminPanel(ulong Id);
+
         Task<EditAdvertisementFromAdminPanelResult> UpdateAdvertisement(EditAdvertisementFromAdminPanel model, IFormFile? ImageName, List<ulong> SelectedCategory);
+
         Task<bool> DeleteAdvertisementFromAdmin(ulong id);
+
+        //Active Our Offer 
+        Task<bool> ActiveOurOffer(ulong id);
+
+        //Diss Active Our Offer 
+        Task<bool> DisActiveOurOffer(ulong id);
 
         #endregion
 

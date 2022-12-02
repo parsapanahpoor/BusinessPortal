@@ -1,5 +1,6 @@
 ﻿using BusinessPortal.Domain.Entities.Product;
 using BusinessPortal.Domain.Entities.Services;
+using BusinessPortal.Domain.Entities.Slogan;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -25,6 +26,8 @@ namespace BusinessPortal.Domain.Entities.Language
         public ICollection<ProductCategoryInfo>  ProductCategoryInfos{ get; set; }
 
         public ICollection<ProductServiceInfo>  ProductServiceInfos{ get; set; }
+
+        public ICollection<SloganInfo>  SloganInfos{ get; set; }
 
         #endregion
     }

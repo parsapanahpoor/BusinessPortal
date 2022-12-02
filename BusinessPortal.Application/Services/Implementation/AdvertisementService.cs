@@ -337,6 +337,52 @@ namespace BusinessPortal.Application.Services.Implementation
             return filter;
         }
 
+        //Active Our Offer 
+        public async Task<bool> ActiveOurOffer(ulong id)
+        {
+            #region Get Addvertisement 
+
+            var ads = await _context.Advertisement.FirstOrDefaultAsync(p => !p.IsDelete && p.Id == id);
+            if (ads == null) return false;
+
+            #endregion
+
+            #region Update Ads
+
+            ads.OurOffer = true;
+
+            //Update 
+            _context.Advertisement.Update(ads);
+            await _context.SaveChangesAsync();
+
+            #endregion
+
+            return true;
+        }
+
+        //Diss Active Our Offer 
+        public async Task<bool> DisActiveOurOffer(ulong id)
+        {
+            #region Get Addvertisement 
+
+            var ads = await _context.Advertisement.FirstOrDefaultAsync(p => !p.IsDelete && p.Id == id);
+            if (ads == null) return false;
+
+            #endregion
+
+            #region Update Ads
+
+            ads.OurOffer = false;
+
+            //Update 
+            _context.Advertisement.Update(ads);
+            await _context.SaveChangesAsync();
+
+            #endregion
+
+            return true;
+        }
+
         #endregion
 
         #region Request Advertisements 

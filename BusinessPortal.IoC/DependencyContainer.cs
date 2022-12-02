@@ -33,6 +33,7 @@ namespace BusinessPortal.IoC
             services.AddScoped<IProductService , ProductService>();
             services.AddScoped<IAdsService , AdsService>();
             services.AddScoped<ISliderServicee , SliderService>();
+            services.AddScoped<ISloganService , SloganService>();
 
             #endregion
 

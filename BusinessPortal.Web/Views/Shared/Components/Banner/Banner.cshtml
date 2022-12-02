@@ -1,0 +1,18 @@
+﻿@model BusinessPortal.Domain.ViewModels.Admin.Slider.CreateOrEditBannerViewModel
+@using BusinessPortal.Domain.ViewModels.Admin
+@using BusinessPortal.Application.Extensions
+@using BusinessPortal.Application.Convertors
+@using BusinessPortal.Domain.ViewModels.Common
+@using BusinessPortal.Application.StaticTools
+
+<div class="col-md-5">
+    <div class="about-image-wrap  ">
+
+        @if (Model != null)
+        {
+            <img class="Bannersb" src="@PathTools.BannerOriginimage@Model.BannerTop" alt="image">
+            <img class="Bannersb" src="@PathTools.BannerOriginimage@Model.BanenrButton" alt="image">
+        }
+
+    </div>
+</div>
