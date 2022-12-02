@@ -144,5 +144,29 @@ namespace BusinessPortal.Application.StaticTools
         public static string ProductimageServerOriginThumb = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/Product/Thumb/");
 
         #endregion
+
+        #region Slider
+
+        public static string DefaultSldierimage = "/UploadedImages/DefaultImages/Default.png";
+
+        public static string SliderOriginimage = "/UploadedImages/Sldier/Origin/";
+        public static string SliderThumbimage = "/UploadedImages/Sldier/Thumb/";
+        public static string SliderimageServerOrigin = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/Sldier/Origin/");
+        public static string SliderImageServerThumb = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/Sldier/Thumb/");
+        public static string SliderimageServerOriginThumb = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/Sldier/Thumb/");
+
+        #endregion
+
+        #region Slider
+
+        public static string DefaultBannerimage = "/UploadedImages/DefaultImages/Default.png";
+
+        public static string BannerOriginimage = "/UploadedImages/Banner/Origin/";
+        public static string BannerThumbimage = "/UploadedImages/Banner/Thumb/";
+        public static string BannerimageServerOrigin = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/Banner/Origin/");
+        public static string BannerImageServerThumb = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/Banner/Thumb/");
+        public static string BannerimageServerOriginThumb = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadedImages/Banner/Thumb/");
+
+        #endregion
     }
 }

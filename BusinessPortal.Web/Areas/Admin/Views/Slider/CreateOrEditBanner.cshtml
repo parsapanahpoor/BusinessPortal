@@ -1,0 +1,124 @@
+﻿@model BusinessPortal.Domain.ViewModels.Admin.Slider.CreateOrEditBannerViewModel
+
+@using BusinessPortal.Domain.Entities.Services
+@using BusinessPortal.Web.Culture
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = "افزودن بنر";
+}
+
+@section Scripts
+    {
+    <partial name="_JqueryValidation" />
+}
+
+    @section Breadcrumbs
+    {
+    <li>
+        <a asp-area="Admin" asp-controller="Slider" asp-action="ListOfSldiers"> مدیریت بنر / </a>
+        <a href="javascript:void(0)"> @ViewData["Title"] </a>
+    </li>
+}
+
+    <form method="post" asp-action="CreateOrEditBanner" asp-controller="Slider" asp-area="Admin" enctype="multipart/form-data">
+        <input type="hidden" asp-for="BanenrButton" />
+        <input type="hidden" asp-for="BannerTop" />
+
+        <div class="row">
+            <div class="col-lg-9 col-sm-12">
+                <div class="widget">
+                    <div class="widget-header bordered-bottom bordered-green">
+
+                </div>
+                <div class="widget-body">
+                    <div>
+
+                        <div class="row">
+                            <div class="form-group col-md-12 col-sm-12">
+                                    <label asp-for="URLImageTop">عنوان بنر اول</label>
+                                    <input type="text" class="form-control" asp-for="URLImageTop">
+                                    <span class="text-danger" asp-validation-for="URLImageTop"></span>
+                            </div>
+
+                                <div class="form-group col-md-12 col-sm-12">
+                                    <label asp-for="URLButton">عنوان بنر دوم</label>
+                                    <input type="text" class="form-control" asp-for="URLButton">
+                                    <span class="text-danger" asp-validation-for="URLButton"></span>
+                                </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 flex-style">
+                                <button type="submit" class="btn btn-labeled btn-palegreen">
+                                    <i class="btn-label glyphicon glyphicon-ok"></i>ثبت
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-12">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="widget">
+                        <div class="widget-header bordered-bottom bordered-green">
+                            <span class="widget-caption"> تصویر بنر اول    </span>
+                        </div>
+                        <div class="widget-body">
+                            <div class="row">
+
+                                    <input type="file" class="display-none" name="top" id="ArticleImage" ImageInput="1" accept=".jpg,.jpeg,.png" />
+
+                                <div class="col-md-12">
+                                    <label for="ArticleImage" class="file-input-style">
+                                        <i class="glyphicon glyphicon-upload"></i>
+                                        <span class="mr-8px">لطفا  تصویر را انتخاب کنید .</span>
+                                    </label>
+                                </div>
+
+                                <div class="col-md-12 tc mt-10px">
+                                        <img src="@(string.IsNullOrEmpty(Model.BannerTop) ? BusinessPortal.Application.StaticTools.PathTools.DefaultProductCategoryimage : BusinessPortal.Application.StaticTools.PathTools.BannerThumbimage + Model.BannerTop)" class="Article-Priew" ImageFile="1" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="col-lg-12">
+                        <div class="widget">
+                            <div class="widget-header bordered-bottom bordered-green">
+                                <span class="widget-caption"> تصویر بنر دوم    </span>
+                            </div>
+                            <div class="widget-body">
+                                <div class="row">
+
+                                    <input type="file" class="display-none" name="button" id="ArticleImage1" ImageInput="2" accept=".jpg,.jpeg,.png" />
+
+                                    <div class="col-md-12">
+                                        <label for="ArticleImage1" class="file-input-style">
+                                            <i class="glyphicon glyphicon-upload"></i>
+                                            <span class="mr-8px">لطفا  تصویر را انتخاب کنید .</span>
+                                        </label>
+                                    </div>
+
+                                    <div class="col-md-12 tc mt-10px">
+                                        <img src="@(string.IsNullOrEmpty(Model.BanenrButton) ? BusinessPortal.Application.StaticTools.PathTools.DefaultProductCategoryimage : BusinessPortal.Application.StaticTools.PathTools.BannerThumbimage + Model.BanenrButton)" class="Article-Priew" ImageFile="2" />
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+

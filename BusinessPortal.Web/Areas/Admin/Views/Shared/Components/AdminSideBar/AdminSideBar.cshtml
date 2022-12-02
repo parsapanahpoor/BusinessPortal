@@ -272,6 +272,46 @@
             </ul>
         </li>
 
+        <li>
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon fa fa-picture-o"></i>
+                <span class="menu-text"> مدیریت اسلایدر ها </span>
+                <i class="menu-expand"></i>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a asp-action="ListOfSldiers" asp-controller="Slider" asp-area="Admin">
+                        <span class="menu-text"> لیست اسلایدر ها </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a asp-action="CreateSlider" asp-controller="Slider" asp-area="Admin">
+                        <span class="menu-text"> افزودن اسلایدر جدید </span>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+
+        <li>
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon fa fa-picture-o"></i>
+                <span class="menu-text"> مدیریت بنر ها </span>
+                <i class="menu-expand"></i>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a asp-action="CreateOrEditBanner" asp-controller="Slider" asp-area="Admin">
+                        <span class="menu-text"> بنر ها </span>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+
         <!--UI Elements-->
 
     </ul>

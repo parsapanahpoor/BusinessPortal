@@ -1,0 +1,30 @@
+﻿@model BusinessPortal.Domain.ViewModels.Admin.Slider.FilterSliderViewModel
+@using BusinessPortal.Domain.ViewModels.Admin
+@using BusinessPortal.Application.Extensions
+@using BusinessPortal.Application.Convertors
+@using BusinessPortal.Domain.ViewModels.Common
+@using BusinessPortal.Application.StaticTools
+
+<div class="col-md-7 col-sm-12">
+    <div class="main-slides-area">
+        <div class="home-slides owl-carousel owl-theme">
+
+            @if (Model.Entities != null && Model.Entities.Any())
+            {
+                foreach (var slider in Model.Entities)
+                {
+                    <div class="main-slides-item">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="main-slides-image p-1" data-aos="fade-left" data-aos-delay="20" data-aos-duration="200">
+                                    <img src="@PathTools.SliderOriginimage@slider.SldierImageName" alt="image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</div>

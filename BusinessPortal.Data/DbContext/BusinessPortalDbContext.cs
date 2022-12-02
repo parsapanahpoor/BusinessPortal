@@ -19,6 +19,8 @@ using System.Globalization;
 using BusinessPortal.Domain.Entities.Product;
 using BusinessPortal.Domain.Entities.Countries;
 using BusinessPortal.Domain.Entities.Ads;
+using BusinessPortal.Domain.Entities.Slider;
+using BusinessPortal.Domain.Entities.Banners;
 
 namespace BusinessPortal.Data.DbContext
 {
@@ -152,6 +154,18 @@ namespace BusinessPortal.Data.DbContext
         #region Countries
 
         public DbSet<Countries> Countries { get; set; }
+
+        #endregion
+
+        #region Slider
+
+        public DbSet<Slider> Sliders { get; set; }
+
+        #endregion
+
+        #region Banners
+
+        public DbSet<Banners> Banners { get; set; }
 
         #endregion
 

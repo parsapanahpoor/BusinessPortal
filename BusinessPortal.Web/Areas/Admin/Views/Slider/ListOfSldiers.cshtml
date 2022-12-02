@@ -1,0 +1,102 @@
+﻿@using BusinessPortal.Domain.ViewModels.Admin
+@using BusinessPortal.Application.Extensions
+@using BusinessPortal.Application.Convertors
+@using BusinessPortal.Domain.ViewModels.Common
+@model BusinessPortal.Domain.ViewModels.Admin.Slider.FilterSliderViewModel
+@using BusinessPortal.Application.StaticTools
+
+@{
+    ViewData["Title"] = "لیست اسلایدر ها";
+}
+
+@section Styles
+    {
+
+}
+
+    @section Scripts
+    {
+    <partial name="_JqueryValidation" />
+}
+
+    @section Breadcrumbs
+    {
+    <li>
+        <a href="javascript:void(0)"> @ViewData["Title"] </a>
+    </li>
+}
+
+
+    <div class="row">
+            <form asp-action="FilterUsers" asp-controller="Account" asp-area="Admin" id="filter-search" method="get">
+                <input type="hidden" asp-for="Page" />
+            </form>
+
+        <div class="col-lg-12 col-sm-12">
+            <div class="well with-header with-footer table-responsive">
+                <div class="header bordered-azure">
+                    <div class="flex-style">
+                        <span>لیست اسلایدر</span>
+                        <span>@Model.GetShownEntitiesPagesTitle()</span>
+                    </div>
+                </div>
+
+            @if (Model.Entities != null && Model.Entities.Any())
+            {
+                <table class="table table-hover table-bordered tc vm">
+                    <thead class="tc vm">
+                        <tr class="tc vm">
+                            <th class="tc vm">
+                                تصویر
+                            </th>
+                            <th class="tc vm">
+                                URL
+                            </th>
+                            <th class="tc vm">
+                                امکانات
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="tc vm">
+                        @foreach (var slider in Model.Entities)
+                        {
+                            <tr class="tc vm" remove-ajax-item="@slider.Id">
+                                <td class="vm">
+                                    <div class="flex-style-center">
+                                        <img class="AdvertisementImage" style="height:150px;width:150px" src="@PathTools.SliderThumbimage@slider.SldierImageName" />
+                                    </div>
+                                </td>
+                                <td class="tc vm">
+                                    <p class="flex-style-center">
+                                        @if (string.IsNullOrEmpty(slider.URL))
+                                        {
+                                        <p>وارد نشده </p>
+                                        }
+                                        else
+                                        {
+                                            @slider.URL
+                                        }
+                                    </p>
+                                </td>
+                                <td class="tc vm">
+                                    <button onclick="DeleteAjax(@slider.Id, '@Url.Action("DeleteSlider", "Slider", new {area = "Admin", sliderId = slider.Id})')" class="btn btn-danger btn-circle btn-xs"><i class="glyphicon glyphicon-trash"></i></button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <div class="footer tc">
+
+                    <partial name="_AdminPaging" model="@Model.GetCurrentPaging()" />
+
+                </div>
+            }
+            else
+            {
+                <partial name="_AdminNotFoundPartial" />
+            }
+        </div>
+    </div>
+</div>
+
