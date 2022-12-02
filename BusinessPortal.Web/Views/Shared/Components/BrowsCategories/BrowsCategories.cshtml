@@ -8,7 +8,7 @@
 
     <div class="mega-menu">
         <button class="mega-menu-btn">
-            <i class="fa fa-bars ml-3 mr-3" aria-hidden="true" style="color: #fcb800;"></i> @_Localizer["Products"]
+             @_Localizer["Products"]
         </button>
         <ul class="mega-menu-list">
                 @foreach (var item in Model.Where(p => p.ProductCategory.ParentId == null))

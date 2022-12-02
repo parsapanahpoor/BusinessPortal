@@ -6508,9 +6508,9 @@ Go Top CSS
 
 .search_box {
     position: relative;
-    /*width: 70%;*/
+    width: 100%;
     border-radius: 0 5px 5px 0;
-    /*display:none;*/
+    display:none;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -7444,7 +7444,7 @@ a {
     color: #000;
     padding: 10px 10px;
     padding-left: 100px;
-    width: 300px;
+    /*width: 300px;*/
     border-radius: 3px 3px 0 0;
     outline: none;
     font-size: var(--font-size);
@@ -7563,7 +7563,7 @@ a {
     color: #000;
     padding: 10px 10px;
     padding-left: 100px;
-    width: 300px;
+   /* width: 300px;*/
     border-radius: 3px 3px 0 0;
     outline: none;
     font-size: var(--font-size);
@@ -7650,4 +7650,8 @@ a {
 .Tarif_Container {
     padding-left:20px !important;
     padding-right:20px !important;
+}
+.pclas {
+    font-size:16px !important;
+    font-weight:600 !important;
 }
