@@ -5,6 +5,7 @@ using BusinessPortal.Domain.ViewModels.Admin.Countries;
 using BusinessPortal.Domain.ViewModels.Admin.Dashboard;
 using BusinessPortal.Domain.ViewModels.Advertisement;
 using BusinessPortal.Domain.ViewModels.Site.Advertisement;
+using BusinessPortal.Domain.ViewModels.Site.OurOffers;
 using BusinessPortal.Domain.ViewModels.UserPanel.Advertisement;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -38,6 +39,8 @@ namespace BusinessPortal.Application.Services.Interfaces
 
         #region Admin Side 
 
+        Task<List<ListOfOurSalesAdvertisement>> GetLastestOurOfferAdvertisementFromEmployees(string culture);
+
         Task<AdvertisementInfo?> ShowAdvertisementLanguage(ulong adsId);
 
         Task<FilterAdvertisementAdminSidedViewModel> FilterRequestAdvertisementAdminSide(FilterAdvertisementAdminSidedViewModel filter);
@@ -55,6 +58,8 @@ namespace BusinessPortal.Application.Services.Interfaces
 
         //Diss Active Our Offer 
         Task<bool> DisActiveOurOffer(ulong id);
+
+        Task<List<ListOfOurRequestAdvertisement>> GetLastestOurOfferAdvertisementFromCustomers(string culture);
 
         #endregion
 
@@ -76,6 +81,9 @@ namespace BusinessPortal.Application.Services.Interfaces
         #endregion
 
         #region Countries
+
+        //List OF Our Target Countries
+        Task<List<Domain.Entities.Countries.Countries>> ListOFOurTargetCountries();
 
         //Filter Countries ViewModel Admin Side 
         Task<FilterCountriesViewModel> FilterCountries(FilterCountriesViewModel filter);

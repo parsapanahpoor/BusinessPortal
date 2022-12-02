@@ -1,0 +1,23 @@
+﻿@model List<BusinessPortal.Domain.Entities.Countries.Countries>
+@using BusinessPortal.Application.StaticTools
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _Localizer
+@using System.Globalization
+
+<div class="row mt-1 p-3 text-center  ">
+    <div class="col-md-12 p-4">
+        <h4 class="widget-title textcol">  @_Localizer["ourcountryportals"] </h4>
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        foreach (var item in Model)
+        {
+            <div class="col-md-1 col-sm-4 text-center p-2 ">
+                <a href="/Home">
+                    <img src="@PathTools.CountryThumbimage@item.FlagName" />
+                </a>
+            </div>
+        }
+    }
+

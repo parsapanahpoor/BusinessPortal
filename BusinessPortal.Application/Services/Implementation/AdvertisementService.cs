@@ -13,6 +13,7 @@ using BusinessPortal.Domain.ViewModels.Admin.Dashboard;
 using BusinessPortal.Domain.ViewModels.Admin.Service;
 using BusinessPortal.Domain.ViewModels.Advertisement;
 using BusinessPortal.Domain.ViewModels.Site.Advertisement;
+using BusinessPortal.Domain.ViewModels.Site.OurOffers;
 using BusinessPortal.Domain.ViewModels.UserPanel.Advertisement;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -89,6 +90,56 @@ namespace BusinessPortal.Application.Services.Implementation
             }
             return model;
         }
+
+        public async Task<List<ListOfOurSalesAdvertisement>> GetLastestOurOfferAdvertisementFromEmployees(string culture)
+        {
+            var advertisement = await _context.Advertisement.Include(p => p.Countries).Where(p => !p.IsDelete && p.AdvertisementStatus == AdvertisementStatus.Active
+                                                && p.FromEmployee && !p.FromCustomer && p.StartDate <= DateTime.Now && p.EndDate >= DateTime.Now && p.OurOffer)
+                                                    .OrderByDescending(p => p.CreateDate).Take(10).ToListAsync();
+
+            var model = new List<ListOfOurSalesAdvertisement>();
+
+            foreach (var item in advertisement)
+            {
+                model.Add(new ListOfOurSalesAdvertisement
+                {
+                    AdvertisementId = item.Id,
+                    AdvertisementTitle = await _context.advertisementInfo.Where(p => !p.IsDelete && p.Lang_Id == culture && p.AdvertisementId == item.Id).Select(p => p.Title).FirstOrDefaultAsync(),
+                    CreateDate = item.CreateDate,
+                    AdvertisementAddress = await _context.Addresses.Include(p => p.LocationCountry).FirstOrDefaultAsync(p => p.Id == item.AddressId.Value),
+                    Countries = item.Countries,
+                    ImageName = item.ImageName
+                }
+                );
+            }
+            return model;
+        }
+
+        public async Task<List<ListOfOurRequestAdvertisement>> GetLastestOurOfferAdvertisementFromCustomers(string culture)
+        {
+            var advertisement = await _context.Advertisement.Include(p => p.Countries).Where(p => !p.IsDelete && p.AdvertisementStatus == AdvertisementStatus.Active
+                                                    && p.FromCustomer && !p.FromEmployee && p.StartDate <= DateTime.Now && p.EndDate >= DateTime.Now && p.OurOffer)
+                                                    .OrderByDescending(p => p.CreateDate).Take(10).ToListAsync();
+
+            var model = new List<ListOfOurRequestAdvertisement>();
+
+            foreach (var item in advertisement)
+            {
+                model.Add(new ListOfOurRequestAdvertisement
+                {
+                    AdvertisementId = item.Id,
+                    AdvertisementTitle = await _context.advertisementInfo.Where(p => !p.IsDelete && p.Lang_Id == culture && p.AdvertisementId == item.Id).Select(p => p.Title).FirstOrDefaultAsync(),
+                    CreateDate = item.CreateDate,
+                    AdvertisementAddress = await _context.Addresses.Include(p => p.LocationCountry).FirstOrDefaultAsync(p => p.Id == item.AddressId.Value),
+                    Countries = item.Countries,
+                    ImageName = item.ImageName
+                }
+                );
+            }
+
+            return model;
+        }
+
 
         #endregion
 
@@ -1903,6 +1954,14 @@ namespace BusinessPortal.Application.Services.Implementation
         #endregion
 
         #region Countries
+
+        //List OF Our Target Countries
+        public async Task<List<Domain.Entities.Countries.Countries>> ListOFOurTargetCountries()
+        { 
+            return await _context.Countries.Where(p => !p.IsDelete)
+             .OrderByDescending(s => s.CreateDate)
+             .ToListAsync();
+        }
 
         //Filter Countries ViewModel Admin Side 
         public async Task<FilterCountriesViewModel> FilterCountries(FilterCountriesViewModel filter)

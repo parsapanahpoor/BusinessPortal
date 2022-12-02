@@ -266,14 +266,15 @@
                     <div class="shop-list-tabs">
                         <ul class="nav nav-tabs text-center" id="myTab" role="tablist">
                             <li class="nav-item text-center">
-                                <a  class="nav-link active" id="new-products-tab" data-bs-toggle="tab" href="#popular-products" role="tab" aria-controls="new-products">@_Localizer["Sales offers"]</a>
-                               
-                                <a href="/Advertisement/FilterSellerAdvertisement" class="defawes"><i class="fas fa-arrow-circle-left"></i></a>
+                                <a class="nav-link " id="popular-products-tab" data-bs-toggle="tab" href="#new-products" role="tab" aria-controls="popular-products">@_Localizer["Sales offers"]</a>
+                                                                <a href="/Advertisement/FilterSellerAdvertisement" class="defawes"><i class="fas fa-arrow-circle-left"></i></a>
+
                             </li>
 
                             <li class="nav-item text-center">
-                                <a  class="nav-link" id="popular-products-tab" data-bs-toggle="tab" href="#new-products" role="tab" aria-controls="popular-products">@_Localizer["Purchase requests"]</a>
-                                
+                                <a class="nav-link active" id="new-products-tab" data-bs-toggle="tab" href="#popular-products" role="tab" aria-controls="new-products">
+                                    @_Localizer["Purchase requests"]
+                                </a>
                                 <a href="/Advertisement/FilterCustomerAdvertisement" class="defawes"><i class="fas fa-arrow-circle-left"></i></a>
                             </li>
                         </ul>
@@ -283,173 +284,20 @@
         </div>
 
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="new-products" role="tabpanel">
+        
+            <div class="tab-pane fade show active" id="popular-products" role="tabpanel">
                 <div class="container-fluid slider" style="margin-top: 50px;">
                     <div class="container">
-                        <div class="swiper mySwiper">
-                            <div class="col-lg-12 col-md-12 text-center mt-2">
-                                
-                            </div>
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="single-shop-card2">
-                                        <div class="shop-image2">
-                                            <a href="shop-details.html"><img class="img-fluid" src="assets/images/services/Product1.jpeg" alt="image"></a>
-                                        </div>
-                                        <div class="shop-content justify-content-center text-center ">
-                                            <h5>
-                                                <a class="hfona" href="shop-details.html">زعفران قائنات</a>
-                                            </h5>
-
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="single-shop-card2">
-                                        <div class="shop-image2">
-                                            <a href="shop-details.html"><img class="img-fluid" src="assets/images/services/Product2.jpeg" alt="image"></a>
-                                        </div>
-                                        <div class="shop-content justify-content-center text-center ">
-                                            <h5 class="hfona">
-                                                <a class="hfona" href="shop-details.html">زعفران قائنات</a>
-                                            </h5>
-
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="single-shop-card2">
-                                        <div class="shop-image2">
-                                            <a href="shop-details.html"><img class="img-fluid" src="assets/images/services/Product3.jpeg" alt="image"></a>
-                                        </div>
-                                        <div class="shop-content justify-content-center text-center ">
-                                            <h5 class="hfona">
-                                                <a class="hfona" href="shop-details.html">زعفران قائنات</a>
-                                            </h5>
-
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="single-shop-card2">
-                                        <div class="shop-image2">
-                                            <a href="shop-details.html"><img class="img-fluid" src="assets/images/services/Product1.jpeg" alt="image"></a>
-                                        </div>
-                                        <div class="shop-content justify-content-center text-center ">
-                                            <h5 class="hfona">
-                                                <a class="hfona" href="shop-details.html">زعفران قائنات</a>
-                                            </h5>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="single-shop-card2">
-                                        <div class="shop-image2">
-                                            <a href="shop-details.html"><img class="img-fluid" src="assets/images/services/Product2.jpeg" alt="image"></a>
-                                        </div>
-                                        <div class="shop-content justify-content-center text-center  ">
-                                            <h5 class="hfona">
-                                                <a class="hfona" href="shop-details.html">زعفران قائنات</a>
-                                            </h5>
-
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-pagination "></div>
-                        </div>
+                        @await Component.InvokeAsync("LastestOurOfferAdvertisementFromCustomers")
                     </div>
                 </div>
 
             </div>
 
-            <div class="tab-pane fade" id="popular-products" role="tabpanel">
+            <div class="tab-pane fade  " id="new-products" role="tabpanel">
                 <div class="container-fluid slider" style="margin-top: 50px;">
                     <div class="container">
-                        <div class="swiper mySwiper">
-                            <div class="col-lg-12 col-md-12 text-center mt-2">
-                                
-                            </div>
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="single-shop-card2">
-                                        <div class="shop-image2">
-                                            <a href="shop-details.html"><img class="img-fluid" src="assets/images/services/Service1.jpeg" alt="image"></a>
-                                        </div>
-                                        <div class="shop-content justify-content-center text-center ">
-                                            <h5>
-                                                <a class="hfona" href="shop-details.html">فولاد</a>
-                                            </h5>
-
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="single-shop-card2">
-                                        <div class="shop-image2">
-                                            <a href="shop-details.html"><img class="img-fluid" src="assets/images/services/Service2.jpeg" alt="image"></a>
-                                        </div>
-                                        <div class="shop-content justify-content-center text-center ">
-                                            <h5 class="hfona">
-                                                <a class="hfona" href="shop-details.html">فولاد</a>
-                                            </h5>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="single-shop-card2">
-                                        <div class="shop-image2">
-                                            <a href="shop-details.html"><img class="img-fluid" src="assets/images/services/Service3.jpeg" alt="image"></a>
-                                        </div>
-                                        <div class="shop-content justify-content-center text-center ">
-                                            <h5 class="hfona">
-                                                <a class="hfona" href="shop-details.html">فولاد</a>
-                                            </h5>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="single-shop-card2">
-                                        <div class="shop-image2">
-                                            <a href="shop-details.html"><img class="img-fluid" src="assets/images/services/Service1.jpeg" alt="image"></a>
-                                        </div>
-                                        <div class="shop-content justify-content-center text-center ">
-                                            <h5 class="hfona">
-                                                <a class="hfona" href="shop-details.html">فولاد</a>
-                                            </h5>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="single-shop-card2">
-                                        <div class="shop-image2">
-                                            <a href="shop-details.html"><img class="img-fluid" src="assets/images/services/Service2.jpeg" alt="image"></a>
-                                        </div>
-                                        <div class="shop-content justify-content-center text-center  ">
-                                            <h5 class="hfona">
-                                                <a class="hfona" href="shop-details.html">فولاد</a>
-                                            </h5>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-pagination"></div>
-                        </div>
+                        @await Component.InvokeAsync("LastestOurOfferAdvertisementFromEmployees")
                     </div>
                 </div>
 
@@ -459,83 +307,7 @@
 </div>
 
 
+@await Component.InvokeAsync("OurTagetCountries")
 
-<div class="row mt-1 p-3 text-center  ">
-    <div class="col-md-12 p-4">
-        <h4 class="widget-title textcol">  @_Localizer["ourcountryportals"] </h4>
-    </div>
-    <div class="col-md-1 col-sm-4 text-center p-2 ">
-        <a href="/Home">
-            <i class="flag-icon flag-icon-ir  " title="@_Localizer["Iran"]" style="font-size:48px ;"> </i>
-        </a>
-    </div>
-
-
-    <div class="col-md-1 col-sm-4 text-center p-2">
-        <a href="/Home">
-            <i class="flag-icon flag-icon-ca  " title="@_Localizer["Canada"]" style="font-size:48px ;"> </i>
-        </a>
-    </div>
-
-    <div class="col-md-1 col-sm-4 text-center p-2">
-        <a href="/Home">
-            <i class="flag-icon flag-icon-cn" title="@_Localizer["China"]" style="font-size:48px ;"> </i>
-        </a>
-    </div>
-
-    <div class="col-md-1 col-sm-4  text-center p-2">
-        <a href="/Home">
-            <i class="flag-icon flag-icon-gb" title="@_Localizer["United Kingdom"]" style="font-size:48px ;"> </i>
-        </a>
-    </div>
-
-    <div class="col-md-1 col-sm-4  text-center p-2">
-        <a href="/Home">
-            <i class="flag-icon flag-icon-ru" title="@_Localizer["Russia"]" style="font-size:48px ;"> </i>
-        </a>
-    </div>
-
-    <div class="col-md-1 col-sm-4  text-center p-2">
-        <a href="/Home">
-            <i class="flag-icon flag-icon-fr" title="@_Localizer["France"]" style="font-size:48px ;"> </i>
-        </a>
-    </div>
-
-    <div class="col-md-1 col-sm-4  text-center p-2">
-        <a href="/Home">
-            <i class="flag-icon flag-icon-de" title="@_Localizer["Germany"]" style="font-size:48px ;"> </i>
-        </a>
-    </div>
-
-    <div class="col-md-1 col-sm-4  text-center p-2">
-        <a href="/Home">
-            <i class="flag-icon flag-icon-fi" title="@_Localizer["Finland"]" style="font-size:48px ;"> </i>
-        </a>
-    </div>
-
-    <div class="col-md-1 col-sm-4  text-center p-2">
-        <a href="/Home">
-            <i class="flag-icon flag-icon-kw" title="@_Localizer["Kuwait"]" style="font-size:48px ;"> </i>
-        </a>
-    </div>
-
-    <div class="col-md-1 col-sm-4  text-center p-2">
-        <a href="/Home">
-            <i class="flag-icon flag-icon-kr" title="@_Localizer["South Korea"]" style="font-size:48px ;"> </i>
-        </a>
-    </div>
-
-    <div class="col-md-1 col-sm-4  text-center p-2">
-        <a href="/Home">
-            <i class="flag-icon flag-icon-in" title="@_Localizer["India"]" style="font-size:48px ;"> </i>
-        </a>
-    </div>
-
-    <div class="col-md-1 col-sm-4  text-center p-2">
-        <a href="/Home">
-            <i class="flag-icon flag-icon-us" title="@_Localizer["America"]" style="font-size:48px ;"> </i>
-        </a>
-    </div>
-</div>
 
 <script src="assets\js\app.js"></script>
